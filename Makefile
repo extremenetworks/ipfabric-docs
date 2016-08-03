@@ -1,9 +1,7 @@
-# TO BE UPDATED:
 ROOT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 SHELL := /bin/bash
 TOX_DIR := .tox
 VIRTUALENV_DIR ?= virtualenv
-ST2_VIRTUALENV_DIR = st2/virtualenv
 
 # Sphinx docs options
 SPHINXBUILD := sphinx-build
@@ -12,26 +10,9 @@ DOC_BUILD_DIR := docs/build
 
 BINARIES := bin
 
-# All components are prefixed by st2
-COMPONENTS := $(wildcard st2*)
-
-# Components that implement a component-controlled test-runner. These components provide an
-# in-component Makefile. (Temporary fix until I can generalize the pecan unittest setup. -mar)
-# Note: We also want to ignore egg-info dir created during build
-COMPONENT_SPECIFIC_TESTS := st2tests st2client.egg-info
-
-# nasty hack to get a space into a variable
-space_char :=
-space_char +=
-comma := ,
-COMPONENT_PYTHONPATH = $(subst $(space_char),:,$(realpath $(COMPONENTS)))
-COMPONENTS_TEST := $(foreach component,$(filter-out $(COMPONENT_SPECIFIC_TESTS),$(COMPONENTS)),$(component))
-COMPONENTS_TEST_COMMA := $(subst $(space_char),$(comma),$(COMPONENTS_TEST))
-
 PYTHON_TARGET := 2.7
 
-REQUIREMENTS := requirements.txt st2/requirements.txt
-PIP_OPTIONS := $(ST2_PIP_OPTIONS)
+REQUIREMENTS := requirements.txt
 
 ifndef PIP_OPTIONS
 	PIP_OPTIONS := -U -q
@@ -41,16 +22,12 @@ endif
 all: requirements check tests docs
 
 .PHONY: docs
-docs: .clone-st2 requirements .requirements-st2 .docs
+docs: requirements .docs
 
 .PHONY: .docs
 .docs:
 	@echo
 	@echo "==================== docs ===================="
-	@echo
-	. $(ST2_VIRTUALENV_DIR)/bin/activate; ./scripts/generate-runner-parameters-documentation.py
-	. $(ST2_VIRTUALENV_DIR)/bin/activate; ./scripts/generate-internal-triggers-table.py
-	. $(ST2_VIRTUALENV_DIR)/bin/activate; ./scripts/generate-available-permission-types-table.py
 	@echo
 	. $(VIRTUALENV_DIR)/bin/activate; $(SPHINXBUILD) -W -b html $(DOC_SOURCE_DIR) $(DOC_BUILD_DIR)/html
 	@echo
@@ -104,14 +81,14 @@ $(VIRTUALENV_DIR)/bin/activate:
 	@echo "==================== ipfaric-docs virtualenv ===================="
 	@echo
 	test -d $(VIRTUALENV_DIR) || virtualenv --no-site-packages $(VIRTUALENV_DIR)
-
+	
 	# Setup PYTHONPATH in bash activate script...
 	echo '' >> $(VIRTUALENV_DIR)/bin/activate
 	echo '_OLD_PYTHONPATH=$$PYTHONPATH' >> $(VIRTUALENV_DIR)/bin/activate
 	echo 'PYTHONPATH=$$_OLD_PYTHONPATH:$(COMPONENT_PYTHONPATH)' >> $(VIRTUALENV_DIR)/bin/activate
 	echo 'export PYTHONPATH' >> $(VIRTUALENV_DIR)/bin/activate
 	touch $(VIRTUALENV_DIR)/bin/activate
-
+	
 	# Setup PYTHONPATH in fish activate script...
 	echo '' >> $(VIRTUALENV_DIR)/bin/activate.fish
 	echo 'set -gx _OLD_PYTHONPATH $$PYTHONPATH' >> $(VIRTUALENV_DIR)/bin/activate.fish
@@ -126,24 +103,3 @@ $(VIRTUALENV_DIR)/bin/activate:
 	echo '  functions -e old_deactivate' >> $(VIRTUALENV_DIR)/bin/activate.fish
 	echo 'end' >> $(VIRTUALENV_DIR)/bin/activate.fish
 	touch $(VIRTUALENV_DIR)/bin/activate.fish
-
-.PHONY: .clone-st2
-.clone-st2:
-	@echo
-	@echo "==================== cloning st2 ===================="
-	@echo
-	./scripts/clone-st2.sh
-
-PHONY: .virtualenv-st2
-.virtualenv-st2: .clone-st2
-	@echo
-	@echo "==================== st2 virtualenv ===================="
-	@echo
-	cd st2; make virtualenv
-
-PHONY: .requirements-st2
-.requirements-st2: .clone-st2
-	@echo
-	@echo "==================== st2 requirements ===================="
-	@echo
-	cd st2; make requirements
