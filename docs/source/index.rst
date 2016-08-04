@@ -1,16 +1,11 @@
-Welcome to IPFabric documentation!
-=========================================
+Welcome to IP Fabric solution documentation!
+============================================
 
-Contents:
+.. rubric:: Contents:
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 3
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+    overview
+    Installation<install/index>
+    Troubleshooting<troubleshooting/index>
