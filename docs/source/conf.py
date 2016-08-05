@@ -92,6 +92,8 @@ extlinks = {
 # Use for variables substitutions
 rst_epilog = """
 .. |st2| replace:: StackStorm
+.. |bwc| replace:: Brocade Workflow Composer
+.. |ipf| replace:: IP Fabric Solution
 .. _st2contrib: http://www.github.com/stackstorm/st2contrib
 """
 

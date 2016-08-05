@@ -7,3 +7,7 @@ build
 *~
 \#*\#
 *.swp
+
+# mac
+.DS_Store
+
