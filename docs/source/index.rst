@@ -7,5 +7,6 @@ Welcome to IP Fabric solution documentation!
     :maxdepth: 3
 
     overview
-    Installation<install/index>
-    Troubleshooting<troubleshooting/index>
+    Installation <install/index>
+    Operation <operation/index>
+    Troubleshooting <troubleshooting/index>

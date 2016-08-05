@@ -52,7 +52,7 @@ livedocs: docs .livedocs
 	rm -rf $(DOC_BUILD_DIR)
 
 .PHONY: distclean
-distclean: clean
+distclean:
 	@echo
 	@echo "==================== distclean ===================="
 	@echo
