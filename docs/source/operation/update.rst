@@ -1,14 +1,12 @@
-Other Features
-==============
+Other features to manage IP Fabric 
+==================================
 
 Updating switch credentials and information
 -------------------------------------------
 
-A switch is registered in the server using the switch credentials. By default, the username
-“admin” and the password “password” are used if the username or password is not entered
-during registration. If the credentials are changed on the switch, the change must be
-updated in the Brocade Workflow Composer Server using the ``bwc ipf inventory update
---ip=ip-address`` command.
+A switch is registered in the server using the switch credentials. If the credentials are
+changed on the switch, the change must be updated in the Brocade Workflow Composer Server
+using the ``bwc ipf inventory update --ip=ip-address`` command.
 
 .. code:: shell
 
@@ -23,15 +21,17 @@ Generating a topology map
 You can display the fabric topology of an IP Fabric.
 
 1. Enter the bwc show topology format command.
-# Refer to the bwc show on page 37 command for options available for the bwc show topology
-format command.
+
+.. todo:: 
+    Refer to the bwc show on page 37 command for options available for the bwc show topology
+    format command.
 
 .. code:: shell
 
-    $ bwc ipf show topology
+    $ bwc ipf show topology --format=<file format>
 
 .. note::
-    If you do not include the --format= option, then a PDF file is generated.
+    --format=<option> is optional. A PDF file is generated if not format flag is not used.
 
 2. Open the topology file that was generated using the appropriate software.
 
@@ -65,35 +65,33 @@ can display the values of the parameters using the bwc ipf fabric config show CL
     <OUTPUT GOES HERE>
 
 If you want a different set of configuration parameters or a configuration with
-“unnumbered” for the IP address, you must create a new IP Fabric and define the
+**unnumbered** for the IP address, you must create a new IP Fabric and define the
 values for the configuration parameters. The following parameters can be added
 with the bwc ipf fabric config show command:
 
-+-------------------+-------------------------------------------------------------------+
-| :anycast_mac:     | A valid MAC address in the format xxxx.xxxx.xxxx or               |
-|                   | xx:xx:xx:xx:xx:xx                                                 |
-+-------------------+-------------------------------------------------------------------+
-|  :evpn_enabled:   | Yes or No                                                         |
-+-------------------+-------------------------------------------------------------------+
-| :bfd_tx:          | An integer from 50 through 30000                                  |
-+-------------------+-------------------------------------------------------------------+
-| :bfd_rx:          |  An integer from 50 through 30000                                 |
-+-------------------+-------------------------------------------------------------------+
-| :bfd_multiplier:  | An from 3 through 50                                              |
-+-------------------+-------------------------------------------------------------------+                 
-| :bgp_multihop:    | An from 1 through 55                                              |
-+-------------------+-------------------------------------------------------------------+               
-| :max_paths:       | An from 1 through 32                                              |
-+-------------------+-------------------------------------------------------------------+
-| :p2p_link_range:  | **(Required)** a valid IP-network or the word “unnumbered”        |
-|                   +-------------------------------------------------------------------+ 
-|                   | (case insensitive), based on what kind of BGP peers               |
-|                   +-------------------------------------------------------------------+
-|                   | connectivity you want, IP numbered or unnumbered.                 |
-+-------------------+-------------------------------------------------------------------+                  
-
-  <(Refer to Brocade IP Fabrics overview on page 15 for details.)>
-
++------------------------+-------------------------------------------------------------------+
+| :anycast_mac:          | A valid MAC address in the format xxxx.xxxx.xxxx or               |
+|                        | xx:xx:xx:xx:xx:xx                                                 |
++------------------------+-------------------------------------------------------------------+
+| :evpn_enabled:         | Yes or No                                                         |
++------------------------+-------------------------------------------------------------------+
+| :bfd_tx:               | An integer from 50 through 30000                                  |
++------------------------+-------------------------------------------------------------------+
+| :bfd_rx:               | An integer from 50 through 30000                                  |
++------------------------+-------------------------------------------------------------------+
+| :bfd_multiplier:       | An integer from 3 through 50                                      |
++------------------------+-------------------------------------------------------------------+                 
+| :bgp_multihop:         | An integer from 1 through 55                                      |
++------------------------+-------------------------------------------------------------------+               
+| :max_paths:            | An integer from 1 through 32                                      |
++------------------------+-------------------------------------------------------------------+
+| :p2p_link_range:       | **(Required)** a valid IP-network or the word “unnumbered”        |
+|                        +-------------------------------------------------------------------+ 
+|                        | (case insensitive), based on what kind of BGP peers               |
+|                        +-------------------------------------------------------------------+
+|                        | connectivity you want, IP numbered or unnumbered. (Refer          |
+|                        +-------------------------------------------------------------------+
+|                        | overview section for details).                                    |
 +------------------------+-------------------------------------------------------------------+
 | :loopback_ip_range:    | **(Required)** A valid IP-network, for example,172.32.254.0/24    |
 +------------------------+-------------------------------------------------------------------+                    
@@ -105,8 +103,6 @@ with the bwc ipf fabric config show command:
 +------------------------+-------------------------------------------------------------------+                       
 | :allowas_in:           | A number from 1 through 10                                        |
 +------------------------+-------------------------------------------------------------------+
-
-<Refer to bwc ipf fabric on page 52 for more details.> 
 
 Note, however, that the required parameters must be added to the new configuration. The other
 parameters are not required, but if you do not add them, Brocade Workflow Composer will use
@@ -121,6 +117,9 @@ Creating a new IP Fabric with user-defined IP configurations
 
 1. Use the bwc ipf fabric add command to create a new fabric configuration. For example,
    the following command creates a new IP Fabric called **user_fab**.
+
+.. todo::
+    UPDATE OUTPUT
 
 .. code:: shell
 
@@ -169,4 +168,4 @@ Creating a new IP Fabric with user-defined IP configurations
     spine_asn_block: 64512-64999
     allowas_in: '7'
 
-Use --fabric=fabric name parameter to display details for a specific fabric.
+Use :command:`--fabric=<fabric name>` parameter to display details for a specific fabric.
