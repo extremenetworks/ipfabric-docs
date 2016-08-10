@@ -8,5 +8,5 @@ The current version of |ipf| supports the commands presented in this section
 .. toctree::
     :maxdepth: 3
 
-    |ipf| CLI<basic_cli>
+    IP Fabric Solution CLI<basic_cli>
     Advance CLI<advance_cli>
