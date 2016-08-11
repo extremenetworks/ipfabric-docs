@@ -2,7 +2,7 @@ Brocade Workflow Composer ZTP use cases
 =======================================
 
 Zero Touch Provisioning (ZTP) is used to register a switch to the |bwc| using |ipf| and
-run the BGP workflow.
+run the BGP workflow automatically.
 
 Use Case 1: Simple IP Fabric
 ----------------------------
@@ -67,8 +67,9 @@ And the following configuration exists in the two-node VCS cluster:
 .. note::
     The VCS ID for the two-node VCS cluster is same.
 
-ZTP Setup
----------
+
+ZTP Process and Setup
+=====================
 
 A typical ZTP setup that can be used for both use cases is shown in the following diagram:
 
@@ -77,19 +78,19 @@ A typical ZTP setup that can be used for both use cases is shown in the followin
 
         **ZTP Topology with states**
 
-ZTP setup consists of a DHCP server, FTP/DNS server in the same network as the VDX
-switch.
+This setup consists of a DHCP server, FTP/DNS server in the same network as the VDX
+switches.
 
 .. todo::
     Add Reference to the ZTP doc
 
 DHCP server (dhcpd.conf)
 ------------------------
-Every group in the DHCP server configuration has the following components:
+Every group in the DHCP server configuration file `dhcpd.conf` has the following components:
 
    - ``option bootfile-name <config file>;``
         This is the DAD configuration file that will be used during switch bootup. For
-        example: /config/bwcZtpConfigForLeaf.cfg;
+        example: ``/config/bwcZtpConfigForLeaf.cfg``
 
    - ``option tftp-server-name <FTP server IP>;``
         This is the FTP Server that contains the DAD configuration file, registration
@@ -319,7 +320,7 @@ The following is a sample DAD configuration file for a leaf:
 Sample DAD configuration file for a two-node VCS cluster
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following is a sample DAD configuration file for a two-node cluster:
+The following is a sample DAD configuration file for a two-node VCS cluster:
 
 .. code:: shell
 
@@ -374,11 +375,11 @@ on the switch:
 ``/var/config/vcs/scripts``
 
 The script also generates a registration log at the same location. It indicates if the
-registration script ran successfully. To be sure the script runs correctly, make changes to
-the following variables in the script in the main method:
+registration script ran successfully. Make changes to the following variables in the
+`registration.py` script in the main method:
 
 
-.. code:: shell
+.. code:: python
 
     remote_server = 'dcip.bwc.local:8888' ## Ip address or DNS name of the server with port #
     token = 'Z3FJeENYb1BobURrUk9hWEZwd204U3BKRzJsN0g0eXU=' ## token
@@ -391,7 +392,7 @@ The following example shows the register.py file. (This file is available in the
 
 
 .. todo::
-    register.py script
+    register.py script changes
     and source code location in above line
     .. code-block:: python
 
@@ -423,17 +424,17 @@ Verification of ZTP and DAD
 
 To verify whether the ZTP and DAD process ran correctly, complete the following steps:
 
-1. Run the ``show vcs command`` on the switch to make sure the switch gets assigneda VCS ID,
-   an RBridge ID, VCS mode, and a management IP address.
+1. Run the ``show vcs command`` on the switch to make sure the switch got a VCS ID,
+   an RBridge ID, VCS mode, and a management IP address assigned.
 
 2. Run the ``show dad status`` command to make sure the DAD and ZTP process ran. Look for the
-   "DAD 1314" code. If there any other error codes, refer to the sections Using DHCP Automatic
-   Deployment in the Brocade Network OS Administration Guide for more information about
+   "DAD 1314" code. If there any other error codes, refer to the sections `Using DHCP Automatic
+   Deployment` in the `Brocade Network OS Administration Guide` for more information about
    additional DAD codes.
 
 3. Check the |bwc| server to see if the switch is registered and the BGP workflow completed
    successfully on it.
 
-4. To verify that the registration script (register.py) executed successfully, check the
-   `registration.log` file on the switch at the ``/var/config/vcs/scripts/`` location. You can
-   use a ``cat`` command on the log file from the "root" account.
+4. To verify that the registration script executed successfully, check `registration.log`
+   file on the switch at the ``/var/config/vcs/scripts/`` location. You can use a ``cat``
+   command on the log file from the "root" account.
