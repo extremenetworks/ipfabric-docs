@@ -367,8 +367,8 @@ fabric (because no name is specified.)
     $ bwc ipf fabric config show
     <ADD OUTPUT>
 
-Use the ``bwc ipf fabric add --fabric=test`` command to add a fabric configuration with the
-name of *"test"*.
+Use the ``bwc ipf fabric add --fabric=test`` command to add a fabric configuration to a fabric name 
+*"test"*.
 
 .. code-block:: shell
 
