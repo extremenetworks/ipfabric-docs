@@ -1,5 +1,5 @@
 ZTP and Brocade Workflow Composer Overview
-=========================================
+==========================================
 
 Zero Touch Provisioning (ZTP) can be used to bring up the switch with new firmware and a
 preset configuration automatically, so that you do not need to log in to the switch
