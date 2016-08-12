@@ -19,13 +19,10 @@ ifndef PIP_OPTIONS
 endif
 
 .PHONY: all
-all: requirements check tests docs
+all: distclean requirements docs
 
 .PHONY: docs
-docs: requirements .docs
-
-.PHONY: .docs
-.docs:
+docs:
 	@echo
 	@echo "==================== docs ===================="
 	@echo
