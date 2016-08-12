@@ -17,14 +17,9 @@ general:
 #  webhooks:
 #    - url: https://webhooks.stackstorm.net:8531/webhooks/build/events
 
-machine:
-  environment:
-    DOCS_REPO_ROOT_DIR: ${HOME}/${CIRCLE_PROJECT_REPONAME}
-    BUILD_DOCKER: 0
-
 dependencies:
-  post:
+  pre:
     - cd ${DOCS_REPO_ROOT_DIR} && hostname && make requirements
 test:
   override:
-    - cd ${DOCS_REPO_ROOT_DIR} && make .docs
+    - cd ${DOCS_REPO_ROOT_DIR} && make docs
