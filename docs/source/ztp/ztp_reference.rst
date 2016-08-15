@@ -113,7 +113,7 @@ Every group in the DHCP server configuration file `dhcpd.conf` has the following
 
 The following example shows the DHCP server configuration information. In the subnet
 section, the range is 10.24.39.240 to 10.24.39.250 is used. The IP range should exclusively
-be used for dynamic addresses. No static addresses should in this range.
+be used for dynamic addresses. It should not include any static addresses.
 
 .. code-block:: shell
 
@@ -222,6 +222,9 @@ DAD configuration files
 DAD configuration files are downloaded to the switch as part of the ZTP process. Supported
 use cases require three DAD Configuration files, one each for leaves, spines and a two-node
 VCS cluster. The following parameters are used for the DAD configuration files:
+
+.. todo::
+   Might be better to do this as a table?
 
 - Common_begin, common_end:
   The parameters and configurations in this section are applied to all the switches using
@@ -424,12 +427,12 @@ Verification of ZTP and DAD
 
 To verify whether the ZTP and DAD process ran correctly, complete the following steps:
 
-1. Run the ``show vcs command`` on the switch to make sure the switch got a VCS ID,
+1. Run the ``show vcs command`` on the switch to make sure the switch has a VCS ID,
    an RBridge ID, VCS mode, and a management IP address assigned.
 
 2. Run the ``show dad status`` command to make sure the DAD and ZTP process ran. Look for the
-   "DAD 1314" code. If there any other error codes, refer to the sections `Using DHCP Automatic
-   Deployment` in the `Brocade Network OS Administration Guide` for more information about
+   "DAD 1314" code. If there any other error codes, refer to the `Using DHCP Automatic
+   Deployment` section in the `Brocade Network OS Administration Guide` for more information about
    additional DAD codes.
 
 3. Check the |bwc| server to see if the switch is registered and the BGP workflow completed

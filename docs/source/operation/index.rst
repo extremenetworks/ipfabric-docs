@@ -1,7 +1,7 @@
 How to use IP Fabric Solution
 =============================
 
-Now let us understand working of |ipf| to help you automate IP Fabric creation/scaling
+This section explains how to operate the |ipf| to help you automate IP Fabric creation/scaling
 in your data center.
 
 .. rubric:: IP Fabric Solution for IP Fabric automation

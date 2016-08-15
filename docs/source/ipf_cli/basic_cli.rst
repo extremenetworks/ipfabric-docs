@@ -6,16 +6,19 @@ IP Fabric Solution CLI
   a shell command prompt. Do not enter another dollar sign. All commands should be entered
   at the shell prompt.
 
-|bwc| |ipf| CLI is an easy to use CLI for |ipf|.
+|bwc| |ipf| CLI provides a simple way to interrogate and configure your IP Fabric.
 
 .. todo::
-   Add more details on the basic and advance CLI
+   Add more details on the basic and advanced CLI
 
 ------------
 
 ------------
 bwc ipf help
 ------------
+
+.. todo::
+  Unclear below if it should be --help, or just help.
 
 Displays information (help) about all or a specified command.
 
@@ -45,7 +48,7 @@ Refer to :command:`bwc <command> --help` for more information on a specific comm
 Examples
 ~~~~~~~~
 
-Use the bwc --help command to display Brocade Workflow Composer commands and their functions.
+Use the ``bwc --help`` command to display Brocade Workflow Composer commands and their functions.
 
 .. code-block:: shell
 
@@ -252,6 +255,9 @@ Parameters
 Usage Guidelines
 ~~~~~~~~~~~~~~~~
 
+.. todo::
+   Feels like this line is a bit isolated? Doesn't really relate to usage, more just some info about what people will see in the output?
+
 The spine has an additional parameter: retain route-target all under address-family l2vpn
 evpn.
 
@@ -301,6 +307,8 @@ Parameters
 
 Usage Guidelines
 ~~~~~~~~~~~~~~~~
+.. todo::
+   I wonder if we need to explain more about what the parameters do, not just what syntax they take?
 The following key parameters and their values can be added with the ``bwc ipf fabric config
 add`` command.
 
