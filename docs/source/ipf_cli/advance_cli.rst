@@ -6,7 +6,7 @@ Advance CLI (using st2)
     a shell command prompt. Do not enter another dollar sign. All commands should be entered 
     at the shell prompt.
 
-To access |ipf| solution using |bwc| cli instead of |ip| specific cli use these commands.
+To access |ipf| using |bwc| CLI instead of |ipf| specific CLI use these commands.
 However, assumption here is that you are familiar with the StackStorm components like actions,
 workflows, rules, packs, execution list etc.
 
@@ -176,5 +176,78 @@ either be accessed using ``st2 action get <pack-name>.<action-name>`` or
             Type: integer
             Default: 600
     
-Next we will go through the cli required to create |ipf| workflow. Exploring each action
+Next, we will go through the CLI required for |ipf| workflow. Exploring each action
 in these packs is beyond the scope of this document.
+
+Fabric Management
+-----------------
+
+The concept of fabric, "default" or user defined, switch roles is |bwc| specific. The
+VDX switches doesn't have any information about it.
+
+Let us start with ``inventory.fabric_list`` to get the details about the **default** fabric.
+This fabric comes with specific paramters for IP fabric creation:
+
+.. code-block:: guess
+    :emphasize-lines: 1
+
+    $ st2 run inventory.fabric_list
+
+    .
+    id: 57b201fc1897122c79575bdf
+    status: succeeded
+    parameters: None
+    result:
+      exit_code: 0
+      result:
+      - fabric_name: default
+        fabric_settings:
+          allowas_in: '5'
+          anycast_mac: aabb.ccdd.eeff
+          bfd_multiplier: '3'
+          bfd_rx: '300'
+          bfd_tx: '300'
+          bgp_multihop: '5'
+          evpn_enabled: 'Yes'
+          leaf_asn_block: 65000-65534
+          loopback_ip_range: 172.32.254.0/24
+          loopback_port_number: '1'
+          max_paths: '8'
+          p2p_link_range: 10.10.10.0/23
+          spine_asn_block: 64512-64999
+      stderr: 'st2.actions.python.ListFabric: DEBUG    GET http://127.0.0.1:8888/v1/fabrics
+    
+        '
+      stdout: 'Successfully retrieved the fabric details.  Object details:
+    
+        '
+
+On the side note, the values in the output can also be accessed using ``--attr`` and ``-k`` flag:
+
+.. code-block:: guess
+   :emphasize-lines: 1,9
+
+   $ st2 run inventory.fabric_list -k result[0].fabric_settings
+   .
+   {u'bgp_multihop': u'5', u'spine_asn_block': u'64512-64999', u'leaf_asn_block': u'65000-65534',
+   u'allowas_in': u'5', u'max_paths': u'8', u'bfd_multiplier': u'3', u'p2p_link_range':
+   u'10.10.10.0/23', u'loopback_port_number': u'1', u'bfd_tx': u'300', u'anycast_mac':
+   u'aabb.ccdd.eeff', u'evpn_enabled': u'Yes', u'loopback_ip_range': u'172.32.254.0/24',
+   u'bfd_rx': u'300'}
+   
+   $ st2 run inventory.fabric_list --attr result.result[0].fabric_settings
+   .
+   result.result[0].fabric_settings:
+     allowas_in: '5'
+     anycast_mac: aabb.ccdd.eeff
+     bfd_multiplier: '3'
+     bfd_rx: '300'
+     bfd_tx: '300'
+     bgp_multihop: '5'
+     evpn_enabled: 'Yes'
+     leaf_asn_block: 65000-65534
+     loopback_ip_range: 172.32.254.0/24
+     loopback_port_number: '1'
+     max_paths: '8'
+     p2p_link_range: 10.10.10.0/23
+     spine_asn_block: 64512-64999
