@@ -1,5 +1,5 @@
-Advance CLI (using st2)
-=======================
+Advanced CLI (using st2)
+========================
 
 .. note::
     All command line examples in this section begins with $ (dollar sign), which represents
