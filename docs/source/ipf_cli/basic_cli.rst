@@ -121,7 +121,82 @@ Use the bwc ipf show version command to display the current version of Brocade W
 .. code-block:: shell
 
     $ bwc ipf show version
-    <ADD OUTPUT>
+
+    Show BGP Configuration
+
+Switch 10.24.39.225 (Leaf):
+rbridge-id 225
+  router bgp
+    local-as 65000
+    bfd interval 300 min-rx 300 multiplier 3
+    neighbor 10.10.10.1 remote-as 64512 state ESTAB up_time 2d20h40m creation_time 2016-08-11
+    05:11:45
+    neighbor 10.10.10.1 ebgp-multihop 5
+    neighbor 10.10.10.3 remote-as 64513 state ESTAB up_time 17h5m24s creation_time 2016-08-11
+    05:11:45
+    neighbor 10.10.10.3 ebgp-multihop 5
+    address-family ipv4 unicast
+     redistribute connected
+     neighbor 10.10.10.1 allowas-in 5
+     neighbor 10.10.10.3 allowas-in 5
+     maximum-paths 8
+     graceful-restart
+     next-hop-recursion
+    address-family l2vpn evpn
+     neighbor 10.10.10.1 activate
+     neighbor 10.10.10.1 allowas-in 5
+     neighbor 10.10.10.1 next-hop-unchanged
+     neighbor 10.10.10.3 activate
+     neighbor 10.10.10.3 allowas-in 5
+     neighbor 10.10.10.3 next-hop-unchanged
+
+Switch 10.24.39.224 (Spine):
+rbridge-id 224
+  router bgp
+    local-as 64512
+    bfd interval 300 min-rx 300 multiplier 3
+    neighbor 10.10.10.0 remote-as 65000 state ESTAB up_time 2d20h40m creation_time 2016-08-11
+    05:11:52
+    neighbor 10.10.10.0 ebgp-multihop 5
+    neighbor 10.10.10.4 remote-as 65001 state ESTAB up_time 17h5m26s creation_time 2016-08-11
+    05:11:52
+    neighbor 10.10.10.4 ebgp-multihop 5
+    neighbor 10.10.10.10 remote-as 65002 state ESTAB up_time 17h5m30s creation_time 2016-08-11
+    05:11:52
+    neighbor 10.10.10.10 ebgp-multihop 5
+    neighbor 10.10.10.12 remote-as 65003 state IDLE up_time 0h0m0s creation_time 2016-08-11
+    05:11:52
+    neighbor 10.10.10.12 ebgp-multihop 5
+    neighbor 10.10.10.18 remote-as 65003 state ESTAB up_time 17h5m24s creation_time 2016-08-11
+    05:11:52
+    neighbor 10.10.10.18 ebgp-multihop 5
+    address-family ipv4 unicast
+     redistribute connected
+     neighbor 10.10.10.0 allowas-in 5
+     neighbor 10.10.10.4 allowas-in 5
+     neighbor 10.10.10.10 allowas-in 5
+     neighbor 10.10.10.12 allowas-in 5
+     neighbor 10.10.10.18 allowas-in 5
+     maximum-paths 8
+     graceful-restart
+     next-hop-recursion
+    address-family l2vpn evpn
+     retain route-target all
+     neighbor 10.10.10.0 activate
+     neighbor 10.10.10.0 allowas-in 5
+     neighbor 10.10.10.0 next-hop-unchanged
+     neighbor 10.10.10.4 activate
+     neighbor 10.10.10.4 allowas-in 5
+     neighbor 10.10.10.4 next-hop-unchanged
+     neighbor 10.10.10.10 activate
+     neighbor 10.10.10.10 allowas-in 5
+     neighbor 10.10.10.10 next-hop-unchanged
+     neighbor 10.10.10.12 activate
+     neighbor 10.10.10.12 allowas-in 5
+     neighbor 10.10.10.12 next-hop-unchanged
+     neighbor 10.10.10.18 activate
+     neighbor 10.10.10.18 allowas-in 5
+     neighbor 10.10.10.18 next-hop-unchanged
 
 -----------------
 
@@ -177,30 +252,60 @@ Use the ``bwc ipf inventory register`` command to register a switch to the defau
 
 .. code:: shell
 
-    $ bwc ipf inventory register --ip=10.24.39.223 --fabric=default
-    <ADD OUTPUT>
+    $ bwc ipf inventory register ip=10.24.39.223 fabric=default user=admin passwd=password
+
+    Inventory Add
++--------------+---------+------------+----------+------+------+-------+---------+
+| IP           | Model   | Rbridge-Id | Firmware | Name | Role |   ASN | Fabric  |
++--------------+---------+------------+----------+------+------+-------+---------+
+| 10.24.39.225 | VDX6740 |        225 | 7.1.0    | sw0  | Leaf | 65000 | default |
++--------------+---------+------------+----------+------+------+-------+---------+
 
 Use the ``bwc ipf inventory delete`` command to delete a switch from the server.
 
 .. code:: shell
 
-    $ bwc ipf inventory delete --ip=10.24.39.223
-    <ADD OUTPUT>
+    $ bwc ipf inventory delete ip=10.24.39.223
+
+    Inventory Delete Successfully
++--------------+---------+------------+----------+------+------+-------+---------+
+| IP           | Model   | Rbridge-Id | Firmware | Name | Role |   ASN | Fabric  |
++--------------+---------+------------+----------+------+------+-------+---------+
+| 10.24.39.225 | VDX6740 |        225 | 7.1.0    | sw0  | Leaf | 65000 | default |
++--------------+---------+------------+----------+------+------+-------+---------+
 
 Use the ``bwc ipf inventory update`` command to update a switch on the server (provides a way
 to change the username and password).
 
 .. code:: shell
 
-    $ bwc ipf inventory update --ip=10.24.39.223
-    <ADD OUTPUT>
+    $ bwc ipf inventory update --ip=10.24.39.225
+
+    Inventory Update
++--------------+---------+------------+----------+------+------+-------+---------+
+| IP           | Model   | Rbridge-Id | Firmware | Name | Role |   ASN | Fabric  |
++--------------+---------+------------+----------+------+------+-------+---------+
+| 10.24.39.225 | VDX6740 |        225 | 7.1.0    | sw0  | Leaf | 65000 | default |
++--------------+---------+------------+----------+------+------+-------+---------+
 
 Use the ``bwc ipf inventory list`` command to list all switches registered in the server.
 
 .. code:: shell
 
-    $ bwc ipf inventory list
-    <ADD OUTPUT>
+    $ bwc ipf inventory list --fabric=default
+
+    Inventory List
++--------------+-------------+------------+----------+----------------+-------+-------+---------+
+| IP           | Model       | Rbridge-Id | Firmware | Name           | Role  |   ASN | Fabric  |
++--------------+-------------+------------+----------+----------------+-------+-------+---------+
+| 10.24.39.225 | VDX6740     |        225 | 7.1.0    | sw0            | Leaf  | 65000 | default |
+| 10.24.39.229 | VDX6740     |        229 | 7.1.0    | VCS_VDX_39_229 | Leaf  |       | default |
+| 10.24.39.228 | VDX6740     |        228 | 7.1.0    | VCS_VDX_39_228 | Leaf  |       | default |
+| 10.24.39.227 | VDX6740     |        227 | 7.1.0    | sw0            | Leaf  |       | default |
+| 10.24.39.226 | VDX6740T    |         26 | 7.1.0    | sw0            | Leaf  |       | default |
+| 10.24.39.224 | VDX6740     |        224 | 7.1.0    | sw0            | Spine | 64512 | default |
+| 10.24.39.223 | VDX6740T-1G |        223 | 7.1.0    | sw0            | Spine |       | default |
++--------------+-------------+------------+----------+----------------+-------+-------+---------+
 
 Use the ``bwc ipf inventory update --fabric=default`` command to update all switches in the
 *"default"* fabric.
@@ -208,22 +313,87 @@ Use the ``bwc ipf inventory update --fabric=default`` command to update all swit
 .. code:: shell
 
     $ bwc ipf inventory update --fabric=default
-    <ADD OUTPUT>
+
+    Inventory Update
++--------------+-------------+------------+----------+----------------+-------+-------+---------+
+| IP           | Model       | Rbridge-Id | Firmware | Name           | Role  |   ASN | Fabric  |
++--------------+-------------+------------+----------+----------------+-------+-------+---------+
+| 10.24.39.225 | VDX6740     |        225 | 7.1.0    | sw0            | Leaf  | 65000 | default |
+| 10.24.39.229 | VDX6740     |        229 | 7.1.0    | VCS_VDX_39_229 | Leaf  |       | default |
+| 10.24.39.228 | VDX6740     |        228 | 7.1.0    | VCS_VDX_39_228 | Leaf  |       | default |
+| 10.24.39.227 | VDX6740     |        227 | 7.1.0    | sw0            | Leaf  |       | default |
+| 10.24.39.226 | VDX6740T    |         26 | 7.1.0    | sw0            | Leaf  |       | default |
+| 10.24.39.224 | VDX6740     |        224 | 7.1.0    | sw0            | Spine | 64512 | default |
+| 10.24.39.223 | VDX6740T-1G |        223 | 7.1.0    | sw0            | Spine |       | default |
++--------------+-------------+------------+----------+----------------+-------+-------+---------+
 
 Use the ``bwc ipf inventory show vcs-links`` command to show VCS link status for a two-node VCS
 cluster.
 
 .. code:: shell
 
-    $ bwc ipf inventory show vcs-links
-    <ADD OUTPUT>
+    $ bwc ipf inventory show vcs links fabric=default
+
+    Inventory Show VCS
++-----------------------------+--------------+-----------------------------+--------------+---------+
+| Interface-1                 | IP-1         | Interface-2                 | IP-2         | Fabric  |
++-----------------------------+--------------+-----------------------------+--------------+---------+
+| TenGigabitEthernet 228/0/10 | 10.24.39.228 | TenGigabitEthernet 229/0/10 | 10.24.39.229 | default |
++-----------------------------+--------------+-----------------------------+--------------+---------+
 
 Use the ``bwc ipf inventory show lldp`` command to show the LLDP neighbor.
 
 .. code:: shell
 
-    $ bwc ipf inventory show lldp
-    <ADD OUTPUT>
+    $ bwc ipf inventory show lldp links fabric=default
+
+    Inventory Show LLDP
++--------------+-------------------+-------------------+-------------------+-------------------+---------------+------------------------+
+| IP           | Local MAC         | Local Intf        | Remote MAC        | Remote Intf       | Remote System | Remote Management Addr |
++--------------+-------------------+-------------------+-------------------+-------------------+---------------+------------------------+
+| 10.24.39.225 | 50:eb:1a:22:50:b9 | TenGigabitEtherne | 00:27:f8:c5:bf:c2 | TenGigabitEtherne |               | sw0                    |
+|              |                   | t 225/0/1         |                   | t 223/0/1         |               |                        |
+| 10.24.39.225 | 50:eb:1a:22:50:ba | TenGigabitEtherne | 50:eb:1a:16:1d:8f | TenGigabitEtherne | 10.24.39.224  | sw0                    |
+|              |                   | t 225/0/2         |                   | t 224/0/1         |               |                        |
+| 10.24.39.229 | 50:eb:1a:21:19:27 | FortyGigabitEther | 50:eb:1a:16:1d:c0 | FortyGigabitEther | 10.24.39.224  | sw0                    |
+|              |                   | net 229/0/49      |                   | net 224/0/50      |               |                        |
+| 10.24.39.229 | 50:eb:1a:21:19:28 | FortyGigabitEther | 00:27:f8:c5:bf:f3 | FortyGigabitEther |               | sw0                    |
+|              |                   | net 229/0/50      |                   | net 223/0/50      |               |                        |
+| 10.24.39.228 | 50:eb:1a:13:9e:9d | TenGigabitEtherne | 00:27:f8:c5:bf:c5 | TenGigabitEtherne |               | sw0                    |
+|              |                   | t 228/0/1         |                   | t 223/0/4         |               |                        |
+| 10.24.39.228 | 50:eb:1a:13:9e:cd | FortyGigabitEther | 50:eb:1a:16:1d:c1 | FortyGigabitEther | 10.24.39.224  | sw0                    |
+|              |                   | net 228/0/49      |                   | net 224/0/51      |               |                        |
+| 10.24.39.227 | 50:eb:1a:22:c9:a4 | FortyGigabitEther | 00:27:f8:c5:bf:f2 | FortyGigabitEther |               | sw0                    |
+|              |                   | net 227/0/49      |                   | net 223/0/49      |               |                        |
+| 10.24.39.227 | 50:eb:1a:22:c9:a5 | FortyGigabitEther | 50:eb:1a:16:1d:bf | FortyGigabitEther | 10.24.39.224  | sw0                    |
+|              |                   | net 227/0/50      |                   | net 224/0/49      |               |                        |
+| 10.24.39.226 | 50:eb:1a:35:29:75 | TenGigabitEtherne | 50:eb:1a:16:1d:90 | TenGigabitEtherne | 10.24.39.224  | sw0                    |
+|              |                   | t 26/0/1          |                   | t 224/0/2         |               |                        |
+| 10.24.39.226 | 50:eb:1a:35:29:77 | TenGigabitEtherne | 00:27:f8:c5:bf:c3 | TenGigabitEtherne |               | sw0                    |
+|              |                   | t 26/0/3          |                   | t 223/0/2         |               |                        |
+| 10.24.39.224 | 50:eb:1a:16:1d:8f | TenGigabitEtherne | 50:eb:1a:22:50:ba | TenGigabitEtherne |               | sw0                    |
+|              |                   | t 224/0/1         |                   | t 225/0/2         |               |                        |
+| 10.24.39.224 | 50:eb:1a:16:1d:90 | TenGigabitEtherne | 50:eb:1a:35:29:75 | TenGigabitEtherne |               | sw0                    |
+|              |                   | t 224/0/2         |                   | t 26/0/1          |               |                        |
+| 10.24.39.224 | 50:eb:1a:16:1d:bf | FortyGigabitEther | 50:eb:1a:22:c9:a5 | FortyGigabitEther |               | sw0                    |
+|              |                   | net 224/0/49      |                   | net 227/0/50      |               |                        |
+| 10.24.39.224 | 50:eb:1a:16:1d:c0 | FortyGigabitEther | 50:eb:1a:21:19:27 | FortyGigabitEther | 10.24.39.229  | VCS_VDX_39_229         |
+|              |                   | net 224/0/50      |                   | net 229/0/49      |               |                        |
+| 10.24.39.224 | 50:eb:1a:16:1d:c1 | FortyGigabitEther | 50:eb:1a:13:9e:cd | FortyGigabitEther | 10.24.39.228  | VCS_VDX_39_228         |
+|              |                   | net 224/0/51      |                   | net 228/0/49      |               |                        |
+| 10.24.39.223 | 00:27:f8:c5:bf:c2 | TenGigabitEtherne | 50:eb:1a:22:50:b9 | TenGigabitEtherne |               | sw0                    |
+|              |                   | t 223/0/1         |                   | t 225/0/1         |               |                        |
+| 10.24.39.223 | 00:27:f8:c5:bf:c3 | TenGigabitEtherne | 50:eb:1a:35:29:77 | TenGigabitEtherne |               | sw0                    |
+|              |                   | t 223/0/2         |                   | t 26/0/3          |               |                        |
+| 10.24.39.223 | 00:27:f8:c5:bf:c5 | TenGigabitEtherne | 50:eb:1a:13:9e:9d | TenGigabitEtherne | 10.24.39.228  | VCS_VDX_39_228         |
+|              |                   | t 223/0/4         |                   | t 228/0/1         |               |                        |
+| 10.24.39.223 | 00:27:f8:c5:bf:d0 | TenGigabitEtherne | 00:27:f8:c6:a6:a0 | TenGigabitEtherne |               | sw0                    |
+|              |                   | t 223/0/15        |                   | t 1/0/15          |               |                        |
+| 10.24.39.223 | 00:27:f8:c5:bf:f2 | FortyGigabitEther | 50:eb:1a:22:c9:a4 | FortyGigabitEther |               | sw0                    |
+|              |                   | net 223/0/49      |                   | net 227/0/49      |               |                        |
+| 10.24.39.223 | 00:27:f8:c5:bf:f3 | FortyGigabitEther | 50:eb:1a:21:19:28 | FortyGigabitEther | 10.24.39.229  | VCS_VDX_39_229         |
+|              |                   | net 223/0/50      |                   | net 229/0/50      |               |                        |
++--------------+-------------------+-------------------+-------------------+-------------------+---------------+------------------------+
 
 --------------------
 
@@ -238,7 +408,7 @@ Syntax
 
 .. code:: shell
 
-    bwc ipf workflow bgp [ --fabric=<fabric_name> ]
+    bwc ipf workflow bgp fabric=<fabric_name>
 
 Parameters
 ~~~~~~~~~~
@@ -262,8 +432,84 @@ Use the ``bwc ipf workflow bgp`` command to implement a workflow on a specific f
 
 .. code-block:: shell
 
-    $ bwc ipf workflow bgp
-    <ADD OUTPUT>
+    $ bwc ipf workflow bgp fabric=default
+
+    BGP Workflow Result:
+
+    Switch 10.24.39.225 (Leaf):
+rbridge-id 225
+  router bgp
+    local-as 65000
+    bfd interval 300 min-rx 300 multiplier 3
+    neighbor 10.10.10.1 remote-as 64512 state ESTAB up_time 2d20h40m creation_time 2016-08-11
+    05:11:45
+    neighbor 10.10.10.1 ebgp-multihop 5
+    neighbor 10.10.10.3 remote-as 64513 state ESTAB up_time 17h5m24s creation_time 2016-08-11
+    05:11:45
+    neighbor 10.10.10.3 ebgp-multihop 5
+    address-family ipv4 unicast
+     redistribute connected
+     neighbor 10.10.10.1 allowas-in 5
+     neighbor 10.10.10.3 allowas-in 5
+     maximum-paths 8
+     graceful-restart
+     next-hop-recursion
+    address-family l2vpn evpn
+     neighbor 10.10.10.1 activate
+     neighbor 10.10.10.1 allowas-in 5
+     neighbor 10.10.10.1 next-hop-unchanged
+     neighbor 10.10.10.3 activate
+     neighbor 10.10.10.3 allowas-in 5
+     neighbor 10.10.10.3 next-hop-unchanged
+
+Switch 10.24.39.224 (Spine):
+rbridge-id 224
+  router bgp
+    local-as 64512
+    bfd interval 300 min-rx 300 multiplier 3
+    neighbor 10.10.10.0 remote-as 65000 state ESTAB up_time 2d20h40m creation_time 2016-08-11
+    05:11:52
+    neighbor 10.10.10.0 ebgp-multihop 5
+    neighbor 10.10.10.4 remote-as 65001 state ESTAB up_time 17h5m26s creation_time 2016-08-11
+    05:11:52
+    neighbor 10.10.10.4 ebgp-multihop 5
+    neighbor 10.10.10.10 remote-as 65002 state ESTAB up_time 17h5m30s creation_time 2016-08-11
+    05:11:52
+    neighbor 10.10.10.10 ebgp-multihop 5
+    neighbor 10.10.10.12 remote-as 65003 state IDLE up_time 0h0m0s creation_time 2016-08-11
+    05:11:52
+    neighbor 10.10.10.12 ebgp-multihop 5
+    neighbor 10.10.10.18 remote-as 65003 state ESTAB up_time 17h5m24s creation_time 2016-08-11
+    05:11:52
+    neighbor 10.10.10.18 ebgp-multihop 5
+    address-family ipv4 unicast
+     redistribute connected
+     neighbor 10.10.10.0 allowas-in 5
+     neighbor 10.10.10.4 allowas-in 5
+     neighbor 10.10.10.10 allowas-in 5
+     neighbor 10.10.10.12 allowas-in 5
+     neighbor 10.10.10.18 allowas-in 5
+     maximum-paths 8
+     graceful-restart
+     next-hop-recursion
+    address-family l2vpn evpn
+     retain route-target all
+     neighbor 10.10.10.0 activate
+     neighbor 10.10.10.0 allowas-in 5
+     neighbor 10.10.10.0 next-hop-unchanged
+     neighbor 10.10.10.4 activate
+     neighbor 10.10.10.4 allowas-in 5
+     neighbor 10.10.10.4 next-hop-unchanged
+     neighbor 10.10.10.10 activate
+     neighbor 10.10.10.10 allowas-in 5
+     neighbor 10.10.10.10 next-hop-unchanged
+     neighbor 10.10.10.12 activate
+     neighbor 10.10.10.12 allowas-in 5
+     neighbor 10.10.10.12 next-hop-unchanged
+     neighbor 10.10.10.18 activate
+     neighbor 10.10.10.18 allowas-in 5
+     neighbor 10.10.10.18 next-hop-unchanged
+
 
 --------------
 
@@ -278,11 +524,11 @@ Syntax
 
 .. code-block:: shell
 
-    bwc ipf fabric add --fabric=<fabric_name>
-    bwc ipf fabric delete --fabric=<fabric_name>
-    bwc ipf fabric config show [ --fabric=<fabric_name> ]
-    bwc ipf fabric config add key value [ --fabric=<fabric_name> ]
-    bwc ipf fabric config delete key [ --fabric=<fabric_name> ]
+    bwc ipf fabric add fabric=<fabric_name>
+    bwc ipf fabric delete fabric=<fabric_name>
+    bwc ipf fabric config show fabric=<fabric_name>
+    bwc ipf fabric config add fabric=<fabric_name> key=<key_name> value=<value>
+    bwc ipf fabric config delete fabric=<fabric_name> key=<key>
 
 Parameters
 ~~~~~~~~~~
@@ -348,15 +594,17 @@ Use the ``bwc ipf fabric add`` command to add a fabric named *"test"*.
 
 .. code-block:: shell
 
-    $ bwc ipf fabric add --fabric=test
-    <ADD OUTPUT>
+    $ bwc ipf fabric add fabric=test
+
+    Fabric test Added successfully
 
 Use the ``bwc ipf fabric delete`` command to delete a fabric named *"test"*.
 
 .. code-block:: shell
 
-    $ bwc ipf fabric delete --fabric=test
-    <ADD OUTPUT>
+    $ bwc ipf fabric delete fabric=test
+
+    Fabric test Delete successfully
 
 
 Use the ``bwc ipf fabric config show`` command to show the configuration of the default
@@ -364,23 +612,64 @@ fabric (because no name is specified.)
 
 .. code-block:: shell
 
-    $ bwc ipf fabric config show
-    <ADD OUTPUT>
+    $ bwc ipf fabric config show fabric=default
 
-Use the ``bwc ipf fabric add --fabric=test`` command to add a fabric configuration to a fabric name 
+    Fabric Config Show
++----------------------+-----------------+
+| Field                | Value           |
++----------------------+-----------------+
+| Fabric Name          | default         |
+| bgp_multihop         | 5               |
+| spine_asn_block      | 64512-64999     |
+| leaf_asn_block       | 65000-65534     |
+| max_paths            | 8               |
+| loopback_port_number | 1               |
+| evpn_enabled         | Yes             |
+| allowas_in           | 5               |
+| bfd_multiplier       | 3               |
+| p2p_link_range       | 10.10.10.0/23   |
+| bfd_tx               | 300             |
+| anycast_mac          | aabb.ccdd.eeff  |
+| loopback_ip_range    | 172.32.254.0/24 |
+| bfd_rx               | 300             |
++----------------------+-----------------+
+
+Use the ``bwc ipf fabric add fabric=test`` command to add a fabric configuration to a fabric name
 *"test"*.
 
 .. code-block:: shell
 
-    $ bwc ipf fabric add --fabric=test
-    <ADD OUTPUT>
-    $ bwc ipf fabric config show --fabric=test
-    <ADD OUTPUT>
+    $ bwc ipf fabric add fabric=test
+
+    Fabric test Added successfully
+
+    $ bwc ipf fabric config show fabric=test
+
+    Fabric Config Show
++----------------------+-----------------+
+| Field                | Value           |
++----------------------+-----------------+
+| Fabric Name          | test         |
+| bgp_multihop         | 5               |
+| spine_asn_block      | 64512-64999     |
+| leaf_asn_block       | 65000-65534     |
+| max_paths            | 8               |
+| loopback_port_number | 1               |
+| evpn_enabled         | Yes             |
+| allowas_in           | 5               |
+| bfd_multiplier       | 3               |
+| p2p_link_range       | 10.10.10.0/23   |
+| bfd_tx               | 300             |
+| anycast_mac          | aabb.ccdd.eeff  |
+| loopback_ip_range    | 172.32.254.0/24 |
+| bfd_rx               | 300             |
++----------------------+-----------------+
 
 Use the ``bwc ipf fabric config delete`` command to delete a parameter from a specific fabric
 configuration.
 
 .. code-block:: shell
 
-    $ bwc ipf fabric config delete bfd_multiplier --fabric=test
-    <ADD OUTPUT>
+    $ bwc ipf fabric config delete fabric=test key=foo
+
+     Key foo Delete successfully from fabric test1
