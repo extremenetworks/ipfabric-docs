@@ -13,7 +13,7 @@ It can also be used without ZTP, but switches must be provisioned manually.
 .. todo::
    Add reference to the fabric section for default fabric and its parameters
 
-.. figure:: ../_static/images/bwc_components.jpg
+.. figure:: ../../../_static/images/bwc_components.jpg
     :align: center
 
     **Components of Brocade Flow Composer**
