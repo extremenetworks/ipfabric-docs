@@ -5,6 +5,8 @@
 # change from one version to another in conf.py should be 
 # placed here, otherwise you WILL break the build.
 
+master_doc = 'index'
+
 project = u'ipfabric-docs'
 copyright = u'2016, Brocade Communications Inc'
 author = u'Brocade Communications Inc'
@@ -28,3 +30,5 @@ texinfo_documents = [
 
 github_repo = 'StackStorm/ipfabric-docs'
 github_version = 'master'
+
+theme_base_url = u'http://bwc-docs.brocade.com/'
