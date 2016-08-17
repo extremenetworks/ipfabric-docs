@@ -80,7 +80,7 @@ IP Fabric Solution automatically configures switches when they are added to an I
 the current configuration on the switches (IP Fabric Switches only), and displays IP Fabric
 topology in a selected format (such as a PDF, JPEG, or PNG).
 
-.. figure:: _static/images/ipfabric_topology.jpg
+.. figure:: ../../_static/images/ipfabric_topology.jpg
     :align: center
 
     **IP fabric topology**
@@ -130,7 +130,7 @@ connectivity to the DC core through border leaf nodes. These nodes provide exter
 to the data center fabric and also provide connectivity to network services such as firewalls
 and load balancers.
 
-.. figure:: _static/images/3_clos_topology.jpg
+.. figure:: ../../_static/images/3_clos_topology.jpg
       :align: center
 
       **3-Stage Folded Clos Topology**

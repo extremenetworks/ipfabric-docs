@@ -10,7 +10,7 @@ Use Case 1: Simple IP Fabric
 In this case an IP Fabric consists of only Spines and Leaves. All spines and leaves get
 one VCS and one Rbridge ID respectively.
 
-.. figure:: ../_static/images/ztp_usecase_1.jpg
+.. figure:: ../../../_static/images/ztp_usecase_1.jpg
     :align: center
 
     **Simple IP Fabric Topology**
@@ -38,7 +38,7 @@ two-node VCS cluster in LC mode.
     IDs, but different Rbridge-IDs. In the following figure note the link between
     10.24.39.211 and 10.24.39.212.
 
-.. figure:: ../_static/images/ztp_usecase_2.jpg
+.. figure:: ../../../_static/images/ztp_usecase_2.jpg
       :align: center
 
       **IP Fabric Topology With Two-Node VCS Cluster**
@@ -73,7 +73,7 @@ ZTP Process and Setup
 
 A typical ZTP setup that can be used for both use cases is shown in the following diagram:
 
-.. figure:: ../_static/images/ztp_topology.jpg
+.. figure:: ../../../_static/images/ztp_topology.jpg
         :align: center
 
         **ZTP Topology with states**
