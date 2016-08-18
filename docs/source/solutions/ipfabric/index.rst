@@ -1,5 +1,5 @@
-Welcome to IP Fabric solution documentation!
-============================================
+IP Fabric Solution
+==================
 
 .. rubric:: Contents:
 
