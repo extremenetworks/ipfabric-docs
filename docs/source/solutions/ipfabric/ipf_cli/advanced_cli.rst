@@ -6,18 +6,18 @@ Advanced CLI (using st2)
     a shell command prompt. Do not enter another dollar sign. All commands should be entered 
     at the shell prompt.
 
-To access |ipf| using |bwc| CLI instead of |ipf| specific CLI use these commands.
-However, assumption here is that you are familiar with the StackStorm components like actions,
-workflows, rules, packs, execution list etc.
+This section is about accessing |ipf| with original |bwc| CLI instead of |ipf|
+specific CLI. However, assumption here is that you are familiar with the |bwc|
+components like actions, workflows, packs, execution list etc.
 
 .. todo::
     Add links for st2 components and more details
 
 ----------
 
-|bwc| consists of two packs to access bwc-topology services and implement BGP workflow on the
-default or user defined fabric. **bwc-topology** and **bwc-ipfabric** pack. These packs
-are installed, by default, with |ipf|.
+|bwc| consists of two packs for |ipf| services and implement BGP workflow on default or
+user defined fabric: **bwc-topology** and **bwc-ipfabric** pack. These packs are installed
+by default, with |ipf|.
 
 .. todo::
     Add more details/one line each on the packs
@@ -64,7 +64,7 @@ The actions in each pack have a small description on what it does.
 
 For more details about actions in these packs use ``st2 action get <pack-name>.<action-name>``
 command. The output can also be displayed in YAML format by appending the command with ``-y``
-flag.
+flag. Similarly, for JSON use ``-j``.
 
 .. code-block:: guess
     :emphasize-lines: 1,41
@@ -140,14 +140,14 @@ flag.
     tags: []
     uid: action:bwc-topology:switch_add
 
-Every action in these packs have *Required* and *Optional* paramters. These paramters can
-either be accessed using ``st2 action get <pack-name>.<action-name>`` or
+Most of the actions have *Required* and *Optional* parameters. These parameters can either
+be accessed using ``st2 action get <pack-name>.<action-name>`` or
 ``st2 run <pack-name>.<action-name> -h`` command.
 
 .. note::
-    In some actions parameters are mutually exclusive hence they are placed in optional
-    parameters section. For example: in following example fabric name or host (switch IP)
-    are required, but are mutually exclusive.
+    In some actions parameters are mutually exclusive. Hence, they are placed in optional
+    parameters section. For example, in following example either fabric name or host
+    (switch IP) are required, but are mutually exclusive.
 
 
 .. code-block:: guess
@@ -190,10 +190,12 @@ Fabric List
 -----------
 
 The concept of fabric, *default* or user defined and switch roles i.e *spine* or *leaf* is
-|bwc| specific. The VDX switches doesn't have any information about it.
+|bwc| specific. The VDX switches doesn't have any information about it. So, the very first
+switch that is added to the fabric has to be a **Spine**
 
 Let us start with ``bwc-topology.fabric_list`` to get the details about the *default* fabric.
-This is a |ipf| out of the box fabric consisting specific paramters for IP fabric creation:
+This is |ipf|'s out of the fabric consisting parameters like ASN range, IP address range etc.
+required to build IP fabric:
 
 .. code-block:: guess
     :emphasize-lines: 1
@@ -229,11 +231,11 @@ This is a |ipf| out of the box fabric consisting specific paramters for IP fabri
     
         '
 
-For detail on fabric paramters refer :doc:`./basic_cli` 's ``bwc ipf fabric config`` section.
+For detail on fabric parameters refer :doc:`./basic_cli` 's ``bwc ipf fabric config`` section.
 
 ----------
 
-On the side note, the values in the output can also be accessed using ``--attr`` and ``-k`` flag:
+On a side note, the values in the output can also be accessed using ``--attr`` and ``-k`` flag:
 
 .. code-block:: guess
    :emphasize-lines: 1,9
@@ -268,7 +270,7 @@ On the side note, the values in the output can also be accessed using ``--attr``
 Create User Defined Fabric
 --------------------------
 
-|ipf| supports user-defined fabric with user-defined parameters.
+|ipf| supports user-defined fabric with custom parameters.
 
 .. note::
     **default** fabric has *p2p_link_range* with a range of IP address which results in
@@ -300,9 +302,9 @@ Create User Defined Fabric
 2. Add parameters to the custom fabric:
 
 .. warning::
-   The mandatory paramters i.e. **leaf_asn_block**, **spine_asn_block**, **loopback_ip_range**,
-   **loopback_port_number**, **p2p_link_range** cannot be edited. Please double check before 
-   Otherwise switch registration to this fabric will fail.
+   These parameters are mandatory: **leaf_asn_block**, **spine_asn_block**, **loopback_ip_range**,
+   **loopback_port_number**, **p2p_link_range** and cannot be edited. Please double check before
+   entering these parameters.
 
 .. code-block:: shell
    :emphasize-lines: 1,21,41,61,81
@@ -411,7 +413,7 @@ Create User Defined Fabric
     **spine_asn_block**, **loopback_ip_range**, **loopback_port_number**, **p2p_link_range**.
     Otherwise switch registration to this fabric will fail.
 
-3. (Optional) Add optional parameters to the *custom-fabric*, if required, otherwise values from
+3. (Optional) Add optional parameters to the *custom-fabric*, otherwise values from
    **default** fabric are used:
 
 .. code-block:: shell
@@ -557,7 +559,7 @@ Create User Defined Fabric
     
         '
 
-4. Similarly following commands can be used to delete the custom fabric and fabric parameters:
+4. Similarly, following commands can be used to delete the user-defined fabric and its parameters:
 
 .. code:: shell
 
@@ -574,8 +576,8 @@ Switch Management
 Register, delete and update switch
 ----------------------------------
 
-After creating *custom fabric* we can register/update/delete switches to the fabric or add
-switches to the *default* fabric:
+After creating *custom fabric* we can register/update/delete switches to the fabric:
+(Same commands can be used for  *default* fabric)
 
 .. code-block:: shell
     :emphasize-lines: 1,40,80
@@ -695,8 +697,8 @@ switches to the *default* fabric:
     
         '
 
-All the switches in the fabric can be updated at once by giving ``fabric=<fabric name>``
-to ``st2 run bwc-topology.switch_update`` command instead of switch IP address:
+All the switches in a fabric can also be updated by providing fabric name: ``fabric=<fabric name>``
+to ``st2 run bwc-topology.switch_update`` command instead of a switch IP address:
 
 .. code:: shell
 
@@ -957,8 +959,8 @@ shows bgp configuration on switches, after successful execution:
 Show commands
 -------------
 
-There are few show commands to get details about BGP configuration, vcs links and lldp neighbor
-and command to generate topology:
+Now let us discuss few show commands to get details about BGP configuration, vcs links
+and lldp neighbor and generate topology(default: pdf in /tmp folder):
 
 Show BGP configuration on the switches
 --------------------------------------
@@ -1239,4 +1241,36 @@ links between principle and secondary node:
    
        '
      stdout: ''
+
+Generate Topology
+-----------------
+To generate a topology (default format: pdf) for switches discovered in the fabric
+use the following command:
+
+.. code:: shell
+
+   $ st2 run bwc-topology.topology_generate fabric=default
+   .
+   id: 57b6367f18971268b72d7fdf
+   status: succeeded
+   parameters:
+     fabric: default
+   result:
+     exit_code: 0
+     result: 'Topology map generated: /tmp/topology_default_20160818-222816.pdf'
+     stderr: 'st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switches?fabric_name=default
    
+       st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switch?id=9
+   
+       st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switch?id=10
+   
+       st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switch?id=11
+   
+       st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switch?id=12
+   
+       st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switches/links?fabric_name=default
+   
+       st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switches/vcs/links?fabric_name=default
+   
+       '
+     stdout: ''
