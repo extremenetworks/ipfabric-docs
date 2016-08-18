@@ -6,18 +6,18 @@ Advanced CLI (using st2)
     a shell command prompt. Do not enter another dollar sign. All commands should be entered 
     at the shell prompt.
 
-To access |ipf| using |bwc| CLI instead of |ipf| specific CLI use these commands.
-However, assumption here is that you are familiar with the StackStorm components like actions,
-workflows, rules, packs, execution list etc.
+This section is about accessing |ipf| with original |bwc| CLI instead of |ipf|
+specific CLI. However, assumption here is that you are familiar with the |bwc|
+components like actions, workflows, packs, execution list etc.
 
 .. todo::
     Add links for st2 components and more details
 
 ----------
 
-|bwc| consists of two packs to access bwc-topology services and implement BGP workflow on the
-default or user defined fabric. **bwc-topology** and **bwc-ipfabric** pack. These packs
-are installed, by default, with |ipf|.
+|bwc| consists of two packs for |ipf| services and implement BGP workflow on default or
+user defined fabric: **bwc-topology** and **bwc-ipfabric** pack. These packs are installed
+by default, with |ipf|.
 
 .. todo::
     Add more details/one line each on the packs
@@ -64,7 +64,7 @@ The actions in each pack have a small description on what it does.
 
 For more details about actions in these packs use ``st2 action get <pack-name>.<action-name>``
 command. The output can also be displayed in YAML format by appending the command with ``-y``
-flag.
+flag. Similarly, for JSON use ``-j``.
 
 .. code-block:: guess
     :emphasize-lines: 1,41
@@ -140,14 +140,14 @@ flag.
     tags: []
     uid: action:bwc-topology:switch_add
 
-Every action in these packs have *Required* and *Optional* paramters. These paramters can
-either be accessed using ``st2 action get <pack-name>.<action-name>`` or
+Most of the actions have *Required* and *Optional* parameters. These parameters can either
+be accessed using ``st2 action get <pack-name>.<action-name>`` or
 ``st2 run <pack-name>.<action-name> -h`` command.
 
 .. note::
-    In some actions parameters are mutually exclusive hence they are placed in optional
-    parameters section. For example: in following example fabric name or host (switch IP)
-    are required, but are mutually exclusive.
+    In some actions parameters are mutually exclusive. Hence, they are placed in optional
+    parameters section. For example, in following example either fabric name or host
+    (switch IP) are required, but are mutually exclusive.
 
 
 .. code-block:: guess
@@ -190,10 +190,12 @@ Fabric List
 -----------
 
 The concept of fabric, *default* or user defined and switch roles i.e *spine* or *leaf* is
-|bwc| specific. The VDX switches doesn't have any information about it.
+|bwc| specific. The VDX switches doesn't have any information about it. So, the very first
+switch that is added to the fabric has to be a **Spine**
 
 Let us start with ``bwc-topology.fabric_list`` to get the details about the *default* fabric.
-This is a |ipf| out of the box fabric consisting specific paramters for IP fabric creation:
+This is |ipf|'s out of the fabric consisting parameters like ASN range, IP address range etc.
+required to build IP fabric:
 
 .. code-block:: guess
     :emphasize-lines: 1
@@ -229,11 +231,11 @@ This is a |ipf| out of the box fabric consisting specific paramters for IP fabri
     
         '
 
-For detail on fabric paramters refer :doc:`./basic_cli` 's ``bwc ipf fabric config`` section.
+For detail on fabric parameters refer :doc:`./basic_cli` 's ``bwc ipf fabric config`` section.
 
 ----------
 
-On the side note, the values in the output can also be accessed using ``--attr`` and ``-k`` flag:
+On a side note, the values in the output can also be accessed using ``--attr`` and ``-k`` flag:
 
 .. code-block:: guess
    :emphasize-lines: 1,9
@@ -268,7 +270,7 @@ On the side note, the values in the output can also be accessed using ``--attr``
 Create User Defined Fabric
 --------------------------
 
-|ipf| supports user-defined fabric with user-defined parameters.
+|ipf| supports user-defined fabric with custom parameters.
 
 .. note::
     **default** fabric has *p2p_link_range* with a range of IP address which results in
@@ -300,9 +302,9 @@ Create User Defined Fabric
 2. Add parameters to the custom fabric:
 
 .. warning::
-   The mandatory paramters i.e. **leaf_asn_block**, **spine_asn_block**, **loopback_ip_range**,
-   **loopback_port_number**, **p2p_link_range** cannot be edited. Please double check before 
-   Otherwise switch registration to this fabric will fail.
+   These parameters are mandatory: **leaf_asn_block**, **spine_asn_block**, **loopback_ip_range**,
+   **loopback_port_number**, **p2p_link_range** and cannot be edited. Please double check before
+   entering these parameters.
 
 .. code-block:: shell
    :emphasize-lines: 1,21,41,61,81
@@ -411,7 +413,7 @@ Create User Defined Fabric
     **spine_asn_block**, **loopback_ip_range**, **loopback_port_number**, **p2p_link_range**.
     Otherwise switch registration to this fabric will fail.
 
-3. (Optional) Add optional parameters to the *custom-fabric*, if required, otherwise values from
+3. (Optional) Add optional parameters to the *custom-fabric*, otherwise values from
    **default** fabric are used:
 
 .. code-block:: shell
@@ -557,7 +559,7 @@ Create User Defined Fabric
     
         '
 
-4. Similarly following commands can be used to delete the custom fabric and fabric parameters:
+4. Similarly, following commands can be used to delete the user-defined fabric and its parameters:
 
 .. code:: shell
 
@@ -574,8 +576,8 @@ Switch Management
 Register, delete and update switch
 ----------------------------------
 
-After creating *custom fabric* we can register/update/delete switches to the fabric or add
-switches to the *default* fabric:
+After creating *custom fabric* we can register/update/delete switches to the fabric:
+(Same commands can be used for  *default* fabric)
 
 .. code-block:: shell
     :emphasize-lines: 1,40,80
@@ -695,8 +697,8 @@ switches to the *default* fabric:
     
         '
 
-All the switches in the fabric can be updated at once by giving ``fabric=<fabric name>``
-to ``st2 run bwc-topology.switch_update`` command instead of switch IP address:
+All the switches in a fabric can also be updated by providing fabric name: ``fabric=<fabric name>``
+to ``st2 run bwc-topology.switch_update`` command instead of a switch IP address:
 
 .. code:: shell
 
@@ -782,64 +784,174 @@ After you have registered all the switches in the fabric. Use following command 
 workflow:
 
 .. code-block:: shell
-  
-   $ st2 run bwc-ipfabric.configure_fabric
-   ...........................................
-   id: 57b252a31897122c79575c79
+
+   $ st2 run bwc-ipfabric.configure_fabric fabric=default
+   ............................................................
+   id: 57b4bf0518971232c98e6f25
    action.ref: bwc-ipfabric.configure_fabric
-   parameters: None
-   status: failed
-   start_timestamp: 2016-08-15T23:39:15.578086Z
-   end_timestamp: 2016-08-15T23:40:44.828279Z
+   parameters:
+     fabric: default
+   status: succeeded
+   start_timestamp: 2016-08-17T19:46:13.794381Z
+   end_timestamp: 2016-08-17T19:48:23.215888Z
    +------------------------------+-------------------------+------------------------------------+-----------------------------------------+-------------------------------+
    | id                           | status                  | task                               | action                                  | start_timestamp               |
    +------------------------------+-------------------------+------------------------------------+-----------------------------------------+-------------------------------+
-   |   57b252a41897122c79575c7c   | succeeded (16s elapsed) | get_inventory                      | bwc-ipfabric.inventory                  | Mon, 15 Aug 2016 23:39:16 UTC |
-   | + 57b252b41897122c79575c7e   | succeeded (27s elapsed) | configure_switches                 | bwc-ipfabric.configure_switch           | Mon, 15 Aug 2016 23:39:32 UTC |
-   |  + 57b252b61897122c79575c86  | succeeded (20s elapsed) | configure_interfaces               | bwc-ipfabric.configure_switch_ifaces    | Mon, 15 Aug 2016 23:39:34 UTC |
-   |     57b252b81897122c79575c8c | failed (5s elapsed)     | configure_interface                | bwc-ipfabric.configure_ip               | Mon, 15 Aug 2016 23:39:36 UTC |
-   |     57b252be1897122c79575c98 | succeeded (9s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Mon, 15 Aug 2016 23:39:42 UTC |
-   | + 57b252b51897122c79575c80   | succeeded (66s elapsed) | configure_switches                 | bwc-ipfabric.configure_switch           | Mon, 15 Aug 2016 23:39:33 UTC |
-   |  + 57b252b81897122c79575c92  | succeeded (34s elapsed) | configure_interfaces               | bwc-ipfabric.configure_switch_ifaces    | Mon, 15 Aug 2016 23:39:36 UTC |
-   |     57b252ba1897122c79575c94 | succeeded (5s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Mon, 15 Aug 2016 23:39:38 UTC |
-   |     57b252c01897122c79575c9c | succeeded (11s elapsed) | configure_interface                | bwc-ipfabric.configure_ip               | Mon, 15 Aug 2016 23:39:44 UTC |
-   |     57b252cb1897122c79575c9e | succeeded (9s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Mon, 15 Aug 2016 23:39:55 UTC |
-   |     57b252d51897122c79575ca8 | succeeded (3s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Mon, 15 Aug 2016 23:40:05 UTC |
-   |  + 57b252db1897122c79575cae  | succeeded (23s elapsed) | configure_bgp                      | bwc-ipfabric.configure_switch_bgp       | Mon, 15 Aug 2016 23:40:11 UTC |
-   |     57b252dc1897122c79575cb0 | succeeded (4s elapsed)  | configure_bgp                      | bwc-ipfabric.configure_bgp              | Mon, 15 Aug 2016 23:40:12 UTC |
-   |     57b252e11897122c79575cb6 | succeeded (3s elapsed)  | configure_bgp_redistributed_routes | bwc-ipfabric.configure_bgp_redistribute | Mon, 15 Aug 2016 23:40:17 UTC |
-   |     57b252e51897122c79575cb8 | succeeded (5s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Mon, 15 Aug 2016 23:40:21 UTC |
-   |     57b252e51897122c79575cba | succeeded (9s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Mon, 15 Aug 2016 23:40:21 UTC |
-   |     57b252e61897122c79575cc0 | succeeded (9s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Mon, 15 Aug 2016 23:40:21 UTC |
-   |     57b252e61897122c79575cbd | succeeded (8s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Mon, 15 Aug 2016 23:40:21 UTC |
-   |     57b252e61897122c79575cbf | succeeded (9s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Mon, 15 Aug 2016 23:40:22 UTC |
-   | + 57b252b51897122c79575c82   | succeeded (62s elapsed) | configure_switches                 | bwc-ipfabric.configure_switch           | Mon, 15 Aug 2016 23:39:33 UTC |
-   |  + 57b252b71897122c79575c8a  | succeeded (20s elapsed) | configure_interfaces               | bwc-ipfabric.configure_switch_ifaces    | Mon, 15 Aug 2016 23:39:35 UTC |
-   |     57b252b81897122c79575c90 | succeeded (6s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Mon, 15 Aug 2016 23:39:36 UTC |
-   |     57b252bf1897122c79575c9a | succeeded (10s elapsed) | configure_interface                | bwc-ipfabric.configure_ip               | Mon, 15 Aug 2016 23:39:43 UTC |
-   |  + 57b252cc1897122c79575ca0  | succeeded (29s elapsed) | configure_bgp                      | bwc-ipfabric.configure_switch_bgp       | Mon, 15 Aug 2016 23:39:56 UTC |
-   |     57b252cd1897122c79575ca4 | succeeded (10s elapsed) | configure_bgp                      | bwc-ipfabric.configure_bgp              | Mon, 15 Aug 2016 23:39:57 UTC |
-   |     57b252d81897122c79575caa | succeeded (5s elapsed)  | configure_bgp_redistributed_routes | bwc-ipfabric.configure_bgp_redistribute | Mon, 15 Aug 2016 23:40:08 UTC |
-   |     57b252de1897122c79575cb4 | succeeded (7s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Mon, 15 Aug 2016 23:40:14 UTC |
-   |    57b252ea1897122c79575cc2  | succeeded (5s elapsed)  | configure_anycast_gateway          | bwc-ipfabric.configure_anycast          | Mon, 15 Aug 2016 23:40:26 UTC |
-   | + 57b252b51897122c79575c84   | succeeded (61s elapsed) | configure_switches                 | bwc-ipfabric.configure_switch           | Mon, 15 Aug 2016 23:39:33 UTC |
-   |  + 57b252b71897122c79575c88  | succeeded (20s elapsed) | configure_interfaces               | bwc-ipfabric.configure_switch_ifaces    | Mon, 15 Aug 2016 23:39:35 UTC |
-   |     57b252b81897122c79575c8e | succeeded (5s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Mon, 15 Aug 2016 23:39:36 UTC |
-   |     57b252be1897122c79575c96 | succeeded (11s elapsed) | configure_interface                | bwc-ipfabric.configure_ip               | Mon, 15 Aug 2016 23:39:42 UTC |
-   |  + 57b252cc1897122c79575ca2  | succeeded (29s elapsed) | configure_bgp                      | bwc-ipfabric.configure_switch_bgp       | Mon, 15 Aug 2016 23:39:56 UTC |
-   |     57b252ce1897122c79575ca6 | succeeded (10s elapsed) | configure_bgp                      | bwc-ipfabric.configure_bgp              | Mon, 15 Aug 2016 23:39:58 UTC |
-   |     57b252d91897122c79575cac | succeeded (4s elapsed)  | configure_bgp_redistributed_routes | bwc-ipfabric.configure_bgp_redistribute | Mon, 15 Aug 2016 23:40:09 UTC |
-   |     57b252de1897122c79575cb2 | succeeded (7s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Mon, 15 Aug 2016 23:40:14 UTC |
-   |    57b252ec1897122c79575cc4  | succeeded (4s elapsed)  | configure_anycast_gateway          | bwc-ipfabric.configure_anycast          | Mon, 15 Aug 2016 23:40:28 UTC |
+   |   57b4bf0618971232c98e6f28   | succeeded (7s elapsed)  | get_inventory                      | bwc-ipfabric.inventory                  | Wed, 17 Aug 2016 19:46:14 UTC |
+   | + 57b4bf0e18971232c98e6f2a   | succeeded (51s elapsed) | configure_switches                 | bwc-ipfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
+   |  + 57b4bf1018971232c98e6f38  | succeeded (13s elapsed) | configure_interfaces               | bwc-ipfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
+   |     57b4bf1218971232c98e6f3e | succeeded (5s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
+   |     57b4bf1818971232c98e6f47 | succeeded (5s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:31 UTC |
+   |  + 57b4bf1f18971232c98e6f4e  | succeeded (24s elapsed) | configure_bgp                      | bwc-ipfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:39 UTC |
+   |     57b4bf2218971232c98e6f54 | succeeded (6s elapsed)  | configure_bgp                      | bwc-ipfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:42 UTC |
+   |     57b4bf2918971232c98e6f5c | succeeded (5s elapsed)  | configure_bgp_redistributed_routes | bwc-ipfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:49 UTC |
+   |     57b4bf2f18971232c98e6f66 | succeeded (6s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:55 UTC |
+   |    57b4bf3918971232c98e6f72  | succeeded (5s elapsed)  | configure_anycast_gateway          | bwc-ipfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:05 UTC |
+   | + 57b4bf0e18971232c98e6f2c   | succeeded (61s elapsed) | configure_switches                 | bwc-ipfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
+   |  + 57b4bf1018971232c98e6f32  | succeeded (24s elapsed) | configure_interfaces               | bwc-ipfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
+   |     57b4bf1218971232c98e6f3c | succeeded (5s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
+   |     57b4bf1818971232c98e6f48 | succeeded (4s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:32 UTC |
+   |     57b4bf1c18971232c98e6f4a | succeeded (4s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:36 UTC |
+   |     57b4bf2118971232c98e6f52 | succeeded (3s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:41 UTC |
+   |  + 57b4bf2a18971232c98e6f5e  | succeeded (29s elapsed) | configure_bgp                      | bwc-ipfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:49 UTC |
+   |     57b4bf2b18971232c98e6f60 | succeeded (7s elapsed)  | configure_bgp                      | bwc-ipfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:51 UTC |
+   |     57b4bf3318971232c98e6f6a | succeeded (4s elapsed)  | configure_bgp_redistributed_routes | bwc-ipfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:59 UTC |
+   |     57b4bf3818971232c98e6f70 | succeeded (10s elapsed) | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:03 UTC |
+   |     57b4bf3818971232c98e6f6d | succeeded (9s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:03 UTC |
+   |     57b4bf3818971232c98e6f6f | succeeded (8s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:04 UTC |
+   | + 57b4bf0e18971232c98e6f2e   | succeeded (51s elapsed) | configure_switches                 | bwc-ipfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
+   |  + 57b4bf1018971232c98e6f34  | succeeded (13s elapsed) | configure_interfaces               | bwc-ipfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
+   |     57b4bf1118971232c98e6f3a | succeeded (4s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:25 UTC |
+   |     57b4bf1518971232c98e6f42 | succeeded (4s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:29 UTC |
+   |  + 57b4bf1f18971232c98e6f4c  | succeeded (26s elapsed) | configure_bgp                      | bwc-ipfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:38 UTC |
+   |     57b4bf2018971232c98e6f50 | succeeded (5s elapsed)  | configure_bgp                      | bwc-ipfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:40 UTC |
+   |     57b4bf2618971232c98e6f5a | succeeded (4s elapsed)  | configure_bgp_redistributed_routes | bwc-ipfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:46 UTC |
+   |     57b4bf2b18971232c98e6f62 | succeeded (6s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:51 UTC |
+   |    57b4bf3918971232c98e6f74  | succeeded (6s elapsed)  | configure_anycast_gateway          | bwc-ipfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:05 UTC |
+   | + 57b4bf0e18971232c98e6f30   | succeeded (56s elapsed) | configure_switches                 | bwc-ipfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
+   |  + 57b4bf1018971232c98e6f36  | succeeded (19s elapsed) | configure_interfaces               | bwc-ipfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
+   |     57b4bf1218971232c98e6f40 | succeeded (5s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
+   |     57b4bf1718971232c98e6f44 | succeeded (6s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:31 UTC |
+   |  + 57b4bf2418971232c98e6f56  | succeeded (24s elapsed) | configure_bgp                      | bwc-ipfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:44 UTC |
+   |     57b4bf2518971232c98e6f58 | succeeded (6s elapsed)  | configure_bgp                      | bwc-ipfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:45 UTC |
+   |     57b4bf2c18971232c98e6f64 | succeeded (5s elapsed)  | configure_bgp_redistributed_routes | bwc-ipfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:52 UTC |
+   |     57b4bf3218971232c98e6f68 | succeeded (6s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:58 UTC |
+   |    57b4bf3e18971232c98e6f76  | succeeded (3s elapsed)  | configure_anycast_gateway          | bwc-ipfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:10 UTC |
+   |   57b4bf4c18971232c98e6f78   | succeeded (56s elapsed) | show_bgp_config                    | bwc-topology.show_config_bgp            | Wed, 17 Aug 2016 19:47:24 UTC |
    +------------------------------+-------------------------+------------------------------------+-----------------------------------------+-------------------------------+
+
 
 .. note::
     This command runs on **default** fabric if fabric name is not provided.
 
 
 Detail of each action execution in the workflow can be found using the execution id.
-Use ``st2 execution get <execution id>`` command to get the details:
+Use ``st2 execution get <execution id>`` command to get the details. Last execution ID
+shows bgp configuration on switches, after successful execution:
 
+.. code:: shell
+
+   $ st2 execution get 57b4bf4c18971232c98e6f78
+   id: 57b4bf4c18971232c98e6f78
+   status: succeeded (56s elapsed)
+   parameters:
+     fabric: default
+   result:
+     exit_code: 0
+     result: "
+   Switch 10.24.39.224 (Spine):
+   rbridge-id 224
+     router bgp
+       local-as 64512
+       bfd interval 300 min-rx 300 multiplier 3
+       neighbor 10.10.10.0 remote-as 65000 state ESTAB up_time 0h0m17s creation_time 2016-08-17 19:47:39
+       neighbor 10.10.10.0 ebgp-multihop 5
+       neighbor 10.10.10.2 remote-as 65001 state ESTAB up_time 0h0m19s creation_time 2016-08-17 19:47:39
+       neighbor 10.10.10.2 ebgp-multihop 5
+       neighbor 10.10.10.4 remote-as 65001 state ESTAB up_time 0h0m17s creation_time 2016-08-17 19:47:39
+       neighbor 10.10.10.4 ebgp-multihop 5
+       address-family ipv4 unicast
+        redistribute connected
+        neighbor 10.10.10.0 allowas-in 5
+        neighbor 10.10.10.2 allowas-in 5
+        neighbor 10.10.10.4 allowas-in 5
+        maximum-paths 8
+        graceful-restart
+        next-hop-recursion
+       address-family l2vpn evpn
+        retain route-target all
+        neighbor 10.10.10.0 activate
+        neighbor 10.10.10.0 allowas-in 5
+        neighbor 10.10.10.0 next-hop-unchanged
+        neighbor 10.10.10.2 activate
+        neighbor 10.10.10.2 allowas-in 5
+        neighbor 10.10.10.2 next-hop-unchanged
+        neighbor 10.10.10.4 activate
+        neighbor 10.10.10.4 allowas-in 5
+        neighbor 10.10.10.4 next-hop-unchanged
+   
+   Switch 10.24.39.225 (Leaf):
+   rbridge-id 225
+     router bgp
+       local-as 65000
+       bfd interval 300 min-rx 300 multiplier 3
+       neighbor 10.10.10.1 remote-as 64512 state ESTAB up_time 0h0m31s creation_time 2016-08-17 19:47:52
+       neighbor 10.10.10.1 ebgp-multihop 5
+       address-family ipv4 unicast
+        redistribute connected
+        neighbor 10.10.10.1 allowas-in 5
+        maximum-paths 8
+        graceful-restart
+        next-hop-recursion
+       address-family l2vpn evpn
+        neighbor 10.10.10.1 activate
+        neighbor 10.10.10.1 allowas-in 5
+        neighbor 10.10.10.1 next-hop-unchanged
+   
+   Switch 10.24.39.228 (Leaf):
+   rbridge-id 228
+     router bgp
+       local-as 65001
+       bfd interval 300 min-rx 300 multiplier 3
+       neighbor 10.10.10.3 remote-as 64512 state ESTAB up_time 0h0m45s creation_time 2016-08-17 19:48:06
+       neighbor 10.10.10.3 ebgp-multihop 5
+       address-family ipv4 unicast
+        redistribute connected
+        neighbor 10.10.10.3 allowas-in 5
+        maximum-paths 8
+        graceful-restart
+        next-hop-recursion
+       address-family l2vpn evpn
+        neighbor 10.10.10.3 activate
+        neighbor 10.10.10.3 allowas-in 5
+        neighbor 10.10.10.3 next-hop-unchanged
+   
+   Switch 10.24.39.229 (Leaf):
+   rbridge-id 229
+     router bgp
+       local-as 65001
+       bfd interval 300 min-rx 300 multiplier 3
+       neighbor 10.10.10.5 remote-as 64512 state ESTAB up_time 0h0m58s creation_time 2016-08-17 19:48:19
+       neighbor 10.10.10.5 ebgp-multihop 5
+       address-family ipv4 unicast
+        redistribute connected
+        neighbor 10.10.10.5 allowas-in 5
+        maximum-paths 8
+        graceful-restart
+        next-hop-recursion
+       address-family l2vpn evpn
+        neighbor 10.10.10.5 activate
+        neighbor 10.10.10.5 allowas-in 5
+        neighbor 10.10.10.5 next-hop-unchanged
+   "
+     stderr: 'st2.actions.python.ShowBGPConfig: DEBUG    GET http://127.0.0.1:8888/v1/switches?fabric_name=default
+   
+       st2.actions.python.ShowBGPConfig: DEBUG    GET http://127.0.0.1:8888/v1/bgp?fabric_name=default&fetch_state=true
+   
+       '
+     stdout: 'Successfully retrieved the switch(es) BGP config details.  Object details:
+   
+       '
 
 -------------
 
@@ -847,8 +959,8 @@ Use ``st2 execution get <execution id>`` command to get the details:
 Show commands
 -------------
 
-There are few show commands to get details about BGP configuration, vcs links and lldp neighbor
-and command to generate topology:
+Now let us discuss few show commands to get details about BGP configuration, vcs links
+and lldp neighbor and generate topology(default: pdf in /tmp folder):
 
 Show BGP configuration on the switches
 --------------------------------------
@@ -857,7 +969,108 @@ After BGP workflow execution:
 
 .. code:: shell
    
-   bgp
+   $ st2 run bwc-topology.show_config_bgp fabric=default
+   ...........................
+   id: 57b4c21118971232c98e6f83
+   status: succeeded
+   parameters:
+     fabric: default
+   result:
+     exit_code: 0
+     result: "
+   Switch 10.24.39.224 (Spine):
+   rbridge-id 224
+     router bgp
+       local-as 64512
+       bfd interval 300 min-rx 300 multiplier 3
+       neighbor 10.10.10.0 remote-as 65000 state ESTAB up_time 0h12m5s creation_time 2016-08-17 19:59:00
+       neighbor 10.10.10.0 ebgp-multihop 5
+       neighbor 10.10.10.2 remote-as 65001 state ESTAB up_time 0h12m7s creation_time 2016-08-17 19:59:00
+       neighbor 10.10.10.2 ebgp-multihop 5
+       neighbor 10.10.10.4 remote-as 65001 state ESTAB up_time 0h12m5s creation_time 2016-08-17 19:59:00
+       neighbor 10.10.10.4 ebgp-multihop 5
+       address-family ipv4 unicast
+        redistribute connected
+        neighbor 10.10.10.0 allowas-in 5
+        neighbor 10.10.10.2 allowas-in 5
+        neighbor 10.10.10.4 allowas-in 5
+        maximum-paths 8
+        graceful-restart
+        next-hop-recursion
+       address-family l2vpn evpn
+        retain route-target all
+        neighbor 10.10.10.0 activate
+        neighbor 10.10.10.0 allowas-in 5
+        neighbor 10.10.10.0 next-hop-unchanged
+        neighbor 10.10.10.2 activate
+        neighbor 10.10.10.2 allowas-in 5
+        neighbor 10.10.10.2 next-hop-unchanged
+        neighbor 10.10.10.4 activate
+        neighbor 10.10.10.4 allowas-in 5
+        neighbor 10.10.10.4 next-hop-unchanged
+   
+   Switch 10.24.39.225 (Leaf):
+   rbridge-id 225
+     router bgp
+       local-as 65000
+       bfd interval 300 min-rx 300 multiplier 3
+       neighbor 10.10.10.1 remote-as 64512 state ESTAB up_time 0h12m18s creation_time 2016-08-17 19:59:40
+       neighbor 10.10.10.1 ebgp-multihop 5
+       address-family ipv4 unicast
+        redistribute connected
+        neighbor 10.10.10.1 allowas-in 5
+        maximum-paths 8
+        graceful-restart
+        next-hop-recursion
+       address-family l2vpn evpn
+        neighbor 10.10.10.1 activate
+        neighbor 10.10.10.1 allowas-in 5
+        neighbor 10.10.10.1 next-hop-unchanged
+   
+   Switch 10.24.39.228 (Leaf):
+   rbridge-id 228
+     router bgp
+       local-as 65001
+       bfd interval 300 min-rx 300 multiplier 3
+       neighbor 10.10.10.3 remote-as 64512 state ESTAB up_time 0h12m33s creation_time 2016-08-17 19:59:53
+       neighbor 10.10.10.3 ebgp-multihop 5
+       address-family ipv4 unicast
+        redistribute connected
+        neighbor 10.10.10.3 allowas-in 5
+        maximum-paths 8
+        graceful-restart
+        next-hop-recursion
+       address-family l2vpn evpn
+        neighbor 10.10.10.3 activate
+        neighbor 10.10.10.3 allowas-in 5
+        neighbor 10.10.10.3 next-hop-unchanged
+   
+   Switch 10.24.39.229 (Leaf):
+   rbridge-id 229
+     router bgp
+       local-as 65001
+       bfd interval 300 min-rx 300 multiplier 3
+       neighbor 10.10.10.5 remote-as 64512 state ESTAB up_time 0h12m45s creation_time 2016-08-17 20:00:06
+       neighbor 10.10.10.5 ebgp-multihop 5
+       address-family ipv4 unicast
+        redistribute connected
+        neighbor 10.10.10.5 allowas-in 5
+        maximum-paths 8
+        graceful-restart
+        next-hop-recursion
+       address-family l2vpn evpn
+        neighbor 10.10.10.5 activate
+        neighbor 10.10.10.5 allowas-in 5
+        neighbor 10.10.10.5 next-hop-unchanged
+   "
+     stderr: 'st2.actions.python.ShowBGPConfig: DEBUG    GET http://127.0.0.1:8888/v1/switches?fabric_name=default
+   
+       st2.actions.python.ShowBGPConfig: DEBUG    GET http://127.0.0.1:8888/v1/bgp?fabric_name=default&fetch_state=true
+   
+       '
+     stdout: 'Successfully retrieved the switch(es) BGP config details.  Object details:
+   
+       '
 
 
 Show LLDP links among the neighbors
@@ -993,10 +1206,10 @@ After discovering the switches:
      stdout: ''
 
 
-Show VCS links between the leaves
----------------------------------
+Show VCS links between switches
+-------------------------------
 
-If the fabric consists of switches in VCS mode, this command will show the status of 
+If the fabric consists of VDX switches in VCS mode, this command will show the status of 
 links between principle and secondary node:
 
 .. code:: shell
@@ -1028,4 +1241,36 @@ links between principle and secondary node:
    
        '
      stdout: ''
+
+Generate Topology
+-----------------
+To generate a topology (default format: pdf) for switches discovered in the fabric
+use the following command:
+
+.. code:: shell
+
+   $ st2 run bwc-topology.topology_generate fabric=default
+   .
+   id: 57b6367f18971268b72d7fdf
+   status: succeeded
+   parameters:
+     fabric: default
+   result:
+     exit_code: 0
+     result: 'Topology map generated: /tmp/topology_default_20160818-222816.pdf'
+     stderr: 'st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switches?fabric_name=default
    
+       st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switch?id=9
+   
+       st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switch?id=10
+   
+       st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switch?id=11
+   
+       st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switch?id=12
+   
+       st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switches/links?fabric_name=default
+   
+       st2.actions.python.GenerateTopology: DEBUG    GET http://127.0.0.1:8888/v1/switches/vcs/links?fabric_name=default
+   
+       '
+     stdout: ''
