@@ -620,7 +620,7 @@ Use the ``bwc ipf fabric add`` command to add a fabric named *"new_fabric"*.
 
     $ bwc ipf fabric add fabric=new_fabric
 
-    Fabric new_fabric Added successfully
+    Fabric new_fabric added successfully
 
 Use the ``bwc ipf fabric delete`` command to delete a fabric named *"new_fabric"*.
 
@@ -628,7 +628,7 @@ Use the ``bwc ipf fabric delete`` command to delete a fabric named *"new_fabric"
 
     $ bwc ipf fabric delete fabric=new_fabric
 
-    Fabric new_fabric Delete successfully
+    Fabric new_fabric deleted successfully
 
 
 Use the ``bwc ipf fabric config show`` command to show the configuration of the default
@@ -696,4 +696,4 @@ configuration.
 
     $ bwc ipf fabric config delete fabric=new_fabric key=anycast_mac
 
-     Key anycast_mac Delete successfully from fabric new_fabric
+     Key anycast_mac deleted successfully from fabric new_fabric
