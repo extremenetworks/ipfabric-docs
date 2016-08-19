@@ -113,7 +113,7 @@ Every group in the DHCP server configuration file `dhcpd.conf` has the following
 
 The following example shows the DHCP server configuration information. In the subnet
 section, the range is 10.24.39.240 to 10.24.39.250 is used. The IP range should exclusively
-be used for dynamic addresses. No static addresses should in this range.
+be used for dynamic addresses. It should not include any static addresses.
 
 .. code-block:: shell
 
@@ -223,46 +223,46 @@ DAD configuration files are downloaded to the switch as part of the ZTP process.
 use cases require three DAD Configuration files, one each for leaves, spines and a two-node
 VCS cluster. The following parameters are used for the DAD configuration files:
 
-- Common_begin, common_end:
+- **Common_begin, common_end:**
   The parameters and configurations in this section are applied to all the switches using
   this DAD configuration file.
 
-- ZTP: When ZTP=1, the switch runs the ZTP process; when ZTP=0, the switch runs the DAD
+- **ZTP:** When ZTP=1, the switch runs the ZTP process; when ZTP=0, the switch runs the DAD
   process. When ZTP=1, only configurations in the common section are applied, The
   individual host sections are ignored.
 
-- vcsmode, vcsid: Assigns the switch the mentioned VCS ID and mode.
+- **vcsmode, vcsid:** Assigns the switch the mentioned VCS ID and mode.
 
-- rbridgeid: Assigns the switch the particular RBridge ID.
+- **rbridgeid:** Assigns the switch the particular RBridge ID.
 
-- principlerbridgeid: Assigns the principle switch the RBridge ID in case of VCS clusters.
+- **principlerbridgeid:** Assigns the principle switch the RBridge ID in case of VCS clusters.
 
-- scriptcfgflg: When 0 loads the startup configuration file only; when 1, loads and runs
+- **scriptcfgflg:** When 0 loads the startup configuration file only; when 1, loads and runs
   the script; when 2, loads and runs both of them.
 
-- script: The path of the script file (registration script) on the FTP server.
+- **script:** The path of the script file (registration script) on the FTP server.
 
-- morefiles: The path for some additional script files.
+- **morefiles:** The path for some additional script files.
 
-- startup: The path to start up the configuration file.
+- **startup:** The path to start up the configuration file.
 
-- fwdir: The path to the firmware directory from where firmware files can be downloaded
+- **fwdir:** The path to the firmware directory from where firmware files can be downloaded
   and installed.
 
-- vcstimeout: Timeout time for VCS to form a cluster.
+- **vcstimeout:** Timeout time for VCS to form a cluster.
 
-- dadtimeout: Time out time for the DAD process, if not specified, the default value is 3
+- **dadtimeout:** Time out time for the DAD process, if not specified, the default value is 3
   days.
-- host: Sections for the host in case of a DAD process. For example, it is used in case of
+- **host:** Sections for the host in case of a DAD process. For example, it is used in case of
   a two-node VCS cluster. This section is considered only when ZTP=0.
 
-- host_mac: The switch MAC address.
+- **host_mac:** The switch MAC address.
 
-- host_sn: The switch serial number.
+- **host_sn:** The switch serial number.
 
-- defaultconfig: Applies the default configuration. If it is a yes script, globalconfig is ignored.
+- **defaultconfig:** Applies the default configuration. If it is a yes script, globalconfig is ignored.
 
-- globalcfg: The path to the global configuration.
+- **globalcfg:** The path to the global configuration.
 
 
 Sample DAD configuration file for a spine
@@ -424,13 +424,13 @@ Verification of ZTP and DAD
 
 To verify whether the ZTP and DAD process ran correctly, complete the following steps:
 
-1. Run the ``show vcs command`` on the switch to make sure the switch got a VCS ID,
+1. Run the ``show vcs command`` on the switch to make sure the switch has a VCS ID,
    an RBridge ID, VCS mode, and a management IP address assigned.
 
 2. Run the ``show dad status`` command to make sure the DAD and ZTP process ran. Look for the
    "DAD 1314" code. If there any other error codes, refer to the sections `Using DHCP Automatic
-   Deployment` in the `Brocade Network OS Administration Guide` for more information about
-   additional DAD codes.
+   Deployment` section in the `Brocade Network OS Administration Guide` for more information
+   about additional DAD codes.
 
 3. Check the |bwc| server to see if the switch is registered and the BGP workflow completed
    successfully on it.

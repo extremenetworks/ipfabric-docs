@@ -1,18 +1,23 @@
-Other features to manage IP Fabric 
-==================================
+Features to manage IP Fabric 
+============================
 
 Updating switch credentials and information
 -------------------------------------------
 
 A switch is registered in the server using the switch credentials. If the credentials are
-changed on the switch, the change must be updated in the Brocade Workflow Composer Server
-using the ``bwc ipf inventory update --ip=ip-address`` command.
+changed on the switch, the change must be updated in the |bwc| Server
+using the ``bwc ipf inventory update --ip=<ip_address>`` command.
 
 .. code:: shell
 
-    $ bwc ipf inventory update --ip=10.24.39.216
+    $ bwc ipf inventory update --ip=10.24.39.225
 
-      <OUTPUT GOES HERE>
+     Inventory Update
+     +--------------+---------+------------+----------+------+------+-------+---------+
+     | IP           | Model   | Rbridge-Id | Firmware | Name | Role |   ASN | Fabric  |
+     +--------------+---------+------------+----------+------+------+-------+---------+
+     | 10.24.39.225 | VDX6740 |        225 | 7.1.0    | sw0  | Leaf | 65000 | default |
+     +--------------+---------+------------+----------+------+------+-------+---------+
 
 
 Generating a topology map
@@ -22,52 +27,73 @@ You can display the fabric topology of an IP Fabric.
 
 1. Enter the bwc show topology format command.
 
-.. todo:: 
-    Refer to the bwc show on page 37 command for options available for the bwc show topology
-    format command.
+Refer the `ipf cli <../ipf_cli/basic_cli.rst>` page for options available for the
+``bwc ipf show topology`` command.
 
 .. code:: shell
 
-    $ bwc ipf show topology --format=<file format>
+    $ bwc ipf show topology fabric=default --format=pdf --render_dir=/tmp
+
+    Topology map generated: /tmp/topology_default_20160811-020715.pdf
 
 .. note::
-    --format=<option> is optional. A PDF file is generated if not format flag is not used.
+   "--format=<option>" and "--render_dir=<file location>" is optional. By default a PDF
+   file and a dot file is generated in *tmp* folder if format flag and render_dir
+   flags are not used.
 
-2. Open the topology file that was generated using the appropriate software.
+2. Open the topology file that was generated using appropriate software.
 
 
 Confirming IP Fabric details
 ----------------------------
 
 To check the details of the registered switches in the |bwc| server against the current
-switch configuration, use the following commands:
+switch configuration, use following commands:
 
 
 .. code:: shell
 
-    bwc ipf show config bgp [ --fabric=fabric_name ]
-    bwc ipf show topology [ --fabric=fabric_name ] [ --format=format ]
-    bwc ipf inventory list [ --fabric=fabric_name | --ip=ip-address ]
-    bwc ipf inventory show vcs-links [ --fabric=fabric_name ]
-    bwc ipf inventory show lldp [ --fabric=fabric_name ]
+    bwc ipf show config bgp fabric=<fabric_name>
+    bwc ipf show topology fabric=<fabric_name> [ --format=<format> ]
+    bwc ipf inventory list fabric=<fabric_name> [ --ip=<ip_address> ]
+    bwc ipf inventory show vcs links fabric=<fabric_name>
+    bwc ipf inventory show lldp links fabric=<fabric_name>
 
 IP Fabric configuration parameters
 ----------------------------------
 
 |ipf| has a default set of configuration parameters defined for an IP Fabric. The values
 defined in this default configuration parameter set are fixed and cannot be changed. You
-can display the values of the parameters using the bwc ipf fabric config show CLI command:
+can display the values of the parameters using the ``bwc ipf fabric config show`` CLI
+command:
 
 .. code:: shell
     
-    $ bwc ipf fabric config show
+    $ bwc ipf fabric config show fabric=default
 
-    <OUTPUT GOES HERE>
+    +----------------------+-----------------+
+    | Fabric Name          | default         |
+    | bgp_multihop         | 5               |
+    | spine_asn_block      | 64512-64999     |
+    | leaf_asn_block       | 65000-65534     |
+    | max_paths            | 8               |
+    | loopback_port_number | 1               |
+    | evpn_enabled         | Yes             |
+    | allowas_in           | 5               |
+    | bfd_multiplier       | 3               |
+    | p2p_link_range       | 10.10.10.0/23   |
+    | bfd_tx               | 300             |
+    | anycast_mac          | aabb.ccdd.eeff  |
+    | loopback_ip_range    | 172.32.254.0/24 |
+    | bfd_rx               | 300             |
+    +----------------------+-----------------+
+
 
 If you want a different set of configuration parameters or a configuration with
 **unnumbered** for the IP address, you must create a new IP Fabric and define the
 values for the configuration parameters. The following parameters can be added
-with the bwc ipf fabric config show command:
+with the ``bwc ipf fabric config add fabric=<fabric_name> key=<key_name> value=<valu_name>``
+command as explained in next section:
 
 +------------------------+-------------------------------------------------------------------+
 | :anycast_mac:          | A valid MAC address in the format xxxx.xxxx.xxxx or               |
@@ -104,68 +130,80 @@ with the bwc ipf fabric config show command:
 | :allowas_in:           | A number from 1 through 10                                        |
 +------------------------+-------------------------------------------------------------------+
 
-Note, however, that the required parameters must be added to the new configuration. The other
-parameters are not required, but if you do not add them, Brocade Workflow Composer will use
-the values from the default configuration.
+The required parameters must be added to the user-defined/custom configuration. The other
+parameters are not optional.If you do not add optional parameters, Brocade Workflow Composer
+will use the values from the default configuration.
 
-Once the required parameters are added to the fabric, they cannot be modified or deleted.
-Also, if incorrect values are added to the configuration, the configuration cannot be 
-modified. You must create a new fabric and define a new configuration.
+.. note::
+    Once the required parameters are added to the user-defined fabric, they cannot be modified or deleted.
+    To modify/update the mandatory values create a new fabric and define the parameters for this fabric.
 
-Creating a new IP Fabric with user-defined IP configurations
-------------------------------------------------------------
+Creating a new IP Fabric with user-defined parameters
+-----------------------------------------------------
 
-1. Use the bwc ipf fabric add command to create a new fabric configuration. For example,
-   the following command creates a new IP Fabric called **user_fab**.
-
-.. todo::
-    UPDATE OUTPUT
+1. Use the ``bwc ipf fabric add fabric=<fabric_name>`` command to create a new fabric
+   configuration. For example, the following command creates a new user-defined IP Fabric
+   called **user_fab**.
 
 .. code:: shell
 
-    $ bwc ipf fabric add --fabric=user_fab
-    Successfully added the fabric. Object details:
-    Fabric: user_fab
+    $ bwc ipf fabric add fabric=user_fab
+    Fabric user_fab added successfully
 
-2. Use the bwc ipf fabric config add command to add configuration values.
+2. Use the ``bwc ipf fabric config add key=<key> value=<value> fabric=<fabric_name>``
+   command to add parameters to the *user_fab* fabric created in previous step.
 
 .. code:: shell
    
-    $ bwc ipf fabric config add p2p_link_range 10.10.10.0/23 --fabric=user_fab
-    p2p_link_range: 10.10.10.0/23
-    $ bwc ipf fabric config add spine_asn_block 64512-64999 --fabric=user_fab
-    spine_asn_block: 64512-64999
-    $ bwc ipf fabric config add leaf_asn_block 65000-65534 --fabric=user_fab
-    leaf_asn_block: 65000-65534
-    $ bwc ipf fabric config add loopback_ip_range 172.32.254.0/24 --fabric=user_fab
-    loopback_ip_range: 172.32.254.0/24
-    $ bwc ipf fabric config add loopback_port_number '1' --fabric=user_fab
-    loopback_port_number: '1'
-    $ bwc ipf fabric config add bfd_multiplier 10 --fabric=new_fab
-    bfd_multiplier: '10'
-    $ bwc ipf fabric config add bfd_rx 888 --fabric=user_fab
-    'bfd_rx': '888'
-    $ bwc ipf fabric config add bfd_tx 888 --fabric=user_fab
-    'bfd_tx ': '888'
-    $ bwc ipf fabric config add allowas_in 7 --fabric=user_fab
-    allowas_in: '7
+    $ bwc ipf fabric config add key=p2p_link_range value=10.10.10.0/23 fabric=user_fab
+      Setting p2p_link_range with value 10.10.10.0/23 added to fabric user_fab
+    
+    $ bwc ipf fabric config add key=spine_asn_block value=64512-64999 fabric=user_fab
+      Setting spine_asn_block with value 64512-64999 added to fabric user_fab
+   
+    $ bwc ipf fabric config add key=leaf_asn_block value=65000-65534 fabric=user_fab
+      Setting leaf_asn_block with value 65000-65534 added to fabric user_fab
+   
+    $ bwc ipf fabric config add key=loopback_ip_range value=172.32.254.0/24 fabric=user_fab
+      Setting loopback_ip_range with value 172.32.254.0/24 added to fabric user_fab
+   
+    $ bwc ipf fabric config add key=loopback_port_number value=1 fabric=user_fab
+      Setting loopback_port_number with value 1 added to fabric user_fab
+   
+    $ bwc ipf fabric config add key=bfd_multiplier value=10 fabric=new_fab
+      Setting bfd_multiplier with value 10 added to fabric user_fab
+   
+    $ bwc ipf fabric config add key=bfd_rx value=888 fabric=user_fab
+      Setting bfd_rx  with value 888 added to fabric user_fab
+   
+    $ bwc ipf fabric config add key=bfd_tx value=888 fabric=user_fab
+      Setting bfd_tx with value 888 added to fabric user_fab
+   
+    $ bwc ipf fabric config add key=allowas_in value=7 fabric=user_fab
+      Setting allowas_in with value 7 added to fabric user_fab
 
 3. Check the parameter values before saving the configuration.
-4. Use the bwc ipf fabric config show command to display the fabric details added in step 2.
+4. Use the ``bwc ipf fabric config showi fabric=<fabric_name>`` command to display the fabric
+   details added in step 2.
 
 .. code:: shell
 
-    $ bwc ipf fabric config show --fabric=user_fab
-    fabric_name: user_fab
-    fabric_settings:
-    'bfd_multiplier': '10'
-    'bfd_rx': '888'
-    'bfd_tx': '888'
-    leaf_asn_block: 65000-65534
-    loopback_ip_range: 172.32.254.0/24
-    loopback_port_number: '1'
-    p2p_link_range: 10.10.10.0/23
-    spine_asn_block: 64512-64999
-    allowas_in: '7'
+    $ bwc ipf fabric config show fabric=user_fab
 
-Use :command:`--fabric=<fabric name>` parameter to display details for a specific fabric.
+    Fabric Config Show
+    +----------------------+-----------------+
+    | Field                | Value           |
+    +----------------------+-----------------+
+    | Fabric Name          | user_fab        |
+    | spine_asn_block      | 64512-64999     |
+    | leaf_asn_block       | 65000-65534     |
+    | loopback_port_number | 1               |
+    | allowas_in           | 7               |
+    | bfd_multiplier       | 10              |
+    | p2p_link_range       | 10.10.10.0/23   |
+    | bfd_tx               | 888             |
+    | loopback_ip_range    | 172.32.254.0/24 |
+    | bfd_rx               | 888             |
+    +----------------------+-----------------+
+
+Use :command:`fabric=<fabric name>` parameter to display details for a specific fabric.
