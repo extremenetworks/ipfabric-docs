@@ -665,7 +665,7 @@ Use the ``bwc ipf fabric add fabric=new_fabric`` command to add a fabric configu
 
     $ bwc ipf fabric add fabric=new_fabric
 
-    Fabric new_fabric Added successfully
+    Fabric new_fabric added successfully
 
     $ bwc ipf fabric config show fabric=new_fabric
 

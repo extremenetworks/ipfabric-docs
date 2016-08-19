@@ -66,60 +66,241 @@ ZTP enabled, confirm the following prerequisites:
 
 .. note::
     The first switch that is added to the server must always be a **spine**. If it is not,
-    delete the leaf switch from the |ipf| server and add a spine first. After that,
+    delete the leaf switch from the |ipf| server and add a spine first. After first spine,
     the order does not matter.
 
 Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
 
-1. Register the switches in the Brocade Workflow Composer database by entering the
-   bwc inventory register command.
+1. Register the switches in the |bwc| database by entering the bwc inventory
+   register command.
 
-   ``$ bwc ipf inventory register --ip=<switch IP address> --fabric=default``
+   ``$ bwc ipf inventory register ip=<switch IP address> fabric=<fabric_name> user=<user_name>
+   passwd=<password>``
    
-   NOTE: This example is for the *default* fabric. The --fabric field is mandatory is
-   this command.
-
-.. todo::
-   How username and password is entered for the switch using this CLI ?
-
---
-   For example, registering switch with IP: 10.24.39.216.The default username is “admin”
-   and default password is “password” fo all the VDX switches.
+   For example, registering switch with IP: 10.24.39.224.The default username is *admin*
+   and default password is *password* for all the VDX switches.
 
 .. code:: shell
 
-      $ bwc ipf inventory register --ip=10.24.39.216 --fabric=default
+    $ bwc ipf inventory register ip=10.24.39.224 fabric=default user=admin passwd=password
 
-         <PASTE OUTPUT HERE and UPDATE CLI FOE USERNAME PASSWORD>
+    Inventory Add
+    +--------------+---------+------------+----------+------+-------+-------+---------+
+    | IP           | Model   | Rbridge-Id | Firmware | Name | Role  |   ASN | Fabric  |
+    +--------------+---------+------------+----------+------+-------+-------+---------+
+    | 10.24.39.224 | VDX6740 |        224 | 7.1.0    | sw0  | Spine | 64512 | default |
+    +--------------+---------+------------+----------+------+-------+-------+---------+
 
-2. Verify that the switches are registered by entering the bwc ipf inventory list command.
+2. Verify that the switches are registered by entering the ``bwc ipf inventory list fabric=<fabric_name>``
+   command.
 
 .. code:: shell
 
-      $ bwc ipf inventory list
+     $ bwc ipf inventory list fabric=default
 
-      <PASTE OUTPUT HERE>
+    Inventory List
+    +--------------+-------------+------------+----------+----------------+-------+-------+---------+
+    | IP           | Model       | Rbridge-Id | Firmware | Name           | Role  |   ASN | Fabric  |
+    +--------------+-------------+------------+----------+----------------+-------+-------+---------+
+    | 10.24.39.224 | VDX6740     |        224 | 7.1.0    | sw0            | Spine | 64512 | default |
+    +--------------+-------------+------------+----------+----------------+-------+-------+---------+
 
-3. Repeat the step 1 through step 2 to register the remaining switches.
+3. Repeat the step 1 through 2 to register the remaining switches. If some value changes
+   on the switch, the fabric can be updated:
+
+.. code:: shell
+
+    $ bwc ipf inventory update --fabric=default
+
+    Inventory Update
+    +--------------+-------------+------------+----------+----------------+-------+-------+---------+
+    | IP           | Model       | Rbridge-Id | Firmware | Name           | Role  |   ASN | Fabric  |
+    +--------------+-------------+------------+----------+----------------+-------+-------+---------+
+    | 10.24.39.225 | VDX6740     |        225 | 7.1.0    | sw0            | Leaf  | 65000 | default |
+    | 10.24.39.229 | VDX6740     |        229 | 7.1.0    | VCS_VDX_39_229 | Leaf  |       | default |
+    | 10.24.39.228 | VDX6740     |        228 | 7.1.0    | VCS_VDX_39_228 | Leaf  |       | default |
+    | 10.24.39.227 | VDX6740     |        227 | 7.1.0    | sw0            | Leaf  |       | default |
+    | 10.24.39.226 | VDX6740T    |         26 | 7.1.0    | sw0            | Leaf  |       | default |
+    | 10.24.39.224 | VDX6740     |        224 | 7.1.0    | sw0            | Spine | 64512 | default |
+    | 10.24.39.223 | VDX6740T-1G |        223 | 7.1.0    | sw0            | Spine |       | default |
+    +--------------+-------------+------------+----------+----------------+-------+-------+---------+
+
+
 
 4. Execute the BGP workflow by entering the command bwc workflow bgp command.
 
 .. code:: shell
 
-     $ bwc ipf workflow bgp
+     $ bwc ipf workflow bgp fabric=default
+
+    BGP Workflow Result:
+
+    Switch 10.24.39.225 (Leaf):
+    rbridge-id 225
+      router bgp
+        local-as 65000
+        bfd interval 300 min-rx 300 multiplier 3
+        neighbor 10.10.10.1 remote-as 64512 state ESTAB up_time 2d20h40m creation_time 2016-08-11
+        05:11:45
+        neighbor 10.10.10.1 ebgp-multihop 5
+        neighbor 10.10.10.3 remote-as 64513 state ESTAB up_time 17h5m24s creation_time 2016-08-11
+        05:11:45
+        neighbor 10.10.10.3 ebgp-multihop 5
+        address-family ipv4 unicast
+         redistribute connected
+         neighbor 10.10.10.1 allowas-in 5
+         neighbor 10.10.10.3 allowas-in 5
+         maximum-paths 8
+         graceful-restart
+         next-hop-recursion
+        address-family l2vpn evpn
+         neighbor 10.10.10.1 activate
+         neighbor 10.10.10.1 allowas-in 5
+         neighbor 10.10.10.1 next-hop-unchanged
+         neighbor 10.10.10.3 activate
+         neighbor 10.10.10.3 allowas-in 5
+         neighbor 10.10.10.3 next-hop-unchanged
+
+    Switch 10.24.39.224 (Spine):
+    rbridge-id 224
+      router bgp
+        local-as 64512
+        bfd interval 300 min-rx 300 multiplier 3
+        neighbor 10.10.10.0 remote-as 65000 state ESTAB up_time 2d20h40m creation_time 2016-08-11
+        05:11:52
+        neighbor 10.10.10.0 ebgp-multihop 5
+        neighbor 10.10.10.4 remote-as 65001 state ESTAB up_time 17h5m26s creation_time 2016-08-11
+        05:11:52
+        neighbor 10.10.10.4 ebgp-multihop 5
+        neighbor 10.10.10.10 remote-as 65002 state ESTAB up_time 17h5m30s creation_time 2016-08-11
+        05:11:52
+        neighbor 10.10.10.10 ebgp-multihop 5
+        neighbor 10.10.10.12 remote-as 65003 state IDLE up_time 0h0m0s creation_time 2016-08-11
+        05:11:52
+        neighbor 10.10.10.12 ebgp-multihop 5
+        neighbor 10.10.10.18 remote-as 65003 state ESTAB up_time 17h5m24s creation_time 2016-08-11
+        05:11:52
+        neighbor 10.10.10.18 ebgp-multihop 5
+        address-family ipv4 unicast
+         redistribute connected
+         neighbor 10.10.10.0 allowas-in 5
+         neighbor 10.10.10.4 allowas-in 5
+         neighbor 10.10.10.10 allowas-in 5
+         neighbor 10.10.10.12 allowas-in 5
+         neighbor 10.10.10.18 allowas-in 5
+         maximum-paths 8
+         graceful-restart
+         next-hop-recursion
+        address-family l2vpn evpn
+         retain route-target all
+         neighbor 10.10.10.0 activate
+         neighbor 10.10.10.0 allowas-in 5
+         neighbor 10.10.10.0 next-hop-unchanged
+         neighbor 10.10.10.4 activate
+         neighbor 10.10.10.4 allowas-in 5
+         neighbor 10.10.10.4 next-hop-unchanged
+         neighbor 10.10.10.10 activate
+         neighbor 10.10.10.10 allowas-in 5
+         neighbor 10.10.10.10 next-hop-unchanged
+         neighbor 10.10.10.12 activate
+         neighbor 10.10.10.12 allowas-in 5
+         neighbor 10.10.10.12 next-hop-unchanged
+         neighbor 10.10.10.18 activate
+         neighbor 10.10.10.18 allowas-in 5
+         neighbor 10.10.10.18 next-hop-unchanged
+
 
 5. After the command executes, enter the bwc show config bgp command and review
    the information displayed.
 
 .. code:: shell
 
-     $ bwc ipf show config bgp --fabric=default
+     $ bwc ipf show config bgp fabric=default
 
-     <PASTE OUTPUT HERE>
+       Show BGP Configuration
+   
+       Switch 10.24.39.225 (Leaf):
+       rbridge-id 225
+         router bgp
+           local-as 65000
+           bfd interval 300 min-rx 300 multiplier 3
+           neighbor 10.10.10.1 remote-as 64512 state ESTAB up_time 2d20h40m creation_time 2016-08-11
+           05:11:45
+           neighbor 10.10.10.1 ebgp-multihop 5
+           neighbor 10.10.10.3 remote-as 64513 state ESTAB up_time 17h5m24s creation_time 2016-08-11
+           05:11:45
+           neighbor 10.10.10.3 ebgp-multihop 5
+           address-family ipv4 unicast
+            redistribute connected
+            neighbor 10.10.10.1 allowas-in 5
+            neighbor 10.10.10.3 allowas-in 5
+            maximum-paths 8
+            graceful-restart
+            next-hop-recursion
+           address-family l2vpn evpn
+            neighbor 10.10.10.1 activate
+            neighbor 10.10.10.1 allowas-in 5
+            neighbor 10.10.10.1 next-hop-unchanged
+            neighbor 10.10.10.3 activate
+            neighbor 10.10.10.3 allowas-in 5
+            neighbor 10.10.10.3 next-hop-unchanged
+    
+       Switch 10.24.39.224 (Spine):
+        rbridge-id 224
+          router bgp
+            local-as 64512
+            bfd interval 300 min-rx 300 multiplier 3
+            neighbor 10.10.10.0 remote-as 65000 state ESTAB up_time 2d20h40m creation_time 2016-08-11
+            05:11:52
+            neighbor 10.10.10.0 ebgp-multihop 5
+            neighbor 10.10.10.4 remote-as 65001 state ESTAB up_time 17h5m26s creation_time 2016-08-11
+            05:11:52
+            neighbor 10.10.10.4 ebgp-multihop 5
+            neighbor 10.10.10.10 remote-as 65002 state ESTAB up_time 17h5m30s creation_time 2016-08-11
+            05:11:52
+            neighbor 10.10.10.10 ebgp-multihop 5
+            neighbor 10.10.10.12 remote-as 65003 state IDLE up_time 0h0m0s creation_time 2016-08-11
+            05:11:52
+            neighbor 10.10.10.12 ebgp-multihop 5
+            neighbor 10.10.10.18 remote-as 65003 state ESTAB up_time 17h5m24s creation_time 2016-08-11
+            05:11:52
+            neighbor 10.10.10.18 ebgp-multihop 5
+            address-family ipv4 unicast
+             redistribute connected
+             neighbor 10.10.10.0 allowas-in 5
+             neighbor 10.10.10.4 allowas-in 5
+             neighbor 10.10.10.10 allowas-in 5
+             neighbor 10.10.10.12 allowas-in 5
+             neighbor 10.10.10.18 allowas-in 5
+             maximum-paths 8
+             graceful-restart
+             next-hop-recursion
+            address-family l2vpn evpn
+             retain route-target all
+             neighbor 10.10.10.0 activate
+             neighbor 10.10.10.0 allowas-in 5
+             neighbor 10.10.10.0 next-hop-unchanged
+             neighbor 10.10.10.4 activate
+             neighbor 10.10.10.4 allowas-in 5
+             neighbor 10.10.10.4 next-hop-unchanged
+             neighbor 10.10.10.10 activate
+             neighbor 10.10.10.10 allowas-in 5
+             neighbor 10.10.10.10 next-hop-unchanged
+             neighbor 10.10.10.12 activate
+             neighbor 10.10.10.12 allowas-in 5
+             neighbor 10.10.10.12 next-hop-unchanged
+             neighbor 10.10.10.18 activate
+             neighbor 10.10.10.18 allowas-in 5
+             neighbor 10.10.10.18 next-hop-unchanged
+
+
+To add switch to the existing fabric. Register the switch to the fabric and then run ``bwc
+ipf workglow bgp fabric=<fabric_name>`` command. Also, to remove a switch from the fabric
+just run ``bwc ipf switch delete ip=<ip_address>``
 
 .. note::
-    If you want to add a new spine or leaf to the existing fabric using |ipf|
-    for the BGP workflow to run smoothly, you must remove the existing
-    configuration on the switch. After removing the existing configurations,
-    add the switch to the fabric and run the BGP workflow again.
+    To add a new spine or leaf to the existing fabric using |ipf| and for the BGP workflow
+    to run smoothly, you must remove the existing configuration on the switch. After
+    removing the existing configurations, register the switch to the fabric and run the
+    BGP workflow again.
 
