@@ -13,9 +13,9 @@ IP Fabric Solution CLI
 
 ------------
 
-------------
-bwc ipf help
-------------
+--------
+bwc help
+--------
 
 Displays information (help) about all or a specified command.
 
@@ -72,7 +72,7 @@ Use the ``bwc --help`` command to display Brocade Workflow Composer commands and
       ipf inventory delete  Delete device
       ipf inventory list  List a specific device details or all the devices in the specified Fabric
       ipf inventory register  Add devices to a Fabric
-      ipf inventory show lldp  List LLDP details for the specified switch or fabric
+      ipf inventory show lldp links  List LLDP details for the specified switch or fabric
       ipf inventory show vcs links  List VCS link details for the specified switch or fabric
       ipf inventory update  Update inventory details for the specified device or entire Fabric
       ipf show config bgp  Display Fabric configuration for the specified Fabric
@@ -210,7 +210,8 @@ Examples
          neighbor 10.10.10.18 allowas-in 5
          neighbor 10.10.10.18 next-hop-unchanged
 
-Use the bwc ipf show topology command to generate an IP Fabric topology map in a PDF format.
+Use ``bwc ipf show topology`` command to generate an IP Fabric topology map in a PDF
+format (default format).
 
 .. code-block:: shell
 
@@ -218,7 +219,7 @@ Use the bwc ipf show topology command to generate an IP Fabric topology map in a
 
     Topology map generated: /tmp/topology_default_20160811-020715.pdf
 
-Open the topology file that was generated using the appropriate software.
+Open the topology file that was generated using appropriate software.
 
 
 -----------------
@@ -236,8 +237,8 @@ Syntax
     bwc ipf inventory delete --ip=<ip_address>
     bwc ipf inventory update [ --fabric=<fabric_name> | --ip=<ip_address> ]
     bwc ipf inventory list [ --fabric=<fabric_name> | --ip=<ip_address> ]
-    bwc ipf inventory show vcs-links [ --fabric=<fabric_name> ]
-    bwc ipf inventory show lldp [ --fabric=<fabric_name> ]
+    bwc ipf inventory show vcs links [ --fabric=<fabric_name> ]
+    bwc ipf inventory show lldp links [ --fabric=<fabric_name> ]
 
 Parameters
 ~~~~~~~~~~
@@ -256,10 +257,10 @@ Parameters
     list
         Lists information by fabric name or IP address.
     
-    show vcs-links
+    show vcs links
         Lists VCS links by fabric name.
     
-    show lldp
+    show lldp links
         Displays the contents of an LLDP status.
     
     ip
@@ -275,7 +276,7 @@ Use the ``bwc ipf inventory register`` command to register a switch to the defau
 
 .. code:: shell
 
-    $ bwc ipf inventory register ip=10.24.39.223 fabric=default user=admin passwd=password
+    $ bwc ipf inventory register ip=10.24.39.225 fabric=default user=admin passwd=password
 
     Inventory Add
     +--------------+---------+------------+----------+------+------+-------+---------+
@@ -288,7 +289,7 @@ Use the ``bwc ipf inventory delete`` command to delete a switch from the server.
 
 .. code:: shell
 
-    $ bwc ipf inventory delete ip=10.24.39.223
+    $ bwc ipf inventory delete ip=10.24.39.225
 
     Inventory Delete Successfully
     +--------------+---------+------------+----------+------+------+-------+---------+
@@ -350,7 +351,7 @@ Use the ``bwc ipf inventory update --fabric=default`` command to update all swit
     | 10.24.39.223 | VDX6740T-1G |        223 | 7.1.0    | sw0            | Spine |       | default |
     +--------------+-------------+------------+----------+----------------+-------+-------+---------+
 
-Use the ``bwc ipf inventory show vcs-links`` command to show VCS link status for a two-node VCS
+Use the ``bwc ipf inventory show vcs links`` command to show VCS link status for a two-node VCS
 cluster.
 
 .. code:: shell
@@ -364,7 +365,7 @@ cluster.
     | TenGigabitEthernet 228/0/10 | 10.24.39.228 | TenGigabitEthernet 229/0/10 | 10.24.39.229 | default |
     +-----------------------------+--------------+-----------------------------+--------------+---------+
 
-Use the ``bwc ipf inventory show lldp`` command to show the LLDP neighbor.
+Use the ``bwc ipf inventory show lldp links`` command to show the LLDP neighbor.
 
 .. code:: shell
 
@@ -613,21 +614,21 @@ add`` command.
 Examples
 ~~~~~~~~
 
-Use the ``bwc ipf fabric add`` command to add a fabric named *"test"*.
+Use the ``bwc ipf fabric add`` command to add a fabric named *"new_fabric"*.
 
 .. code-block:: shell
 
-    $ bwc ipf fabric add fabric=test
+    $ bwc ipf fabric add fabric=new_fabric
 
-    Fabric test Added successfully
+    Fabric new_fabric Added successfully
 
-Use the ``bwc ipf fabric delete`` command to delete a fabric named *"test"*.
+Use the ``bwc ipf fabric delete`` command to delete a fabric named *"new_fabric"*.
 
 .. code-block:: shell
 
-    $ bwc ipf fabric delete fabric=test
+    $ bwc ipf fabric delete fabric=new_fabric
 
-    Fabric test Delete successfully
+    Fabric new_fabric Delete successfully
 
 
 Use the ``bwc ipf fabric config show`` command to show the configuration of the default
@@ -657,22 +658,22 @@ fabric (because no name is specified.)
     | bfd_rx               | 300             |
     +----------------------+-----------------+
 
-Use the ``bwc ipf fabric add fabric=test`` command to add a fabric configuration to a fabric name
-*"test"*.
+Use the ``bwc ipf fabric add fabric=new_fabric`` command to add a fabric configuration to a fabric name
+*"new_fabric"*.
 
 .. code-block:: shell
 
-    $ bwc ipf fabric add fabric=test
+    $ bwc ipf fabric add fabric=new_fabric
 
-    Fabric test Added successfully
+    Fabric new_fabric Added successfully
 
-    $ bwc ipf fabric config show fabric=test
+    $ bwc ipf fabric config show fabric=new_fabric
 
     Fabric Config Show
     +----------------------+-----------------+
     | Field                | Value           |
     +----------------------+-----------------+
-    | Fabric Name          | test         |
+    | Fabric Name          | new_fabric      |
     | bgp_multihop         | 5               |
     | spine_asn_block      | 64512-64999     |
     | leaf_asn_block       | 65000-65534     |
@@ -693,6 +694,6 @@ configuration.
 
 .. code-block:: shell
 
-    $ bwc ipf fabric config delete fabric=test key=foo
+    $ bwc ipf fabric config delete fabric=new_fabric key=anycast_mac
 
-     Key foo Delete successfully from fabric test1
+     Key anycast_mac Delete successfully from fabric new_fabric
