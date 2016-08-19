@@ -6,7 +6,7 @@ IP Fabric Solution
 .. toctree::
     :maxdepth: 3
 
-    overview
+    Overview <overview>
     Installation <install/index>
     Operation <operation/index>
     CLI <ipf_cli/index.rst>

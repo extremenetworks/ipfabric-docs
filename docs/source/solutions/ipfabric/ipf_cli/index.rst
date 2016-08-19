@@ -1,12 +1,12 @@
-IP Fabric solution cli reference
+IP Fabric Solution CLI Reference
 ================================
 
-The current version of |ipf| supports the commands presented in this section
+These CLI commands are supported. Click on a command for syntax, usage and examples.
 
 .. rubric:: Contents:
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
 
     IP Fabric Solution CLI<basic_cli>
     Advanced CLI<advanced_cli>

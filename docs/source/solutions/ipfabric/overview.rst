@@ -5,27 +5,24 @@ IP Fabric Solution
 About
 -----
 
-IP Fabric Solution is an open and programmable turnkey automation solution that
-enables organizations to perform the following tasks:
+|ipf| is an open and programmable turnkey automation solution that enables organizations
+to perform the following tasks:
 
 *  Easily provision and validate the Data Center Infrastructure
 *  Customize automation to optimize IT operations
 
-It is a pre-packaged |st2|-based automation platform that supports **IP Fabric (IPF)** and
-various other solutions.
+.. todo::
+
+    #
+    MORE INFO HERE
+    #
 
 
+|Ipf| can provision and validate Brocade IP Fabrics and BGP-EVPN with minimal effort,
+while support for open interfaces and commonly-used infrastructure programming tools
+enables simple and straightforward customization when needed.
 
-#
-MORE INFO HERE
-#
-
-
-IPF solution can provision and validate Brocade IP Fabrics and BGP-EVPN with minimal effort,
-while support for open interfaces and commonly-used infrastructure programming tools enables
-simple and straightforward customization when needed.
-
-Through the IPF Cli, network engineers are able to perform the following tasks:
+Through the |ipf| CLI, network engineers are able to perform the following tasks:
 
 * Specify IP Fabric configuration parameters for automated provisioning
 * Show device and IP Fabric state or configuration
@@ -33,7 +30,7 @@ Through the IPF Cli, network engineers are able to perform the following tasks:
 * Add, delete, or show specific IP Fabric topology information
 
 This solution currently supports External Border Gateway Protocol (eBGP) workflow
-to provision an IP Fabric. This can be handled in two ways:
+to provision an IP Fabric on VDX switches. This can be handled in two ways:
 
 * Using the Zero-Touch Provisioning (ZTP) process provided by Brocade VDX switches.
 * Using a manual process with command line interface (CLI) commands or the
@@ -41,18 +38,20 @@ to provision an IP Fabric. This can be handled in two ways:
 
 An eBGP-based workflow can be implemented in one of two ways:
 
-* IP-based: Each interface on every link between the switches is assigned an IP address
+* IP-based(IP numbered): Each interface on every link between the switches is assigned an IP address
   and eBGP is enabled on the switches using these physical interface IP addresses
 * Unnumbered IP: A loopback port is created and assigned an IP address. These loopback
   IP addresses are then used to create BGP neighbors
 
-IP Fabric Solution helps users monitor and configure an IP Fabric. IP Fabric Solution runs as a
-daemon and provides CLI commands for functions such as the following:
+|ipf| helps users monitor and configure an IP Fabric. This solution
+provides CLI commands for functions such as the following:
 
-* Assigning roles to the switches in the IP Fabric; "spine" or "leaf," based on discovery and connection
-* Checking current configurations on the switches, such as IP address, RBridge ID, links, LLDP, ASN, and so on
-* Specifying configurations that users want to be applied during IP Fabric provisioning, such as P2P IP range, leaf and ASN
-  block, loopback port IP range, and so on
+* Assigning roles to the switches in the IP Fabric; *Spine* or *Leaf*, based on discovery
+  and connection
+* Checking current configurations on the switches, such as IP address, RBridge ID, links,
+  LLDP, ASN, and so on
+* Specifying configurations that users want to be applied during IP Fabric provisioning,
+  such as P2P IP range, leaf and ASN block, loopback port IP range, and so on
 * Displaying IP Fabric topology details in various formats such as PDF, JPEG, and PNG
 * Automatically configuring switches when they are added to the existing fabric
 * Provisioning a two-member VCS cluster to support dual-homing to servers
@@ -62,22 +61,22 @@ networking infrastructure online.
 
 Currently VDX switches have ZTP enabled on them by default, which eases the configuration and
 deployment of new switches when they boot. However, ZTP by itself is not sufficient to configure
-switches to participate in an IP Fabric. IP Fabric Solution helps
-users transition from a TRILL-based cluster to an IP Fabric deployment.
-IP Fabric Solution also provides a CLI client that enables IP Fabric automation. With IP Fabric
-Solution, you can specify configurations that you want for an IP Fabric, including:
+switches to participate in an IP Fabric. |ipf| helps users transition from a
+TRILL-based cluster to a Layer 3, IP Fabric deployment. |ipf| also provides a CLI client
+that enables IP Fabric automation. With |ipf|, you can specify configurations
+that you want for an IP Fabric, including:
 
-* Spine Autonomous System Number (ASN) ranges
-* Leaf ASN ranges
-* Peer-to-Peer links
-* Loopback port number
+* Spine Autonomous System Number (ASN) range (required)
+* Leaf ASN range (required)
+* Peer-to-Peer link IP address (required)
+* Loopback port number (required)
+* Loopback port IP address range (required)
 * BGP multi-hop setting
 * BFD settings
 * Basic extended virtual private network (EVPN) settings
-* Loopback port IP range
 
-IP Fabric Solution automatically configures switches when they are added to an IP Fabric, checks
-the current configuration on the switches (IP Fabric Switches only), and displays IP Fabric
+|ipf| automatically configures switches when they are added to an IP Fabric, checks
+the current configuration on the switches, and displays IP Fabric
 topology in a selected format (such as a PDF, JPEG, or PNG).
 
 .. figure:: ../../_static/images/ipfabric_topology.jpg
@@ -88,8 +87,8 @@ topology in a selected format (such as a PDF, JPEG, or PNG).
 -----------------
 
 
-Brocade IP Fabrics overview
----------------------------
+Brocade IP Fabric overview
+--------------------------
 
 Leaf-spine deployments are common in data center environments. Referred to generically as IP Clos
 networks, they constitute the fundamental building blocks of an IP Fabric.
