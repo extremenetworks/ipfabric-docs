@@ -12,12 +12,12 @@ using the ``bwc ipf inventory update --ip=<ip_address>`` command.
 
     $ bwc ipf inventory update --ip=10.24.39.225
 
-     Inventory Update
-     +--------------+---------+------------+----------+------+------+-------+---------+
-     | IP           | Model   | Rbridge-Id | Firmware | Name | Role |   ASN | Fabric  |
-     +--------------+---------+------------+----------+------+------+-------+---------+
-     | 10.24.39.225 | VDX6740 |        225 | 7.1.0    | sw0  | Leaf | 65000 | default |
-     +--------------+---------+------------+----------+------+------+-------+---------+
+      Inventory Update
+      +--------------+---------+------------+----------+------+------+-------+---------+
+      | IP           | Model   | Rbridge-Id | Firmware | Name | Role |   ASN | Fabric  |
+      +--------------+---------+------------+----------+------+------+-------+---------+
+      | 10.24.39.225 | VDX6740 |        225 | 7.1.0    | sw0  | Leaf | 65000 | default |
+      +--------------+---------+------------+----------+------+------+-------+---------+
 
 
 Generating a topology map
@@ -25,19 +25,19 @@ Generating a topology map
 
 You can display the fabric topology of an IP Fabric.
 
-1. Enter the bwc show topology format command.
+1. Enter the ``bwc show topology fabric=<fabric_name>`` command.
 
-Refer the `ipf cli <../ipf_cli/basic_cli.rst>` page for options available for the
+Refer the :doc:`ipf CLI <../ipf_cli/basic_cli>` page for options available for the
 ``bwc ipf show topology`` command.
 
 .. code:: shell
 
     $ bwc ipf show topology fabric=default --format=pdf --render_dir=/tmp
 
-    Topology map generated: /tmp/topology_default_20160811-020715.pdf
+      Topology map generated: /tmp/topology_default_20160811-020715.pdf
 
 .. note::
-   "--format=<option>" and "--render_dir=<file location>" is optional. By default a PDF
+   "- -format=<option>" and "- -render_dir=<file location>" is optional. By default a PDF
    file and a dot file is generated in *tmp* folder if format flag and render_dir
    flags are not used.
 
@@ -71,22 +71,22 @@ command:
     
     $ bwc ipf fabric config show fabric=default
 
-    +----------------------+-----------------+
-    | Fabric Name          | default         |
-    | bgp_multihop         | 5               |
-    | spine_asn_block      | 64512-64999     |
-    | leaf_asn_block       | 65000-65534     |
-    | max_paths            | 8               |
-    | loopback_port_number | 1               |
-    | evpn_enabled         | Yes             |
-    | allowas_in           | 5               |
-    | bfd_multiplier       | 3               |
-    | p2p_link_range       | 10.10.10.0/23   |
-    | bfd_tx               | 300             |
-    | anycast_mac          | aabb.ccdd.eeff  |
-    | loopback_ip_range    | 172.32.254.0/24 |
-    | bfd_rx               | 300             |
-    +----------------------+-----------------+
+      +----------------------+-----------------+
+      | Fabric Name          | default         |
+      | bgp_multihop         | 5               |
+      | spine_asn_block      | 64512-64999     |
+      | leaf_asn_block       | 65000-65534     |
+      | max_paths            | 8               |
+      | loopback_port_number | 1               |
+      | evpn_enabled         | Yes             |
+      | allowas_in           | 5               |
+      | bfd_multiplier       | 3               |
+      | p2p_link_range       | 10.10.10.0/23   |
+      | bfd_tx               | 300             |
+      | anycast_mac          | aabb.ccdd.eeff  |
+      | loopback_ip_range    | 172.32.254.0/24 |
+      | bfd_rx               | 300             |
+      +----------------------+-----------------+
 
 
 If you want a different set of configuration parameters or a configuration with
@@ -96,22 +96,22 @@ with the ``bwc ipf fabric config add fabric=<fabric_name> key=<key_name> value=<
 command as explained in next section:
 
 +------------------------+-------------------------------------------------------------------+
-| :anycast_mac:          | A valid MAC address in the format xxxx.xxxx.xxxx or               |
+| anycast_mac            | A valid MAC address in the format xxxx.xxxx.xxxx or               |
 |                        | xx:xx:xx:xx:xx:xx                                                 |
 +------------------------+-------------------------------------------------------------------+
-| :evpn_enabled:         | Yes or No                                                         |
+| evpn_enabled           | Yes or No                                                         |
 +------------------------+-------------------------------------------------------------------+
-| :bfd_tx:               | An integer from 50 through 30000                                  |
+| bfd_tx                 | An integer from 50 through 30000                                  |
 +------------------------+-------------------------------------------------------------------+
-| :bfd_rx:               | An integer from 50 through 30000                                  |
+| bfd_rx                 | An integer from 50 through 30000                                  |
 +------------------------+-------------------------------------------------------------------+
-| :bfd_multiplier:       | An integer from 3 through 50                                      |
+| bfd_multiplier         | An integer from 3 through 50                                      |
 +------------------------+-------------------------------------------------------------------+                 
-| :bgp_multihop:         | An integer from 1 through 55                                      |
+| bgp_multihop           | An integer from 1 through 55                                      |
 +------------------------+-------------------------------------------------------------------+               
-| :max_paths:            | An integer from 1 through 32                                      |
+| max_paths              | An integer from 1 through 32                                      |
 +------------------------+-------------------------------------------------------------------+
-| :p2p_link_range:       | **(Required)** a valid IP-network or the word “unnumbered”        |
+| p2p_link_range         | **(Required)** a valid IP-network or the word “unnumbered”        |
 |                        +-------------------------------------------------------------------+ 
 |                        | (case insensitive), based on what kind of BGP peers               |
 |                        +-------------------------------------------------------------------+
@@ -119,15 +119,15 @@ command as explained in next section:
 |                        +-------------------------------------------------------------------+
 |                        | overview section for details).                                    |
 +------------------------+-------------------------------------------------------------------+
-| :loopback_ip_range:    | **(Required)** A valid IP-network, for example,172.32.254.0/24    |
+| loopback_ip_range      | **(Required)** A valid IP-network, for example,172.32.254.0/24    |
 +------------------------+-------------------------------------------------------------------+                    
-| :leaf_asn_block:       |  **(Required)** A single value or range from 1 through 4294967295 |
+| leaf_asn_block         |  **(Required)** A single value or range from 1 through 4294967295 |
 +------------------------+-------------------------------------------------------------------+                 
-| :spine_asn_block:      | **(Required)** A single value or range from 1 through 4294967295  |
+| spine_asn_block        | **(Required)** A single value or range from 1 through 4294967295  |
 +------------------------+-------------------------------------------------------------------+                  
-| :loopback_port_number: | **(Required)** A number from 1 through 255                        |
+| loopback_port_number   | **(Required)** A number from 1 through 255                        |
 +------------------------+-------------------------------------------------------------------+                       
-| :allowas_in:           | A number from 1 through 10                                        |
+| allowas_in             | A number from 1 through 10                                        |
 +------------------------+-------------------------------------------------------------------+
 
 The required parameters must be added to the user-defined/custom configuration. The other
@@ -148,12 +148,13 @@ Creating a new IP Fabric with user-defined parameters
 .. code:: shell
 
     $ bwc ipf fabric add fabric=user_fab
-    Fabric user_fab added successfully
+      Fabric user_fab added successfully
 
 2. Use the ``bwc ipf fabric config add key=<key> value=<value> fabric=<fabric_name>``
    command to add parameters to the *user_fab* fabric created in previous step.
 
-.. code:: shell
+.. code-block:: shell
+    :emphasize-lines: 1,4,7,10,13,16,19,22,25
    
     $ bwc ipf fabric config add key=p2p_link_range value=10.10.10.0/23 fabric=user_fab
       Setting p2p_link_range with value 10.10.10.0/23 added to fabric user_fab
@@ -190,20 +191,20 @@ Creating a new IP Fabric with user-defined parameters
 
     $ bwc ipf fabric config show fabric=user_fab
 
-    Fabric Config Show
-    +----------------------+-----------------+
-    | Field                | Value           |
-    +----------------------+-----------------+
-    | Fabric Name          | user_fab        |
-    | spine_asn_block      | 64512-64999     |
-    | leaf_asn_block       | 65000-65534     |
-    | loopback_port_number | 1               |
-    | allowas_in           | 7               |
-    | bfd_multiplier       | 10              |
-    | p2p_link_range       | 10.10.10.0/23   |
-    | bfd_tx               | 888             |
-    | loopback_ip_range    | 172.32.254.0/24 |
-    | bfd_rx               | 888             |
-    +----------------------+-----------------+
+      Fabric Config Show
+      +----------------------+-----------------+
+      | Field                | Value           |
+      +----------------------+-----------------+
+      | Fabric Name          | user_fab        |
+      | spine_asn_block      | 64512-64999     |
+      | leaf_asn_block       | 65000-65534     |
+      | loopback_port_number | 1               |
+      | allowas_in           | 7               |
+      | bfd_multiplier       | 10              |
+      | p2p_link_range       | 10.10.10.0/23   |
+      | bfd_tx               | 888             |
+      | loopback_ip_range    | 172.32.254.0/24 |
+      | bfd_rx               | 888             |
+      +----------------------+-----------------+
 
 Use :command:`fabric=<fabric name>` parameter to display details for a specific fabric.
