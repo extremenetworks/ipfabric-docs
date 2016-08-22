@@ -18,8 +18,9 @@ See the |bwc| :doc:`CLI reference documentation </reference/cli>` for more detai
 |bwc| consists of two packs for |ipf| services and workflows: **bwc-topology** and **bwc-ipfabric** pack. 
 These packs are automatically installed with the |ipf|.
 
-.. todo::
-    Add more details/one line each on the packs
+* **bwc-topology**: Topology-related actions such as show topology, configure BGP, etc. Includes lightweight topology 
+  service providing database of network topology (device details, interfaces, LLDP neighbors, etc.).  
+* **bwc-ipfabric**: Actions for manipulating inventory, and performing lower-level device configuration.
 
 The actions in each pack include a short description:
 
