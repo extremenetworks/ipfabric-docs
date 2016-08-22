@@ -1,11 +1,11 @@
-Features to manage IP Fabric 
-============================
+Managing IP Fabrics 
+===================
 
 Updating switch credentials and information
 -------------------------------------------
 
-A switch is registered in the server using the switch credentials. If the credentials are
-changed on the switch, the change must be updated in the |bwc| Server
+A switch is registered to the server using the switch credentials. If the credentials are
+changed on the switch, the change must be updated in the |bwc| server
 using the ``bwc ipf inventory update --ip=<ip_address>`` command.
 
 .. code:: shell

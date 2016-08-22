@@ -1,13 +1,13 @@
 Brocade Workflow Composer ZTP use cases
 =======================================
 
-Zero Touch Provisioning (ZTP) is used to register a switch to the |bwc| using |ipf| and
-run the BGP workflow automatically.
+Zero Touch Provisioning (ZTP) is used to automatically register a switch to |bwc| and
+run the BGP workflow.
 
 Use Case 1: Simple IP Fabric
 ----------------------------
 
-In this case an IP Fabric consists of only Spines and Leaves. All spines and leaves get
+In this case an IP Fabric consists of only Spines and Leaves. All spines and leaves have
 one VCS and one Rbridge ID respectively.
 
 .. figure:: ../../../_static/images/ztp_usecase_1.jpg
@@ -30,8 +30,7 @@ switches, VCS IDs and Rbridge IDs:
 Use Case 2: IP Fabric With two-node VCS Cluster as a Leaf
 ---------------------------------------------------------
 
-Apart from spines and leaves this topology consists of two VDX switches forming a
-two-node VCS cluster in LC mode.
+This leaf/spine topology includes two leaf VDX switches forming a two-node VCS cluster in LC mode.
 
 .. note::
     For two VDX switches to be in a VCS cluster in LC mode, they must have the same VCS
@@ -81,8 +80,8 @@ A typical ZTP setup that can be used for both use cases is shown in the followin
 This setup consists of a DHCP server, FTP/DNS server in the same network as the VDX
 switches.
 
-.. todo::
-    Add Reference to the ZTP doc
+.. note::
+    See the `Brocade Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-07F89B86-3AF7-4486-9F96-45E9ADBED80D.html>`_ for more information on using ZTP.
 
 DHCP server (dhcpd.conf)
 ------------------------
@@ -97,7 +96,7 @@ Every group in the DHCP server configuration file `dhcpd.conf` has the following
         script, and firmware directories.
 
    - ``option routers <gateway IP>;``
-        Gateway IP address for the network
+        Gateway IP address for the network.
 
    - ``host <hostname>`` # (For each switch):
 
@@ -112,7 +111,7 @@ Every group in the DHCP server configuration file `dhcpd.conf` has the following
             This is the Management IP address the DHCP server must assign to that switch.
 
 The following example shows the DHCP server configuration information. In the subnet
-section, the range is 10.24.39.240 to 10.24.39.250 is used. The IP range should exclusively
+section, the range 10.24.39.240 to 10.24.39.250 is used. The IP range should exclusively
 be used for dynamic addresses. It should not include any static addresses.
 
 .. code-block:: shell
@@ -367,9 +366,9 @@ The following is a sample DAD configuration file for a two-node VCS cluster:
 Registration script
 -------------------
 
-The registration script registers the switch to the |bwc| and then using |ipf| runs a BGP
-workflow on the switch by sending another HTTP request to the Brocade Workflow Composer Server.
-The registration script, once downloaded on the switch, is run from the following location
+The registration script registers the switch to |bwc|. It then triggers the BGP
+workflow on the switch by sending another HTTP request to the |bwc| Server.
+Once downloaded, the registration script is run from this location
 on the switch:
 
 ``/var/config/vcs/scripts``
@@ -381,7 +380,7 @@ registration script ran successfully. Make changes to the following variables in
 
 .. code:: python
 
-    remote_server = 'dcip.bwc.local:8888' ## Ip address or DNS name of the server with port #
+    remote_server = 'dcip.bwc.local:443' ## Ip address or DNS name of the server with port #
     token = 'Z3FJeENYb1BobURrUk9hWEZwd204U3BKRzJsN0g0eXU=' ## token
     username = 'devel' ## username
     fabric_name = 'default' ## name of the fabric to which the switch should register to.

@@ -4,6 +4,9 @@ Installation
 For installing Brocade Workflow Composer and IP Fabric package-based installation, start from
 :doc:`Overview <overview>`, and proceed with the guide for your Linux distribution.
 
+.. todo::
+    Overhaul this section
+
 .. rubric:: Installations
 
 .. toctree::

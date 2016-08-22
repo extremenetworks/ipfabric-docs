@@ -2,7 +2,7 @@ IP Fabric Solution CLI
 ======================
 
 .. note::
-  All command line examples in this section begins with $ (dollar sign), which represents
+  All command line examples in this section begins with ``$`` (dollar sign), which represents
   a shell command prompt. Do not enter another dollar sign. All commands should be entered
   at the shell prompt.
 
@@ -47,7 +47,7 @@ Examples
 
 Use the ``bwc --help`` command to display Brocade Workflow Composer commands and their functions.
 
-.. code-block:: guess
+.. code-block:: bash
 
     $ bwc --help
     Brocade Workflow composer CLI
@@ -86,7 +86,7 @@ bwc ipf show
 ------------
 
 
-Shows the state of BGP peers and other configurations that have been configured on the
+Shows the state of BGP peers and other elements that have been configured on the
 switches.
 
 Syntax
@@ -220,8 +220,7 @@ format (default format).
 
       Topology map generated: /tmp/topology_default_20160811-020715.pdf
 
-Open the topology file that was generated using appropriate software.
-
+Use any appropriate image reading software to open the topology file.
 
 -----------------
 
@@ -299,8 +298,8 @@ Use the ``bwc ipf inventory delete`` command to delete a switch from the server.
       | 10.24.39.225 | VDX6740 |        225 | 7.1.0    | sw0  | Leaf | 65000 | default |
       +--------------+---------+------------+----------+------+------+-------+---------+
 
-Use the ``bwc ipf inventory update`` command to update a switch on the server (provides a way
-to change the username and password).
+Use the ``bwc ipf inventory update`` command to update a switch on the server. (This provides a way
+to change the username and password.)
 
 .. code:: shell
 
@@ -313,7 +312,7 @@ to change the username and password).
       | 10.24.39.225 | VDX6740 |        225 | 7.1.0    | sw0  | Leaf | 65000 | default |
       +--------------+---------+------------+----------+------+------+-------+---------+
 
-Use the ``bwc ipf inventory list`` command to list all switches registered in the server.
+Use the ``bwc ipf inventory list`` command to list all registered switches.
 
 .. code:: shell
 
@@ -366,7 +365,7 @@ cluster.
       | TenGigabitEthernet 228/0/10 | 10.24.39.228 | TenGigabitEthernet 229/0/10 | 10.24.39.229 | default |
       +-----------------------------+--------------+-----------------------------+--------------+---------+
 
-Use the ``bwc ipf inventory show lldp links`` command to show the LLDP neighbor.
+Use the ``bwc ipf inventory show lldp links`` command to show LLDP neighbors.
 
 .. code:: shell
 
@@ -447,8 +446,8 @@ Parameters
 
 .. note::
 
-    The spine has an additional parameter: retain route-target all under address-family l2vpn
-    evpn.
+    The spine has an additional parameter: ``retain route-target all`` under ``address-family l2vpn
+    evpn``.
 
 Examples
 ~~~~~~~~

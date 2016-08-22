@@ -2,29 +2,28 @@ Advanced CLI (using st2)
 ========================
 
 .. note::
-    All command line examples in this section begins with $ (dollar sign), which represents
+    All command line examples in this section begins with ``$`` (dollar sign), which represents
     a shell command prompt. Do not enter another dollar sign. All commands should be entered 
     at the shell prompt.
 
-This section is about accessing |ipf| with original |bwc| CLI instead of |ipf|
-specific CLI. However, assumption here is that you are familiar with the |bwc|
-components like actions, workflows, packs, execution list etc.
+This section is about accessing |ipf| with original |bwc| CLI instead of |ipf|-specific CLI.
+You will need to familiarise yourself with |bwc| components like actions, workflows, packs, 
+execution list etc.
 
-.. todo::
-    Add links for st2 components and more details
+See the |bwc| :doc:`CLI reference documentation </reference/cli>` for more details.
+
 
 ----------
 
-|bwc| consists of two packs for |ipf| services and implement BGP workflow on default or
-user defined fabric: **bwc-topology** and **bwc-ipfabric** pack. These packs are installed
-by default, with |ipf|.
+|bwc| consists of two packs for |ipf| services and workflows: **bwc-topology** and **bwc-ipfabric** pack. 
+These packs are automatically installed with the |ipf|.
 
 .. todo::
     Add more details/one line each on the packs
 
-The actions in each pack have a small description on what it does.
+The actions in each pack include a short description:
 
-.. code-block:: guess
+.. code-block:: bash
     :emphasize-lines: 1,17
 
     $ st2 action list -p bwc-ipfabric
@@ -62,11 +61,11 @@ The actions in each pack have a small description on what it does.
     | bwc-topology.topology_generate    | bwc-topology | Generate the topology for the specified Fabric                                        |
     +-----------------------------------+--------------+---------------------------------------------------------------------------------------+
 
-For more details about actions in these packs use ``st2 action get <pack-name>.<action-name>``
-command. The output can also be displayed in YAML format by appending the command with ``-y``
-flag. Similarly, for JSON use ``-j``.
+For more details about the actions in these packs, use the ``st2 action get <pack-name>.<action-name>``
+command. The output can also be displayed in YAML format by appending ``-y`` to the command.
+Similarly, for JSON use ``-j``.
 
-.. code-block:: guess
+.. code-block:: bash
     :emphasize-lines: 1,41
 
     $ st2 action get bwc-topology.switch_add
@@ -146,11 +145,11 @@ be accessed using ``st2 action get <pack-name>.<action-name>`` or
 
 .. note::
     In some actions parameters are mutually exclusive. Hence, they are placed in optional
-    parameters section. For example, in following example either fabric name or host
+    parameters section. For example, in the following example either fabric name or host
     (switch IP) are required, but are mutually exclusive.
 
 
-.. code-block:: guess
+.. code-block:: bash
     :emphasize-lines: 1
 
     $ st2 run bwc-topology.switch_list -h
@@ -190,14 +189,13 @@ Fabric List
 -----------
 
 The concept of fabric, *default* or user defined and switch roles i.e *spine* or *leaf* is
-|bwc| specific. The VDX switches doesn't have any information about it. So, the very first
-switch that is added to the fabric has to be a **Spine**
+|bwc|-specific. By default, a VDX switch doesn't have any information about its role. In order for
+|bwc| to be able to determine the switch role, the first switch added to the fabric must be a **Spine**.
 
 Let us start with ``bwc-topology.fabric_list`` to get the details about the *default* fabric.
-This is |ipf|'s out of the fabric consisting parameters like ASN range, IP address range etc.
-required to build IP fabric:
+This is the set of parameters such as ASN range, IP address range etc. required to build an IP fabric:
 
-.. code-block:: guess
+.. code-block:: bash
     :emphasize-lines: 1
 
     $ st2 run bwc-topology.fabric_list
@@ -237,7 +235,7 @@ For detail on fabric parameters refer :doc:`./basic_cli` 's ``bwc ipf fabric con
 
 On a side note, the values in the output can also be accessed using ``--attr`` and ``-k`` flag:
 
-.. code-block:: guess
+.. code-block:: bash
    :emphasize-lines: 1,9
 
    $ st2 run bwc-topology.fabric_list -k result[0].fabric_settings
@@ -559,7 +557,7 @@ Create User Defined Fabric
     
         '
 
-4. Similarly, following commands can be used to delete the user-defined fabric and its parameters:
+4. Similarly, the following commands can be used to delete the user-defined fabric and its parameters:
 
 .. code:: shell
 
@@ -576,8 +574,7 @@ Switch Management
 Register, delete and update switch
 ----------------------------------
 
-After creating *custom fabric* we can register/update/delete switches to the fabric:
-(Same commands can be used for  *default* fabric)
+After creating a *custom fabric* we can register/update/delete switches to the fabric:
 
 .. code-block:: shell
     :emphasize-lines: 1,40,80
@@ -697,6 +694,8 @@ After creating *custom fabric* we can register/update/delete switches to the fab
     
         '
 
+The same commands can be used for the *default* fabric.
+
 All the switches in a fabric can also be updated by providing fabric name: ``fabric=<fabric name>``
 to ``st2 run bwc-topology.switch_update`` command instead of a switch IP address:
 
@@ -780,7 +779,7 @@ to ``st2 run bwc-topology.switch_update`` command instead of a switch IP address
 BGP Workflow
 ------------
 
-After you have registered all the switches in the fabric. Use following command to execute BGP
+After you have registered all switches, use the following command to execute the BGP
 workflow:
 
 .. code-block:: shell
@@ -842,7 +841,7 @@ workflow:
 
 
 .. note::
-    This command runs on **default** fabric if fabric name is not provided.
+    This command runs on the **default** fabric if fabric name is not provided.
 
 
 Detail of each action execution in the workflow can be found using the execution id.
@@ -959,8 +958,8 @@ shows bgp configuration on switches, after successful execution:
 Show commands
 -------------
 
-Now let us discuss few show commands to get details about BGP configuration, vcs links
-and lldp neighbor and generate topology(default: pdf in /tmp folder):
+These commands can be used to get details about BGP configuration, VCS links
+and LLDP neighbors and generate topology (default: pdf in /tmp folder):
 
 Show BGP configuration on the switches
 --------------------------------------
@@ -1210,7 +1209,7 @@ Show VCS links between switches
 -------------------------------
 
 If the fabric consists of VDX switches in VCS mode, this command will show the status of 
-links between principle and secondary node:
+links between principle and secondary nodes:
 
 .. code:: shell
 
