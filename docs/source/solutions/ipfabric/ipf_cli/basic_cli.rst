@@ -47,7 +47,7 @@ Examples
 
 Use the ``bwc --help`` command to display Brocade Workflow Composer commands and their functions.
 
-.. code-block:: bash
+.. code-block:: guess
 
     $ bwc --help
     Brocade Workflow composer CLI

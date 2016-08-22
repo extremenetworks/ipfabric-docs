@@ -23,7 +23,7 @@ These packs are automatically installed with the |ipf|.
 
 The actions in each pack include a short description:
 
-.. code-block:: bash
+.. code-block:: guess
     :emphasize-lines: 1,17
 
     $ st2 action list -p bwc-ipfabric
@@ -65,7 +65,7 @@ For more details about the actions in these packs, use the ``st2 action get <pac
 command. The output can also be displayed in YAML format by appending ``-y`` to the command.
 Similarly, for JSON use ``-j``.
 
-.. code-block:: bash
+.. code-block:: guess
     :emphasize-lines: 1,41
 
     $ st2 action get bwc-topology.switch_add
@@ -149,7 +149,7 @@ be accessed using ``st2 action get <pack-name>.<action-name>`` or
     (switch IP) are required, but are mutually exclusive.
 
 
-.. code-block:: bash
+.. code-block:: guess
     :emphasize-lines: 1
 
     $ st2 run bwc-topology.switch_list -h
@@ -195,7 +195,7 @@ The concept of fabric, *default* or user defined and switch roles i.e *spine* or
 Let us start with ``bwc-topology.fabric_list`` to get the details about the *default* fabric.
 This is the set of parameters such as ASN range, IP address range etc. required to build an IP fabric:
 
-.. code-block:: bash
+.. code-block:: guess
     :emphasize-lines: 1
 
     $ st2 run bwc-topology.fabric_list
@@ -235,7 +235,7 @@ For detail on fabric parameters refer :doc:`./basic_cli` 's ``bwc ipf fabric con
 
 On a side note, the values in the output can also be accessed using ``--attr`` and ``-k`` flag:
 
-.. code-block:: bash
+.. code-block:: guess
    :emphasize-lines: 1,9
 
    $ st2 run bwc-topology.fabric_list -k result[0].fabric_settings
