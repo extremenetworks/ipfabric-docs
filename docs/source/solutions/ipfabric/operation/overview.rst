@@ -6,13 +6,19 @@ Introduction
 .. todo::
    Add details
 
+.. note::
+    This document covers the operation of the |bwc| |ipf|. For more information
+    about Brocade IP Fabrics in general, see the `Brocade Network OS IP Fabric
+    Configuration Guide <http://www.brocade.com/content/html/en/configuration-guide/nos-701-ipfabrics/index.html>`_
+    and the `Brocade IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ 
 
 The |ipf| supports easy integration with Zero-Touch Provisioning (ZTP).
 It can also be used without ZTP, but initial switch setup and 
 registration will be a manual process.
 
-.. todo::
-   Add reference to the fabric section for default fabric and its parameters
+The default configuration has a set of pre-defined parameters used to create the fabric, such 
+as ASN range, IP address ranges, etc. To see these parameters, and change them, refer to the
+:ref:`IP Fabric parameters<ip_fabric_parameters>` documentation.
 
 .. figure:: ../../../_static/images/bwc_components.jpg
     :align: center
@@ -33,6 +39,7 @@ if the switch has ZTP enabled and if no management IP address has been assigned 
 
 .. note::
     For detailed information about ZTP, refer to the :doc:`ZTP reference <../ztp/ztp_reference>`
+    and the `Brocade Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-B70DA4FE-6819-45A9-9E07-65785D7DB402.html>`_.
 
 If the switch has ZTP enabled, complete the following steps:
 
@@ -45,10 +52,6 @@ If the switch has ZTP enabled, complete the following steps:
     Make sure switches have not been powered on. Connect the switches in a leaf-spine topology.
     |ipf| assigns management IP addresses to the switches, registers the switches in its 
     database, and creates an IP Fabric.
-
-.. todo::
-    - Add reference to the Brocade Network OS IP Fabric Configuration Guide.
-    - Add reference to the ZTP guide 
 
 .. code:: shell
 

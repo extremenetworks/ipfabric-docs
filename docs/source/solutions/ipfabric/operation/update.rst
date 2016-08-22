@@ -59,6 +59,8 @@ switch configuration, use following commands:
     bwc ipf inventory show vcs links fabric=<fabric_name>
     bwc ipf inventory show lldp links fabric=<fabric_name>
 
+.. _ip_fabric_parameters:
+
 IP Fabric configuration parameters
 ----------------------------------
 
