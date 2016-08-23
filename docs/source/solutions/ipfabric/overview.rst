@@ -54,8 +54,14 @@ It can easily be customized as required.
 * Provision two-member leaf VCS clusters to support server dual-homing.
 
 This solution currently supports the External Border Gateway Protocol (eBGP) workflow to provision 
-an IP Fabric on VDX switches. This can be fully automated, or triggered manually via CLI or API. The 
-eBGP-based workflow supports both numbered & unnumbered configurations.
+an IP Fabric on VDX switches. This can be fully automated, or triggered manually via CLI or API. 
+
+The eBGP-based workflow supports both IP numbered & unnumbered configurations.
+
+* IP-based(IP numbered): Each interface on every link between the switches is assigned an IP address
+  and eBGP peerings use these IP addresses. This is the default.
+* Unnumbered: A loopback interface is created and assigned an IP address. These loopback IP addresses 
+  are used for BGP peering
 
 What's Next?
 -------------------------------
