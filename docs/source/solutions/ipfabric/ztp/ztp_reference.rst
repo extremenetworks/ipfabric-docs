@@ -77,7 +77,7 @@ A typical ZTP setup that can be used for both use cases is shown in the followin
 
         **ZTP Topology with states**
 
-This setup consists of a DHCP server, FTP/DNS server in the same network as the VDX
+This setup consists of a DHCP server and FTP server in the same network as the VDX
 switches.
 
 .. note::
@@ -214,6 +214,15 @@ be used for dynamic addresses. It should not include any static addresses.
            fixed-address 10.24.39.236;
        }
    }
+
+FTP server
+----------
+
+Any FTP server may be used. It needs to allow anonymous read-only login.
+
+Note the paths used in the DHCP and DAD configuration files, e.g. 
+``option bootfile-name "/config/bwcZtpConfigForLeaf.cfg";``. These refer to paths as
+seen by the FTP anonymous user. You may alter them to suit your system configuration.
 
 DAD configuration files
 -----------------------
@@ -380,7 +389,7 @@ registration script ran successfully. Make changes to the following variables in
 
 .. code:: python
 
-    remote_server = 'dcip.bwc.local:443' ## Ip address or DNS name of the server with port #
+    remote_server = 'dcip.bwc.local:443' ## IP address or DNS name of the server with port #
     token = 'Z3FJeENYb1BobURrUk9hWEZwd204U3BKRzJsN0g0eXU=' ## token
     username = 'devel' ## username
     fabric_name = 'default' ## name of the fabric to which the switch should register to.
