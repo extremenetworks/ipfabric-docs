@@ -3,8 +3,11 @@ Operation Overview
 
 Introduction
 ------------
-.. todo::
-   Add details
+
+This document provides an overview of how to use the |ipf| to automate provisioning and 
+maintenance of a Brocade IP Fabric. The |ipf| can automatically configure interfaces, BGP 
+peerings and related settings. This ensures consistent configuration across the fabric, 
+with minimal effort.
 
 .. note::
     This document covers the operation of the |bwc| |ipf|. For more information
@@ -12,9 +15,8 @@ Introduction
     Configuration Guide <http://www.brocade.com/content/html/en/configuration-guide/nos-701-ipfabrics/index.html>`_
     and the `Brocade IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ 
 
-The |ipf| supports easy integration with Zero-Touch Provisioning (ZTP).
-It can also be used without ZTP, but initial switch setup and 
-registration will be a manual process.
+The |ipf| supports easy integration with Zero-Touch Provisioning (ZTP). It can also be used 
+without ZTP, but initial switch setup and registration will be a manual process.
 
 The default configuration has a set of pre-defined parameters used to create the fabric, such 
 as ASN range, IP address ranges, etc. To see these parameters, and change them, refer to the
