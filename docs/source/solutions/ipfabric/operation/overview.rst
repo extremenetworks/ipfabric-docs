@@ -142,7 +142,7 @@ ZTP enabled, confirm the following prerequisites:
  * Switches are physically connected in a leaf-spine topology.
  * Each switch has a management IP address assigned.
 
-.. note::
+.. warning::
     The first switch that is added to the server must always be a **spine**. If it is not,
     delete the leaf switch from the |ipf| server and add a spine first. After the first spine
     has been added, the order does not matter.
