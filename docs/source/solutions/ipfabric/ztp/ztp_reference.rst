@@ -77,7 +77,7 @@ A typical ZTP setup that can be used for both use cases is shown in the followin
 
         **ZTP Topology with states**
 
-This setup consists of a DHCP server and FTP server in the same network as the VDX
+This setup consists of a DHCP server and an FTP server in the same network as the VDX
 switches.
 
 .. note::
