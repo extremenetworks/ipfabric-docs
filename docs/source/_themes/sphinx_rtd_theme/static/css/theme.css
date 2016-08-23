@@ -2558,11 +2558,12 @@ button[disabled] {
   padding: 6px 12px 8px 12px;
   color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: #27AE60;
+  background-color: #007396;
   text-decoration: none;
   font-weight: normal;
   font-family: Dual, Roboto, sans-serif;
-  box-shadow: 0px 1px 2px -1px rgba(255, 255, 255, 0.5) inset, 0px -2px 0px 0px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: rgba(0, 0, 0, 0.156863) 0px 2px 5px 0px, rgba(0, 0, 0, 0.117647) 0px 2px 10px 0px;
+  text-transform: uppercase;
   outline-none: false;
   vertical-align: middle;
   *display: inline;
@@ -2582,17 +2583,9 @@ button[disabled] {
   color: #fff;
 }
 
-.btn:hover {
-  background: #2cc36b;
-  color: #fff;
-}
 .btn:focus {
   background: #2cc36b;
   outline: 0;
-}
-.btn:active {
-  box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.05) inset, 0px 2px 0px 0px rgba(0, 0, 0, 0.1) inset;
-  padding: 8px 12px 6px 12px;
 }
 .btn:visited {
   color: #fff;
@@ -2640,15 +2633,11 @@ button[disabled] {
 }
 
 .btn-neutral {
-  background-color: #f3f6f6 !important;
-  color: #4d585a !important;
+  background-color: #007396 !important;
+  color: white !important;
 }
-.btn-neutral:hover {
-  background-color: #e5ebeb !important;
-  color: #4d585a;
-}
-.btn-neutral:visited {
-  color: #4d585a !important;
+.btn-neutral:active {
+  background-color: #66abc0 !important;
 }
 
 .btn-success {
