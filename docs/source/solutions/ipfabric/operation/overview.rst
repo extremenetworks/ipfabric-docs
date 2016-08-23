@@ -22,7 +22,7 @@ The default configuration has a set of pre-defined parameters used to create the
 as ASN range, IP address ranges, etc. To see these parameters, and change them, refer to the
 :ref:`IP Fabric parameters<ip_fabric_parameters>` documentation.
 
-.. figure:: ../../../_static/images/bwc_components.jpg
+.. figure:: ../../../_static/images/solutions/ipfabric/bwc_components.jpg
     :align: center
 
     **Components of Brocade Flow Composer**
@@ -144,7 +144,7 @@ ZTP enabled, confirm the following prerequisites:
  * Switches are physically connected in a leaf-spine topology.
  * Each switch has a management IP address assigned.
 
-.. note::
+.. warning::
     The first switch that is added to the server must always be a **spine**. If it is not,
     delete the leaf switch from the |ipf| server and add a spine first. After the first spine
     has been added, the order does not matter.

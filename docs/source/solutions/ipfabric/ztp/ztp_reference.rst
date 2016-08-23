@@ -10,7 +10,7 @@ Use Case 1: Simple IP Fabric
 In this case an IP Fabric consists of only Spines and Leaves. All spines and leaves have
 one VCS and one Rbridge ID respectively.
 
-.. figure:: ../../../_static/images/ztp_usecase_1.jpg
+.. figure:: ../../../_static/images/solutions/ipfabric/ztp_usecase_1.jpg
     :align: center
 
     **Simple IP Fabric Topology**
@@ -37,7 +37,7 @@ This leaf/spine topology includes two leaf VDX switches forming a two-node VCS c
     IDs, but different Rbridge-IDs. In the following figure note the link between
     10.24.39.211 and 10.24.39.212.
 
-.. figure:: ../../../_static/images/ztp_usecase_2.jpg
+.. figure:: ../../../_static/images/solutions/ipfabric/ztp_usecase_2.jpg
       :align: center
 
       **IP Fabric Topology With Two-Node VCS Cluster**
@@ -72,12 +72,12 @@ ZTP Process and Setup
 
 A typical ZTP setup that can be used for both use cases is shown in the following diagram:
 
-.. figure:: ../../../_static/images/ztp_topology.jpg
+.. figure:: ../../../_static/images/solutions/ipfabric/ztp_topology.jpg
         :align: center
 
         **ZTP Topology with states**
 
-This setup consists of a DHCP server, FTP/DNS server in the same network as the VDX
+This setup consists of a DHCP server and an FTP server in the same network as the VDX
 switches.
 
 .. note::
@@ -214,6 +214,15 @@ be used for dynamic addresses. It should not include any static addresses.
            fixed-address 10.24.39.236;
        }
    }
+
+FTP server
+----------
+
+Any FTP server may be used. It needs to allow anonymous read-only login.
+
+Note the paths used in the DHCP and DAD configuration files, e.g. 
+``option bootfile-name "/config/bwcZtpConfigForLeaf.cfg";``. These refer to paths as
+seen by the FTP anonymous user. You may alter them to suit your system configuration.
 
 DAD configuration files
 -----------------------
@@ -380,14 +389,14 @@ registration script ran successfully. Make changes to the following variables in
 
 .. code:: python
 
-    remote_server = 'dcip.bwc.local:443' ## Ip address or DNS name of the server with port #
+    remote_server = 'dcip.bwc.local:443' ## IP address or DNS name of the server with port #
     token = 'Z3FJeENYb1BobURrUk9hWEZwd204U3BKRzJsN0g0eXU=' ## token
     username = 'devel' ## username
     fabric_name = 'default' ## name of the fabric to which the switch should register to.
 
 
 The following example shows the register.py file. (This file is available in the |ipf| source code at
-<location>)
+``/usr/share/doc/st2/ztp``)
 
 
 .. todo::
