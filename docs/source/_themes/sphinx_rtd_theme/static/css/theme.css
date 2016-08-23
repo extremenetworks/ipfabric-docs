@@ -4086,9 +4086,9 @@ div[class^='highlight'] pre {
 
 .wy-side-nav-search {
   z-index: 200;
-  background: linear-gradient(45deg, #007396 0%, #443299 100%);
+  background: linear-gradient(45deg, rgb(189, 80, 48) 0%, rgb(165, 24, 144) 100%);
   text-align: center;
-  padding: 1.618em;
+  padding: 1.618em 1.618em 1.203em;
   display: block;
   color: #fcfcfc;
   margin-bottom: 0.809em;
@@ -4097,7 +4097,8 @@ div[class^='highlight'] pre {
   width: 100%;
   border: 0;
   border-bottom: 1px solid white;
-  background-color: transparent;
+  background-color: rgba(255,255,255,.2);
+  padding: 6px;
   box-shadow: none;
   color: white;
 }
@@ -4134,7 +4135,7 @@ div[class^='highlight'] pre {
   height: 52px;
   text-decoration: none;
   color: transparent;
-  background-image: url(../img/logo-stackstorm.svg);
+  background-image: url(../img/logo-brocade.svg);
   background-repeat: no-repeat;
   -webkit-background-size: 153px;
   background-size: 153px;
@@ -4145,7 +4146,7 @@ div[class^='highlight'] pre {
   margin-bottom: 0.809em;
 }
 .wy-side-nav-search > a:after, .wy-side-nav-search .wy-dropdown > a:after {
-  content: 'Event-driven automation';
+  content: 'Workflow Composer';
   white-space: nowrap;
   color: white;
   font-weight: normal;
