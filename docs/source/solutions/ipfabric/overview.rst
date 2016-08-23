@@ -28,7 +28,7 @@ means of BGP and/or OSPF) to provide a flexible and scalable framework. An IP Fa
 Layer 3/Layer 2 information (such as MAC, IP routes distributed by BGP—including eBGP and iBGP
 as well as OSPF) to exchange Layer 3 routing information.
 
-.. figure:: ../../_static/images/3_clos_topology.jpg
+.. figure:: ../../_static/images/solutions/ipfabric/3_clos_topology.jpg
       :align: center
 
       **3-Stage Folded Clos Topology**
