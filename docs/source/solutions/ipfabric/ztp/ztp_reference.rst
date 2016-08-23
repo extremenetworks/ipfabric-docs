@@ -387,7 +387,7 @@ registration script ran successfully. Make changes to the following variables in
 
 
 The following example shows the register.py file. (This file is available in the |ipf| source code at
-<location>)
+``/usr/share/doc/st2/ztp``)
 
 
 .. todo::
