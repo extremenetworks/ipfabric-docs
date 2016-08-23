@@ -43,6 +43,10 @@ if the switch has ZTP enabled and if no management IP address has been assigned 
     For detailed information about ZTP, refer to the :doc:`ZTP reference <../ztp/ztp_reference>`
     and the `Brocade Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-B70DA4FE-6819-45A9-9E07-65785D7DB402.html>`_.
 
+.. warning::
+    The first switch that is powered on and executes the ZTP process must be a spine switch.
+    This is to ensure that the workflow correctly identifies switches as leaf or spine.
+
 If the switch has ZTP enabled, complete the following steps:
 
     1.  Ensure that DHCP and FTP servers to be used in the fabric have been installed.
