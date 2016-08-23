@@ -2558,11 +2558,12 @@ button[disabled] {
   padding: 6px 12px 8px 12px;
   color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: #27AE60;
+  background-color: #007396;
   text-decoration: none;
   font-weight: normal;
-  font-family: Dual, Roboto, sans-serif;
-  box-shadow: 0px 1px 2px -1px rgba(255, 255, 255, 0.5) inset, 0px -2px 0px 0px rgba(0, 0, 0, 0.1) inset;
+  font-family: Roboto, sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.156863) 0px 2px 5px 0px, rgba(0, 0, 0, 0.117647) 0px 2px 10px 0px;
+  text-transform: uppercase;
   outline-none: false;
   vertical-align: middle;
   *display: inline;
@@ -2582,17 +2583,9 @@ button[disabled] {
   color: #fff;
 }
 
-.btn:hover {
-  background: #2cc36b;
-  color: #fff;
-}
 .btn:focus {
   background: #2cc36b;
   outline: 0;
-}
-.btn:active {
-  box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.05) inset, 0px 2px 0px 0px rgba(0, 0, 0, 0.1) inset;
-  padding: 8px 12px 6px 12px;
 }
 .btn:visited {
   color: #fff;
@@ -2640,15 +2633,11 @@ button[disabled] {
 }
 
 .btn-neutral {
-  background-color: #f3f6f6 !important;
-  color: #4d585a !important;
+  background-color: #007396 !important;
+  color: white !important;
 }
-.btn-neutral:hover {
-  background-color: #e5ebeb !important;
-  color: #4d585a;
-}
-.btn-neutral:visited {
-  color: #4d585a !important;
+.btn-neutral:active {
+  background-color: #66abc0 !important;
 }
 
 .btn-success {
@@ -2986,7 +2975,7 @@ input {
 input[type="button"], input[type="reset"], input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
-  font-family: Dual, Roboto, sans-serif;
+  font-family: Roboto, sans-serif;
   *overflow: visible;
 }
 input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="date"], input[type="month"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="week"], input[type="number"], input[type="search"], input[type="tel"], input[type="color"] {
@@ -2995,7 +2984,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="url
   display: inline-block;
   border: 1px solid #ccc;
   font-size: 80%;
-  font-family: Dual, Roboto, sans-serif;
+  font-family: Roboto, sans-serif;
   box-shadow: inset 0 1px 3px #ddd;
   border-radius: 0;
   -webkit-transition: border 0.3s linear;
@@ -3065,7 +3054,7 @@ textarea {
   overflow: auto;
   vertical-align: top;
   width: 100%;
-  font-family: Dual, Roboto, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 select, textarea {
@@ -3412,7 +3401,7 @@ html {
 }
 
 body {
-  font-family: Dual, Roboto, sans-serif;
+  font-family: Roboto, sans-serif;
   font-weight: lighter;
   color: black;
   min-height: 100%;
@@ -3491,7 +3480,7 @@ a.wy-text-neutral:hover {
 h1, h2, h3, h4, h5, h6, legend {
   margin-top: 0;
   font-weight: 400;
-  font-family: Dual, Roboto, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 p {
@@ -4086,9 +4075,9 @@ div[class^='highlight'] pre {
 
 .wy-side-nav-search {
   z-index: 200;
-  background: linear-gradient(45deg, #007396 0%, #443299 100%);
+  background: linear-gradient(45deg, rgb(189, 80, 48) 0%, rgb(165, 24, 144) 100%);
   text-align: center;
-  padding: 1.618em;
+  padding: 1.618em 1.618em 1.203em;
   display: block;
   color: #fcfcfc;
   margin-bottom: 0.809em;
@@ -4097,7 +4086,8 @@ div[class^='highlight'] pre {
   width: 100%;
   border: 0;
   border-bottom: 1px solid white;
-  background-color: transparent;
+  background-color: rgba(255,255,255,.2);
+  padding: 6px;
   box-shadow: none;
   color: white;
 }
@@ -4134,7 +4124,7 @@ div[class^='highlight'] pre {
   height: 52px;
   text-decoration: none;
   color: transparent;
-  background-image: url(../img/logo-stackstorm.svg);
+  background-image: url(../img/logo-brocade.svg);
   background-repeat: no-repeat;
   -webkit-background-size: 153px;
   background-size: 153px;
@@ -4145,7 +4135,7 @@ div[class^='highlight'] pre {
   margin-bottom: 0.809em;
 }
 .wy-side-nav-search > a:after, .wy-side-nav-search .wy-dropdown > a:after {
-  content: 'Event-driven automation';
+  content: 'Workflow Composer';
   white-space: nowrap;
   color: white;
   font-weight: normal;
@@ -4370,7 +4360,7 @@ nav.stickynav {
   color: #fcfcfc;
   background: #1f1d1d;
   border-top: solid 10px #4d585a;
-  font-family: Dual, Roboto, sans-serif;
+  font-family: Roboto, sans-serif;
   z-index: 400;
 }
 .rst-versions a {
@@ -4579,7 +4569,7 @@ nav.stickynav {
 }
 .rst-content .sidebar .sidebar-title {
   display: block;
-  font-family: Dual, Roboto, sans-serif;
+  font-family: Roboto, sans-serif;
   font-weight: bold;
   background: #e1e4e5;
   padding: 6px 12px;
