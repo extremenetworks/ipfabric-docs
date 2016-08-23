@@ -20,7 +20,7 @@ using open source technologies to integrate with cross-domain systems for end-to
 * Leverage well-known tools and methods to ensure streamlined cross-domain integration
 
 The |ipf| is an add-on package for |bwc| that provides services and pre-built automations for managing
-Brocade IP Fabrics. It can provision and validate Brocade IP Fabrics and BGP-VPN with minimal effort. It can 
+Brocade IP Fabrics. It can provision and validate Brocade IP Fabrics and BGP-EVPN with minimal effort. It can 
 easily be customized as required. 
 
 Through the |ipf| CLI, network engineers are able to perform the following tasks:
