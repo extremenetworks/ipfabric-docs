@@ -3477,7 +3477,7 @@ a.wy-text-neutral:hover {
   color: #595959 !important;
 }
 
-h1, h2, h3, h4, h5, h6, legend {
+h1, h2, h3, h4, h5, h6, .rst-content .toctree-wrapper p.caption, legend {
   margin-top: 0;
   font-weight: 400;
   font-family: Roboto, sans-serif;
@@ -3514,6 +3514,9 @@ h6 {
   font-size: 100%;
 }
 
+.rst-content .toctree-wrapper p.caption {
+  margin-bottom: 5px;
+}
 hr {
   display: block;
   height: 1px;
@@ -3994,16 +3997,18 @@ div[class^='highlight'] pre {
   padding: 0 16px;
 }
 
-.wy-menu-vertical header {
+.wy-menu-vertical header,
+.wy-menu-vertical p.caption {
   height: 32px;
   display: inline-block;
   line-height: 32px;
-  padding: 0 1.618em;
+  padding: 0 1.2em;
+  margin-bottom: 0;
   display: block;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 80%;
-  color: #2980B9;
+  color: #f6ded7;
   white-space: nowrap;
 }
 .wy-menu-vertical ul {
