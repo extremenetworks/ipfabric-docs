@@ -1,5 +1,5 @@
-IP Fabric Solution
-==================
+IP Fabric Automation Suite
+==========================
 
 .. rubric:: Contents:
 
