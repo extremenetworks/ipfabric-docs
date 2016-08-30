@@ -1,4 +1,4 @@
-IP Fabric Solution CLI
+|ipf| CLI
 ======================
 
 .. note::
