@@ -1,27 +1,28 @@
 Installation
 ============
 
-To install |bwc| with |ipf|, obtain the license key from `Brocade.com/bwc <https://www.brocade.com/bwc>`_, and
-run the commands below, replacing the ``${BWC_LICENSE_KEY}`` with the
-key you received when registering for evaluation or purchasing.
+To quickly install |bwc| with |ipf|, obtain a license key from `Brocade.com/bwc <https://www.brocade.com/bwc>`_, and
+run the commands below, replacing ``${BWC_LICENSE_KEY}`` with the key you received when registering for 
+evaluation or purchasing.
 
 .. code-block:: bash
 
-  wget https://brocade.com/bwc/install/install.sh && chmod +x install.sh
+  curl -SsL -O https://brocade.com/bwc/install/install.sh && chmod +x install.sh
   ./install.sh --user=st2admin --password=Ch@ngeMe --suite=bwc-ipfabric-suite --license=${BWC_LICENSE_KEY}
 
-This will install |bwc|, |ipf|, and configures all components to work together on a single host.
+This will install |bwc|, |ipf|, and configure all components to work together on a single host.
 
-If you already have |st2| installed, and need to add |ipf| on top of existing |st2| installation,
-run the following command, replacing
+If you already have |st2| installed, and need to add |ipf| on top of an existing |st2| installation,
+run the following commands, replacing ``${BWC_LICENSE_KEY}`` with the key you received when 
+registering for evaluation or purchasing.
 
 .. code-block:: bash
 
-  curl -SsL https://brocade.com/bwc/install/install-suite.sh |  bash -s -- --user=st2admin --password=Ch@ngeMe --suite=bwc-ipfabric-suite --license=${BWC_LISENSE_KEY}
+  curl -SsL -O https://brocade.com/bwc/install/install-suite.sh && chmod +x install-suite.sh
+  ./install-suite.sh --user=st2admin --password=Ch@ngeMe --suite=bwc-ipfabric-suite --license=${BWC_LICENSE_KEY}
 
-Read on to understand the installation and configuration of individual components,
-or follow instructions below to install manually.
-
+If you have a more complex environment, or you just want to see exactly what the scripts are doing, read on.
+The rest of this document will explain how to how to manually install and configure the individual components.
 
 System requirements
 -------------------
@@ -63,9 +64,9 @@ to integrate automation with :doc:`ZTP <ztp/index>`, and optional VDX pack for b
 ----------------
 
 To install |bwc|, follow the detailed installation instructions for your Linux flavor.
-It will work you through installing and configuring community edition first,
-and upgrade it to |bwc| with the license key you received when registering for evaluation
-or purchasing. This last step will also set up enterprise repository access on your box.
+It will walk you through installing and configuring StackStorm first, and upgrade it
+to |bwc| with the license key you received when registering for evaluation or
+purchasing. This last step will also set up the |bwc| repository on your box.
 
 * :doc:`/install/deb`
 * :doc:`/install/rhel7`
@@ -75,7 +76,7 @@ or purchasing. This last step will also set up enterprise repository access on y
 2. Install |ipf|
 ----------------
 
-Make sure that |bwc| enterprise repository access is set up on the box.
+Make sure that |bwc| repository is set up on the box.
 
 Install the |ipf| suite:
 
@@ -90,13 +91,13 @@ Install the |ipf| suite:
 3. Configure Topology Service
 -----------------------------
 
-* Generate an API key to connect topology service to st2 API. ::
+* Generate an API key to connect the topology service to st2 API: ::
 
     st2 apikey create -k -m '{"used_for": "BWC topology service"}'
 
-* Edit a configuration file ``/etc/brocade/bwc/bwc-topology-service.conf``,
-  set ``st2_api_key`` value to the st2 API key, and change default DB
-  username and password to a desired one in ``connection`` string. ::
+* Edit the configuration file ``/etc/brocade/bwc/bwc-topology-service.conf``,
+  set ``st2_api_key`` value to the st2 API key, and change the default DB
+  username and password to the desired values in the ``connection`` string. ::
 
     ...
     ## Postgres
@@ -115,16 +116,15 @@ Install the |ipf| suite:
 
     sudo chown -R bwc:bwc /var/log/brocade/bwc/
 
-
 * Start the ``bwc-topology`` service:
 
-  * On Ubuntu/Debian: ::
+  * On Ubuntu/Debian or RHEL/CentOS 6.x: ::
 
       sudo service bwc-topology start
       # Check that it is running indeed
       service bwc-topology status
 
-  * On RHEL/CentOS: ::
+  * On RHEL/CentOS 7.x: ::
 
       sudo systemctl bwc-topology start
       # Check that it is running indeed
@@ -132,7 +132,7 @@ Install the |ipf| suite:
 
 4. Smoke-check the installation
 -------------------------------
-Run few |ipf| CLI commands to see that everything is installed.
+Run some |ipf| CLI commands to see that everything is installed.
 
 .. code-block:: bash
 
@@ -140,8 +140,7 @@ Run few |ipf| CLI commands to see that everything is installed.
   bwc --help
   bwc ipf fabric list
 
-
-.. rubric:: What is Next?
+.. rubric:: What's Next?
 
 * New to |BWC|? Go to fundamentals - start with :doc:`/start`.
 * Understand the |ipf| operations - go over :doc:`./operation/overview`.
