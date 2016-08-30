@@ -58,7 +58,7 @@ Components
 
 The |ipf| installs on top of |bwc|. It adds an inventory & topology service, and IP Fabric automation
 packs containing actions and workflows to simplify Brocade IP Fabric management. It also includes
-the `bwc ipf` CLI, and Zero Touch Provisioning scripts for integration with :doc:`ZTP <ztp/index>`.
+the ``bwc ipf`` CLI, and Zero Touch Provisioning scripts for integration with :doc:`ZTP <ztp/index>`.
 Optionally you can add the VDX pack for building custom workflows for automating Brocade VDX switches.
 
 1. Install |bwc|
