@@ -79,7 +79,7 @@ purchasing. This last step will also set up the |bwc| repository on your box.
 
 Make sure that |bwc| repository is set up on the box.
 
-Install the |ipf| suite:
+Install the |ipf|:
 
 * On Ubuntu/Debian: ::
 
