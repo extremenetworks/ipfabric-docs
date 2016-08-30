@@ -55,10 +55,11 @@ for the best experience while testing or deploying |st2|:
 
 Components
 ----------
-|ipf| installs on top of |bwc|. It adds topology service, ip-fabric automation packs
-that actions and workflows , `bwc ipf` CLI makes using IP Fabric easier, zero-touch-provisioning script
-to integrate automation with :doc:`ZTP <ztp/index>`, and optional VDX pack for building custom workflows.
 
+The |ipf| installs on top of |bwc|. It adds an inventory & topology service, and IP Fabric automation
+packs containing actions and workflows to simplify Brocade IP Fabric management. It also includes
+the ``bwc ipf`` CLI, and Zero Touch Provisioning scripts for integration with :doc:`ZTP <ztp/index>`.
+Optionally you can add the VDX pack for building custom workflows for automating Brocade VDX switches.
 
 1. Install |bwc|
 ----------------
@@ -78,7 +79,7 @@ purchasing. This last step will also set up the |bwc| repository on your box.
 
 Make sure that |bwc| repository is set up on the box.
 
-Install the |ipf| suite:
+Install the |ipf|:
 
 * On Ubuntu/Debian: ::
 
@@ -132,6 +133,7 @@ Install the |ipf| suite:
 
 4. Smoke-check the installation
 -------------------------------
+
 Run some |ipf| CLI commands to see that everything is installed.
 
 .. code-block:: bash
@@ -139,6 +141,27 @@ Run some |ipf| CLI commands to see that everything is installed.
   bwc --version
   bwc --help
   bwc ipf fabric list
+
+5. (Optional) Install VDX Pack
+------------------------------
+
+If you want to write your own workflows that integrate with Brocade VDX switches, you might like
+to try out our `VDX <https://github.com/StackStorm/st2contrib/tree/master/packs/vdx>`_ pack.
+
+First make sure you have the prerequisite libraries installed. On Ubuntu/Debian: ::
+
+      sudo apt-get install libxml2-dev libxslt1-dev
+
+On RHEL/CentOS: ::
+
+      sudo yum install libxml2-dev libxslt1-dev
+
+Then install the pack: ::
+
+      st2 run packs.install packs=vdx
+
+This will give you a wide range of VDX-specific actions you can use in any workflow. Try it out!
+
 
 .. rubric:: What's Next?
 
