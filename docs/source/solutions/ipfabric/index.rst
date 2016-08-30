@@ -7,9 +7,9 @@ IP Fabric Automation Suite
     :maxdepth: 3
 
     Overview <overview>
-    Installation <install/index>
+    Installation <install.rst>
     Operation <operation/index>
     CLI <ipf_cli/index.rst>
-    Zero Touch Provisioning Reference <ztp/index> 
+    Zero Touch Provisioning Reference <ztp/index>
     Troubleshooting <troubleshooting/index>
 
