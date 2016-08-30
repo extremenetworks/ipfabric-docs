@@ -17,7 +17,7 @@ run the following command, replacing
 
 .. code-block:: bash
 
-  curl -SsL https://brocade.com/bwc/install/install-suite.sh |  bash -s -- --user=st2admin --password=Ch@ngeMe --staging --unstable --suite=bwc-ipfabric-suite --license=${BWC_LISENSE_KEY}
+  curl -SsL https://brocade.com/bwc/install/install-suite.sh |  bash -s -- --user=st2admin --password=Ch@ngeMe --suite=bwc-ipfabric-suite --license=${BWC_LISENSE_KEY}
 
 Read on to understand the installation and configuration of individual components,
 or follow instructions below to install manually.
