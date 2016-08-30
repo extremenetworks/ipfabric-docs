@@ -66,8 +66,8 @@ for the best experience while testing or deploying |st2|:
 Components
 ----------
 |ipf| installs on top of |bwc|. It adds topology service, ip-fabric automation packs
-that actions and workflows , `bwc ipfabric` CLI th, zero-touch-provisioning script
-to trigger automation on adding a new switch, and optional VDX pack for building custom workflows.
+that actions and workflows , `bwc ipf` CLI makes using IP Fabric easier, zero-touch-provisioning script
+to integrate automation with :doc:`ZTP <../ztp/index>`, and optional VDX pack for building custom workflows.
 
 
 1. Install |bwc|
