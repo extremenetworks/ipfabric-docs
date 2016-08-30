@@ -7,7 +7,7 @@ key you received when registering for evaluation or purchasing.
 
 .. code-block:: bash
 
-  wget https://brocade.com/bwc/install.sh && chmod +x install.sh
+  wget https://brocade.com/bwc/install/install.sh && chmod +x install.sh
   ./install.sh --user=st2admin --password=Ch@ngeMe --suite=bwc-ipfabric-suite --license=${BWC_LICENSE_KEY}
 
 This will install |bwc|, |ipf|, and configures all components to work together on a single host.
@@ -17,21 +17,10 @@ run the following command, replacing
 
 .. code-block:: bash
 
-  curl -SsL https://brocade.com/bwc/install-suite.sh |  bash -s -- --user=st2admin --password=Ch@ngeMe --staging --unstable --suite=bwc-ipfabric-suite --license=${BWC_LISENSE_KEY}
+  curl -SsL https://brocade.com/bwc/install/install-suite.sh |  bash -s -- --user=st2admin --password=Ch@ngeMe --staging --unstable --suite=bwc-ipfabric-suite --license=${BWC_LISENSE_KEY}
 
 Read on to understand the installation and configuration of individual components,
 or follow instructions below to install manually.
-
-.. TODO:: before the final redirects are set and we are still on staging/unstable, use the following:
-
-  .. code-block:: bash
-
-    # To install BWC and IP fabric on a clean box:
-    wget https://stackstorm.com/bwc/install.sh && chmod +x install.sh
-    ./install.sh --user=st2admin --password=Ch@ngeMe --suite=bwc-ipfabric-suite --staging --unstable --license=${BWC_LICENSE_KEY}
-
-    # To install suite on top of BWC/st2:
-    curl -SsL https://stackstorm.com/bwc/install-suite.sh |  bash -s -- --user=st2admin --password=Ch@ngeMe --staging --unstable --suite=bwc-ipfabric-suite --license=${BWC_LISENSE_KEY}
 
 
 System requirements
