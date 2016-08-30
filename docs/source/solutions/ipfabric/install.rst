@@ -109,14 +109,14 @@ Install the |ipf| suite:
   set ``st2_api_key`` value to the st2 API key, and change default DB
   username and password to a desired one in ``connection`` string. ::
 
-  ...
-  ## Postgres
-  connection = 'postgresql://bwcuser:bwcsecret@localhost/bwc_topology'
+    ...
+    ## Postgres
+    connection = 'postgresql://bwcuser:bwcsecret@localhost/bwc_topology'
 
-  # StackStorm
-  st2_auth_url = 'https://localhost/auth'
-  st2_api_url = 'https://localhost:443/api'
-  st2_api_key = 'ZDNkMjJiNmFkYzFiMmEyNjRiMmQ2NGRjNGYzODhmYmZhNmU2NGM3NTI0ZmM5M2U2MTY1YWZjMWM3NjllNzcwNA'
+    # StackStorm
+    st2_auth_url = 'https://localhost/auth'
+    st2_api_url = 'https://localhost:443/api'
+    st2_api_key = 'ZDNkMjJiNmFkYzFiMmEyNjRiMmQ2NGRjNGYzODhmYmZhNmU2NGM3NTI0ZmM5M2U2MTY1YWZjMWM3NjllNzcwNA'
 
 * Run DB setup script (the script will pick DB name, username and password from the ``bwc-topology-service.conf`` file): ::
 
@@ -145,7 +145,7 @@ Install the |ipf| suite:
 -------------------------------
 Run few |ipf| CLI commands to see that everything is installed.
 
-.. code-block::
+.. code-block:: bash
 
   bwc --version
   bwc --help
