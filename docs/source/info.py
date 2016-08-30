@@ -2,7 +2,7 @@
 #
 # This file contains values that differ between open-source
 # to commercial (BWC) documentation. Everything that might
-# change from one version to another in conf.py should be 
+# change from one version to another in conf.py should be
 # placed here, otherwise you WILL break the build.
 
 master_doc = 'index'
@@ -28,7 +28,9 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-github_repo = 'StackStorm/ipfabric-docs'
+# TODO(dzimine): find a way for links to work for both ipfabric and st2docs.
+# For now, optimize for where most docs written.
+github_repo = 'StackStorm/st2docs'
 github_version = 'master'
 
 theme_base_url = u'http://bwc-docs.brocade.com/'
