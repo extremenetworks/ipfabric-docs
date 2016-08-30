@@ -131,7 +131,7 @@ Install the |ipf|:
       # Check that it is running indeed
       systemctl bwc-topology status
 
-4. Smoke-check the installation
+4. Smoke-check the Installation
 -------------------------------
 
 Run some |ipf| CLI commands to see that everything is installed.
