@@ -135,30 +135,7 @@ switches.
 
 Syntax
 ~~~~~~
-$ bwc ipf show topology -h
-usage: bwc ipf show topology [-h] [--format <format>]
-                             [--render_dir <render_dir>]
-                             <fabric>
 
-Generates Topology for the specified Fabric
-
-positional arguments:
-  <fabric>              Fabric name for which topology will be displayed
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --format <format>     Format of the file to generate for the topology
-  --render_dir <render_dir>
-                        Path where the topology file will be saved
-vagrant@bwctest:/home/vagrant/ipfabric-docs/docs/source/solutions/ipfabric/ipf_cli  git:(final_cli_review*) $ bwc ipf show config bgp -h
-usage: bwc ipf show config bgp [-h] (--host HOST | --fabric FABRIC)
-
-Display Fabric configuration for the specified Fabric
-
-optional arguments:
-  -h, --help       show this help message and exit
-  --host HOST      IP of the device to be listed
-  --fabric FABRIC  Name of the fabric to list all devices
 .. code-block:: shell
 
     bwc ipf show config bgp --fabric=<fabric_name> | --host=<ip_address>
