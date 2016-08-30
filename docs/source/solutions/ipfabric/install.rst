@@ -67,7 +67,7 @@ Components
 ----------
 |ipf| installs on top of |bwc|. It adds topology service, ip-fabric automation packs
 that actions and workflows , `bwc ipf` CLI makes using IP Fabric easier, zero-touch-provisioning script
-to integrate automation with :doc:`ZTP <../ztp/index>`, and optional VDX pack for building custom workflows.
+to integrate automation with :doc:`ZTP <ztp/index>`, and optional VDX pack for building custom workflows.
 
 
 1. Install |bwc|
@@ -155,5 +155,5 @@ Run few |ipf| CLI commands to see that everything is installed.
 .. rubric:: What is Next?
 
 * New to |BWC|? Go to fundamentals - start with :doc:`/start`.
-* Understand the |ipf| operations - go over :doc:`operations/overview`.
-* Understand the |ipf| CLI - read the :doc:`ipf-cli/basic_cli`.
+* Understand the |ipf| operations - go over :doc:`./operation/overview`.
+* Understand the |ipf| CLI - read the :doc:`./ipf_cli/basic_cli`.

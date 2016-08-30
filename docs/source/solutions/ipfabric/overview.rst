@@ -5,8 +5,8 @@ IP Fabric Solution
 Brocade Workflow Composer Overview
 ----------------------------------
 
-|bwc| is a network automation platform that automates the entire network life 
-cycle and integrates with cross-domain workflows to improve business agility. Based on the 
+|bwc| is a network automation platform that automates the entire network life
+cycle and integrates with cross-domain workflows to improve business agility. Based on the
 StackStorm Open Source Project, Workflow Composer provides DevOps-inspired network automation
 using open source technologies to integrate with cross-domain systems for end-to-end workflow automation.
 
@@ -14,7 +14,7 @@ using open source technologies to integrate with cross-domain systems for end-to
 
 * Automate the entire network lifecycle including: provisioning, validation, troubleshooting and remediation
 * Eliminate cross-function workflow delays through event-driven cross-domain automation
-* Embrace automation at your own pace with turnkey workflows and nearly 2000 pre-built points of integration; 
+* Embrace automation at your own pace with turnkey workflows and nearly 2000 pre-built points of integration;
   extend and customize to meet unique requirements with an architecture that is open at all layers
 * Access broad community of like-minded peers to share ideas, collaborate, and support
 * Leverage well-known tools and methods to ensure streamlined cross-domain integration
@@ -24,7 +24,7 @@ Brocade IP Fabrics
 
 An IP Fabric is a collection of discrete Layer 3 elements (such as switches and routers)
 arranged in a leaf-spine network. These elements exchange Layer 3 reachability information (by
-means of BGP and/or OSPF) to provide a flexible and scalable framework. An IP Fabric can use 
+means of BGP and/or OSPF) to provide a flexible and scalable framework. An IP Fabric can use
 Layer 3/Layer 2 information (such as MAC, IP routes distributed by BGP—including eBGP and iBGP
 as well as OSPF) to exchange Layer 3 routing information.
 
@@ -65,4 +65,4 @@ The eBGP-based workflow supports both IP numbered & unnumbered configurations.
 
 What's Next?
 -------------------------------
-* Install and run Brocade Workflow Composer and IP Fabric solution - follow the :doc:`install/index` guide.
+* Install and run Brocade Workflow Composer and IP Fabric solution - follow the :doc:`install` guide.
