@@ -116,7 +116,7 @@ Install the |ipf| suite:
     # StackStorm
     st2_auth_url = 'https://localhost/auth'
     st2_api_url = 'https://localhost:443/api'
-    st2_api_key = 'ZDNkMjJiNmFkYzFiMmEyNjRiMmQ2NGRjNGYzODhmYmZhNmU2NGM3NTI0ZmM5M2U2MTY1YWZjMWM3NjllNzcwNA'
+    st2_api_key = '<ST2_API_KEY_GENERATED_ABOVE>'
 
 * Run DB setup script (the script will pick DB name, username and password from the ``bwc-topology-service.conf`` file): ::
 
@@ -131,13 +131,13 @@ Install the |ipf| suite:
 
   * On Ubuntu/Debian: ::
 
-      service bwc-topology start
+      sudo service bwc-topology start
       # Check that it is running indeed
       service bwc-topology status
 
   * On RHEL/CentOS: ::
 
-      systemctl bwc-topology start
+      sudo systemctl bwc-topology start
       # Check that it is running indeed
       systemctl bwc-topology status
 
