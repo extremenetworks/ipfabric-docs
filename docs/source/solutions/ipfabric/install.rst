@@ -5,6 +5,10 @@ To install |bwc| with |ipf|, obtain the license key from `Brocade.com/bwc <https
 run the commands below, replacing the ``${BWC_LICENSE_KEY}`` with the
 key you received when registering for evaluation or purchasing.
 
+.. note::
+    If you are using RHEL/CentOS 6, run ``sudo yum update curl nss``.
+    For other OSes, it is recommended to update ``curl`` before installation.
+
 .. code-block:: bash
 
   wget https://brocade.com/bwc/install/install.sh && chmod +x install.sh
