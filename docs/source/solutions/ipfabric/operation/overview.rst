@@ -179,7 +179,7 @@ Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
 
 .. code:: shell
 
-     $ bwc ipf inventory list fabric=default
+     $ bwc ipf inventory list --fabric=default
 
       Inventory List
       +--------------+-------------+------------+----------+----------------+-------+-------+---------+
@@ -298,7 +298,7 @@ Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
 
 .. code:: shell
 
-     $ bwc ipf show config bgp fabric=default
+     $ bwc ipf show config bgp --fabric=default
 
        Show BGP Configuration
    
@@ -379,7 +379,18 @@ Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
 
 To add a switch to the existing fabric, register the switch to the fabric and then run ``bwc
 ipf workflow bgp fabric=<fabric_name>``. To remove a switch from the fabric
-run ``bwc ipf switch delete host=<ip_address>``
+run ``bwc ipf inventory delete host=<ip_address>``
+
+.. code:: shell
+
+     $ bwc ipf inventory delete host=10.24.39.224
+
+       Inventory delete
+       +--------------+---------+------------+----------+---------+-------+-----+---------+
+       | IP           | Model   | Rbridge-Id | Firmware | Name    | Role  | ASN | Fabric  |
+       +--------------+---------+------------+----------+---------+-------+-----+---------+
+       | 10.24.39.224 | VDX6740 |        224 | 7.0.1    | VDX_224 | Spine |     | default |
+       +--------------+---------+------------+----------+---------+-------+-----+---------+
 
 .. note::
     When adding a new spine or leaf to an existing fabric, ensure the new switch does 

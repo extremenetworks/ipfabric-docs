@@ -10,7 +10,7 @@ using the ``bwc ipf inventory update --host=<ip_address>`` command.
 
 .. code:: shell
 
-    $ bwc ipf inventory update --host=10.24.39.225
+    $ bwc ipf inventory update --host=10.24.39.225  --user=lab123 --passwd=123lab
 
       Inventory Update
       +--------------+---------+------------+----------+------+------+-------+---------+
@@ -25,7 +25,7 @@ Generating a topology map
 
 You can display the fabric topology of an IP Fabric.
 
-1. Enter the ``bwc show topology fabric=<fabric_name>`` command.
+1. Enter the ``bwc ipf show topology fabric=<fabric_name>`` command.
 
 Refer the :doc:`ipf CLI <../ipf_cli/basic_cli>` page for options available for the
 ``bwc ipf show topology`` command.
@@ -54,10 +54,10 @@ switch configuration, use following commands:
 .. code:: shell
 
     bwc ipf show config bgp fabric=<fabric_name>
-    bwc ipf show topology fabric=<fabric_name> [ --format=<format> ]
-    bwc ipf inventory list fabric=<fabric_name> [ --host=<ip_address> ]
+    bwc ipf show topology fabric=<fabric_name> [ --format=<format> ] [--render_dir=<file location>]
+    bwc ipf inventory list --fabric=<fabric_name> | --host=<switch_ip>
     bwc ipf inventory show vcs links fabric=<fabric_name>
-    bwc ipf inventory show lldp links fabric=<fabric_name>
+    bwc ipf inventory show lldp fabric=<fabric_name>
 
 .. _ip_fabric_parameters:
 
@@ -186,7 +186,7 @@ Creating a new IP Fabric with user-defined parameters
       Setting allowas_in with value 7 added to fabric user_fab
 
 3. Check the parameter values before saving the configuration.
-4. Use the ``bwc ipf fabric config showi fabric=<fabric_name>`` command to display the fabric
+4. Use the ``bwc ipf fabric config show fabric=<fabric_name>`` command to display the fabric
    details added in step 2.
 
 .. code:: shell
