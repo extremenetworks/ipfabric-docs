@@ -6,11 +6,11 @@ Updating switch credentials and information
 
 A switch is registered to the server using the switch credentials. If the credentials are
 changed on the switch, the change must be updated in the |bwc| server
-using the ``bwc ipf inventory update --ip=<ip_address>`` command.
+using the ``bwc ipf inventory update --host=<ip_address>`` command.
 
 .. code:: shell
 
-    $ bwc ipf inventory update --ip=10.24.39.225
+    $ bwc ipf inventory update --host=10.24.39.225
 
       Inventory Update
       +--------------+---------+------------+----------+------+------+-------+---------+
@@ -55,7 +55,7 @@ switch configuration, use following commands:
 
     bwc ipf show config bgp fabric=<fabric_name>
     bwc ipf show topology fabric=<fabric_name> [ --format=<format> ]
-    bwc ipf inventory list fabric=<fabric_name> [ --ip=<ip_address> ]
+    bwc ipf inventory list fabric=<fabric_name> [ --host=<ip_address> ]
     bwc ipf inventory show vcs links fabric=<fabric_name>
     bwc ipf inventory show lldp links fabric=<fabric_name>
 
