@@ -144,7 +144,7 @@ Syntax
 Parameters
 ~~~~~~~~~~
 
-.. code-block:: shell
+.. code-block:: guess
    :emphasize-lines: 1,4,7,10,13,16
     
    config bgp
@@ -282,7 +282,7 @@ Syntax
 
 Parameters
 ~~~~~~~~~~
-.. code-block:: shell
+.. code-block:: guess
     :emphasize-lines: 1,4,7,10,13,16,19,22
 
     register
@@ -477,7 +477,7 @@ Syntax
 Parameters
 ~~~~~~~~~~
 
-.. code-block:: shell
+.. code-block:: guess
     :emphasize-lines: 1
 
     fabric=<fabric_name>
@@ -597,7 +597,7 @@ Syntax
 Parameters
 ~~~~~~~~~~
 
-.. code-block:: shell
+.. code-block:: guess
    :emphasize-lines: 1,4,7
 
    fabric=<fabric_name>
