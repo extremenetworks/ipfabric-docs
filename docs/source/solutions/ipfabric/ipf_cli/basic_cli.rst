@@ -8,9 +8,6 @@
 
 |bwc|'s |ipf| CLI provides a simple way to interrogate and configure your IP Fabric.
 
-.. todo::
-   Add more details on the basic and advanced CLI. Take care of BWC help
-
 ------------
 
 --------
