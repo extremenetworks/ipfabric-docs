@@ -66,6 +66,7 @@ And the following configuration exists in the two-node VCS cluster:
 .. note::
     The VCS ID for the two-node VCS cluster is same.
 
+.. _ztp_setup_process:
 
 ZTP Process and Setup
 =====================
@@ -107,7 +108,7 @@ Every group in the DHCP server configuration file `dhcpd.conf` has the following
        - ``hardware ethernet <xx:xx:xx:xx:xx:xx>;``
             This is the Ethernet/MAC address of the switch.
 
-       - ``fixed-address <Management IP of switch>;`` 
+       - ``fixed-address <Management IP of switch>;``
             This is the Management IP address the DHCP server must assign to that switch.
 
 The following example shows the DHCP server configuration information. In the subnet
@@ -124,14 +125,14 @@ be used for dynamic addresses. It should not include any static addresses.
 
    option domain-name "mambaDNSDAD.com";
    option domain-search "mambaDNSDAD.com";
-   
+
    option domain-name-servers 10.24.39.219;
-   
+
    default-lease-time 600;
    max-lease-time 7200;
    authoritative;
    log-facility local7;
-   
+
    subnet 10.24.39.192 netmask 255.255.255.192 {
        #range 10.24.39.240 10.24.39.250;
        option subnet-mask 255.255.255.192;
@@ -140,7 +141,7 @@ be used for dynamic addresses. It should not include any static addresses.
        zone 39.24.10.in-addr.arpa.{
            primary 10.24.39.219;
        }
-   
+
        zone mambaDNSDAD.com.{
            primary 10.24.39.219;
        }
@@ -151,7 +152,7 @@ be used for dynamic addresses. It should not include any static addresses.
        option bootfile-name "/config/bwcZtpConfigForLeaf.cfg";
        option tftp-server-name "10.24.39.219";
        option routers 10.24.39.193;
-   
+
        host vdx210 {
            option dhcp-client-identifier="BROCADE##VDX6740##CPL2516J00M";
            hardware ethernet 00:27:F8:6F:C8:D0;
@@ -163,7 +164,7 @@ be used for dynamic addresses. It should not include any static addresses.
            hardware ethernet 00:27:F8:D1:6D:47;
            fixed-address 10.24.39.202;
        }
-   
+
        host vdx203 {
            option dhcp-client-identifier="BROCADE##VDX6740##CPL2503K00Z";
            hardware ethernet 00:27:F8:DB:6B:0D;
@@ -176,7 +177,7 @@ be used for dynamic addresses. It should not include any static addresses.
        option bootfile-name "/config/bwcZtpConfigForVcsCluster.cfg";
        option tftp-server-name "10.24.39.219";
        option routers 10.24.39.193;
-   
+
        host vdx211{
            option dhcp-client-identifier="BROCADE##VDX6740##CGS0301J001";
            hardware ethernet 00:05:33:65:09:D9;
@@ -195,7 +196,7 @@ be used for dynamic addresses. It should not include any static addresses.
        option bootfile-name "/config/bwcZtpConfigForSpine.cfg";
        option tftp-server-name "10.24.39.219";
        option routers 10.24.39.193;
-   
+
        host vdx204 {
            option dhcp-client-identifier="BROCADE##VDX8770-4##CDU2521J006";
            hardware ethernet 00:27:F8:88:81:09;
@@ -220,7 +221,7 @@ FTP server
 
 Any FTP server may be used. It needs to allow anonymous read-only login.
 
-Note the paths used in the DHCP and DAD configuration files, e.g. 
+Note the paths used in the DHCP and DAD configuration files, e.g.
 ``option bootfile-name "/config/bwcZtpConfigForLeaf.cfg";``. These refer to paths as
 seen by the FTP anonymous user. You may alter them to suit your system configuration.
 
@@ -375,16 +376,14 @@ The following is a sample DAD configuration file for a two-node VCS cluster:
 Registration script
 -------------------
 
-The registration script registers the switch to |bwc|. It then triggers the BGP
-workflow on the switch by sending another HTTP request to the |bwc| Server.
-Once downloaded, the registration script is run from this location
-on the switch:
-
-``/var/config/vcs/scripts``
-
-The script also generates a registration log at the same location. It indicates if the
-registration script ran successfully. Make changes to the following variables in the
-`registration.py` script in the main method:
+The registration script is shipped with the |ipf| packages. If you installed |bwc| on a server,
+the registration script is usually available in
+``/usr/share/doc/bwc-topology/etc/bwc-automation.py``.
+If you are using an FTP server in combination with DHCP server as described in
+:ref:`ztp_setup_process`, the script should be deployed to the FTP server following the path
+requirements and configuration requirements. The switches then get this script as part of
+DHCP IP negotiation process. Please make sure the script has the following configuration
+variables set by editing the ``bwc-automation.py`` file.
 
 
 .. code:: python
@@ -394,15 +393,19 @@ registration script ran successfully. Make changes to the following variables in
     username = 'devel' ## username
     fabric_name = 'default' ## name of the fabric to which the switch should register to.
 
+You can copy the file to the switch using ``scp`` or any other file transfer methods you prefer to
+test the script. On the switch, the script should be deployed to ``/var/config/vcs/scripts``.
+Please make sure execute bit is set for the script. To test the script manually, run
 
-The following example shows the register.py file. (This file is available in the |ipf| source code at
-``/usr/share/doc/st2/ztp``)
+.. code-block:: shell
 
+  /var/config/vcs/scripts/bwc-automation.py
 
-.. todo::
-    register.py script changes
-    and source code location in above line
-    .. code-block:: python
+The registration script first registers the switch to |bwc|. The script then triggers the BGP
+workflow on the switch by sending another HTTP request to the deployed |bwc| server.
+
+The script also generates a registration log at the same location. It indicates if the
+registration script ran successfully.
 
 
 Running ZTP and DAD
