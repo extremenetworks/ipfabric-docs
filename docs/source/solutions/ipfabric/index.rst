@@ -1,4 +1,4 @@
-IP Fabric Automation Suite
+|ipf|
 ==========================
 
 .. rubric:: Contents:

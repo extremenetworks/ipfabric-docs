@@ -158,15 +158,14 @@ Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
 1. Register the switches in the |bwc| database by entering the ``bwc ipf inventory
    register`` command:
 
-   ``$ bwc ipf inventory register ip=<switch IP address> fabric=<fabric_name> user=<user_name>
-   passwd=<password>``
+   ``$ bwc ipf inventory register host=<switch IP address> fabric=<fabric_name> user=<user_name> passwd=<password>``
    
    For example, registering switch with IP: 10.24.39.224.The default username is *admin*
    and default password is *password* for all the VDX switches.
 
 .. code:: shell
 
-    $ bwc ipf inventory register ip=10.24.39.224 fabric=default user=admin passwd=password
+    $ bwc ipf inventory register host=10.24.39.224 fabric=default user=admin passwd=password
 
       Inventory Add
       +--------------+---------+------------+----------+------+-------+-------+---------+
@@ -180,7 +179,7 @@ Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
 
 .. code:: shell
 
-     $ bwc ipf inventory list fabric=default
+     $ bwc ipf inventory list --fabric=default
 
       Inventory List
       +--------------+-------------+------------+----------+----------------+-------+-------+---------+
@@ -299,7 +298,7 @@ Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
 
 .. code:: shell
 
-     $ bwc ipf show config bgp fabric=default
+     $ bwc ipf show config bgp --fabric=default
 
        Show BGP Configuration
    
@@ -380,7 +379,18 @@ Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
 
 To add a switch to the existing fabric, register the switch to the fabric and then run ``bwc
 ipf workflow bgp fabric=<fabric_name>``. To remove a switch from the fabric
-run ``bwc ipf switch delete ip=<ip_address>``
+run ``bwc ipf inventory delete host=<ip_address>``
+
+.. code:: shell
+
+     $ bwc ipf inventory delete host=10.24.39.224
+
+       Inventory delete
+       +--------------+---------+------------+----------+---------+-------+-----+---------+
+       | IP           | Model   | Rbridge-Id | Firmware | Name    | Role  | ASN | Fabric  |
+       +--------------+---------+------------+----------+---------+-------+-----+---------+
+       | 10.24.39.224 | VDX6740 |        224 | 7.0.1    | VDX_224 | Spine |     | default |
+       +--------------+---------+------------+----------+---------+-------+-----+---------+
 
 .. note::
     When adding a new spine or leaf to an existing fabric, ensure the new switch does 

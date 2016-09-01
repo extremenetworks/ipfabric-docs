@@ -1,4 +1,4 @@
-IP Fabric Solution CLI Reference
+|ipf| CLI Reference
 ================================
 
 These CLI commands are supported. Click on a command for syntax, usage and examples.
@@ -8,5 +8,5 @@ These CLI commands are supported. Click on a command for syntax, usage and examp
 .. toctree::
     :maxdepth: 2
 
-    IP Fabric Solution CLI<basic_cli>
+    basic_cli
     Advanced CLI<advanced_cli>
