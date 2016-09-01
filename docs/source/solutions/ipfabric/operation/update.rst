@@ -94,7 +94,7 @@ command:
 If you want a different set of configuration parameters or a configuration with
 **unnumbered** for the IP address, you must create a new IP Fabric and define the
 values for the configuration parameters. The following parameters can be added
-with the ``bwc ipf fabric config add fabric=<fabric_name> key=<key_name> value=<valu_name>``
+with the ``bwc ipf fabric config set fabric=<fabric_name> key=<key_name> value=<valu_name>``
 command as explained in next section:
 
 +------------------------+-------------------------------------------------------------------+
@@ -152,37 +152,37 @@ Creating a new IP Fabric with user-defined parameters
     $ bwc ipf fabric add fabric=user_fab
       Fabric user_fab added successfully
 
-2. Use the ``bwc ipf fabric config add key=<key> value=<value> fabric=<fabric_name>``
+2. Use the ``bwc ipf fabric config set key=<key> value=<value> fabric=<fabric_name>``
    command to add parameters to the *user_fab* fabric created in previous step.
 
 .. code-block:: shell
     :emphasize-lines: 1,4,7,10,13,16,19,22,25
    
-    $ bwc ipf fabric config add key=p2p_link_range value=10.10.10.0/23 fabric=user_fab
+    $ bwc ipf fabric config set key=p2p_link_range value=10.10.10.0/23 fabric=user_fab
       Setting p2p_link_range with value 10.10.10.0/23 added to fabric user_fab
     
-    $ bwc ipf fabric config add key=spine_asn_block value=64512-64999 fabric=user_fab
+    $ bwc ipf fabric config set key=spine_asn_block value=64512-64999 fabric=user_fab
       Setting spine_asn_block with value 64512-64999 added to fabric user_fab
    
-    $ bwc ipf fabric config add key=leaf_asn_block value=65000-65534 fabric=user_fab
+    $ bwc ipf fabric config set key=leaf_asn_block value=65000-65534 fabric=user_fab
       Setting leaf_asn_block with value 65000-65534 added to fabric user_fab
    
-    $ bwc ipf fabric config add key=loopback_ip_range value=172.32.254.0/24 fabric=user_fab
+    $ bwc ipf fabric config set key=loopback_ip_range value=172.32.254.0/24 fabric=user_fab
       Setting loopback_ip_range with value 172.32.254.0/24 added to fabric user_fab
    
-    $ bwc ipf fabric config add key=loopback_port_number value=1 fabric=user_fab
+    $ bwc ipf fabric config set key=loopback_port_number value=1 fabric=user_fab
       Setting loopback_port_number with value 1 added to fabric user_fab
    
-    $ bwc ipf fabric config add key=bfd_multiplier value=10 fabric=new_fab
+    $ bwc ipf fabric config set key=bfd_multiplier value=10 fabric=new_fab
       Setting bfd_multiplier with value 10 added to fabric user_fab
    
-    $ bwc ipf fabric config add key=bfd_rx value=888 fabric=user_fab
+    $ bwc ipf fabric config set key=bfd_rx value=888 fabric=user_fab
       Setting bfd_rx  with value 888 added to fabric user_fab
    
-    $ bwc ipf fabric config add key=bfd_tx value=888 fabric=user_fab
+    $ bwc ipf fabric config set key=bfd_tx value=888 fabric=user_fab
       Setting bfd_tx with value 888 added to fabric user_fab
    
-    $ bwc ipf fabric config add key=allowas_in value=7 fabric=user_fab
+    $ bwc ipf fabric config set key=allowas_in value=7 fabric=user_fab
       Setting allowas_in with value 7 added to fabric user_fab
 
 3. Check the parameter values before saving the configuration.

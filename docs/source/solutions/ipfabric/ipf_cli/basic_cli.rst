@@ -1,5 +1,5 @@
 |ipf| CLI
-======================
+=========
 
 .. note::
   All command line examples in this section begins with ``$`` (dollar sign), which represents
@@ -43,7 +43,7 @@ Syntax
        complete       print bash completion command
        help           print detailed help for another command
        ipf fabric add  Add a new Fabric
-       ipf fabric config add  Set or update Fabric properties
+       ipf fabric config set  Set or update Fabric properties
        ipf fabric config delete  Delete Fabric property
        ipf fabric config show  Display Fabric configuration for the specified Fabric
        ipf fabric delete  Delete an existing Fabric
@@ -588,7 +588,7 @@ Syntax
     bwc ipf fabric add fabric=<fabric_name>
     bwc ipf fabric delete fabric=<fabric_name>
     bwc ipf fabric config show fabric=<fabric_name>
-    bwc ipf fabric config add fabric=<fabric_name> key=<key_name> value=<value>
+    bwc ipf fabric config set fabric=<fabric_name> key=<key_name> value=<value>
     bwc ipf fabric config delete fabric=<fabric_name> key=<key>
 
 Parameters

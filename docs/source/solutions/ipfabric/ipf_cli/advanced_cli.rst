@@ -48,7 +48,7 @@ The actions in each pack include a short description:
       | ref                               |    pack      | description                                                                           |
       +-----------------------------------+--------------+---------------------------------------------------------------------------------------+
       | bwc-topology.fabric_add           | bwc-topology | Add a fabric to the inventory                                                         |
-      | bwc-topology.fabric_config_add    | bwc-topology | Add/Update the specified fabric parameter for the specified fabric from the inventory |
+      | bwc-topology.fabric_config_set    | bwc-topology | Add/Update the specified fabric parameter for the specified fabric from the inventory |
       | bwc-topology.fabric_config_delete | bwc-topology | Delete the specified fabric parameter for the specified fabric from the inventory     |
       | bwc-topology.fabric_delete        | bwc-topology | Delete a fabric from the inventory                                                    |
       | bwc-topology.fabric_list          | bwc-topology | List all the fabrics in the inventory or the specified fabric details                 |
@@ -306,7 +306,7 @@ Create User Defined Fabric
 .. code-block:: shell
    :emphasize-lines: 1,21,41,61,81
    
-   $ st2 run bwc-topology.fabric_config_add fabric=new_fabric key=p2p_link_range value="unnumbered"
+   $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=p2p_link_range value="unnumbered"
      .
       id: 57b23c4d1897122c79575c33
       status: succeeded
@@ -326,7 +326,7 @@ Create User Defined Fabric
       
           '
 
-   $ st2 run bwc-topology.fabric_config_add fabric=new_fabric key=leaf_asn_block value=6500-6600
+   $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=leaf_asn_block value=6500-6600
      .
       id: 57b23cc61897122c79575c36
       status: succeeded
@@ -346,7 +346,7 @@ Create User Defined Fabric
       
           '
 
-   $ st2 run bwc-topology.fabric_config_add fabric=new_fabric key=spine_asn_block value=6000-6400
+   $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=spine_asn_block value=6000-6400
      ..
      id: 57b23dc61897122c79575c39
      status: succeeded
@@ -366,7 +366,7 @@ Create User Defined Fabric
      
          '
 
-   $ st2 run bwc-topology.fabric_config_add fabric=new_fabric key=loopback_ip_range value=172.32.254.0/24
+   $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=loopback_ip_range value=172.32.254.0/24
      .
       id: 57b23e751897122c79575c3c
       status: succeeded
@@ -386,7 +386,7 @@ Create User Defined Fabric
       
           '
 
-   $ st2 run bwc-topology.fabric_config_add fabric=new_fabric key=loopback_port_number value=1
+   $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=loopback_port_number value=1
      .
       id: 57b23ec81897122c79575c3f
       status: succeeded
@@ -416,7 +416,7 @@ Create User Defined Fabric
 .. code-block:: shell
     :emphasize-lines: 1,21,41,61,81,101,121
 
-    $ st2 run bwc-topology.fabric_config_add fabric=new_fabric key=anycast_mac value=ccff.aadd.eeff
+    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=anycast_mac value=ccff.aadd.eeff
       .
       id: 57b242451897122c79575c45
       status: succeeded
@@ -436,7 +436,7 @@ Create User Defined Fabric
       
           '
     
-    $ st2 run bwc-topology.fabric_config_add fabric=new_fabric key=max_paths value=8
+    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=max_paths value=8
       .
       id: 57b2426b1897122c79575c48
       status: succeeded
@@ -456,7 +456,7 @@ Create User Defined Fabric
       
           '
     
-    $ st2 run bwc-topology.fabric_config_add fabric=new_fabric key=bfd_multiplier value=5
+    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=bfd_multiplier value=5
       .
       id: 57b242951897122c79575c4b
       status: succeeded
@@ -476,7 +476,7 @@ Create User Defined Fabric
       
           '
     
-    $ st2 run bwc-topology.fabric_config_add fabric=new_fabric key=bfd_rx value=400
+    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=bfd_rx value=400
       .
       id: 57b243151897122c79575c4e
       status: succeeded
@@ -496,7 +496,7 @@ Create User Defined Fabric
       
           '
     
-    $ st2 run bwc-topology.fabric_config_add fabric=new_fabric key=bfd_tx value=400
+    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=bfd_tx value=400
       .
       id: 57b243171897122c79575c51
       status: succeeded
@@ -516,7 +516,7 @@ Create User Defined Fabric
       
           '
     
-    $ st2 run bwc-topology.fabric_config_add fabric=new_fabric key=bgp_multihop value=8
+    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=bgp_multihop value=8
       .
       id: 57b2431a1897122c79575c54
       status: succeeded
@@ -536,7 +536,7 @@ Create User Defined Fabric
       
           '
     
-    $ st2 run bwc-topology.fabric_config_add fabric=new_fabric key=evpn_enabled value=no
+    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=evpn_enabled value=no
       .
       id: 57b2431e1897122c79575c57
       status: succeeded
