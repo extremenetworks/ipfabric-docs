@@ -9,10 +9,6 @@ evaluation or purchasing.
     If you are using RHEL/CentOS 6, run ``sudo yum update curl nss``.
     For other OSes, it is recommended to update ``curl`` before installation.
 
-.. note::
-    If you are using RHEL/CentOS 6, run ``sudo yum update curl nss``.
-    For other OSes, it is recommended to update ``curl`` before installation.
-
 .. code-block:: bash
 
   curl -SsL -O https://brocade.com/bwc/install/install.sh && chmod +x install.sh
