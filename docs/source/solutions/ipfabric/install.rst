@@ -5,9 +5,9 @@ To quickly install |bwc| with |ipf|, obtain a license key from `Brocade.com/bwc 
 run the commands below, replacing ``${BWC_LICENSE_KEY}`` with the key you received when registering for 
 evaluation or purchasing.
 
-.. note::
-    If you are using RHEL/CentOS 6, run ``sudo yum update curl nss``.
-    For other OSes, it is recommended to update ``curl`` before installation.
+.. warning::
+    Make sure you are running the latest version of ``curl``. If you are using RHEL/CentOS, run ``sudo yum update curl nss``.
+    For Ubuntu systems, run ``sudo apt-get install curl``. The commands below may fail if you do not update ``curl`` first.
 
 .. code-block:: bash
 
