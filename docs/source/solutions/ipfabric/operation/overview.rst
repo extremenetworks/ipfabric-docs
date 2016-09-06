@@ -18,7 +18,7 @@ with minimal effort.
 The |ipf| supports easy integration with Zero-Touch Provisioning (ZTP). It can also be used 
 without ZTP, but initial switch setup and registration will be a manual process.
 
-The default configuration has a set of pre-defined parameters used to create the fabric, such 
+The default configuration has a set of predefined parameters used to create the fabric, such 
 as ASN range, IP address ranges, etc. To see these parameters, and change them, refer to the
 :ref:`IP Fabric parameters<ip_fabric_parameters>` documentation.
 
@@ -28,10 +28,9 @@ as ASN range, IP address ranges, etc. To see these parameters, and change them, 
     **Components of Brocade Flow Composer**
 
 .. note::
-    The VCS ID for spine and leaves should be different in both the ZTP-enabled
-    configuration and non-ZTP enabled configuration. If the VCS IDs are same, the switch will
-    automatically form an Ethernet fabric. For example, VCS ID for spines can be 1 and VCS ID for
-    leaves can be 2.
+    The VCS ID for spine and leaves should be different in both the ZTP-enabled configuration and
+    non-ZTP enabled configuration. If the VCS IDs are same, the switches will automatically form an
+    Ethernet fabric. For example, the VCS ID for spines can be 1 and for leaves can be 2.
 
 Configuring an IP Fabric with ZTP enabled
 -----------------------------------------
@@ -141,12 +140,17 @@ If the switch has ZTP enabled, complete the following steps:
 Configuring an IP Fabric without ZTP enabled
 --------------------------------------------
 
-If the Brocade VDX switch does not have ZTP enabled or if you want to configure IP Fabrics
-manually, complete the following steps. Before using |ipf| to configure an IP Fabric without
-ZTP enabled, confirm the following prerequisites:
+If the Brocade VDX switch does not have ZTP enabled or if you want to configure an IP Fabric
+manually, complete the following steps:
 
- * Switches are physically connected in a leaf-spine topology.
- * Each switch has a management IP address assigned.
+.. note::
+    To use the |ipf| to configure an IP Fabric without ZTP enabled, your environment must meet
+    these prerequisites: 
+
+     * Switches are physically connected in a leaf-spine topology.
+     * Each switch has a management IP address and gateway assigned.
+     * All switches are reachable via SSH from the |st2| server.
+     * All switches have a working username and password. 
 
 .. warning::
     The first switch that is added to the server must always be a **spine**. If it is not,
@@ -159,9 +163,9 @@ Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
    register`` command:
 
    ``$ bwc ipf inventory register host=<switch IP address> fabric=<fabric_name> user=<user_name> passwd=<password>``
-   
-   For example, registering switch with IP: 10.24.39.224.The default username is *admin*
-   and default password is *password* for all the VDX switches.
+ 
+  For example, to register the switch with IP 10.24.39.224 (NB The default username is *admin* 
+  and default password is *password* for all VDX switches):
 
 .. code:: shell
 
@@ -393,6 +397,7 @@ run ``bwc ipf inventory delete host=<ip_address>``
        +--------------+---------+------------+----------+---------+-------+-----+---------+
 
 .. note::
-    When adding a new spine or leaf to an existing fabric, ensure the new switch does 
-    not have any existing configuration. This will ensure the workflow runs smoothly.
+    When adding a new spine or leaf to an existing fabric, ensure the new switch does
+    not have any existing BGP or interface configuration. This will ensure the workflow
+    runs smoothly.
 
