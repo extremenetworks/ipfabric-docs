@@ -3,7 +3,8 @@ Installation
 
 To quickly install |bwc| with |ipf|, obtain a license key from `Brocade.com/bwc <https://www.brocade.com/bwc>`_, and
 run the commands below, replacing ``${BWC_LICENSE_KEY}`` with the key you received when registering for 
-evaluation or purchasing.
+evaluation or purchasing. These commands will install |bwc|, |ipf|, and configure all components to work
+together on a single host:
 
 .. warning::
     Make sure you are running the latest version of ``curl``. If you are using RHEL/CentOS, run ``sudo yum update curl nss``.
@@ -13,8 +14,6 @@ evaluation or purchasing.
 
   curl -SsL -O https://brocade.com/bwc/install/install.sh && chmod +x install.sh
   ./install.sh --user=st2admin --password=Ch@ngeMe --suite=bwc-ipfabric-suite --license=${BWC_LICENSE_KEY}
-
-This will install |bwc|, |ipf|, and configure all components to work together on a single host.
 
 If you already have |st2| installed, and need to add |ipf| on top of an existing |st2| installation,
 run the following commands, replacing ``${BWC_LICENSE_KEY}`` with the key you received when 

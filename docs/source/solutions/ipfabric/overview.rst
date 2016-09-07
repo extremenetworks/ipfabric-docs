@@ -63,6 +63,15 @@ The eBGP-based workflow supports both IP numbered & unnumbered configurations.
 * Unnumbered: A loopback interface is created and assigned an IP address. These loopback IP addresses
   are used for BGP peering
 
+Supported Devices
+~~~~~~~~~~~~~~~~~
+
+The |ipf| supports the following devices:
+
+* Brocade VDX 6740 running Network OS 7.0.1 and later
+* Brocade VDX 6940 running Network OS 7.0.1 and later
+* Brocade VDX 8770 running Network OS 7.0.1 and later
+
 What's Next?
 -------------------------------
 * Install and run |bwc| and |ipf| - follow the :doc:`install` guide.
