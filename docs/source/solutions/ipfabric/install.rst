@@ -153,10 +153,11 @@ to try out our `VDX <https://github.com/StackStorm/st2contrib/tree/master/packs/
 
 First make sure you have the prerequisite libraries installed. On Ubuntu/Debian: ::
 
-      sudo apt-get install libxml2-dev libxslt1-dev
+      sudo apt-get install build-essential libxml2-dev libxslt1-dev
 
 On RHEL/CentOS: ::
 
+      sudo yum groupinstall "Development Tools"
       sudo yum install libxml2-dev libxslt1-dev
 
 Then install the pack: ::
