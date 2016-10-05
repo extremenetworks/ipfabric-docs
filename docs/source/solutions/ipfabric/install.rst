@@ -7,7 +7,7 @@ evaluation or purchasing.
 
 .. warning::
     Make sure you are running the latest version of ``curl``. If you are using RHEL/CentOS, run ``sudo yum update curl nss``.
-    For Ubuntu systems, run ``sudo apt-get install curl``. The commands below may fail if you do not update ``curl`` first.
+    For Ubuntu systems, run ``sudo apt-get install curl ca-certificates``. The commands below may fail if you do not update ``curl`` first.
 
 .. code-block:: bash
 
