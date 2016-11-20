@@ -7,28 +7,28 @@
 
 master_doc = 'index'
 
-project = u'ipfabric-docs'
+project = u'bwc-docs'
 copyright = u'2016, Brocade Communications Inc'
 author = u'Brocade Communications Inc'
 
 base_url = u'http://bwc-docs.brocade.com/'
-htmlhelp_basename = 'ipfabric-doc'
+htmlhelp_basename = 'bwc-doc'
 
 man_pages = [
-    ('index', 'ipfabric-docs', u'IPFabric Documentation',
+    ('index', 'bwc-docs', u'BWC Documentation',
      [u'Brocade'], 1)
 ]
 latex_documents = [
-    (master_doc, 'ipfabric-docs.tex', u'ipfabric-docs Documentation',
+    (master_doc, 'bwc-docs.tex', u'bwc-docs Documentation',
      u'Brocade Communications Inc', 'manual'),
 ]
 texinfo_documents = [
-    (master_doc, 'ipfabric-docs', u'IPFabric Documentation',
-     u'Brocade', 'ipfabric-docs', 'One line description of project.',
+    (master_doc, 'bwc-docs', u'BWC Documentation',
+     u'Brocade', 'bwc-docs', 'One line description of project.',
      'Miscellaneous'),
 ]
 
-# TODO(dzimine): find a way for links to work for both ipfabric and st2docs.
+# TODO(dzimine): find a way for links to work for both bwc and st2docs.
 # For now, optimize for where most docs written.
 github_repo = 'StackStorm/st2docs'
 github_version = 'master'

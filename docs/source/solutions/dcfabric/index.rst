@@ -1,4 +1,4 @@
-|ipf|
+DC Fabrics
 ==========================
 
 .. rubric:: Contents:
@@ -10,6 +10,4 @@
     Installation <install.rst>
     Operation <operation/index>
     CLI <ipf_cli/index.rst>
-    Zero Touch Provisioning Reference <ztp/index>
-    Troubleshooting <troubleshooting/index>
-
+    ZTP Reference <ztp/index>

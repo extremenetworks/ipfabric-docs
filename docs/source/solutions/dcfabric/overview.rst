@@ -1,23 +1,12 @@
 |ipf|
 ==========================
 
+.. warning::
 
-Brocade Workflow Composer Overview
-----------------------------------
-
-|bwc| is a network automation platform that automates the entire network life
-cycle and integrates with cross-domain workflows to improve business agility. Based on the
-StackStorm Open Source Project, Workflow Composer provides DevOps-inspired network automation
-using open source technologies to integrate with cross-domain systems for end-to-end workflow automation.
-
-|bwc| enables organizations to:
-
-* Automate the entire network lifecycle including: provisioning, validation, troubleshooting and remediation
-* Eliminate cross-function workflow delays through event-driven cross-domain automation
-* Embrace automation at your own pace with turnkey workflows and nearly 2000 pre-built points of integration;
-  extend and customize to meet unique requirements with an architecture that is open at all layers
-* Access broad community of like-minded peers to share ideas, collaborate, and support
-* Leverage well-known tools and methods to ensure streamlined cross-domain integration
+    All Automation Suites are currently in "Technology Preview" phase. We are releasing them
+    to gain additional feedback, but do not recommend running them in production. We encourage
+    people to try them out in non-production scenarios. They have had basic testing, but are
+    not fully supported by Brocade TAC.
 
 Brocade IP Fabrics
 ------------------
@@ -28,7 +17,7 @@ means of BGP and/or OSPF) to provide a flexible and scalable framework. An IP Fa
 Layer 3/Layer 2 information (such as MAC, IP routes distributed by BGP—including eBGP and iBGP
 as well as OSPF) to exchange Layer 3 routing information.
 
-.. figure:: ../../_static/images/solutions/ipfabric/3_clos_topology.jpg
+.. figure:: ../../_static/images/solutions/dcfabric/3_clos_topology.jpg
       :align: center
 
       **3-Stage Folded Clos Topology**
@@ -68,9 +57,10 @@ Supported Devices
 
 The |ipf| supports the following devices:
 
-* Brocade VDX 6740 running Network OS 7.0.1 and later
-* Brocade VDX 6940 running Network OS 7.0.1 and later
-* Brocade VDX 8770 running Network OS 7.0.1 and later
+* Brocade VDX 6740 running Network OS 7.0.1a and later
+* Brocade VDX 6940 running Network OS 7.0.1a and later
+* Brocade VDX 8770 running Network OS 7.0.1a and later
+* Brocade SLX 9850 running SLX-OS 16r.1.01 and later
 
 What's Next?
 -------------------------------
