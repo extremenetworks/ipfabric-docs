@@ -27,7 +27,7 @@ Actions in this suite include:
 * Syslog configuration
 * NTP configuration and validation
 
-For more information about each action, read the :doc:`operation` guide.
+For more information about each action, read the :doc:`workflows` guide.
 
 Supported Devices
 -----------------
@@ -42,4 +42,4 @@ The |ipf| supports the following devices:
 .. rubric:: What's Next?
 
 * Install and run |bwc| and Network Essentials - follow the :doc:`install` guide.
-* Learn more about the available actions - read the :doc:`operation` guide.
+* Learn more about the available actions - read the :doc:`workflows` guide.
