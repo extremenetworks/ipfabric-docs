@@ -8,4 +8,4 @@ Network Essentials
 
     Overview <overview>
     Installation <install>
-    Operation <operation>
+    Workflows <workflows>
