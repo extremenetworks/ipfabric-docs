@@ -1,16 +1,22 @@
 Workflows
 =========
 
-Introduction
-------------
-
 This document provides an overview of how to use the Network Essentials workflows and actions
 with Brocade VDX and SLX switches. These actions can be used as independent actions,
 or as part of a more complex workflow. :doc:`Actions</actions>` can be manually triggered,
 or they can be tied to :doc:`sensors </sensors>` using rules.
 
+.. contents::
+   :local:
+   :depth: 1
+
 Workflows
 ---------
+
+
+.. contents::
+   :local:
+   :depth: 1
 
 .. note::
 
@@ -19,10 +25,10 @@ Workflows
 
 
 configure_tenant
-----------------
+~~~~~~~~~~~~~~~~
 
 Description
-~~~~~~~~~~~
+```````````
 
 .. note::
 
@@ -32,7 +38,7 @@ This workflow will configure a new L3 Tenant. This includes VRF, VLAN, IP and VR
     
 
 Requirements
-~~~~~~~~~~~~
+````````````
 
 .. note::
 
@@ -44,7 +50,7 @@ This workflow is designed for VDX switches operating in either VCS Fabric or IP 
 designed for SLX switches. This fabric must already be registered with the |bwc| inventory service.
 
 Parameters
-~~~~~~~~~~
+``````````
 
 .. note::
 
@@ -67,7 +73,7 @@ Parameters
        VRRPe gateway IP to use for customer.
 
 Output
-~~~~~~
+``````
 
 .. note::
 
@@ -83,7 +89,7 @@ Output
        RD auto-assigned to tenant
 
 Error Messages
-~~~~~~~~~~~~~~
+``````````````
 
 .. note::
 
@@ -104,15 +110,19 @@ Error Messages
 Actions
 -------
 
+.. contents::
+   :local:
+   :depth: 1
+
 .. note::
 
     This section covers Actions in this Suite.
-
+ 
 configure_ntp
--------------
+~~~~~~~~~~~~~
 
 Description
-~~~~~~~~~~~
+```````````
 
 .. note::
 
@@ -121,7 +131,7 @@ Description
 ``configure_ntp`` sets the NTP servers that the device should poll.
 
 Requirements
-~~~~~~~~~~~~
+````````````
 
 .. note::
 
@@ -132,7 +142,7 @@ Requirements
 No specific requirements. Unless otherwise specified, datastore credentials will be used.
 
 Parameters
-~~~~~~~~~~
+``````````
 
 .. note::
 
@@ -157,7 +167,7 @@ Parameters
 
 
 Output
-~~~~~~
+``````
 
 .. note::
 
@@ -170,7 +180,7 @@ Output
        Boolean - True/False, if workflow succeeded
 
 Error Messages
-~~~~~~~~~~~~~~
+``````````````
 
 .. note::
 
