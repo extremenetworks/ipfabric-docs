@@ -8,7 +8,7 @@ or they can be tied to :doc:`sensors </sensors>` using rules.
 
 .. contents::
    :local:
-   :depth: 1
+   :depth: 2
 
 Workflows
 ---------
