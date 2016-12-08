@@ -55,7 +55,7 @@ Parameters
    :emphasize-lines: 1,4,7,10,13,16
 
    customer_name
-       Customer name. This will be used in VRF & VLAN description.
+       Customer name. This will be used in VRF & VLAN description. Must be text string, 0-255 characters.
 
    fabric
        Name of the fabric. This must already be registered with the inventory service.
@@ -65,6 +65,39 @@ Parameters
 
    gateway_ip
        VRRPe gateway IP to use for customer.
+
+Output
+~~~~~~
+
+.. note::
+
+    This section details return values
+
+.. code-block:: guess
+   :emphasize-lines: 1,4,7,10,13,16
+
+   result
+       Boolean - True/False, if workflow succeeded
+
+   rd
+       RD auto-assigned to tenant
+
+Error Messages
+~~~~~~~~~~~~~~
+
+.. note::
+
+    This section lists any known error messages
+
+.. code-block:: guess
+   :emphasize-lines: 1,4,7,10,13,16
+
+   "Invalid VLAN ID"
+       Returned if VLAN(s) provided are invalid, e.g. > 4094.
+
+   "Unknown Fabric"
+       Returned if fabric is not registered. 
+
 
 -----------------
 
@@ -121,3 +154,30 @@ Parameters
        Boolean value (True/False). Set to True to ensure that device **only** uses the provided
        NTP servers, and removes any existing NTP servers. Default is False - the existing NTP
        NTP configuration will not be changed
+
+
+Output
+~~~~~~
+
+.. note::
+
+    This section details return values
+
+.. code-block:: guess
+   :emphasize-lines: 1,4,7,10,13,16
+
+   result
+       Boolean - True/False, if workflow succeeded
+
+Error Messages
+~~~~~~~~~~~~~~
+
+.. note::
+
+    This section lists any known error messages
+
+.. code-block:: guess
+   :emphasize-lines: 1,4,7,10,13,16
+
+   "Invalid NTP Server"
+       Returned if one or more NTP servers are invalid.
