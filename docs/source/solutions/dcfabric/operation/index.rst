@@ -1,10 +1,10 @@
-How to use the |ipf|
+How to use the DC Fabric Automation Suite
 =========================================
 
-This section explains how to operate the |ipf| to help you automate IP Fabric creation and scaling
-in your data center.
+This section explains how to use the DC Fabric Automation Suite to help you 
+manage Brocade VCS and IP Fabrics in your data center.
 
-.. rubric:: IP Fabric Automation Suite for IP Fabric automation
+.. rubric:: DC Fabric Automation Suite
 
 .. toctree::
     :maxdepth: 1

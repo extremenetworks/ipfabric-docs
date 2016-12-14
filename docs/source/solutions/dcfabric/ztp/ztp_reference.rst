@@ -376,7 +376,7 @@ The following is a sample DAD configuration file for a two-node VCS cluster:
 Registration script
 -------------------
 
-The registration script is shipped with the |ipf| packages. If you installed |bwc| on a server,
+The registration script is shipped with the DC Fabric Automation Suite. If you installed |bwc| on a server,
 the registration script is usually available in
 ``/usr/share/doc/bwc-topology/etc/bwc-automation.py``.
 If you are using an FTP server in combination with DHCP server as described in
@@ -423,8 +423,8 @@ Use the following guidelines when running ZTP and DAD:
 .. note::
 
     When running ZTP or DAD, if you use dhcp autodeployment enable, if anything is wrong
-    in the setup or configurations, |ipf| will display the incorrect configuration. While
-    running ZTP, Brocade recommends that you run this command and see if everything is set
+    in the setup or configurations, DC Fabric Automation suite will display the incorrect configuration.
+    While running ZTP, Brocade recommends that you run this command and see if everything is set
     up correctly. If everything is correct, you will be prompted to reboot the switch. At
     this point you can enter “no” if you want to run ZTP and then use the write erase command.
     This step is helpful because the ZTP and DAD process itself is lengthy.
