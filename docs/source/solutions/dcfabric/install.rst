@@ -1,28 +1,35 @@
 Installation
 ============
 
-To quickly install |bwc| with |ipf|, obtain a license key from `Brocade.com/bwc <https://www.brocade.com/bwc>`_, and
-run the commands below, replacing ``${BWC_LICENSE_KEY}`` with the key you received when registering for 
-evaluation or purchasing. These commands will install |bwc|, Network Essentials, |ipf|, and configure all components to work
-together on a single host:
+.. note::
+    During Technology Preview phase, there is one single installation for all suites. In future
+    there will be separate installation scripts for each suite, so customers can choose which
+    suite(s) they wish to run.
+
+To quickly install |bwc| with DC Fabrics Automation Suite, obtain a license key from
+`brocade.com/bwc <https://www.brocade.com/bwc>`_, and run the commands below, replacing
+``${BWC_LICENSE_KEY}`` with the key you received when registering for evaluation or
+purchasing. These commands will install |bwc|, Network Essentials, DC Fabrics Automation Suite,
+and configure all components to work together on a single host:
 
 .. warning::
-    Make sure you are running the latest version of ``curl``. If you are using RHEL/CentOS, run ``sudo yum update curl nss``.
-    For Ubuntu systems, run ``sudo apt-get install curl ca-certificates``. The commands below may fail if you do not update ``curl`` first.
+    Make sure you are running the latest version of ``curl``. If you are using RHEL/CentOS,
+    run ``sudo yum update curl nss``. For Ubuntu systems, run ``sudo apt-get install curl ca-certificates``.
+    The commands below may fail if you do not update ``curl`` first.
 
 .. code-block:: bash
 
   curl -SsL -O https://brocade.com/bwc/install/install.sh && chmod +x install.sh
-  ./install.sh --user=st2admin --password=Ch@ngeMe --suite=bwc-ipfabric-suite --license=${BWC_LICENSE_KEY}
+  ./install.sh --user=st2admin --password=Ch@ngeMe --suite=bwc-dcfabric-suite --license=${BWC_LICENSE_KEY}
 
-If you already have |st2| installed, and need to add |ipf| on top of an existing |st2| installation,
+If you already have |bwc| installed, and need to add DC Fabrics on top of an existing |bwc| installation,
 run the following commands, replacing ``${BWC_LICENSE_KEY}`` with the key you received when 
-registering for evaluation or purchasing.
+registering for evaluation or purchasing:
 
 .. code-block:: bash
 
   curl -SsL -O https://brocade.com/bwc/install/install-suite.sh && chmod +x install-suite.sh
-  ./install-suite.sh --user=st2admin --password=Ch@ngeMe --suite=bwc-ipfabric-suite --license=${BWC_LICENSE_KEY}
+  ./install-suite.sh --user=st2admin --password=Ch@ngeMe --suite=bwc-dcfabric-suite --license=${BWC_LICENSE_KEY}
 
 If you have a more complex environment, or you just want to see exactly what the scripts are doing, read on.
 The rest of this document will explain how to how to manually install and configure the individual components.
@@ -30,18 +37,17 @@ The rest of this document will explain how to how to manually install and config
 System requirements
 -------------------
 
-The system requirements for |bwc| with |ipf| are the same as the core platform requirements.
+The system requirements for |bwc| with DC Fabrics Automation Suite are the same as the core platform requirements.
 See the :doc:`system requirements documentation</install/system_requirements>` for more details.
 
 Components
 ----------
 
-The |ipf| installs on top of |bwc|. It adds an inventory & topology service, and DC Fabric automation
-packs containing actions and workflows to simplify Brocade Data Center Fabric management. It also includes
-the ``bwc ipf`` CLI, and Zero Touch Provisioning scripts for integration with :doc:`ZTP <ztp/index>`.
-The Internet Exchange suite uses components of the :doc:`../essentials/overview` suite. If the Network
-Essentials suite is not currently installed it will be automatically installed during DC Fabric
-suite installation.
+The DC Fabric Automation Suite installs on top of |bwc|. It adds an inventory & topology service, and
+DC Fabric automation packs containing actions and workflows to simplify Brocade Data Center Fabric management.
+It also includes the ``bwc dcf`` CLI, and Zero Touch Provisioning scripts for integration with :doc:`ZTP <ztp/index>`.
+This suite uses components of the :doc:`../essentials/overview` suite. If the Network Essentials suite is not
+currently installed it will be automatically installed during DC Fabric suite installation.
 
 1. Install |bwc|
 ----------------
@@ -56,12 +62,12 @@ purchasing. This last step will also set up the |bwc| repository on your box.
 * :doc:`/install/rhel6`
 
 
-2. Install |ipf|
-----------------
+2. Install DC Fabric Suite
+--------------------------
 
 Make sure that |bwc| repository is set up on the box.
 
-Install the |ipf|:
+Install the DC Fabric suite:
 
 * On Ubuntu/Debian: ::
 
@@ -91,7 +97,8 @@ Install the |ipf|:
     st2_api_url = 'https://localhost:443/api'
     st2_api_key = '<ST2_API_KEY_GENERATED_ABOVE>'
 
-* Run DB setup script (the script will pick DB name, username and password from the ``bwc-topology-service.conf`` file): ::
+* Run DB setup script (the script will pick DB name, username and
+  password from the ``bwc-topology-service.conf`` file): ::
 
     sudo /opt/brocade/bwc-topology/bin/bwc_topology_db_setup.sh
 
@@ -116,16 +123,16 @@ Install the |ipf|:
 4. Smoke-check the Installation
 -------------------------------
 
-Run some |ipf| CLI commands to see that everything is installed.
+Run some ``bwc dcf`` CLI commands to see that everything is installed.
 
 .. code-block:: bash
 
   bwc --version
   bwc --help
-  bwc ipf fabric list
+  bwc dcf fabric list
 
 .. rubric:: What's Next?
 
 * New to |BWC|? Go to fundamentals - start with :doc:`/start`.
-* Understand the |ipf| operations - go over :doc:`./operation/overview`.
-* Understand the |ipf| CLI - read the :doc:`./ipf_cli/basic_cli`.
+* Understand the DC Fabric operations - go over :doc:`./operation/overview`.
+* Understand the DC Fabric CLI - read the :doc:`./dcf_cli/basic_cli`.

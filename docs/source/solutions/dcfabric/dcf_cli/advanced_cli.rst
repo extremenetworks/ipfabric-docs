@@ -6,8 +6,8 @@ Advanced CLI (using st2)
     a shell command prompt. Do not enter another dollar sign. All commands should be entered 
     at the shell prompt.
 
-This section is about accessing |ipf| with original |bwc| CLI instead of |ipf|-specific CLI.
-You will need to familiarise yourself with |bwc| components like actions, workflows, packs, 
+This section is about accessing DC Fabric suite with the original |st2| CLI instead of suite-specific CLI.
+You will need to familiarise yourself with |st2| components like actions, workflows, packs, 
 execution list etc.
 
 See the |bwc| :doc:`CLI reference documentation </reference/cli>` for more details.
@@ -15,32 +15,32 @@ See the |bwc| :doc:`CLI reference documentation </reference/cli>` for more detai
 
 ----------
 
-|bwc| consists of two packs for |ipf| services and workflows: **bwc-topology** and **bwc-ipfabric** pack. 
-These packs are automatically installed with the |ipf|.
+|bwc| consists of two packs for DC Fabric services and workflows: **bwc_topology** and **bwc_dcfabric** pack. 
+These packs are automatically installed with the DC Fabric suite.
 
-* **bwc-topology**: Topology-related actions such as show topology, configure BGP, etc. Includes lightweight topology 
+* **bwc_topology**: Topology-related actions such as show topology, configure BGP, etc. Includes lightweight topology 
   service providing database of network topology (device details, interfaces, LLDP neighbors, etc.).  
-* **bwc-ipfabric**: Actions for manipulating inventory, and performing lower-level device configuration.
+* **bwc_dcfabric**: Actions for manipulating inventory, and performing lower-level device configuration.
 
 The actions in each pack include a short description:
 
 .. code-block:: guess
     :emphasize-lines: 1,17
 
-    $ st2 action list -p bwc-ipfabric
+    $ st2 action list -p bwc_dcfabric
       +-----------------------------------------+---------------+----------------------------------------------------+
       | ref                                     | pack          |              description                           |
       +-----------------------------------------+---------------+----------------------------------------------------+
-      | bwc-ipfabric.configure_anycast          | bwc-ipfabric  | Affect an anycast gateway change on VDX switches   |
-      | bwc-ipfabric.configure_bgp              | bwc-ipfabric  | Configure BGP on Brocade VDX Switches              |
-      | bwc-ipfabric.configure_bgp_neighbor     | bwc-ipfabric  | Configure BGP neighbor on Brocade VDX Switches     |
-      | bwc-ipfabric.configure_bgp_redistribute | bwc-ipfabric  | Configure BGP route redistribution on VDX switches |
-      | bwc-ipfabric.configure_fabric           | bwc-ipfabric  | Configure IP fabric                                |
-      | bwc-ipfabric.configure_ip               | bwc-ipfabric  | Configure IPs on Brocade VDX Switches              |
-      | bwc-ipfabric.configure_switch           | bwc-ipfabric  | Configure switch                                   |
-      | bwc-ipfabric.configure_switch_bgp       | bwc-ipfabric  | Configure bgp on switch                            |
-      | bwc-ipfabric.configure_switch_ifaces    | bwc-ipfabric  | Configure switch interfaces                        |
-      | bwc-ipfabric.inventory                  | bwc-ipfabric  | Query inventory service to constuct the inventory. |
+      | bwc_dcfabric.configure_anycast          | bwc_dcfabric  | Affect an anycast gateway change on VDX switches   |
+      | bwc_dcfabric.configure_bgp              | bwc_dcfabric  | Configure BGP on Brocade VDX Switches              |
+      | bwc_dcfabric.configure_bgp_neighbor     | bwc_dcfabric  | Configure BGP neighbor on Brocade VDX Switches     |
+      | bwc_dcfabric.configure_bgp_redistribute | bwc_dcfabric  | Configure BGP route redistribution on VDX switches |
+      | bwc_dcfabric.configure_fabric           | bwc_dcfabric  | Configure IP fabric                                |
+      | bwc_dcfabric.configure_ip               | bwc_dcfabric  | Configure IPs on Brocade VDX Switches              |
+      | bwc_dcfabric.configure_switch           | bwc_dcfabric  | Configure switch                                   |
+      | bwc_dcfabric.configure_switch_bgp       | bwc_dcfabric  | Configure bgp on switch                            |
+      | bwc_dcfabric.configure_switch_ifaces    | bwc_dcfabric  | Configure switch interfaces                        |
+      | bwc_dcfabric.inventory                  | bwc_dcfabric  | Query inventory service to constuct the inventory. |
       +-----------------------------------------+---------------+----------------------------------------------------+ 
     
     $ st2 action list -p bwc-topology
@@ -176,7 +176,7 @@ be accessed using ``st2 action get <pack-name>.<action-name>`` or
               Type: integer
               Default: 600
     
-Next, we will go through the CLI required for |ipf| workflow. Exploring each action
+Next, we will go through the CLI required for DC Fabric workflows. Exploring each action
 in these packs is beyond the scope of this document.
 
 -----------------
@@ -228,7 +228,7 @@ This is the set of parameters such as ASN range, IP address range etc. required 
       
           '
 
-For detail on fabric parameters refer :doc:`./basic_cli` 's ``bwc ipf fabric config`` section.
+For detail on fabric parameters refer :doc:`./basic_cli` 's ``bwc dcf fabric config`` section.
 
 ----------
 
@@ -267,7 +267,7 @@ On a side note, the values in the output can also be accessed using ``--attr`` a
 Create User Defined Fabric
 --------------------------
 
-|ipf| supports user-defined fabric with custom parameters.
+DC Fabric suite supports user-defined fabric with custom parameters.
 
 .. note::
     **default** fabric has *p2p_link_range* with a range of IP address which results in
@@ -783,10 +783,10 @@ workflow:
 
 .. code:: shell
 
-   $ st2 run bwc-ipfabric.configure_fabric fabric=default
+   $ st2 run bwc_dcfabric.configure_fabric fabric=default
      ............................................................
      id: 57b4bf0518971232c98e6f25
-     action.ref: bwc-ipfabric.configure_fabric
+     action.ref: bwc_dcfabric.configure_fabric
      parameters:
        fabric: default
      status: succeeded
@@ -795,46 +795,46 @@ workflow:
      +------------------------------+-------------------------+------------------------------------+-----------------------------------------+-------------------------------+
      | id                           | status                  | task                               | action                                  | start_timestamp               |
      +------------------------------+-------------------------+------------------------------------+-----------------------------------------+-------------------------------+
-     |   57b4bf0618971232c98e6f28   | succeeded (7s elapsed)  | get_inventory                      | bwc-ipfabric.inventory                  | Wed, 17 Aug 2016 19:46:14 UTC |
-     | + 57b4bf0e18971232c98e6f2a   | succeeded (51s elapsed) | configure_switches                 | bwc-ipfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
-     |  + 57b4bf1018971232c98e6f38  | succeeded (13s elapsed) | configure_interfaces               | bwc-ipfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
-     |     57b4bf1218971232c98e6f3e | succeeded (5s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
-     |     57b4bf1818971232c98e6f47 | succeeded (5s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:31 UTC |
-     |  + 57b4bf1f18971232c98e6f4e  | succeeded (24s elapsed) | configure_bgp                      | bwc-ipfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:39 UTC |
-     |     57b4bf2218971232c98e6f54 | succeeded (6s elapsed)  | configure_bgp                      | bwc-ipfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:42 UTC |
-     |     57b4bf2918971232c98e6f5c | succeeded (5s elapsed)  | configure_bgp_redistributed_routes | bwc-ipfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:49 UTC |
-     |     57b4bf2f18971232c98e6f66 | succeeded (6s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:55 UTC |
-     |    57b4bf3918971232c98e6f72  | succeeded (5s elapsed)  | configure_anycast_gateway          | bwc-ipfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:05 UTC |
-     | + 57b4bf0e18971232c98e6f2c   | succeeded (61s elapsed) | configure_switches                 | bwc-ipfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
-     |  + 57b4bf1018971232c98e6f32  | succeeded (24s elapsed) | configure_interfaces               | bwc-ipfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
-     |     57b4bf1218971232c98e6f3c | succeeded (5s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
-     |     57b4bf1818971232c98e6f48 | succeeded (4s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:32 UTC |
-     |     57b4bf1c18971232c98e6f4a | succeeded (4s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:36 UTC |
-     |     57b4bf2118971232c98e6f52 | succeeded (3s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:41 UTC |
-     |  + 57b4bf2a18971232c98e6f5e  | succeeded (29s elapsed) | configure_bgp                      | bwc-ipfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:49 UTC |
-     |     57b4bf2b18971232c98e6f60 | succeeded (7s elapsed)  | configure_bgp                      | bwc-ipfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:51 UTC |
-     |     57b4bf3318971232c98e6f6a | succeeded (4s elapsed)  | configure_bgp_redistributed_routes | bwc-ipfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:59 UTC |
-     |     57b4bf3818971232c98e6f70 | succeeded (10s elapsed) | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:03 UTC |
-     |     57b4bf3818971232c98e6f6d | succeeded (9s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:03 UTC |
-     |     57b4bf3818971232c98e6f6f | succeeded (8s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:04 UTC |
-     | + 57b4bf0e18971232c98e6f2e   | succeeded (51s elapsed) | configure_switches                 | bwc-ipfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
-     |  + 57b4bf1018971232c98e6f34  | succeeded (13s elapsed) | configure_interfaces               | bwc-ipfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
-     |     57b4bf1118971232c98e6f3a | succeeded (4s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:25 UTC |
-     |     57b4bf1518971232c98e6f42 | succeeded (4s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:29 UTC |
-     |  + 57b4bf1f18971232c98e6f4c  | succeeded (26s elapsed) | configure_bgp                      | bwc-ipfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:38 UTC |
-     |     57b4bf2018971232c98e6f50 | succeeded (5s elapsed)  | configure_bgp                      | bwc-ipfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:40 UTC |
-     |     57b4bf2618971232c98e6f5a | succeeded (4s elapsed)  | configure_bgp_redistributed_routes | bwc-ipfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:46 UTC |
-     |     57b4bf2b18971232c98e6f62 | succeeded (6s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:51 UTC |
-     |    57b4bf3918971232c98e6f74  | succeeded (6s elapsed)  | configure_anycast_gateway          | bwc-ipfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:05 UTC |
-     | + 57b4bf0e18971232c98e6f30   | succeeded (56s elapsed) | configure_switches                 | bwc-ipfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
-     |  + 57b4bf1018971232c98e6f36  | succeeded (19s elapsed) | configure_interfaces               | bwc-ipfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
-     |     57b4bf1218971232c98e6f40 | succeeded (5s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
-     |     57b4bf1718971232c98e6f44 | succeeded (6s elapsed)  | configure_interface                | bwc-ipfabric.configure_ip               | Wed, 17 Aug 2016 19:46:31 UTC |
-     |  + 57b4bf2418971232c98e6f56  | succeeded (24s elapsed) | configure_bgp                      | bwc-ipfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:44 UTC |
-     |     57b4bf2518971232c98e6f58 | succeeded (6s elapsed)  | configure_bgp                      | bwc-ipfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:45 UTC |
-     |     57b4bf2c18971232c98e6f64 | succeeded (5s elapsed)  | configure_bgp_redistributed_routes | bwc-ipfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:52 UTC |
-     |     57b4bf3218971232c98e6f68 | succeeded (6s elapsed)  | configure_bgp_peers                | bwc-ipfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:58 UTC |
-     |    57b4bf3e18971232c98e6f76  | succeeded (3s elapsed)  | configure_anycast_gateway          | bwc-ipfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:10 UTC |
+     |   57b4bf0618971232c98e6f28   | succeeded (7s elapsed)  | get_inventory                      | bwc_dcfabric.inventory                  | Wed, 17 Aug 2016 19:46:14 UTC |
+     | + 57b4bf0e18971232c98e6f2a   | succeeded (51s elapsed) | configure_switches                 | bwc_dcfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
+     |  + 57b4bf1018971232c98e6f38  | succeeded (13s elapsed) | configure_interfaces               | bwc_dcfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
+     |     57b4bf1218971232c98e6f3e | succeeded (5s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
+     |     57b4bf1818971232c98e6f47 | succeeded (5s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:31 UTC |
+     |  + 57b4bf1f18971232c98e6f4e  | succeeded (24s elapsed) | configure_bgp                      | bwc_dcfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:39 UTC |
+     |     57b4bf2218971232c98e6f54 | succeeded (6s elapsed)  | configure_bgp                      | bwc_dcfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:42 UTC |
+     |     57b4bf2918971232c98e6f5c | succeeded (5s elapsed)  | configure_bgp_redistributed_routes | bwc_dcfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:49 UTC |
+     |     57b4bf2f18971232c98e6f66 | succeeded (6s elapsed)  | configure_bgp_peers                | bwc_dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:55 UTC |
+     |    57b4bf3918971232c98e6f72  | succeeded (5s elapsed)  | configure_anycast_gateway          | bwc_dcfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:05 UTC |
+     | + 57b4bf0e18971232c98e6f2c   | succeeded (61s elapsed) | configure_switches                 | bwc_dcfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
+     |  + 57b4bf1018971232c98e6f32  | succeeded (24s elapsed) | configure_interfaces               | bwc_dcfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
+     |     57b4bf1218971232c98e6f3c | succeeded (5s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
+     |     57b4bf1818971232c98e6f48 | succeeded (4s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:32 UTC |
+     |     57b4bf1c18971232c98e6f4a | succeeded (4s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:36 UTC |
+     |     57b4bf2118971232c98e6f52 | succeeded (3s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:41 UTC |
+     |  + 57b4bf2a18971232c98e6f5e  | succeeded (29s elapsed) | configure_bgp                      | bwc_dcfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:49 UTC |
+     |     57b4bf2b18971232c98e6f60 | succeeded (7s elapsed)  | configure_bgp                      | bwc_dcfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:51 UTC |
+     |     57b4bf3318971232c98e6f6a | succeeded (4s elapsed)  | configure_bgp_redistributed_routes | bwc_dcfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:59 UTC |
+     |     57b4bf3818971232c98e6f70 | succeeded (10s elapsed) | configure_bgp_peers                | bwc_dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:03 UTC |
+     |     57b4bf3818971232c98e6f6d | succeeded (9s elapsed)  | configure_bgp_peers                | bwc_dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:03 UTC |
+     |     57b4bf3818971232c98e6f6f | succeeded (8s elapsed)  | configure_bgp_peers                | bwc_dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:04 UTC |
+     | + 57b4bf0e18971232c98e6f2e   | succeeded (51s elapsed) | configure_switches                 | bwc_dcfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
+     |  + 57b4bf1018971232c98e6f34  | succeeded (13s elapsed) | configure_interfaces               | bwc_dcfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
+     |     57b4bf1118971232c98e6f3a | succeeded (4s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:25 UTC |
+     |     57b4bf1518971232c98e6f42 | succeeded (4s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:29 UTC |
+     |  + 57b4bf1f18971232c98e6f4c  | succeeded (26s elapsed) | configure_bgp                      | bwc_dcfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:38 UTC |
+     |     57b4bf2018971232c98e6f50 | succeeded (5s elapsed)  | configure_bgp                      | bwc_dcfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:40 UTC |
+     |     57b4bf2618971232c98e6f5a | succeeded (4s elapsed)  | configure_bgp_redistributed_routes | bwc_dcfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:46 UTC |
+     |     57b4bf2b18971232c98e6f62 | succeeded (6s elapsed)  | configure_bgp_peers                | bwc_dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:51 UTC |
+     |    57b4bf3918971232c98e6f74  | succeeded (6s elapsed)  | configure_anycast_gateway          | bwc_dcfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:05 UTC |
+     | + 57b4bf0e18971232c98e6f30   | succeeded (56s elapsed) | configure_switches                 | bwc_dcfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
+     |  + 57b4bf1018971232c98e6f36  | succeeded (19s elapsed) | configure_interfaces               | bwc_dcfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
+     |     57b4bf1218971232c98e6f40 | succeeded (5s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
+     |     57b4bf1718971232c98e6f44 | succeeded (6s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:31 UTC |
+     |  + 57b4bf2418971232c98e6f56  | succeeded (24s elapsed) | configure_bgp                      | bwc_dcfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:44 UTC |
+     |     57b4bf2518971232c98e6f58 | succeeded (6s elapsed)  | configure_bgp                      | bwc_dcfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:45 UTC |
+     |     57b4bf2c18971232c98e6f64 | succeeded (5s elapsed)  | configure_bgp_redistributed_routes | bwc_dcfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:52 UTC |
+     |     57b4bf3218971232c98e6f68 | succeeded (6s elapsed)  | configure_bgp_peers                | bwc_dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:58 UTC |
+     |    57b4bf3e18971232c98e6f76  | succeeded (3s elapsed)  | configure_anycast_gateway          | bwc_dcfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:10 UTC |
      |   57b4bf4c18971232c98e6f78   | succeeded (56s elapsed) | show_bgp_config                    | bwc-topology.show_config_bgp            | Wed, 17 Aug 2016 19:47:24 UTC |
      +------------------------------+-------------------------+------------------------------------+-----------------------------------------+-------------------------------+
 

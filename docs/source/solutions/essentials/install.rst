@@ -1,7 +1,12 @@
 Installation
 ============
 
-To quickly install |bwc| with Network Essentials, obtain a license key from `Brocade.com/bwc <https://www.brocade.com/bwc>`_,
+.. note::
+    During Technology Preview phase, there is one single installation for all suites. In future
+    there will be separate installation scripts for each suite, so customers can choose which
+    suite(s) they wish to run. 
+
+To quickly install |bwc| with Network Essentials, obtain a license key from `brocade.com/bwc <https://www.brocade.com/bwc>`_,
 and run the commands below, replacing ``${BWC_LICENSE_KEY}`` with the key you received when registering for 
 evaluation or purchasing. These commands will install |bwc|, Network Essentials, and configure all components to work
 together on a single host:
@@ -55,7 +60,8 @@ purchasing. This last step will also set up the |bwc| repository on your box.
 2. Install Network Essentials
 -----------------------------
 
-Make sure that |bwc| repository is set up on the box.
+Make sure that the |bwc| repository is set up on the box. This should have been done in the last
+step above.
 
 Install Network Essentials:
 
@@ -81,5 +87,5 @@ You can also see the new "Essentials" pack in the Web UI.
 
 .. rubric:: What's Next?
 
-* New to |BWC|? Go to fundamentals - start with :doc:`/start`.
-* Understand the operations - go over :doc:`overview`.
+* New to |bwc|? Go to fundamentals - start with :doc:`/start`.
+* Understand Network Essentials - read :doc:`overview`.

@@ -4,18 +4,18 @@ Operation Overview
 Introduction
 ------------
 
-This document provides an overview of how to use the |ipf| to automate provisioning and 
-maintenance of a Brocade IP Fabric. The |ipf| can automatically configure interfaces, BGP 
-peerings and related settings. This ensures consistent configuration across the fabric, 
-with minimal effort.
+This document provides an overview of how to use the DC Fabric suite to automate provisioning and 
+maintenance of a Brocade IP or VCS Fabric. The DC Fabric suite can automatically configure
+interfaces, BGP peerings and related settings. This ensures consistent configuration
+across the fabric, with minimal effort.
 
 .. note::
-    This document covers the operation of the |bwc| |ipf|. For more information
+    This document covers the operation of the |bwc| DC Fabric suite. For more information
     about Brocade IP Fabrics in general, see the `Brocade Network OS IP Fabric
     Configuration Guide <http://www.brocade.com/content/html/en/configuration-guide/nos-701-ipfabrics/index.html>`_
     and the `Brocade IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ 
 
-The |ipf| supports easy integration with Zero-Touch Provisioning (ZTP). It can also be used 
+The DC Fabric suite supports easy integration with Zero-Touch Provisioning (ZTP). It can also be used 
 without ZTP, but initial switch setup and registration will be a manual process.
 
 The default configuration has a set of predefined parameters used to create the fabric, such 
@@ -35,7 +35,7 @@ as ASN range, IP address ranges, etc. To see these parameters, and change them, 
 Configuring an IP Fabric with ZTP enabled
 -----------------------------------------
 
-|ipf| can automatically provision a Brocade VDX switch and create an IP Fabric on the switch
+DC Fabric suite can automatically provision a Brocade VDX switch and create an IP Fabric on the switch
 if the switch has ZTP enabled and if no management IP address has been assigned to the switch.
 
 .. note::
@@ -49,18 +49,17 @@ if the switch has ZTP enabled and if no management IP address has been assigned 
 If the switch has ZTP enabled, complete the following steps:
 
     1.  Ensure that DHCP and FTP servers to be used in the fabric have been installed.
-    2.  Ensure that |bwc| and |ipf| have been installed.
-    3.  After the process has finished executing, enter the ``bwc ipf show config bgp`` command
-        using |ipf| CLI.
+    2.  Ensure that |bwc| and DC Fabric suite have been installed.
+    3.  After the process has finished executing, enter the ``bwc dcf show config bgp`` command
 
 .. note::
     Make sure switches have not been powered on. Connect the switches in a leaf-spine topology.
-    |ipf| assigns management IP addresses to the switches, registers the switches in its 
+    DC Fabric suite assigns management IP addresses to the switches, registers the switches in its 
     database, and creates an IP Fabric.
 
 .. code:: shell
 
-    $ bwc ipf show config bgp
+    $ bwc dcf show config bgp
       Show BGP Configuration
 
       Switch 10.24.39.225 (Leaf):
@@ -144,7 +143,7 @@ If the Brocade VDX switch does not have ZTP enabled or if you want to configure 
 manually, complete the following steps:
 
 .. note::
-    To use the |ipf| to configure an IP Fabric without ZTP enabled, your environment must meet
+    To use the DC Fabric suite to configure an IP Fabric without ZTP enabled, your environment must meet
     these prerequisites: 
 
      * Switches are physically connected in a leaf-spine topology.
@@ -154,22 +153,22 @@ manually, complete the following steps:
 
 .. warning::
     The first switch that is added to the server must always be a **spine**. If it is not,
-    delete the leaf switch from the |ipf| server and add a spine first. After the first spine
+    delete the leaf switch from the |bwc| server and add a spine first. After the first spine
     has been added, the order does not matter.
 
-Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
+Use the DC Fabric CLI to configure an IP Fabric by completing the following steps:
 
-1. Register the switches in the |bwc| database by entering the ``bwc ipf inventory
+1. Register the switches in the |bwc| database by entering the ``bwc dcf inventory
    register`` command:
 
-   ``$ bwc ipf inventory register host=<switch IP address> fabric=<fabric_name> user=<user_name> passwd=<password>``
+   ``$ bwc dcf inventory register host=<switch IP address> fabric=<fabric_name> user=<user_name> passwd=<password>``
  
   For example, to register the switch with IP 10.24.39.224 (NB The default username is *admin* 
   and default password is *password* for all VDX switches):
 
 .. code:: shell
 
-    $ bwc ipf inventory register host=10.24.39.224 fabric=default user=admin passwd=password
+    $ bwc dcf inventory register host=10.24.39.224 fabric=default user=admin passwd=password
 
       Inventory Add
       +--------------+---------+------------+----------+------+-------+-------+---------+
@@ -178,12 +177,12 @@ Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
       | 10.24.39.224 | VDX6740 |        224 | 7.1.0    | sw0  | Spine | 64512 | default |
       +--------------+---------+------------+----------+------+-------+-------+---------+
 
-2. Verify that the switches are registered by entering the ``bwc ipf inventory list fabric=<fabric_name>``
+2. Verify that the switches are registered by entering the ``bwc dcf inventory list fabric=<fabric_name>``
    command:
 
 .. code:: shell
 
-     $ bwc ipf inventory list --fabric=default
+     $ bwc dcf inventory list --fabric=default
 
       Inventory List
       +--------------+-------------+------------+----------+----------------+-------+-------+---------+
@@ -197,7 +196,7 @@ Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
 
 .. code:: shell
 
-    $ bwc ipf inventory update --fabric=default
+    $ bwc dcf inventory update --fabric=default
 
       Inventory Update
       +--------------+-------------+------------+----------+----------------+-------+-------+---------+
@@ -214,11 +213,11 @@ Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
 
 
 
-4. Execute the BGP workflow by entering the command ``bwc ipf workflow bgp`` command:
+4. Execute the BGP workflow by entering the command ``bwc dcf workflow bgp`` command:
 
 .. code:: shell
 
-     $ bwc ipf workflow bgp fabric=default
+     $ bwc dcf workflow bgp fabric=default
 
        BGP Workflow Result:
    
@@ -297,12 +296,12 @@ Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
             neighbor 10.10.10.18 next-hop-unchanged
 
 
-5. After the command executes, enter the ``bwc ipf show config bgp`` command and review
+5. After the command executes, enter the ``bwc dcf show config bgp`` command and review
    the information displayed:
 
 .. code:: shell
 
-     $ bwc ipf show config bgp --fabric=default
+     $ bwc dcf show config bgp --fabric=default
 
        Show BGP Configuration
    
@@ -382,12 +381,12 @@ Use the |ipf| CLI to configure an IP Fabric by completing the following steps:
 
 
 To add a switch to the existing fabric, register the switch to the fabric and then run ``bwc
-ipf workflow bgp fabric=<fabric_name>``. To remove a switch from the fabric
-run ``bwc ipf inventory delete host=<ip_address>``
+dcf workflow bgp fabric=<fabric_name>``. To remove a switch from the fabric
+run ``bwc dcf inventory delete host=<ip_address>``
 
 .. code:: shell
 
-     $ bwc ipf inventory delete host=10.24.39.224
+     $ bwc dcf inventory delete host=10.24.39.224
 
        Inventory delete
        +--------------+---------+------------+----------+---------+-------+-----+---------+

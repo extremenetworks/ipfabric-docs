@@ -1,13 +1,8 @@
 Overview
 ========
 
-.. warning::
+.. include:: __tech_preview.rst
 
-    All Automation Suites are currently in "Technology Preview" phase. We are releasing them
-    to gain additional feedback, but do not recommend running them in production. We encourage
-    people to try them out in non-production scenarios. They have had basic testing, but are
-    not fully supported by Brocade TAC.
-    
 Automation Suites are collections of workflows, actions, sensors and services that target
 specific networking use-cases, e.g. Data Center Fabric architectures, or Internet Exchanges.
 They deliver turnkey workflows for provisioning, validation, troubleshooting and remediation
@@ -32,7 +27,7 @@ It currently supports Brocade VDX and SLX devices. See more details :doc:`here<e
 DC Fabrics
 ~~~~~~~~~~
 
-The |ipf| is an add-on package for |bwc| that provides services and pre-built automations for managing
+The DC Fabrics Automation Suite is an add-on package for |bwc| that provides services and pre-built automations for managing
 Brocade Data Center Fabrics - both VCS Fabric and IP Fabric architectures. It includes workflows such as:
 
 * Provision and validate Brocade IP Fabrics and BGP-EVPN
@@ -49,8 +44,8 @@ The Internet Exchange suite provides workflows that target common use-cases seen
 Workflows include customer port provisioning, move systems to quarantine, MAC ACL updates, and route
 server validation.
 
-It works with all Brocade SLX-9850 switches, and will in future work with Brocade MLXe devices. See
-more details :doc:`here<ixp/overview>`.
+It works with Brocade SLX-9850 and 9540 switches, and will in future work with Brocade MLXe devices.
+Technical Preview versions of this automation suite will begin shipping soon.
 
 .. rubric:: What's Next?
 
@@ -59,4 +54,3 @@ more details :doc:`here<ixp/overview>`.
 
   + :doc:`Network Essentials<essentials/install>`
   + :doc:`DC Fabrics<dcfabric/install>`
-  + :doc:`Internet Exchange<ixp/install>`

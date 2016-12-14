@@ -1,12 +1,7 @@
 Network Essentials
 ==================
 
-.. warning::
-
-    All Automation Suites are currently in "Technology Preview" phase. We are releasing them
-    to gain additional feedback, but do not recommend running them in production. We encourage
-    people to try them out in non-production scenarios. They have had basic testing, but are
-    not fully supported by Brocade TAC.
+.. include:: ../__tech_preview.rst
 
 Overview
 --------
@@ -32,11 +27,11 @@ For more information about each action, read the :doc:`workflows` guide.
 Supported Devices
 -----------------
 
-The |ipf| supports the following devices:
+The Network Essentials Suite supports the following devices:
 
-* Brocade VDX 6740 running Network OS 7.0.1a and later
-* Brocade VDX 6940 running Network OS 7.0.1a and later
-* Brocade VDX 8770 running Network OS 7.0.1a and later
+* Brocade VDX 6740 running Network OS 7.1.0 and later
+* Brocade VDX 6940 running Network OS 7.1.0 and later
+* Brocade VDX 8770 running Network OS 7.1.0 and later
 * Brocade SLX 9850 running SLX-OS 16r.1.01 and later
 
 .. rubric:: What's Next?
