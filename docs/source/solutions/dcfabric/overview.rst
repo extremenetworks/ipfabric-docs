@@ -3,15 +3,11 @@ DC Fabric Automation Suite
 
 .. include:: ../__tech_preview.rst
 
-Brocade VDX switches can be deployed in two different fabric modes - either "VCS Fabric", or
-"IP Fabric". VCS Fabric is a TRILL-based Layer-2 fabric, while IP Fabric is a BGP-based Layer-3
-fabric, which can be used with or without BGP-EVPN. Brocade's newest large-scale switches, the
-SLX-9850 can also be used in the spine or super-spine layer of an IP Fabric. The right fabric
-mode depends on the customer's application and scale needs. 
+Brocade Data Center products enable customers to build cloud optimized network and network virtualization architectures using VDX and SLX products.  Brocade supports multiple network architectures for data center fabric depending on the customer application and scale requirements.  Two main fabric architectures are “VCS Fabric” and “IP Fabric”.  VCS Fabric is a TRILL-based Layer-2 fabric, while IP Fabric is a BGP-based Layer-3 fabric, which can be used with or without BGP-EVPN.  The section below describes most common topologies for these two network architectures.
 
-The DC Fabric Automation Suite can be used to manage fabrics in either mode. Workflows include
+The DC Fabric Automation Suite can be used to manage both fabric architectures. Workflows include
 initial fabric configuration, tenant provisioning, edge port configuration, etc. Some workflows
-are specific to the fabric mode, while others work for both modes.
+are specific to the fabric architecture and the topology, while others work for all architectures.
 
 Brocade VCS Fabric
 ------------------
@@ -104,7 +100,7 @@ and `Network Virtualization in IP Fabric with BGP EVPN Brocade Validated Design
 
       **A BGP EVPN based IP Fabric Data Center PoD Built with Leaf-Spine Topology**
 
-Workflows for VCS fabric include:
+Workflows for IP Fabric architecture include:
 
 * configure_switch
 * configure_edge_ports
@@ -126,7 +122,7 @@ The DC Fabric Automation Suite supports the following devices:
 * Brocade VDX 6740 running Network OS 7.1.0 and later
 * Brocade VDX 6940 running Network OS 7.1.0 and later
 * Brocade VDX 8770 running Network OS 7.1.0 and later
-* Brocade SLX 9850 running SLX-OS 16r.1.01 and later
+* Brocade SLX 9850 running SLX-OS 16r.1.01 and later [NOT SUPPORTED FOR TP - MAY BE FOR GA]
 
 What's Next?
 -------------------------------
