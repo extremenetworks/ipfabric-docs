@@ -1,8 +1,17 @@
-Brocade Workflow Composer ZTP use cases
-=======================================
+Using ZTP with Brocade Workflow Composer
+========================================
 
-Zero Touch Provisioning (ZTP) is used to automatically register a switch to |bwc| and
-run the BGP workflow.
+Zero Touch Provisioning (ZTP) can be used to bring up a switch with new firmware and a
+preset configuration automatically. The switch does not need to be configured via the
+console. ZTP uses a DHCP-based process known as DHCP Automatic Deployment (DAD) to 
+handle basic configuration such as assigning a VCS ID, VCS mode, an RBridge ID, and 
+downloading firmware. 
+
+For more information, refer to the `Using DHCP Automatic Deployment <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-B70DA4FE-6819-45A9-9E07-65785D7DB402.html>`_
+section of the `Brocade Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-E7A18ADA-3D26-475A-BE56-13088EC74EFF-homepage.html>`_.
+
+As part of the ZTP process, the switch can execute a local script. This stage is used to
+register the switch with |bwc| and run the BGP workflow.
 
 Use Case 1: Simple IP Fabric
 ----------------------------
@@ -10,7 +19,7 @@ Use Case 1: Simple IP Fabric
 In this case an IP Fabric consists of only Spines and Leaves. All spines and leaves have
 one VCS and one Rbridge ID respectively.
 
-.. figure:: ../../../_static/images/solutions/dcfabric/ztp_usecase_1.jpg
+.. figure:: ../../_static/images/solutions/dcfabric/ztp_usecase_1.jpg
     :align: center
 
     **Simple IP Fabric Topology**
@@ -37,7 +46,7 @@ This leaf/spine topology includes two leaf VDX switches forming a two-node VCS c
     IDs, but different Rbridge-IDs. In the following figure note the link between
     10.24.39.211 and 10.24.39.212.
 
-.. figure:: ../../../_static/images/solutions/dcfabric/ztp_usecase_2.jpg
+.. figure:: ../../_static/images/solutions/dcfabric/ztp_usecase_2.jpg
       :align: center
 
       **IP Fabric Topology With Two-Node VCS Cluster**
@@ -69,20 +78,17 @@ And the following configuration exists in the two-node VCS cluster:
 .. _ztp_setup_process:
 
 ZTP Process and Setup
-=====================
+---------------------
 
 A typical ZTP setup that can be used for both use cases is shown in the following diagram:
 
-.. figure:: ../../../_static/images/solutions/dcfabric/ztp_topology.jpg
+.. figure:: ../../_static/images/solutions/dcfabric/ztp_topology.jpg
         :align: center
 
         **ZTP Topology with states**
 
 This setup consists of a DHCP server and an FTP server in the same network as the VDX
 switches.
-
-.. note::
-    See the `Brocade Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-07F89B86-3AF7-4486-9F96-45E9ADBED80D.html>`_ for more information on using ZTP.
 
 DHCP server (dhcpd.conf)
 ------------------------
@@ -378,10 +384,9 @@ Registration script
 
 The registration script is shipped with the DC Fabric Automation Suite. If you installed |bwc| on a server,
 the registration script is usually available in
-``/usr/share/doc/bwc-topology/etc/bwc-automation.py``.
-If you are using an FTP server in combination with DHCP server as described in
-:ref:`ztp_setup_process`, the script should be deployed to the FTP server following the path
-requirements and configuration requirements. The switches then get this script as part of
+``/usr/share/doc/bwc-topology/etc/bwc-automation.py``. If you are using an FTP server in combination
+with DHCP server as described in :ref:`ztp_setup_process`, the script should be deployed to the FTP server
+following the path requirements and configuration requirements. The switches then get this script as part of
 DHCP IP negotiation process. Please make sure the script has the following configuration
 variables set by editing the ``bwc-automation.py`` file.
 
@@ -439,13 +444,13 @@ To verify whether the ZTP and DAD process ran correctly, complete the following 
    an RBridge ID, VCS mode, and a management IP address assigned.
 
 2. Run the ``show dad status`` command to make sure the DAD and ZTP process ran. Look for the
-   "DAD 1314" code. If there any other error codes, refer to the sections `Using DHCP Automatic
-   Deployment` section in the `Brocade Network OS Administration Guide` for more information
-   about additional DAD codes.
+   ``DAD 1314`` code. If there any other error codes, refer to the `Using DHCP Automatic Deployment
+   <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-B70DA4FE-6819-45A9-9E07-65785D7DB402.html>`_
+   section of the `Brocade Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-E7A18ADA-3D26-475A-BE56-13088EC74EFF-homepage.html>`_
+   for more information about additional DAD codes.
 
 3. Check the |bwc| server to see if the switch is registered and the BGP workflow completed
    successfully on it.
 
-4. To verify that the registration script executed successfully, check `registration.log`
-   file on the switch at the ``/var/config/vcs/scripts/`` location. You can use a ``cat``
-   command on the log file from the "root" account.
+4. To verify that the registration script executed successfully, check the log file on the switch
+   at ``/var/config/vcs/scripts/registration.log``.

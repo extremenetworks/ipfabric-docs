@@ -24,10 +24,10 @@ customised workflows.
 
 It currently supports Brocade VDX and SLX devices. See more details :doc:`here<essentials/overview>`.
 
-DC Fabrics
+DC Fabric
 ~~~~~~~~~~
 
-The DC Fabrics Automation Suite is an add-on package for |bwc| that provides services and pre-built automations for managing
+The DC Fabric Automation Suite is an add-on package for |bwc| that provides services and pre-built automations for managing
 Brocade Data Center Fabrics - both VCS Fabric and IP Fabric architectures. It includes workflows such as:
 
 * Provision and validate Brocade IP Fabrics and BGP-EVPN
@@ -53,4 +53,4 @@ Technical Preview versions of this automation suite will begin shipping soon.
 * Choose which suites you need, and install them. Follow these instructions:
 
   + :doc:`Network Essentials<essentials/install>`
-  + :doc:`DC Fabrics<dcfabric/install>`
+  + :doc:`DC Fabric<dcfabric/install>`

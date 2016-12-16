@@ -21,7 +21,7 @@ Workflows
 .. note::
 
     There may not be any workflows here in Essentials. Might only be Actions, with Workflows in
-    DC Fabrics, or IXP
+    DC Fabric, or IXP
 
 
 configure_tenant

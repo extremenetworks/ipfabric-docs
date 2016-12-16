@@ -6,10 +6,10 @@ Installation
     there will be separate installation scripts for each suite, so customers can choose which
     suite(s) they wish to run.
 
-To quickly install |bwc| with DC Fabrics Automation Suite, obtain a license key from
+To quickly install |bwc| with DC Fabric Automation Suite, obtain a license key from
 `brocade.com/bwc <https://www.brocade.com/bwc>`_, and run the commands below, replacing
 ``${BWC_LICENSE_KEY}`` with the key you received when registering for evaluation or
-purchasing. These commands will install |bwc|, Network Essentials, DC Fabrics Automation Suite,
+purchasing. These commands will install |bwc|, Network Essentials, DC Fabric Automation Suite,
 and configure all components to work together on a single host:
 
 .. warning::
@@ -22,7 +22,7 @@ and configure all components to work together on a single host:
   curl -SsL -O https://brocade.com/bwc/install/install.sh && chmod +x install.sh
   ./install.sh --user=st2admin --password=Ch@ngeMe --suite=bwc-dcfabric-suite --license=${BWC_LICENSE_KEY}
 
-If you already have |bwc| installed, and need to add DC Fabrics on top of an existing |bwc| installation,
+If you already have |bwc| installed, and need to add DC Fabric on top of an existing |bwc| installation,
 run the following commands, replacing ``${BWC_LICENSE_KEY}`` with the key you received when 
 registering for evaluation or purchasing:
 
@@ -37,7 +37,7 @@ The rest of this document will explain how to how to manually install and config
 System requirements
 -------------------
 
-The system requirements for |bwc| with DC Fabrics Automation Suite are the same as the core platform requirements.
+The system requirements for |bwc| with DC Fabric Automation Suite are the same as the core platform requirements.
 See the :doc:`system requirements documentation</install/system_requirements>` for more details.
 
 Components
@@ -45,7 +45,7 @@ Components
 
 The DC Fabric Automation Suite installs on top of |bwc|. It adds an inventory & topology service, and
 DC Fabric automation packs containing actions and workflows to simplify Brocade Data Center Fabric management.
-It also includes the ``bwc dcf`` CLI, and Zero Touch Provisioning scripts for integration with :doc:`ZTP <ztp/index>`.
+It also includes the ``bwc dcf`` CLI, and Zero Touch Provisioning scripts for integration with :doc:`ZTP <ztp_reference>`.
 This suite uses components of the :doc:`../essentials/overview` suite. If the Network Essentials suite is not
 currently installed it will be automatically installed during DC Fabric suite installation.
 

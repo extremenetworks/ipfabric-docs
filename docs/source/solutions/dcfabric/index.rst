@@ -1,5 +1,5 @@
-DC Fabrics
-==========================
+DC Fabric
+=========
 
 .. rubric:: Contents:
 
@@ -7,7 +7,8 @@ DC Fabrics
     :maxdepth: 3
 
     Overview <overview>
-    Installation <install.rst>
+    Installation <install>
     Operation <operation/index>
+    Workflows <workflows>
     CLI <dcf_cli/index.rst>
-    ZTP Reference <ztp/index>
+    ZTP <ztp_reference>
