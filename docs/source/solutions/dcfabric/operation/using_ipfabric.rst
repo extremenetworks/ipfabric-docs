@@ -1,5 +1,5 @@
-Using VCS Fabric 
-================
+Using IP Fabric 
+===============
 
 These workflows can be used with VCS Fabric implementations. This document provides a summary of
 what the workflows do - see the :doc:`reference documentation <../workflows>` for specific
