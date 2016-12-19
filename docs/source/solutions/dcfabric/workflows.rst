@@ -6,12 +6,12 @@ with Brocade VDX and SLX switches. These can be used as independent workflows, o
 together to form more complex workflows. They can be manually triggered,
 or they can be tied to :doc:`sensors </sensors>` using rules.
 
+.. note::
+    Content is still being added to this section
+
 .. contents::
    :local:
    :depth: 1
-
-.. note::
-    Content is still being added to this section
 
 .. _configure_edge_ports:
 
@@ -78,7 +78,7 @@ Parameters
 
    vni
        The VNI to be used for the Layer 2 extension <NUMBER:1-16777215>, e.g. vni=500
-   (EVPN instance must be configured under each rbridge-id)
+       (EVPN instance must be configured under each rbridge-id)
 
 Output
 ``````
