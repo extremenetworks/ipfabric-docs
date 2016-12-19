@@ -1,4 +1,4 @@
-|ipf| CLI Reference
+DC Fabric CLI Reference
 ================================
 
 These CLI commands are supported. Click on a command for syntax, usage and examples.

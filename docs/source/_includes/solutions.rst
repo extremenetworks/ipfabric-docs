@@ -1,6 +1,7 @@
 .. toctree::
     :maxdepth: 2
-    :caption: Network Automation Suites
-    :glob:
+    :caption: Automation Suites
 
-    solutions/*/index
+    solutions/overview
+    solutions/essentials/index
+    solutions/dcfabric/index

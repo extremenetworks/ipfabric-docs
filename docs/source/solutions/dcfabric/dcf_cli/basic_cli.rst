@@ -1,12 +1,12 @@
-|ipf| CLI
-=========
+DC Fabric CLI
+=============
 
 .. note::
   All command line examples in this section begins with ``$`` (dollar sign), which represents
   a shell command prompt. Do not enter another dollar sign. All commands should be entered
   at the shell prompt.
 
-|bwc|'s |ipf| CLI provides a simple way to interrogate and configure your IP Fabric.
+|bwc|'s DC Fabric CLI provides a simple way to interrogate and configure your IP Fabric.
 
 ------------
 
@@ -42,26 +42,26 @@ Syntax
      Commands:
        complete       print bash completion command
        help           print detailed help for another command
-       ipf fabric add  Add a new Fabric
-       ipf fabric config set  Set or update Fabric properties
-       ipf fabric config delete  Delete Fabric property
-       ipf fabric config show  Display Fabric configuration for the specified Fabric
-       ipf fabric delete  Delete an existing Fabric
-       ipf fabric list  List all the Fabrics
-       ipf inventory delete  Delete device
-       ipf inventory list  List a specific device details or all the devices in the specified Fabric
-       ipf inventory register  Add devices to a Fabric
-       ipf inventory show lldp  List LLDP details for the specified switch or fabric
-       ipf inventory show vcs links  List VCS link details for the specified switch or fabric
-       ipf inventory update  Update inventory details for the specified device or entire Fabric
-       ipf show config bgp  Display Fabric configuration for the specified Fabric
-       ipf show topology  Generates Topology for the specified Fabric
-       ipf workflow bgp  Execute the IP Fabric Workflow and display the details
+       dcf fabric add  Add a new Fabric
+       dcf fabric config set  Set or update Fabric properties
+       dcf fabric config delete  Delete Fabric property
+       dcf fabric config show  Display Fabric configuration for the specified Fabric
+       dcf fabric delete  Delete an existing Fabric
+       dcf fabric list  List all the Fabrics
+       dcf inventory delete  Delete device
+       dcf inventory list  List a specific device details or all the devices in the specified Fabric
+       dcf inventory register  Add devices to a Fabric
+       dcf inventory show lldp  List LLDP details for the specified switch or fabric
+       dcf inventory show vcs links  List VCS link details for the specified switch or fabric
+       dcf inventory update  Update inventory details for the specified device or entire Fabric
+       dcf show config bgp  Display Fabric configuration for the specified Fabric
+       dcf show topology  Generates Topology for the specified Fabric
+       dcf workflow bgp  Execute the IP Fabric Workflow and display the details
 
 Usage Guidelines
 ~~~~~~~~~~~~~~~~
 
-Refer to :command:`bwc ipf inventory/fabric <command> --help` for more information on a specific command.
+Refer to :command:`bwc dcf inventory/fabric <command> --help` for more information on a specific command.
 
 Examples
 ~~~~~~~~
@@ -72,8 +72,8 @@ Use the ``bwc --help`` command to display Brocade Workflow Composer commands and
 .. code-block:: guess
    :emphasize-lines: 1,10
 
-   $ bwc ipf fabric list -h
-     usage: bwc ipf fabric list [-h] [--fabric <fabric>]
+   $ bwc dcf fabric list -h
+     usage: bwc dcf fabric list [-h] [--fabric <fabric>]
      
      List all the Fabrics
      
@@ -81,8 +81,8 @@ Use the ``bwc --help`` command to display Brocade Workflow Composer commands and
        -h, --help         show this help message and exit
        --fabric <fabric>  Fabric for which the configuration will be displayed
 
-   $ bwc ipf inventory register -h
-     usage: bwc ipf inventory register [-h] [-f {csv,json,table,value,yaml}]
+   $ bwc dcf inventory register -h
+     usage: bwc dcf inventory register [-h] [-f {csv,json,table,value,yaml}]
                                        [-c COLUMN] [--max-width <integer>]
                                        [--noindent]
                                        [--quote {all,minimal,none,nonnumeric}]
@@ -123,7 +123,7 @@ Use the ``bwc --help`` command to display Brocade Workflow Composer commands and
 ------------
 
 ----------------------
-bwc ipf show <command>
+bwc dcf show <command>
 ----------------------
 
 
@@ -135,8 +135,8 @@ Syntax
 
 .. code-block:: shell
 
-    bwc ipf show config bgp --fabric=<fabric_name> | --host=<ip_address>
-    bwc ipf show topology <fabric_name>  [--format=<format>] [--render_dir=<dir_path>]
+    bwc dcf show config bgp --fabric=<fabric_name> | --host=<ip_address>
+    bwc dcf show topology <fabric_name>  [--format=<format>] [--render_dir=<dir_path>]
 
 Parameters
 ~~~~~~~~~~
@@ -170,7 +170,7 @@ Examples
 
 .. code-block:: shell
 
-    $ bwc ipf show config bgp
+    $ bwc dcf show config bgp
 
       Show BGP Configuration
   
@@ -248,12 +248,12 @@ Examples
            neighbor 10.10.10.18 allowas-in 5
            neighbor 10.10.10.18 next-hop-unchanged
 
-Use ``bwc ipf show topology`` command to generate an IP Fabric topology map in a PDF
+Use ``bwc dcf show topology`` command to generate an IP Fabric topology map in a PDF
 format (default format).
 
 .. code-block:: shell
 
-    $ bwc ipf show topology fabric=default --format=pdf --render_dir=/tmp
+    $ bwc dcf show topology fabric=default --format=pdf --render_dir=/tmp
 
       Topology map generated: /tmp/topology_default_20160811-020715.pdf
 
@@ -262,7 +262,7 @@ Use any appropriate image reading software to open the topology file.
 -----------------
 
 ---------------------------
-bwc ipf inventory <command>
+bwc dcf inventory <command>
 ---------------------------
 Registers, shows, deletes, or updates a list of switches.
 
@@ -270,12 +270,12 @@ Syntax
 ~~~~~~
 .. code:: shell
 
-    bwc ipf inventory register host=<ip_address> fabric=<fabric_name> user=<switch_user> passwd=<switch_password>
-    bwc ipf inventory delete host=<ip_address>
-    bwc ipf inventory update --fabric=<fabric_name> | --host=<ip_address> [user=<switch_user> passwd=<switch_password>]
-    bwc ipf inventory list --fabric=<fabric_name> | --host=<ip_address>
-    bwc ipf inventory show vcs links fabric=<fabric_name>
-    bwc ipf inventory show lldp fabric=<fabric_name>
+    bwc dcf inventory register host=<ip_address> fabric=<fabric_name> user=<switch_user> passwd=<switch_password>
+    bwc dcf inventory delete host=<ip_address>
+    bwc dcf inventory update --fabric=<fabric_name> | --host=<ip_address> [user=<switch_user> passwd=<switch_password>]
+    bwc dcf inventory list --fabric=<fabric_name> | --host=<ip_address>
+    bwc dcf inventory show vcs links fabric=<fabric_name>
+    bwc dcf inventory show lldp fabric=<fabric_name>
 
 Parameters
 ~~~~~~~~~~
@@ -309,11 +309,11 @@ Parameters
 Examples
 ~~~~~~~~
 
-Use the ``bwc ipf inventory register`` command to register a switch to the default fabric.
+Use the ``bwc dcf inventory register`` command to register a switch to the default fabric.
 
 .. code:: shell
 
-    $ bwc ipf inventory register host=10.24.39.225 fabric=default user=admin passwd=password
+    $ bwc dcf inventory register host=10.24.39.225 fabric=default user=admin passwd=password
 
       Inventory Add
       +--------------+---------+------------+----------+------+------+-------+---------+
@@ -322,11 +322,11 @@ Use the ``bwc ipf inventory register`` command to register a switch to the defau
       | 10.24.39.225 | VDX6740 |        225 | 7.1.0    | sw0  | Leaf | 65000 | default |
       +--------------+---------+------------+----------+------+------+-------+---------+
 
-Use the ``bwc ipf inventory delete`` command to delete a switch from the server.
+Use the ``bwc dcf inventory delete`` command to delete a switch from the server.
 
 .. code:: shell
 
-    $ bwc ipf inventory delete host=10.24.39.225
+    $ bwc dcf inventory delete host=10.24.39.225
 
       Inventory Delete Successfully
       +--------------+---------+------------+----------+------+------+-------+---------+
@@ -335,12 +335,12 @@ Use the ``bwc ipf inventory delete`` command to delete a switch from the server.
       | 10.24.39.225 | VDX6740 |        225 | 7.1.0    | sw0  | Leaf | 65000 | default |
       +--------------+---------+------------+----------+------+------+-------+---------+
 
-Use the ``bwc ipf inventory update`` command to update a switch on the server. (This provides a way
+Use the ``bwc dcf inventory update`` command to update a switch on the server. (This provides a way
 to change the username and password.)
 
 .. code:: shell
 
-    $ bwc ipf inventory update --host=10.24.39.225
+    $ bwc dcf inventory update --host=10.24.39.225
 
       Inventory Update
       +--------------+---------+------------+----------+------+------+-------+---------+
@@ -349,11 +349,11 @@ to change the username and password.)
       | 10.24.39.225 | VDX6740 |        225 | 7.1.0    | sw0  | Leaf | 65000 | default |
       +--------------+---------+------------+----------+------+------+-------+---------+
 
-Use the ``bwc ipf inventory list`` command to list all registered switches.
+Use the ``bwc dcf inventory list`` command to list all registered switches.
 
 .. code:: shell
 
-    $ bwc ipf inventory list --fabric=default
+    $ bwc dcf inventory list --fabric=default
 
       Inventory List
       +--------------+-------------+------------+----------+----------------+-------+-------+---------+
@@ -368,12 +368,12 @@ Use the ``bwc ipf inventory list`` command to list all registered switches.
       | 10.24.39.223 | VDX6740T-1G |        223 | 7.1.0    | sw0            | Spine |       | default |
       +--------------+-------------+------------+----------+----------------+-------+-------+---------+
 
-Use the ``bwc ipf inventory update --fabric=default`` command to update all switches in the
+Use the ``bwc dcf inventory update --fabric=default`` command to update all switches in the
 *"default"* fabric.
 
 .. code:: shell
 
-    $ bwc ipf inventory update --fabric=default
+    $ bwc dcf inventory update --fabric=default
 
       Inventory Update
       +--------------+-------------+------------+----------+----------------+-------+-------+---------+
@@ -388,12 +388,12 @@ Use the ``bwc ipf inventory update --fabric=default`` command to update all swit
       | 10.24.39.223 | VDX6740T-1G |        223 | 7.1.0    | sw0            | Spine |       | default |
       +--------------+-------------+------------+----------+----------------+-------+-------+---------+
 
-Use the ``bwc ipf inventory show vcs links`` command to show VCS link status for a two-node VCS
+Use the ``bwc dcf inventory show vcs links`` command to show VCS link status for a two-node VCS
 cluster.
 
 .. code:: shell
 
-    $ bwc ipf inventory show vcs links fabric=default
+    $ bwc dcf inventory show vcs links fabric=default
 
       Inventory Show VCS
       +-----------------------------+--------------+-----------------------------+--------------+---------+
@@ -402,11 +402,11 @@ cluster.
       | TenGigabitEthernet 228/0/10 | 10.24.39.228 | TenGigabitEthernet 229/0/10 | 10.24.39.229 | default |
       +-----------------------------+--------------+-----------------------------+--------------+---------+
 
-Use the ``bwc ipf inventory show lldp`` command to show LLDP neighbors.
+Use the ``bwc dcf inventory show lldp`` command to show LLDP neighbors.
 
 .. code:: shell
 
-    $ bwc ipf inventory show lldp fabric=default
+    $ bwc dcf inventory show lldp fabric=default
 
       Inventory Show LLDP
       +--------------+-------------------+-------------------+-------------------+-------------------+---------------+------------------------+
@@ -459,7 +459,7 @@ Use the ``bwc ipf inventory show lldp`` command to show LLDP neighbors.
 --------------------
 
 --------------------
-bwc ipf workflow bgp
+bwc dcf workflow bgp
 --------------------
 
 Executes a BGP workflow on a selected fabric.
@@ -469,7 +469,7 @@ Syntax
 
 .. code:: shell
 
-    bwc ipf workflow bgp fabric=<fabric_name>
+    bwc dcf workflow bgp fabric=<fabric_name>
 
 Parameters
 ~~~~~~~~~~
@@ -489,11 +489,11 @@ Parameters
 Examples
 ~~~~~~~~
 
-Use the ``bwc ipf workflow bgp`` command to implement a workflow on a specific fabric.
+Use the ``bwc dcf workflow bgp`` command to implement a workflow on a specific fabric.
 
 .. code-block:: shell
 
-    $ bwc ipf workflow bgp fabric=default
+    $ bwc dcf workflow bgp fabric=default
 
       BGP Workflow Result:
 
@@ -575,7 +575,7 @@ Use the ``bwc ipf workflow bgp`` command to implement a workflow on a specific f
 --------------
 
 --------------
-bwc ipf fabric
+bwc dcf fabric
 --------------
 
 Adds or deletes fabrics and user-created fabric parameters, and shows fabric and fabric configurations.
@@ -585,11 +585,11 @@ Syntax
 
 .. code-block:: shell
 
-    bwc ipf fabric add fabric=<fabric_name>
-    bwc ipf fabric delete fabric=<fabric_name>
-    bwc ipf fabric config show fabric=<fabric_name>
-    bwc ipf fabric config set fabric=<fabric_name> key=<key_name> value=<value>
-    bwc ipf fabric config delete fabric=<fabric_name> key=<key>
+    bwc dcf fabric add fabric=<fabric_name>
+    bwc dcf fabric delete fabric=<fabric_name>
+    bwc dcf fabric config show fabric=<fabric_name>
+    bwc dcf fabric config set fabric=<fabric_name> key=<key_name> value=<value>
+    bwc dcf fabric config delete fabric=<fabric_name> key=<key>
 
 Parameters
 ~~~~~~~~~~
@@ -608,7 +608,7 @@ Parameters
 
 Usage Guidelines
 ~~~~~~~~~~~~~~~~
-The following key parameters and their values can be added with the ``bwc ipf fabric config
+The following key parameters and their values can be added with the ``bwc dcf fabric config
 add`` command.
 
 +------------------------+-------------------------------------------------------------------+
@@ -651,29 +651,29 @@ add`` command.
 Examples
 ~~~~~~~~
 
-Use the ``bwc ipf fabric add`` command to add a fabric named **new_fabric**.
+Use the ``bwc dcf fabric add`` command to add a fabric named **new_fabric**.
 
 .. code-block:: shell
 
-    $ bwc ipf fabric add fabric=new_fabric
+    $ bwc dcf fabric add fabric=new_fabric
 
       Fabric new_fabric added successfully
 
-Use the ``bwc ipf fabric delete`` command to delete a fabric named **new_fabric**.
+Use the ``bwc dcf fabric delete`` command to delete a fabric named **new_fabric**.
 
 .. code-block:: shell
 
-    $ bwc ipf fabric delete fabric=new_fabric
+    $ bwc dcf fabric delete fabric=new_fabric
 
       Fabric new_fabric deleted successfully
 
 
-Use the ``bwc ipf fabric config show`` command to show the configuration of the default
+Use the ``bwc dcf fabric config show`` command to show the configuration of the default
 fabric (because no name is specified.)
 
 .. code-block:: shell
 
-    $ bwc ipf fabric config show fabric=default
+    $ bwc dcf fabric config show fabric=default
 
       Fabric Config Show
       +----------------------+-----------------+
@@ -695,16 +695,16 @@ fabric (because no name is specified.)
       | bfd_rx               | 300             |
       +----------------------+-----------------+
 
-Use the ``bwc ipf fabric add fabric=new_fabric`` command to add a fabric configuration to a fabric name
+Use the ``bwc dcf fabric add fabric=new_fabric`` command to add a fabric configuration to a fabric name
 *"new_fabric"*.
 
 .. code-block:: shell
 
-    $ bwc ipf fabric add fabric=new_fabric
+    $ bwc dcf fabric add fabric=new_fabric
 
       Fabric new_fabric added successfully
 
-    $ bwc ipf fabric config show fabric=new_fabric
+    $ bwc dcf fabric config show fabric=new_fabric
 
       Fabric Config Show
       +----------------------+-----------------+
@@ -726,11 +726,11 @@ Use the ``bwc ipf fabric add fabric=new_fabric`` command to add a fabric configu
       | bfd_rx               | 300             |
       +----------------------+-----------------+
 
-Use the ``bwc ipf fabric config delete`` command to delete a parameter from a specific fabric
+Use the ``bwc dcf fabric config delete`` command to delete a parameter from a specific fabric
 configuration.
 
 .. code-block:: shell
 
-    $ bwc ipf fabric config delete fabric=new_fabric key=anycast_mac
+    $ bwc dcf fabric config delete fabric=new_fabric key=anycast_mac
 
       Key anycast_mac deleted successfully from fabric new_fabric
