@@ -1,10 +1,16 @@
 Installation
 ============
 
+.. warning::
+    The DC Fabric Automation Suite replaces the previous IP Fabric Automation Suite. There is
+    no direct upgrade.  If you had previously installed the BWC 2.0 IP Fabric Automation Suite,
+    we recommend installing the DC Fabric Automation Suite on a new Virtual Machine.
+
 .. note::
     During Technology Preview phase, there is one single installation for all suites. In future
     there will be separate installation scripts for each suite, so customers can choose which
-    suite(s) they wish to run.
+    suite(s) they wish to run. The instructions below will install both DC Fabric and Network 
+    Essentials Automation Suites.
 
 To quickly install |bwc| with DC Fabric Automation Suite, obtain a license key from
 `brocade.com/bwc <https://www.brocade.com/bwc>`_, and run the commands below, replacing
@@ -20,7 +26,7 @@ and configure all components to work together on a single host:
 .. code-block:: bash
 
   curl -SsL -O https://brocade.com/bwc/install/install.sh && chmod +x install.sh
-  ./install.sh --user=st2admin --password=Ch@ngeMe --suite=bwc-dcfabric-suite --license=${BWC_LICENSE_KEY}
+  ./install.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${BWC_LICENSE_KEY}
 
 If you already have |bwc| installed, and need to add DC Fabric on top of an existing |bwc| installation,
 run the following commands, replacing ``${BWC_LICENSE_KEY}`` with the key you received when 
@@ -29,7 +35,7 @@ registering for evaluation or purchasing:
 .. code-block:: bash
 
   curl -SsL -O https://brocade.com/bwc/install/install-suite.sh && chmod +x install-suite.sh
-  ./install-suite.sh --user=st2admin --password=Ch@ngeMe --suite=bwc-dcfabric-suite --license=${BWC_LICENSE_KEY}
+  ./install-suite.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${BWC_LICENSE_KEY}
 
 If you have a more complex environment, or you just want to see exactly what the scripts are doing, read on.
 The rest of this document will explain how to how to manually install and configure the individual components.
@@ -71,11 +77,11 @@ Install the DC Fabric suite:
 
 * On Ubuntu/Debian: ::
 
-    sudo apt-get install -y bwc-dcfabric-suite
+    sudo apt-get install -y dcfabric-suite
 
 * On RHEL/CentOS: ::
 
-    yum install -y bwc-dcfabric-suite
+    yum install -y dcfabric-suite
 
 3. Configure Topology Service
 -----------------------------

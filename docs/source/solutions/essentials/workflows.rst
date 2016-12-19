@@ -6,106 +6,8 @@ with Brocade VDX and SLX switches. These actions can be used as independent acti
 or as part of a more complex workflow. :doc:`Actions</actions>` can be manually triggered,
 or they can be tied to :doc:`sensors </sensors>` using rules.
 
-.. contents::
-   :local:
-   :depth: 2
-
-Workflows
----------
-
-
-.. contents::
-   :local:
-   :depth: 1
-
 .. note::
-
-    There may not be any workflows here in Essentials. Might only be Actions, with Workflows in
-    DC Fabric, or IXP
-
-
-configure_tenant
-~~~~~~~~~~~~~~~~
-
-Description
-```````````
-
-.. note::
-
-    This section provides a brief description of what the workflow does. Generally 1-3 lines?
-
-This workflow will configure a new L3 Tenant. This includes VRF, VLAN, IP and VRRP setup.
-    
-
-Requirements
-````````````
-
-.. note::
-
-    This section notes any requirements, pre-requisites, assumptions, etc. Note that the main intro
-    covers supported devices & versions, this section should not any different version requirements,
-    or variation between SLX & VDX, or between IP Fabric & VCS Fabric
-
-This workflow is designed for VDX switches operating in either VCS Fabric or IP Fabric mode. It is not
-designed for SLX switches. This fabric must already be registered with the |bwc| inventory service.
-
-Parameters
-``````````
-
-.. note::
-
-    This section details the parameters, required vs optional, defaults, etc. It can contain longer
-    descriptions than what we can fit in the web UI.
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   customer_name
-       Customer name. This will be used in VRF & VLAN description. Must be text string, 0-255 characters.
-
-   fabric
-       Name of the fabric. This must already be registered with the inventory service.
-
-   vlan_range
-       VLAN range to be used for customer. Should be provided as range, e.g. 50-60,70.
-
-   gateway_ip
-       VRRPe gateway IP to use for customer.
-
-Output
-``````
-
-.. note::
-
-    This section details return values
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   result
-       Boolean - True/False, if workflow succeeded
-
-   rd
-       RD auto-assigned to tenant
-
-Error Messages
-``````````````
-
-.. note::
-
-    This section lists any known error messages
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   "Invalid VLAN ID"
-       Returned if VLAN(s) provided are invalid, e.g. > 4094.
-
-   "Unknown Fabric"
-       Returned if fabric is not registered. 
-
-
------------------
+    Content is still being added to this section
 
 Actions
 -------
@@ -113,81 +15,234 @@ Actions
 .. contents::
    :local:
    :depth: 1
-
-.. note::
-
-    This section covers Actions in this Suite.
  
-configure_ntp
-~~~~~~~~~~~~~
+create_vlan
+~~~~~~~~~~~
 
 Description
 ```````````
 
-.. note::
-
-    This section provides a brief description of what the workflow does. Generally 1-3 lines?
-
-``configure_ntp`` sets the NTP servers that the device should poll.
+``create_vlan`` Creates a single/range of VLAN's on the device.
 
 Requirements
 ````````````
-
-.. note::
-
-    This section notes any requirements, pre-requisites, assumptions, etc. Note that the main intro
-    covers supported devices & versions, this section should not any different version requirements,
-    or variation between SLX & VDX, or between IP Fabric & VCS Fabric
 
 No specific requirements. Unless otherwise specified, datastore credentials will be used.
 
 Parameters
 ``````````
 
-.. note::
+   mgmt_ip
+       Management IP of the switch. At least one switch mgmt ip must be provided.
 
-    This section details the parameters, required vs optional, defaults, etc. It can contain longer
-    descriptions than what we can fit in the web UI.
+   vlan_id
+       Single or range of vlan_id. At least one vlan_id must be provided. e.g. 4-10
 
-.. code-block:: guess
-   :emphasize-lines: 1,5,9
+   intf_desc (optional)
+       Interface specific description. Must be a text string <string, min: 1 chars, max: 63 chars>.
 
-   servers
-       Comma-separated list of NTP servers, e.g. 10.1.1.1,10.1.1.2.
-       At least one server must be provided.
+Output
+``````
 
-   switch
-       Comma-separated list of switches to apply the configuration to.
-       At least one switch IP/hostname must be provided.
+   result
+       Boolean - True/False, if action succeeded
 
-    exclusive (optional)
-       Boolean value (True/False). Set to True to ensure that device **only** uses the provided
-       NTP servers, and removes any existing NTP servers. Default is False - the existing NTP
-       NTP configuration will not be changed
+Error Messages
+``````````````
+
+   "Not a valid VLAN"
+       Returned if VLAN provided are invalid, e.g. > 4094
+
+   "vlan 1 is default vlan"
+       Returned if VLAN provided is 1.
+
+   "Vlan cannot be created, as it is not a user/fcoe vlan"
+       Returned if VLAN provided is part of user/fcoe vlan (4087/4096/1002).
+
+   "Pls specify a valid description"
+       Returned if interface description length is less than 1.
+
+   "Length of the description is more than the allowed size"
+       Returned if interface description length is more than 63.
+
+create_vrf_evpn
+~~~~~~~~~~~~~~~
+
+Description
+```````````
+
+``create_vrf_evpn`` Create a VRF, RD, RT and L3VNI for the EVPN tenants on the device.
+
+Requirements
+````````````
+
+No specific requirements. Unless otherwise specified, datastore credentials will be used.
+
+Parameters
+``````````
+
+   mgmt_ip
+       Management IP of the switch. At least one switch mgmt ip must be provided.
+
+   vrf_name
+       Name of the VRF. Must be a text string <WORD:1-32>, e.g. vrf10.
+
+   l3vni
+       Layer 3 VNI for VXLAN routing. Must be a integer <NUMBER:1-16777215>, e.g. 100.
+
+   route_distinguisher
+       BGP router id of the Leafs, e.g. 10.20.31.1,10.20.31.2.
+
+   rt
+       RT for the address family, e.g. 101.
+
+   tenant_addressing_type
+       Tenant addressing type ipv4/ipv6/both, e.g. both.
+
+   ipv4_route_target_import_evpn
+       ipv4 import Target-VPN community 'ASN:nn'. e.g. 101:101
+
+   ipv4_route_target_export_evpn
+       ipv4 import Target-VPN community 'ASN:nn'. e.g. 101:101
+
+   ipv6_route_target_import_evpn
+       ipv6 import Target-VPN community 'ASN:nn'. e.g. 102:102
+
+   ipv6_route_target_export_evpn
+       ipv6 import Target-VPN community 'ASN:nn'. e.g. 103:103
+
+   rbridge_id (optional)
+       Single/List of rbridge ID's, e.g. rbridge_id=1 or rbridge_id=1,2,3
+
+Output
+``````
+
+   result
+       Boolean - True/False, if action succeeded
+
+Error Messages
+``````````````
+
+   "Invalid Input types while creating VRF <vrf name> on rbridge_id <rbridge_id>"
+       Returned if given vrf name and rbridge_id is invalid
+
+   "Invalid input types while configuring RD <rd> on VRF <vrf name> on rbridge_id <rbridge_id>'
+       Returned if given rd, vrf name and rbridge_id is invalid
+
+   "Invalid input types while configuring l3vni <l3vni> on VRF <vrf name> on rbridge_id <rbridge_id>'
+       Returned if given l3vni, vrf name and rbridge_id is invalid
+
+   "Invalid input types while configuring target VPN on VRF <vrf name> on rbridge_id <rbridge_id>'
+       Returned if given route target, vrf name and rbridge_id is invalid
+
+redistribute_connected_bgp_vrf
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Description
+```````````
+
+``redistribute_connected_bgp_vrf`` Redistribute BGP Connected Routes under default/non-default vrf
+address-family on the device.
+
+Requirements
+````````````
+
+No specific requirements. Unless otherwise specified, datastore credentials will be used.
+
+Parameters
+``````````
+
+   mgmt_ip
+       Management IP of the switch. At least one switch mgmt ip must be provided.
+
+   rbridge_id (optional)
+       Single/List of rbridge ID's, e.g. rbridge_id=1 or rbridge_id=1,2,3
+
+   ipv4_unicast
+       Address family unicast ipv4 True/False. e.g. True
+
+   ipv6_unicast
+       Address family unicast ipv6 True/False. e.g. False
+
+   ipv4_vrf_name
+       Name of the VRF. Must be a text string <WORD:1-32>, e.g. vrf10.
+       (Address family ipv4 must be configured under vrf)
+
+   ipv6_vrf_name
+       Name of the VRF. Must be a text string <WORD:1-32>, e.g. vrf10.
+       (Address family ipv6 must be configured under vrf)
+
+Output
+``````
+
+   result
+       Boolean - True/False, if action succeeded
+
+Error Messages
+``````````````
+
+   "Invalid Input values"
+       Returned if any one of the input is invalid.
+
+create_ve
+~~~~~~~~~
+
+Description
+```````````
+
+``create_ve`` Create a VE and associate an IP address and vrf if any per rbridge.
+
+Requirements
+````````````
+
+No specific requirements. Unless otherwise specified, datastore credentials will be used.
+
+Parameters
+``````````
+
+   mgmt_ip
+       Management IP of the switch. At least one switch mgmt ip must be provided.
+
+   rbridge_id
+       Single/List of rbridge ID's, e.g. rbridge_id=1 or rbridge_id=1,2,3
+
+   vlan_id
+       Single vlan_id. At least one vlan_id must be provided. e.g. 10
+
+   ip_address (optional)
+       Single or list of ip/ipv6 addresses to be configured on the Ve. IPv4/subnet-length
+       or IPv6/prefix-length. e.g. '10.0.0.10/22, 30.0.0.10/22'
+
+   vrf_name (optional)
+       Name of the VRF. Must be a text string <WORD:1-32>, e.g. vrf10 or 10.
+
+   ipv6_use_link_local_only (optional)
+       Configure automatically computed link-local address. e.g. ipv6_use_link_local_only
 
 
 Output
 ``````
 
-.. note::
-
-    This section details return values
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
    result
-       Boolean - True/False, if workflow succeeded
+       Boolean - True/False, if action succeeded
 
 Error Messages
 ``````````````
 
-.. note::
+   "rbridge_id and ip_address lists are not matching"
+       Returned if given rbridge_id and ip_address lists are not matching
 
-    This section lists any known error messages
+   "Invalid IP address <ip-address>"
+       Returned if ip address format is wrong e.g. 10.0.0.10.1
 
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
+   "Pass IP address along with netmask.(ip-address/netmask)"
+       Returned if IP address input is without netwmask e.g. 10.0.0.1.
 
-   "Invalid NTP Server"
-       Returned if one or more NTP servers are invalid.
+   "Invalid Input values while creating to Ve"
+       Returned if any one of the input is invalid.
+
+   "Invalid Input values while assigning IP address to Ve"
+       Returned if any one of the input is invalid.
+
+   "Invalid Input values while configuring IPV6 link local"
+       Returned if input is invalid.

@@ -11,7 +11,7 @@ or they can be tied to :doc:`sensors </sensors>` using rules.
    :depth: 1
 
 .. note::
-    This is all placeholder text in this section right now
+    Content is still being added to this section
 
 .. _configure_edge_ports:
 
@@ -26,55 +26,6 @@ The workflow automates creation of port-channel interfaces (LAGs and vLAGs), con
 port-channel interface as access or trunk, creation and association of VLANs with the port-channel
 interfaces as well as validation of the port channel state.
 
-Requirements
-````````````
-
-This workflow is designed for VDX switches operating in either VCS Fabric or IP Fabric mode. It is not
-designed for SLX switches. This fabric must already be registered with the |bwc| inventory service.
-
-Parameters
-``````````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   customer_name
-       Customer name. This will be used in VRF & VLAN description. Must be text string, 0-255 characters.
-
-   fabric
-       Name of the fabric. This must already be registered with the inventory service.
-
-   vlan_range
-       VLAN range to be used for customer. Should be provided as range, e.g. 50-60,70.
-
-   gateway_ip
-       VRRPe gateway IP to use for customer.
-
-Output
-``````
-
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   result
-       Boolean - True/False, if workflow succeeded
-
-   rd
-       RD auto-assigned to tenant
-
-Error Messages
-``````````````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   "Invalid VLAN ID"
-       Returned if VLAN(s) provided are invalid, e.g. > 4094.
-
-   "Unknown Fabric"
-       Returned if fabric is not registered. 
-
 .. _configure_interface_vlan:
 
 configure_interface_vlan
@@ -83,56 +34,7 @@ configure_interface_vlan
 This workflow can be used to configure or modify edge Layer 2 interfaces of the VCS fabric.
 However, unlike configure_edge_ports, this workflow does not create the corresponding VLANs
 or perform any validation.
-
-Requirements
-````````````
-
-This workflow is designed for VDX switches operating in either VCS Fabric or IP Fabric mode. It is not
-designed for SLX switches. This fabric must already be registered with the |bwc| inventory service.
-
-Parameters
-``````````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   customer_name
-       Customer name. This will be used in VRF & VLAN description. Must be text string, 0-255 characters.
-
-   fabric
-       Name of the fabric. This must already be registered with the inventory service.
-
-   vlan_range
-       VLAN range to be used for customer. Should be provided as range, e.g. 50-60,70.
-
-   gateway_ip
-       VRRPe gateway IP to use for customer.
-
-Output
-``````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   result
-       Boolean - True/False, if workflow succeeded
-
-   rd
-       RD auto-assigned to tenant
-
-Error Messages
-``````````````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   "Invalid VLAN ID"
-       Returned if VLAN(s) provided are invalid, e.g. > 4094.
-
-   "Unknown Fabric"
-       Returned if fabric is not registered. 
-
-
+ 
 .. _configure_vrrpe_gw:
 
 configure_vrrpe_gw
@@ -140,55 +42,6 @@ configure_vrrpe_gw
 
 The configure_vrrpe_gw workflow automates the creation of a VRRP-E based default gateway
 in a VCS fabric including the VE interfaces.
-
-Requirements
-````````````
-
-This workflow is designed for VDX switches operating in either VCS Fabric or IP Fabric mode. It is not
-designed for SLX switches. This fabric must already be registered with the |bwc| inventory service.
-
-Parameters
-``````````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   customer_name
-       Customer name. This will be used in VRF & VLAN description. Must be text string, 0-255 characters.
-
-   fabric
-       Name of the fabric. This must already be registered with the inventory service.
-
-   vlan_range
-       VLAN range to be used for customer. Should be provided as range, e.g. 50-60,70.
-
-   gateway_ip
-       VRRPe gateway IP to use for customer.
-
-Output
-``````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   result
-       Boolean - True/False, if workflow succeeded
-
-   rd
-       RD auto-assigned to tenant
-
-Error Messages
-``````````````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   "Invalid VLAN ID"
-       Returned if VLAN(s) provided are invalid, e.g. > 4094.
-
-   "Unknown Fabric"
-       Returned if fabric is not registered. 
-
 
 .. _add_l3_tenant_endpoint:
 
@@ -200,111 +53,54 @@ Layer 3 termination within the VCS fabric. It automates the provisioning of both
 edge ports as well as the VRRP-E based redundant gateway. It combines the actions in
 :ref: `configure_edge_ports` and :ref: `configure_vrrpe_gw`.
 
-Requirements
-````````````
-
-This workflow is designed for VDX switches operating in either VCS Fabric or IP Fabric mode. It is not
-designed for SLX switches. This fabric must already be registered with the |bwc| inventory service.
-
-Parameters
-``````````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   customer_name
-       Customer name. This will be used in VRF & VLAN description. Must be text string, 0-255 characters.
-
-   fabric
-       Name of the fabric. This must already be registered with the inventory service.
-
-   vlan_range
-       VLAN range to be used for customer. Should be provided as range, e.g. 50-60,70.
-
-   gateway_ip
-       VRRPe gateway IP to use for customer.
-
-Output
-``````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   result
-       Boolean - True/False, if workflow succeeded
-
-   rd
-       RD auto-assigned to tenant
-
-Error Messages
-``````````````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   "Invalid VLAN ID"
-       Returned if VLAN(s) provided are invalid, e.g. > 4094.
-
-   "Unknown Fabric"
-       Returned if fabric is not registered. 
-
 .. _create_l2_tenant_evpn:
 
 create_l2_tenant_evpn
 ~~~~~~~~~~~~~~~~~~~~~
 
-The create_l2_tenant_evpn workflow provisions an L2 domain extension in the BGP
-EVPN based IP fabric, on the selected leaves or vLAG pairs. The workflow must be
-provided with the set of vLAG pairs or leaf switches between which the Layer 2
-extension is required.
+Description
+```````````
+
+The create_l2_tenant_evpn workflow provisions an L2 domain extension in the BGP EVPN based IP fabric,
+on the selected leaves or vLAG pairs.The workflow must be provided with the set of vLAG pairs or
+leaf switches between which the layer 2 extension is required.
 
 Requirements
 ````````````
 
-This workflow is designed for VDX switches operating in either VCS Fabric or IP Fabric mode. It is not
-designed for SLX switches. This fabric must already be registered with the |bwc| inventory service.
+This workflow is designed for operating in IP Fabric mode.
 
 Parameters
 ``````````
 
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
+   mgmt_ip
+       Management IP of the switch. At least one switch mgmt ip must be provided.
 
-   customer_name
-       Customer name. This will be used in VRF & VLAN description. Must be text string, 0-255 characters.
-
-   fabric
-       Name of the fabric. This must already be registered with the inventory service.
-
-   vlan_range
-       VLAN range to be used for customer. Should be provided as range, e.g. 50-60,70.
-
-   gateway_ip
-       VRRPe gateway IP to use for customer.
+   vni
+       The VNI to be used for the Layer 2 extension <NUMBER:1-16777215>, e.g. vni=500
+   (EVPN instance must be configured under each rbridge-id)
 
 Output
 ``````
 
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
    result
-       Boolean - True/False, if workflow succeeded
-
-   rd
-       RD auto-assigned to tenant
+       Boolean - True/False, if action succeeded
 
 Error Messages
 ``````````````
 
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
+   "Input is not a valid VNI value"
+       Returned if VNI value is < 1 or > 16777215
 
-   "Invalid VLAN ID"
-       Returned if VLAN(s) provided are invalid, e.g. > 4094.
+   "EVPN instance not configured under rbridge-id"
+       Returned if evpn instance is not already configured
 
-   "Unknown Fabric"
-       Returned if fabric is not registered.
+   "Invalid Input values for VNI <vni> add for evi <evi> under rbridge <rbridge-id>
+       Returned if input is invalid.
+
+   "VLAG PAIR must be <= 2 leaf nodes"
+       Returned if VLAG pair is more than two nodes
+
 
 .. _add_l2_tenant_endpoint_evpn:
 
@@ -316,114 +112,64 @@ the same automation actions. Once Layer 2 extension is created in a BGP EVPN bas
 fabric using create_l2_tenant_evpn workflow, the connection of a network endpoint requiring
 layer 2 extension, to the vLAG pairs can be configured using this workflow.
 
-Requirements
-````````````
-
-This workflow is designed for VDX switches operating in either VCS Fabric or IP Fabric mode. It is not
-designed for SLX switches. This fabric must already be registered with the |bwc| inventory service.
-
-Parameters
-``````````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   customer_name
-       Customer name. This will be used in VRF & VLAN description. Must be text string, 0-255 characters.
-
-   fabric
-       Name of the fabric. This must already be registered with the inventory service.
-
-   vlan_range
-       VLAN range to be used for customer. Should be provided as range, e.g. 50-60,70.
-
-   gateway_ip
-       VRRPe gateway IP to use for customer.
-
-Output
-``````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   result
-       Boolean - True/False, if workflow succeeded
-
-   rd
-       RD auto-assigned to tenant
-
-Error Messages
-``````````````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   "Invalid VLAN ID"
-       Returned if VLAN(s) provided are invalid, e.g. > 4094.
-
-   "Unknown Fabric"
-       Returned if fabric is not registered.
-
 .. _create_l3_tenant_evpn:
 
 create_l3_tenant_evpn
 ~~~~~~~~~~~~~~~~~~~~~
 
-The create_l3_tenant_evpn workflow provisions the BGP EVPN based IP fabric with an L3
-tenant identified by a VRF. This workflow provisions the VRF for the Layer 3 tenant
-at the identified leaf switches or vLAG pairs, enables routing for the VRF across
-the IP fabric by enabling the VRF address family in BGP and creating L3VNI interface
-and also enables redistribution of connected routes in the VRF to BGP EVPN. The
-workflow must be provided with the set of vLAG pairs or leaf switches between which
-the layer 3 services for the VRF are required.
+Description
+```````````
+
+The create_l3_tenant_evpn workflow provisions the BGP EVPN based IP fabric with an L3 tenant
+identified by a VRF. This workflow provisions the vlan, VRF for the Layer 3 tenant at the identified
+leaf switches or vLAG pairs, enables routing for the VRF across the IP fabric by enabling the
+VRF address family in BGP and creating L3VNI interface and also enables redistribution of
+connected routes in the VRF to BGP EVPN.
 
 Requirements
 ````````````
 
-This workflow is designed for VDX switches operating in either VCS Fabric or IP Fabric mode. It is not
-designed for SLX switches. This fabric must already be registered with the |bwc| inventory service.
+This workflow is designed for operating in IP Fabric mode.
 
 Parameters
 ``````````
 
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
+   mgmt_ip
+       Management IP of the switch.
 
-   customer_name
-       Customer name. This will be used in VRF & VLAN description. Must be text string, 0-255 characters.
+   vrf_name
+       Name of the VRF. Must be a text string <WORD:1-32>, e.g. vrf10.
 
-   fabric
-       Name of the fabric. This must already be registered with the inventory service.
+   l3vni
+       Layer 3 VNI for VXLAN routing. Must be a integer <NUMBER:1-16777215>, e.g. 100.
 
-   vlan_range
-       VLAN range to be used for customer. Should be provided as range, e.g. 50-60,70.
+   route_distinguisher
+       BGP router id of the Leafs, e.g. 10.20.31.1,10.20.31.2.
 
-   gateway_ip
-       VRRPe gateway IP to use for customer.
+   rt
+       RT for the address family, e.g. 101.
+
+   tenant_addressing_type
+       Tenant addressing type ipv4/ipv6/both, e.g. both.
 
 Output
 ``````
 
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
    result
        Boolean - True/False, if workflow succeeded
 
-   rd
-       RD auto-assigned to tenant
 
 Error Messages
 ``````````````
 
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
+   "Not a valid VLAN"
+       Returned if VLAN provided are invalid, e.g. > 4094
 
-   "Invalid VLAN ID"
-       Returned if VLAN(s) provided are invalid, e.g. > 4094.
+   "vlan 1 is default vlan"
+       Returned if VLAN provided is 1.
 
-   "Unknown Fabric"
-       Returned if fabric is not registered.
+   "Vlan cannot be created, as it is not a user/fcoe vlan"
+       Returned if VLAN provided is part of user/fcoe vlan (4087/4096/1002).
 
 .. _add_l3_tenant_endpoint_evpn:
 
@@ -437,51 +183,3 @@ interface as access or trunk, creation and association of VLANs with the port-ch
 interfaces, validation of the port channel state as well as creation of layer 3
 gateway using Anycast Gateway protocol on the vLAG pair or leaf switch and
 association of the layer 3 gateways with a VRF.
-
-Requirements
-````````````
-
-This workflow is designed for VDX switches operating in either VCS Fabric or IP Fabric mode. It is not
-designed for SLX switches. This fabric must already be registered with the |bwc| inventory service.
-
-Parameters
-``````````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   customer_name
-       Customer name. This will be used in VRF & VLAN description. Must be text string, 0-255 characters.
-
-   fabric
-       Name of the fabric. This must already be registered with the inventory service.
-
-   vlan_range
-       VLAN range to be used for customer. Should be provided as range, e.g. 50-60,70.
-
-   gateway_ip
-       VRRPe gateway IP to use for customer.
-
-Output
-``````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   result
-       Boolean - True/False, if workflow succeeded
-
-   rd
-       RD auto-assigned to tenant
-
-Error Messages
-``````````````
-
-.. code-block:: guess
-   :emphasize-lines: 1,4,7,10,13,16
-
-   "Invalid VLAN ID"
-       Returned if VLAN(s) provided are invalid, e.g. > 4094.
-
-   "Unknown Fabric"
-       Returned if fabric is not registered.
