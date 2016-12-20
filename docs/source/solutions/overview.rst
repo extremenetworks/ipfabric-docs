@@ -11,8 +11,7 @@ workflows.
 These are installed on top of |bwc|. Users can install one or more suites. Suites may have
 dependencies - e.g. the Network Essentials suite is foundational for other suites.
 
-These suites are fully supported by Brocade. Users may modify these workflows to customise them
-to their needs.
+Users may modify these workflows to customise them to their needs.
 
 Network Essentials
 ~~~~~~~~~~~~~~~~~~
