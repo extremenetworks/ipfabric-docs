@@ -15,52 +15,86 @@ See the |bwc| :doc:`CLI reference documentation </reference/cli>` for more detai
 
 ----------
 
-|bwc| consists of two packs for DC Fabric services and workflows: **bwc_topology** and **bwc_dcfabric** pack. 
+|bwc| consists of two packs for DC Fabric services and workflows: **network_inventory** and **dcfabric** pack. 
 These packs are automatically installed with the DC Fabric suite.
 
-* **bwc_topology**: Topology-related actions such as show topology, configure BGP, etc. Includes lightweight topology 
+* **network_inventory**: Inventory-related actions such as show topology, configure BGP, etc. Includes lightweight topology 
   service providing database of network topology (device details, interfaces, LLDP neighbors, etc.).  
-* **bwc_dcfabric**: Actions for manipulating inventory, and performing lower-level device configuration.
+* **dcfabric**: Workflows and actions for configuring devices, provisioning fabrics and services, and manipulating inventory.
 
 The actions in each pack include a short description:
 
 .. code-block:: guess
     :emphasize-lines: 1,17
 
-    $ st2 action list -p bwc_dcfabric
-      +-----------------------------------------+---------------+----------------------------------------------------+
-      | ref                                     | pack          |              description                           |
-      +-----------------------------------------+---------------+----------------------------------------------------+
-      | bwc_dcfabric.configure_anycast          | bwc_dcfabric  | Affect an anycast gateway change on VDX switches   |
-      | bwc_dcfabric.configure_bgp              | bwc_dcfabric  | Configure BGP on Brocade VDX Switches              |
-      | bwc_dcfabric.configure_bgp_neighbor     | bwc_dcfabric  | Configure BGP neighbor on Brocade VDX Switches     |
-      | bwc_dcfabric.configure_bgp_redistribute | bwc_dcfabric  | Configure BGP route redistribution on VDX switches |
-      | bwc_dcfabric.configure_fabric           | bwc_dcfabric  | Configure IP fabric                                |
-      | bwc_dcfabric.configure_ip               | bwc_dcfabric  | Configure IPs on Brocade VDX Switches              |
-      | bwc_dcfabric.configure_switch           | bwc_dcfabric  | Configure switch                                   |
-      | bwc_dcfabric.configure_switch_bgp       | bwc_dcfabric  | Configure bgp on switch                            |
-      | bwc_dcfabric.configure_switch_ifaces    | bwc_dcfabric  | Configure switch interfaces                        |
-      | bwc_dcfabric.inventory                  | bwc_dcfabric  | Query inventory service to constuct the inventory. |
-      +-----------------------------------------+---------------+----------------------------------------------------+ 
+    $ st2 action list -p dcfabric
+      +-----------------------------------------------+----------+------------------------------------------------------+
+      | ref                                           | pack     | description                                          |
+      +-----------------------------------------------+----------+------------------------------------------------------+
+      | dcfabric.Add_l3_tenant_endpoint               | dcfabric | Add an endpoint (VM, server, LB, FW) to a VCS or an  |
+      |                                               |          | IP fabric (non EVPN) for an existing tenant. Create  |
+      |                                               |          | interface/port-channel configurations based on the   |
+      |                                               |          | user input on devices. Enable VRRPE configurations   |
+      | dcfabric.Add_l3_tenant_endpoint_evpn          | dcfabric | Add an endpoint (Server, FW, LB, VM) to an existing  |
+      |                                               |          | L3 tenant in an EVPN IP fabric.This workflow creates |
+      |                                               |          | interface or port-channel configurations based on    |
+      |                                               |          | the user input on devices and also configures IP     |
+      |                                               |          | ANYCAST GW configurations                            |
+      | dcfabric.Configure_edge_ports                 | dcfabric | Configure vlan, description, portchannel, enable the |
+      |                                               |          | switch port and set the admin state mode on the      |
+      |                                               |          | switch                                               |
+      | dcfabric.Configure_vrrpe_gw                   | dcfabric | Configure Ve interface on specified Rbridge's and    |
+      |                                               |          | configure Vrrpe on the Ve interfaces.                |
+      | dcfabric.Create_l2_tenant_evpn                | dcfabric | Create EVPN VXLAN based L2 Broadcast Domain spanning |
+      |                                               |          | multiple switches/vLAG pair                          |
+      | dcfabric.Create_l3_tenant_evpn                | dcfabric | Create L3 Tenant evpn performs Create Vlan, Create   |
+      |                                               |          | VRF including RD, RT, L3VNI, Create Ve, configure    |
+      |                                               |          | redistributed connected bgp                          |
+      | dcfabric.configure_bgp_ipfabric               | dcfabric | Configure bgp on switch                              |
+      | dcfabric.configure_bgp_neighbor               | dcfabric | Configure BGP neighbor on Brocade VDX Switches       |
+      | dcfabric.configure_bgp_parameters_ipfabric    | dcfabric | Configure BGP on Brocade VDX Switches                |
+      | dcfabric.configure_bgp_redistribute_connected | dcfabric | Configure BGP route redistribution on VDX switches   |
+      | dcfabric.configure_device_ipfabric            | dcfabric | Configure switch                                     |
+      | dcfabric.configure_fabric_infra               | dcfabric | Configure IP fabric infrastructure                   |
+      | dcfabric.configure_interface_ipfabric         | dcfabric | Configure IPs on Brocade VDX Switches                |
+      | dcfabric.configure_intfs_ipfabric             | dcfabric | Configure switch interfaces                          |
+      | dcfabric.debugscript_ipfabric                 | dcfabric | Script to debug ip fabric flows on Brocade VDX       |
+      |                                               |          | Switches                                             |
+      | dcfabric.debugscript_ipfabric_egress          | dcfabric | Script to run a debug ipfabric flows on egress node  |
+      | dcfabric.debugscript_ipfabric_spine           | dcfabric | Script to debug ip fabric flows on Brocade VDX       |
+      |                                               |          | Switches                                             |
+      | dcfabric.get-flow-trace-ip-fabric             | dcfabric | Runs the 3 ipfabric debug scripts on ingress, spine  |
+      |                                               |          | and egress nodes                                     |
+      | dcfabric.provision_evpn_instance              | dcfabric | Create evpn instance and overlay gateway             |
+      | dcfabric.query_topology                       | dcfabric | Query inventory service to construct the inventory.  |
+      +-----------------------------------------------+----------+------------------------------------------------------+
     
-    $ st2 action list -p bwc-topology
-      +-----------------------------------+--------------+---------------------------------------------------------------------------------------+
-      | ref                               |    pack      | description                                                                           |
-      +-----------------------------------+--------------+---------------------------------------------------------------------------------------+
-      | bwc-topology.fabric_add           | bwc-topology | Add a fabric to the inventory                                                         |
-      | bwc-topology.fabric_config_set    | bwc-topology | Add/Update the specified fabric parameter for the specified fabric from the inventory |
-      | bwc-topology.fabric_config_delete | bwc-topology | Delete the specified fabric parameter for the specified fabric from the inventory     |
-      | bwc-topology.fabric_delete        | bwc-topology | Delete a fabric from the inventory                                                    |
-      | bwc-topology.fabric_list          | bwc-topology | List all the fabrics in the inventory or the specified fabric details                 |
-      | bwc-topology.show_config_bgp      | bwc-topology | Lists BGP config details in the inventory for the specified fabric or device IP       |
-      | bwc-topology.show_lldp_links      | bwc-topology | List all the lldp links in the inventory for the specified fabric                     |
-      | bwc-topology.show_vcs_links       | bwc-topology | List all the vcs links in the inventory for the specified fabric                      |
-      | bwc-topology.switch_add           | bwc-topology | Add a switch to the inventory to a specified fabric                                   |
-      | bwc-topology.switch_delete        | bwc-topology | Deletes the specified switch from the Fabric                                          |
-      | bwc-topology.switch_list          | bwc-topology | List all the devices in the bwc-topology for the specified fabric or device IP        |
-      | bwc-topology.switch_update        | bwc-topology | Update a details of single switch or all the switches in the Fabric                   |
-      | bwc-topology.topology_generate    | bwc-topology | Generate the topology for the specified Fabric                                        |
-      +-----------------------------------+--------------+---------------------------------------------------------------------------------------+
+    $ st2 action list -p network_inventory
+      +----------------------------------------+-------------------+------------------------------------------------------+
+      | ref                                    | pack              | description                                          |
+      +----------------------------------------+-------------------+------------------------------------------------------+
+      | network_inventory.fabric_add           | network_inventory | Add a fabric to the inventory                        |
+      | network_inventory.fabric_config_delete | network_inventory | Delete the specified fabric parameter for the        |
+      |                                        |                   | specified fabric from the inventory                  |
+      | network_inventory.fabric_config_set    | network_inventory | Add/Update the specified fabric parameter for the    |
+      |                                        |                   | specified fabric from the inventory                  |
+      | network_inventory.fabric_delete        | network_inventory | Delete a fabric from the inventory                   |
+      | network_inventory.fabric_list          | network_inventory | List all the fabrics in the inventory or the         |
+      |                                        |                   | specified fabric details                             |
+      | network_inventory.show_config_bgp      | network_inventory | Lists BGP config details in the inventory for the    |
+      |                                        |                   | specified fabric or device IP                        |
+      | network_inventory.show_lldp_links      | network_inventory | List all the lldp links in the inventory for the     |
+      |                                        |                   | specified fabric                                     |
+      | network_inventory.show_vcs_links       | network_inventory | List all the vcs links in the inventory for the      |
+      |                                        |                   | specified fabric                                     |
+      | network_inventory.switch_add           | network_inventory | Add a switch to the inventory to a specified fabric  |
+      | network_inventory.switch_delete        | network_inventory | Deletes the specified switch from the Fabric         |
+      | network_inventory.switch_list          | network_inventory | List all the devices in the inventory for the        |
+      |                                        |                   | specified fabric or device IP                        |
+      | network_inventory.switch_update        | network_inventory | Update a details of single switch or all the         |
+      |                                        |                   | switches in the Fabric                               |
+      | network_inventory.topology_generate    | network_inventory | Generate the topology for the specified Fabric       |
+      +----------------------------------------+-------------------+------------------------------------------------------+
 
 For more details about the actions in these packs, use the ``st2 action get <pack-name>.<action-name>``
 command. The output can also be displayed in YAML format by appending ``-y`` to the command.
@@ -69,14 +103,14 @@ Similarly, for JSON use ``-j``.
 .. code-block:: guess
     :emphasize-lines: 1,41
 
-    $ st2 action get bwc-topology.switch_add
+    $ st2 action get network_inventory.switch_add
       +-------------+------------------------------------------------------------+
       | Property    | Value                                                      |
       +-------------+------------------------------------------------------------+
-      | id          | 57acd58718971236df5b4599                                   |
-      | uid         | action:bwc-topology:switch_add                             |
-      | ref         | bwc-topology.switch_add                                    |
-      | pack        | bwc-topology                                               |
+      | id          | 585879d01d41c87d39e4ff87                                   |
+      | uid         | action:network_inventory:switch_add                        |
+      | ref         | network_inventory.switch_add                               |
+      | pack        | network_inventory                                          |
       | name        | switch_add                                                 |
       | description | Add a switch to the inventory to a specified fabric        |
       | enabled     | True                                                       |
@@ -109,14 +143,14 @@ Similarly, for JSON use ``-j``.
       | tags        |                                                            |
       +-------------+------------------------------------------------------------+
     
-    $ st2 action get bwc-topology.switch_add -y
+    $ st2 action get network_inventory.switch_add -y
       description: Add a switch to the inventory to a specified fabric
       enabled: true
       entry_point: switch_add.py
-      id: 57acd58718971236df5b4599
+      id: 585879d01d41c87d39e4ff87
       name: switch_add
       notify: {}
-      pack: bwc-topology
+      pack: network_inventory
       parameters:
           fabric:
               description: Name of the Fabric to add
@@ -135,10 +169,10 @@ Similarly, for JSON use ``-j``.
               description: User to connect to the device
               required: true
               type: string
-      ref: bwc-topology.switch_add
+      ref: network_inventory.switch_add
       runner_type: run-python
       tags: []
-      uid: action:bwc-topology:switch_add
+      uid: action:network_inventory:switch_add
 
 Most of the actions have *Required* and *Optional* parameters. These parameters can either
 be accessed using ``st2 action get <pack-name>.<action-name>`` or
@@ -152,29 +186,29 @@ be accessed using ``st2 action get <pack-name>.<action-name>`` or
 
 .. code:: shell
 
-    $ st2 run bwc-topology.switch_list -h
-      List all the devices in the inventory for the specified fabric or
-      device IP
-      
-      Optional Parameters:
-          env
-              Environment variables which will be available to the script(e.g.
-              key1=val1,key2=val2)
-              Type: object
-      
-          fabric
-              Name of the Fabric for switches to be listed
-              Type: string
-      
-          host
-              IP of the device to be listed
-              Type: string
-      
-          timeout
-              Action timeout in seconds. Action will get killed if it doesn't finish
-              in timeout seconds.
-              Type: integer
-              Default: 600
+    $ st2 run network_inventory.switch_list -h
+    List all the devices in the inventory for the specified fabric or
+    device IP
+
+    Optional Parameters:
+        env
+            Environment variables which will be available to the script(e.g.
+            key1=val1,key2=val2)
+            Type: object
+
+        fabric
+            Name of the Fabric for switches to be listed
+            Type: string
+
+        host
+            IP of the device to be listed
+            Type: string
+
+        timeout
+            Action timeout in seconds. Action will get killed if it doesn't finish
+            in timeout seconds.
+            Type: integer
+            Default: 600
     
 Next, we will go through the CLI required for DC Fabric workflows. Exploring each action
 in these packs is beyond the scope of this document.
@@ -192,12 +226,12 @@ The concept of fabric, *default* or user defined and switch roles i.e *spine* or
 |bwc|-specific. By default, a VDX switch doesn't have any information about its role. In order for
 |bwc| to be able to determine the switch role, the first switch added to the fabric must be a **Spine**.
 
-Let us start with ``bwc-topology.fabric_list`` to get the details about the *default* fabric.
+Let us start with ``network_inventory.fabric_list`` to get the details about the *default* fabric.
 This is the set of parameters such as ASN range, IP address range etc. required to build an IP fabric:
 
 .. code:: shell
 
-    $ st2 run bwc-topology.fabric_list
+    $ st2 run network_inventory.fabric_list
       
       .
       id: 57b201fc1897122c79575bdf
@@ -237,7 +271,7 @@ On a side note, the values in the output can also be accessed using ``--attr`` a
 .. code-block:: guess
    :emphasize-lines: 1,9
 
-   $ st2 run bwc-topology.fabric_list -k result[0].fabric_settings
+   $ st2 run network_inventory.fabric_list -k result[0].fabric_settings
      .
      {u'bgp_multihop': u'5', u'spine_asn_block': u'64512-64999', u'leaf_asn_block': u'65000-65534',
      u'allowas_in': u'5', u'max_paths': u'8', u'bfd_multiplier': u'3', u'p2p_link_range':
@@ -245,7 +279,7 @@ On a side note, the values in the output can also be accessed using ``--attr`` a
      u'aabb.ccdd.eeff', u'evpn_enabled': u'Yes', u'loopback_ip_range': u'172.32.254.0/24',
      u'bfd_rx': u'300'}
    
-   $ st2 run bwc-topology.fabric_list --attr result.result[0].fabric_settings
+   $ st2 run network_inventory.fabric_list --attr result.result[0].fabric_settings
      .
      result.result[0].fabric_settings:
        allowas_in: '5'
@@ -278,7 +312,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
 
 .. code:: shell
     
-   $ st2 run bwc-topology.fabric_add fabric=new_fabric
+   $ st2 run network_inventory.fabric_add fabric=new_fabric
      .
      id: 57b23ac61897122c79575c30
      status: succeeded
@@ -306,7 +340,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
 .. code-block:: shell
    :emphasize-lines: 1,21,41,61,81
    
-   $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=p2p_link_range value="unnumbered"
+   $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=p2p_link_range value="unnumbered"
      .
       id: 57b23c4d1897122c79575c33
       status: succeeded
@@ -326,7 +360,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
       
           '
 
-   $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=leaf_asn_block value=6500-6600
+   $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=leaf_asn_block value=6500-6600
      .
       id: 57b23cc61897122c79575c36
       status: succeeded
@@ -346,7 +380,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
       
           '
 
-   $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=spine_asn_block value=6000-6400
+   $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=spine_asn_block value=6000-6400
      ..
      id: 57b23dc61897122c79575c39
      status: succeeded
@@ -366,7 +400,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
      
          '
 
-   $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=loopback_ip_range value=172.32.254.0/24
+   $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=loopback_ip_range value=172.32.254.0/24
      .
       id: 57b23e751897122c79575c3c
       status: succeeded
@@ -386,7 +420,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
       
           '
 
-   $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=loopback_port_number value=1
+   $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=loopback_port_number value=1
      .
       id: 57b23ec81897122c79575c3f
       status: succeeded
@@ -416,7 +450,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
 .. code-block:: shell
     :emphasize-lines: 1,21,41,61,81,101,121
 
-    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=anycast_mac value=ccff.aadd.eeff
+    $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=anycast_mac value=ccff.aadd.eeff
       .
       id: 57b242451897122c79575c45
       status: succeeded
@@ -436,7 +470,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
       
           '
     
-    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=max_paths value=8
+    $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=max_paths value=8
       .
       id: 57b2426b1897122c79575c48
       status: succeeded
@@ -456,7 +490,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
       
           '
     
-    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=bfd_multiplier value=5
+    $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=bfd_multiplier value=5
       .
       id: 57b242951897122c79575c4b
       status: succeeded
@@ -476,7 +510,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
       
           '
     
-    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=bfd_rx value=400
+    $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=bfd_rx value=400
       .
       id: 57b243151897122c79575c4e
       status: succeeded
@@ -496,7 +530,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
       
           '
     
-    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=bfd_tx value=400
+    $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=bfd_tx value=400
       .
       id: 57b243171897122c79575c51
       status: succeeded
@@ -516,7 +550,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
       
           '
     
-    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=bgp_multihop value=8
+    $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=bgp_multihop value=8
       .
       id: 57b2431a1897122c79575c54
       status: succeeded
@@ -536,7 +570,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
       
           '
     
-    $ st2 run bwc-topology.fabric_config_set fabric=new_fabric key=evpn_enabled value=no
+    $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=evpn_enabled value=no
       .
       id: 57b2431e1897122c79575c57
       status: succeeded
@@ -560,9 +594,9 @@ DC Fabric suite supports user-defined fabric with custom parameters.
 
 .. code:: shell
 
-    $ st2 run bwc-topology.fabric_config_delete fabric=new_fabric key=anycast_mac
+    $ st2 run network_inventory.fabric_config_delete fabric=new_fabric key=anycast_mac
 
-    $ st2 run bwc-topology.fabric_delete fabric=new_fab
+    $ st2 run network_inventory.fabric_delete fabric=new_fab
 
 ----------
 
@@ -578,7 +612,7 @@ After creating a *custom fabric* we can register/update/delete switches to the f
 .. code-block:: shell
     :emphasize-lines: 1,40,80
 
-    $ st2 run bwc-topology.switch_add fabric=default host=10.24.39.224 user=admin passwd=password
+    $ st2 run network_inventory.switch_add fabric=default host=10.24.39.224 user=admin passwd=password
       ...
       id: 57b24efb1897122c79575c66
       status: succeeded
@@ -617,7 +651,7 @@ After creating a *custom fabric* we can register/update/delete switches to the f
       
           '
     
-    $ st2 run bwc-topology.switch_update fabric=default host=10.24.39.224 user=admin passwd=password
+    $ st2 run network_inventory.switch_update fabric=default host=10.24.39.224 user=admin passwd=password
       ..
       id: 57b24f471897122c79575c6e
       status: succeeded
@@ -657,7 +691,7 @@ After creating a *custom fabric* we can register/update/delete switches to the f
       
           '
     
-    $ st2 run bwc-topology.switch_delete host=10.24.39.224
+    $ st2 run network_inventory.switch_delete host=10.24.39.224
       .
       id: 57b24f5f1897122c79575c71
       status: succeeded
@@ -696,11 +730,11 @@ After creating a *custom fabric* we can register/update/delete switches to the f
 The same commands can be used for the *default* fabric.
 
 All the switches in a fabric can also be updated by providing fabric name: ``fabric=<fabric name>``
-to ``st2 run bwc-topology.switch_update`` command instead of a switch IP address:
+to ``st2 run network_inventory.switch_update`` command instead of a switch IP address:
 
 .. code:: shell
 
-   $ st2 run bwc-topology.switch_update fabric=default
+   $ st2 run network_inventory.switch_update fabric=default
      ...
      id: 57b256f71897122c79575d43
      status: succeeded
@@ -783,10 +817,10 @@ workflow:
 
 .. code:: shell
 
-   $ st2 run bwc_dcfabric.configure_fabric fabric=default
+   $ st2 run dcfabric.configure_fabric fabric=default
      ............................................................
      id: 57b4bf0518971232c98e6f25
-     action.ref: bwc_dcfabric.configure_fabric
+     action.ref: dcfabric.configure_fabric
      parameters:
        fabric: default
      status: succeeded
@@ -795,47 +829,47 @@ workflow:
      +------------------------------+-------------------------+------------------------------------+-----------------------------------------+-------------------------------+
      | id                           | status                  | task                               | action                                  | start_timestamp               |
      +------------------------------+-------------------------+------------------------------------+-----------------------------------------+-------------------------------+
-     |   57b4bf0618971232c98e6f28   | succeeded (7s elapsed)  | get_inventory                      | bwc_dcfabric.inventory                  | Wed, 17 Aug 2016 19:46:14 UTC |
-     | + 57b4bf0e18971232c98e6f2a   | succeeded (51s elapsed) | configure_switches                 | bwc_dcfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
-     |  + 57b4bf1018971232c98e6f38  | succeeded (13s elapsed) | configure_interfaces               | bwc_dcfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
-     |     57b4bf1218971232c98e6f3e | succeeded (5s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
-     |     57b4bf1818971232c98e6f47 | succeeded (5s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:31 UTC |
-     |  + 57b4bf1f18971232c98e6f4e  | succeeded (24s elapsed) | configure_bgp                      | bwc_dcfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:39 UTC |
-     |     57b4bf2218971232c98e6f54 | succeeded (6s elapsed)  | configure_bgp                      | bwc_dcfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:42 UTC |
-     |     57b4bf2918971232c98e6f5c | succeeded (5s elapsed)  | configure_bgp_redistributed_routes | bwc_dcfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:49 UTC |
-     |     57b4bf2f18971232c98e6f66 | succeeded (6s elapsed)  | configure_bgp_peers                | bwc_dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:55 UTC |
-     |    57b4bf3918971232c98e6f72  | succeeded (5s elapsed)  | configure_anycast_gateway          | bwc_dcfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:05 UTC |
-     | + 57b4bf0e18971232c98e6f2c   | succeeded (61s elapsed) | configure_switches                 | bwc_dcfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
-     |  + 57b4bf1018971232c98e6f32  | succeeded (24s elapsed) | configure_interfaces               | bwc_dcfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
-     |     57b4bf1218971232c98e6f3c | succeeded (5s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
-     |     57b4bf1818971232c98e6f48 | succeeded (4s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:32 UTC |
-     |     57b4bf1c18971232c98e6f4a | succeeded (4s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:36 UTC |
-     |     57b4bf2118971232c98e6f52 | succeeded (3s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:41 UTC |
-     |  + 57b4bf2a18971232c98e6f5e  | succeeded (29s elapsed) | configure_bgp                      | bwc_dcfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:49 UTC |
-     |     57b4bf2b18971232c98e6f60 | succeeded (7s elapsed)  | configure_bgp                      | bwc_dcfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:51 UTC |
-     |     57b4bf3318971232c98e6f6a | succeeded (4s elapsed)  | configure_bgp_redistributed_routes | bwc_dcfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:59 UTC |
-     |     57b4bf3818971232c98e6f70 | succeeded (10s elapsed) | configure_bgp_peers                | bwc_dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:03 UTC |
-     |     57b4bf3818971232c98e6f6d | succeeded (9s elapsed)  | configure_bgp_peers                | bwc_dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:03 UTC |
-     |     57b4bf3818971232c98e6f6f | succeeded (8s elapsed)  | configure_bgp_peers                | bwc_dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:04 UTC |
-     | + 57b4bf0e18971232c98e6f2e   | succeeded (51s elapsed) | configure_switches                 | bwc_dcfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
-     |  + 57b4bf1018971232c98e6f34  | succeeded (13s elapsed) | configure_interfaces               | bwc_dcfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
-     |     57b4bf1118971232c98e6f3a | succeeded (4s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:25 UTC |
-     |     57b4bf1518971232c98e6f42 | succeeded (4s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:29 UTC |
-     |  + 57b4bf1f18971232c98e6f4c  | succeeded (26s elapsed) | configure_bgp                      | bwc_dcfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:38 UTC |
-     |     57b4bf2018971232c98e6f50 | succeeded (5s elapsed)  | configure_bgp                      | bwc_dcfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:40 UTC |
-     |     57b4bf2618971232c98e6f5a | succeeded (4s elapsed)  | configure_bgp_redistributed_routes | bwc_dcfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:46 UTC |
-     |     57b4bf2b18971232c98e6f62 | succeeded (6s elapsed)  | configure_bgp_peers                | bwc_dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:51 UTC |
-     |    57b4bf3918971232c98e6f74  | succeeded (6s elapsed)  | configure_anycast_gateway          | bwc_dcfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:05 UTC |
-     | + 57b4bf0e18971232c98e6f30   | succeeded (56s elapsed) | configure_switches                 | bwc_dcfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
-     |  + 57b4bf1018971232c98e6f36  | succeeded (19s elapsed) | configure_interfaces               | bwc_dcfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
-     |     57b4bf1218971232c98e6f40 | succeeded (5s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
-     |     57b4bf1718971232c98e6f44 | succeeded (6s elapsed)  | configure_interface                | bwc_dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:31 UTC |
-     |  + 57b4bf2418971232c98e6f56  | succeeded (24s elapsed) | configure_bgp                      | bwc_dcfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:44 UTC |
-     |     57b4bf2518971232c98e6f58 | succeeded (6s elapsed)  | configure_bgp                      | bwc_dcfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:45 UTC |
-     |     57b4bf2c18971232c98e6f64 | succeeded (5s elapsed)  | configure_bgp_redistributed_routes | bwc_dcfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:52 UTC |
-     |     57b4bf3218971232c98e6f68 | succeeded (6s elapsed)  | configure_bgp_peers                | bwc_dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:58 UTC |
-     |    57b4bf3e18971232c98e6f76  | succeeded (3s elapsed)  | configure_anycast_gateway          | bwc_dcfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:10 UTC |
-     |   57b4bf4c18971232c98e6f78   | succeeded (56s elapsed) | show_bgp_config                    | bwc-topology.show_config_bgp            | Wed, 17 Aug 2016 19:47:24 UTC |
+     |   57b4bf0618971232c98e6f28   | succeeded (7s elapsed)  | get_inventory                      | dcfabric.inventory                  | Wed, 17 Aug 2016 19:46:14 UTC |
+     | + 57b4bf0e18971232c98e6f2a   | succeeded (51s elapsed) | configure_switches                 | dcfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
+     |  + 57b4bf1018971232c98e6f38  | succeeded (13s elapsed) | configure_interfaces               | dcfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
+     |     57b4bf1218971232c98e6f3e | succeeded (5s elapsed)  | configure_interface                | dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
+     |     57b4bf1818971232c98e6f47 | succeeded (5s elapsed)  | configure_interface                | dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:31 UTC |
+     |  + 57b4bf1f18971232c98e6f4e  | succeeded (24s elapsed) | configure_bgp                      | dcfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:39 UTC |
+     |     57b4bf2218971232c98e6f54 | succeeded (6s elapsed)  | configure_bgp                      | dcfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:42 UTC |
+     |     57b4bf2918971232c98e6f5c | succeeded (5s elapsed)  | configure_bgp_redistributed_routes | dcfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:49 UTC |
+     |     57b4bf2f18971232c98e6f66 | succeeded (6s elapsed)  | configure_bgp_peers                | dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:55 UTC |
+     |    57b4bf3918971232c98e6f72  | succeeded (5s elapsed)  | configure_anycast_gateway          | dcfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:05 UTC |
+     | + 57b4bf0e18971232c98e6f2c   | succeeded (61s elapsed) | configure_switches                 | dcfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
+     |  + 57b4bf1018971232c98e6f32  | succeeded (24s elapsed) | configure_interfaces               | dcfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
+     |     57b4bf1218971232c98e6f3c | succeeded (5s elapsed)  | configure_interface                | dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
+     |     57b4bf1818971232c98e6f48 | succeeded (4s elapsed)  | configure_interface                | dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:32 UTC |
+     |     57b4bf1c18971232c98e6f4a | succeeded (4s elapsed)  | configure_interface                | dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:36 UTC |
+     |     57b4bf2118971232c98e6f52 | succeeded (3s elapsed)  | configure_interface                | dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:41 UTC |
+     |  + 57b4bf2a18971232c98e6f5e  | succeeded (29s elapsed) | configure_bgp                      | dcfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:49 UTC |
+     |     57b4bf2b18971232c98e6f60 | succeeded (7s elapsed)  | configure_bgp                      | dcfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:51 UTC |
+     |     57b4bf3318971232c98e6f6a | succeeded (4s elapsed)  | configure_bgp_redistributed_routes | dcfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:59 UTC |
+     |     57b4bf3818971232c98e6f70 | succeeded (10s elapsed) | configure_bgp_peers                | dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:03 UTC |
+     |     57b4bf3818971232c98e6f6d | succeeded (9s elapsed)  | configure_bgp_peers                | dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:03 UTC |
+     |     57b4bf3818971232c98e6f6f | succeeded (8s elapsed)  | configure_bgp_peers                | dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:47:04 UTC |
+     | + 57b4bf0e18971232c98e6f2e   | succeeded (51s elapsed) | configure_switches                 | dcfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
+     |  + 57b4bf1018971232c98e6f34  | succeeded (13s elapsed) | configure_interfaces               | dcfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
+     |     57b4bf1118971232c98e6f3a | succeeded (4s elapsed)  | configure_interface                | dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:25 UTC |
+     |     57b4bf1518971232c98e6f42 | succeeded (4s elapsed)  | configure_interface                | dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:29 UTC |
+     |  + 57b4bf1f18971232c98e6f4c  | succeeded (26s elapsed) | configure_bgp                      | dcfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:38 UTC |
+     |     57b4bf2018971232c98e6f50 | succeeded (5s elapsed)  | configure_bgp                      | dcfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:40 UTC |
+     |     57b4bf2618971232c98e6f5a | succeeded (4s elapsed)  | configure_bgp_redistributed_routes | dcfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:46 UTC |
+     |     57b4bf2b18971232c98e6f62 | succeeded (6s elapsed)  | configure_bgp_peers                | dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:51 UTC |
+     |    57b4bf3918971232c98e6f74  | succeeded (6s elapsed)  | configure_anycast_gateway          | dcfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:05 UTC |
+     | + 57b4bf0e18971232c98e6f30   | succeeded (56s elapsed) | configure_switches                 | dcfabric.configure_switch           | Wed, 17 Aug 2016 19:46:22 UTC |
+     |  + 57b4bf1018971232c98e6f36  | succeeded (19s elapsed) | configure_interfaces               | dcfabric.configure_switch_ifaces    | Wed, 17 Aug 2016 19:46:24 UTC |
+     |     57b4bf1218971232c98e6f40 | succeeded (5s elapsed)  | configure_interface                | dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:26 UTC |
+     |     57b4bf1718971232c98e6f44 | succeeded (6s elapsed)  | configure_interface                | dcfabric.configure_ip               | Wed, 17 Aug 2016 19:46:31 UTC |
+     |  + 57b4bf2418971232c98e6f56  | succeeded (24s elapsed) | configure_bgp                      | dcfabric.configure_switch_bgp       | Wed, 17 Aug 2016 19:46:44 UTC |
+     |     57b4bf2518971232c98e6f58 | succeeded (6s elapsed)  | configure_bgp                      | dcfabric.configure_bgp              | Wed, 17 Aug 2016 19:46:45 UTC |
+     |     57b4bf2c18971232c98e6f64 | succeeded (5s elapsed)  | configure_bgp_redistributed_routes | dcfabric.configure_bgp_redistribute | Wed, 17 Aug 2016 19:46:52 UTC |
+     |     57b4bf3218971232c98e6f68 | succeeded (6s elapsed)  | configure_bgp_peers                | dcfabric.configure_bgp_neighbor     | Wed, 17 Aug 2016 19:46:58 UTC |
+     |    57b4bf3e18971232c98e6f76  | succeeded (3s elapsed)  | configure_anycast_gateway          | dcfabric.configure_anycast          | Wed, 17 Aug 2016 19:47:10 UTC |
+     |   57b4bf4c18971232c98e6f78   | succeeded (56s elapsed) | show_bgp_config                    | network_inventory.show_config_bgp            | Wed, 17 Aug 2016 19:47:24 UTC |
      +------------------------------+-------------------------+------------------------------------+-----------------------------------------+-------------------------------+
 
 
@@ -967,7 +1001,7 @@ After BGP workflow execution:
 
 .. code:: shell
    
-   $ st2 run bwc-topology.show_config_bgp fabric=default
+   $ st2 run network_inventory.show_config_bgp fabric=default
      ...........................
      id: 57b4c21118971232c98e6f83
      status: succeeded
@@ -1078,7 +1112,7 @@ After discovering the switches:
 
 .. code:: shell
 
-   $ st2 run bwc-topology.show_lldp_links fabric=default
+   $ st2 run network_inventory.show_lldp_links fabric=default
      .
      id: 57b256631897122c79575d40
      status: succeeded
@@ -1212,7 +1246,7 @@ links between principle and secondary nodes:
 
 .. code:: shell
 
-   $ st2 run bwc-topology.show_vcs_links fabric=default
+   $ st2 run network_inventory.show_vcs_links fabric=default
      .
      id: 57b256311897122c79575d3d
      status: succeeded
@@ -1247,7 +1281,7 @@ use the following command:
 
 .. code:: shell
 
-   $ st2 run bwc-topology.topology_generate fabric=default
+   $ st2 run network_inventory.topology_generate fabric=default
      .
      id: 57b6367f18971268b72d7fdf
      status: succeeded
