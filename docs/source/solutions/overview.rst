@@ -43,7 +43,7 @@ The Internet Exchange suite provides workflows that target common use-cases seen
 Workflows include customer port provisioning, move systems to quarantine, MAC ACL updates, and route
 server validation.
 
-It works with Brocade SLX-9850 and 9540 switches, and will in future work with Brocade MLXe devices.
+It will work with Brocade SLX-9850 and 9540 switches. Future updates will include Brocade MLXe support.
 Technical Preview versions of this automation suite will begin shipping soon.
 
 .. rubric:: What's Next?
