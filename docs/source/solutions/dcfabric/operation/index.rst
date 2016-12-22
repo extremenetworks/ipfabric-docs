@@ -9,7 +9,7 @@ manage Brocade VCS and IP Fabrics in your data center.
 .. toctree::
     :maxdepth: 3
 
-    Overview <overview>
+    How to Use DC Fabric Automation Suite <overview>
     Setting Up IP Fabric <setup_ipfabric> 
     Using IP Fabric <using_ipfabric> 
     Using VCS Fabric <using_vcsfabric> 

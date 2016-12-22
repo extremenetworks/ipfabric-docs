@@ -8,7 +8,7 @@ DC Fabric
 
     Overview <overview>
     Installation <install>
-    Operation <operation/index>
+    How to Use <operation/index>
     Workflows <workflows>
     CLI <dcf_cli/index.rst>
     ZTP <ztp_reference>
