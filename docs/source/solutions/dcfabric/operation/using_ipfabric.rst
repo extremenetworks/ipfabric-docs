@@ -26,23 +26,6 @@ Core devices from the border leaf.
 
 Reference: :ref:`configure_edge_ports<configure_edge_ports>`
 
-Configure Interface VLAN
-------------------------
-
-**Workflow Name: configure_interface_vlan**
-
-.. note::
-    The configure_interface_vlan workflow is available in the Network Essentials suite. 
-
-This workflow can be used to configure or modify edge Layer 2 interfaces of the IP fabric.
-Some use-cases for this workflow is adding a new VLAN to an existing port-channel trunk
-interface corresponding to a VLAN addition in the network or addition of a virtual-machine
-on a host. It also automates configuring an edge-port that is not part of a port-channel
-as in the case of single homed endpoints. However, unlike configure_edge_ports, this 
-workflow does not create the corresponding VLANs or perform any validation.
-
-Reference: :ref:`configure_interface_vlan<configure_interface_vlan>`
-
 Configure VRRPe Gateway
 -----------------------
 
@@ -66,7 +49,7 @@ the provisioning of the Layer 3 gateway at leaf vLAG pair. It automates the prov
 of both the edge ports as well as the VRRP-E based redundant gateway. It combines the
 actions in configure_edge_ports and configure_vrrpe_gw
 
-Reference: :ref:`add_l3_tenant_endpoint<add_l3_tenant_endpoint>`
+Reference: :ref:`Add_l3_tenant_endpoint<Add_l3_tenant_endpoint>`
 
 BGP EVPN-Specific Workflows
 ---------------------------
@@ -92,33 +75,10 @@ provisioning is performed in this workflow.
 
 Reference: :ref:`Create_l2_tenant_evpn<Create_l2_tenant_evpn>`
 
-Add L2 Tenant Endpoint EVPN
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-** Workflow Name: add_l2_tenant_endpoint_evpn**
-
-The add_l2_tenant_endpoint_evpn is an alias for configure_edge_ports and hence performs
-the same automation actions. Once Layer 2 extension is created in a BGP EVPN based IP
-fabric using Create_l2_tenant_evpn workflow, the connection of a network endpoint requiring
-layer 2 extension, to the vLAG pairs can be configured using this workflow.
-
-The add_l2_tenant_endpoint_evpn workflow automates the configuration of the edge ports of
-the BGP EVPN based IP fabric. The workflow automates creation of port-channel interfaces
-(LAGs and vLAGs), configuration of the port-channel interface as access or trunk,
-creation and association of VLANs with the port-channel interfaces as well as validation
-of the port channel state.
-
-This workflow must be used to automate the provisioning external layer 2 connections
-from the IP fabric. The external connections can be to endpoints in the network like
-physical hosts or network services like load balancers and firewalls or can be to other
-networking devices like Core devices from the border leaf.
-
-Reference: :ref:`add_l2_tenant_endpoint_evpn<add_l2_tenant_endpoint_evpn>`
-
 Create L3 Tenant EVPN
 ~~~~~~~~~~~~~~~~~~~~~
 
-** Workflow Name: create_l3_tenant_evpn**
+** Workflow Name: Create_l3_tenant_evpn**
 
 The create_l3_tenant_evpn workflow provisions the BGP EVPN based IP fabric with an L3
 tenant identified by a VRF. This workflow provisions the VRF for the Layer 3 tenant
@@ -132,7 +92,7 @@ After the switch is added to the fabric, this workflow can be used to create a l
 VRF routing services within the BGP EVPN IP fabric. No edge port provisioning is performed
 in this workflow.
 
-Reference: :ref:`create_l3_tenant_evpn<create_l3_tenant_evpn>`
+Reference: :ref:`Create_l3_tenant_evpn<Create_l3_tenant_evpn>`
 
 Add L3 Tenant Endpoint EVPN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

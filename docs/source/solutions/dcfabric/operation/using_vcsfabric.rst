@@ -26,23 +26,6 @@ like Core devices.
 
 Reference: :ref:`configure_edge_ports<configure_edge_ports>`
 
-Configure Interface VLAN
-------------------------
-
-**Workflow Name: configure_interface_vlan**
-
-.. note::
-    The configure_interface_vlan workflow is available in the Network Essentials suite. 
-
-This workflow can be used to configure or modify edge Layer 2 interfaces of the VCS fabric.
-Some use-cases for this workflow is adding a new VLAN to an existing port-channel trunk
-interface corresponding to a VLAN addition in the network or addition of a virtual-machine
-on a host. It also automates configuring an edge-port that is not part of a port-channel
-as in the case of single homed endpoints. However, unlike configure_edge_ports, this workflow
-does not create the corresponding VLANs or perform any validation.
-
-Reference: :ref:`configure_interface_vlan<configure_interface_vlan>`
-
 Configure VRRPe Gateway
 -----------------------
 

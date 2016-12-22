@@ -106,10 +106,10 @@ Workflows for IP Fabric architecture include:
 * configure_edge_ports
 * configure_interface_vlan
 * configure_vrrpe_gw
-* add_l3_tenant_endpoint
+* Add_l3_tenant_endpoint
 * Create_l2_tenant_evpn
 * add_l2_tenant_endpoint_evpn
-* create_l3_tenant_evpn
+* Create_l3_tenant_evpn
 * add_l3_tenant_endpoint_evpn
 
 See the :doc:`operation/overview` documentation for details about these workflows.
