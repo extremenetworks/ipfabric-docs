@@ -53,15 +53,15 @@ Layer 3 termination within the VCS fabric. It automates the provisioning of both
 edge ports as well as the VRRP-E based redundant gateway. It combines the actions in
 :ref: `configure_edge_ports` and :ref: `configure_vrrpe_gw`.
 
-.. _create_l2_tenant_evpn:
+.. _Create_l2_tenant_evpn:
 
-create_l2_tenant_evpn
+Create_l2_tenant_evpn
 ~~~~~~~~~~~~~~~~~~~~~
 
 Description
 ```````````
 
-The create_l2_tenant_evpn workflow provisions an L2 domain extension in the BGP EVPN based IP fabric,
+The Create_l2_tenant_evpn workflow provisions an L2 domain extension in the BGP EVPN based IP fabric,
 on the selected leaves or vLAG pairs.The workflow must be provided with the set of vLAG pairs or
 leaf switches between which the layer 2 extension is required.
 
@@ -109,7 +109,7 @@ add_l2_tenant_endpoint_evpn
 
 The add_l2_tenant_endpoint_evpn is an alias for configure_edge_ports and hence performs
 the same automation actions. Once Layer 2 extension is created in a BGP EVPN based IP
-fabric using create_l2_tenant_evpn workflow, the connection of a network endpoint requiring
+fabric using Create_l2_tenant_evpn workflow, the connection of a network endpoint requiring
 layer 2 extension, to the vLAG pairs can be configured using this workflow.
 
 .. _create_l3_tenant_evpn:

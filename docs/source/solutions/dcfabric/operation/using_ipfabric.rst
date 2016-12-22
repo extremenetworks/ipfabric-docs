@@ -77,9 +77,9 @@ BGP EVPN-Specific Workflows
 Create L2 Tenant EVPN
 ~~~~~~~~~~~~~~~~~~~~~
 
-** Workflow Name: create_l2_tenant_evpn**
+** Workflow Name: Create_l2_tenant_evpn**
 
-The create_l2_tenant_evpn workflow provisions an L2 domain extension in the BGP
+The Create_l2_tenant_evpn workflow provisions an L2 domain extension in the BGP
 EVPN based IP fabric, on the selected leaves or vLAG pairs. The workflow must be
 provided with the set of vLAG pairs or leaf switches between which the Layer 2
 extension is required.
@@ -90,7 +90,7 @@ Layer 2 extension is an input to this workflow. The extension of the VNI across
 the set of vLAG pairs or leaf switches is automated by this workflow. No edge port
 provisioning is performed in this workflow.
 
-Reference: :ref:`create_l2_tenant_evpn<create_l2_tenant_evpn>`
+Reference: :ref:`Create_l2_tenant_evpn<Create_l2_tenant_evpn>`
 
 Add L2 Tenant Endpoint EVPN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -99,7 +99,7 @@ Add L2 Tenant Endpoint EVPN
 
 The add_l2_tenant_endpoint_evpn is an alias for configure_edge_ports and hence performs
 the same automation actions. Once Layer 2 extension is created in a BGP EVPN based IP
-fabric using create_l2_tenant_evpn workflow, the connection of a network endpoint requiring
+fabric using Create_l2_tenant_evpn workflow, the connection of a network endpoint requiring
 layer 2 extension, to the vLAG pairs can be configured using this workflow.
 
 The add_l2_tenant_endpoint_evpn workflow automates the configuration of the edge ports of
