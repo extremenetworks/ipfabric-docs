@@ -13,45 +13,394 @@ or they can be tied to :doc:`sensors </sensors>` using rules.
    :local:
    :depth: 1
 
-.. _configure_edge_ports:
+.. _Add_l3_tenant_endpoint:
 
-configure_edge_ports
+Add_l3_tenant_endpoint
+~~~~~~~~~~~~~~~~~~~~~~
+
+Description
+```````````
+The Add_l3_tenant_endpoint workflow automates the addition of an endpoint which need Layer
+3 termination within the VCS fabric. It automates the provisioning of both the edge ports 
+as well as the VRRP-E based redundant gateway. It combines the actions in 
+:ref:`server_provision<server_provision>`, :ref:`Configure_edge_ports<Configure_edge_ports>`,  
+and :ref:`Configure_vrrpe_gw<Configure_vrrpe_gw>`.
+
+Requirements
+````````````
+
+This workflow is designed for operating in VCS Fabric mode.
+
+Parameters
+``````````
+
+   mgmt_ip
+       Management IP of the switch.
+
+   rbridge_id (optional)
+       Single/List of rbridge ID's, e.g. rbridge_id=1 or rbridge_id=1,2,3
+
+   intf_type
+       Interface type gigabitethernet or tengigabitethernet or port_channel,
+
+   intf_name
+       Interface name in 3-tuple format (example: 2/0/96) or port-channel number <1-6144>       
+
+   enabled
+       Admin setting on the interface. Boolean type. <True/False>       
+
+   vlan_id
+       Single or range of vlan_id. At least one vlan_id must be provided. e.g. 4-10
+	
+   switchport_mode
+       Switchport mode to be configured under the interface access/trunk, e.g. trunk.
+       Default Value is 'access'  
+
+   intf_desc (optional)
+       Vlan Description to be configured. Must be a text string, e.g. test_vlan   
+
+   ports
+       Single interface or list of interfaces separated by comma that needs to be mapped to 
+       the port channel e.g 1/2/10, 3/4/15
+
+   vlan_id
+       Single vlan_id or range of vlans. At least one vlan_id must be provided. e.g. 10
+
+   port_channel_id
+       Portchannel interface number. <NUMBER: 1-6144>
+
+   mode (optional)
+       Port channel mode type, e.g. standard or brcd. Default Value is standard
+
+   protocol (optional)
+       Port channel protocol type. e.g. active, passive, mode on. Default Value is active
+  
+   ve_ip
+       Single ip if Rbridge id is one or list of ip's for multiple Rbridge-id's separated by
+       comma that needs to be configured on ve interface.
+
+   vrid (optional)
+       Vrrpe Router ID
+
+   virtual_ip
+       Vrrpe Virtual IP
+
+   virtual_mac
+       Vrrpe Virtual MAC with 02e0.5200.00XX, 2nd byte from right can be replaced with user
+       defined values
+
+Output
+``````
+
+   result
+       Boolean - True/False, if workflow succeeded
+
+   ve_ip
+       IP address assigned to the VE interface
+
+   vrid
+       Vrrpe Router ID assigned to the VE interface
+
+   virtual_ip
+       Vrrpe Virtual IP assigned to the VE interface
+
+   virtual-mac
+       Vrrpe Virtual Mac assigned to the VE interface
+
+
+Error Messages
+``````````````
+   "Not a valid VLAN"
+       Returned if VLAN provided are invalid, e.g. > 4094
+
+   "vlan 1 is default vlan"
+       Returned if VLAN provided is 1.
+
+   "Vlan cannot be created, as it is not a user/fcoe vlan"
+       Returned if VLAN provided is part of user/fcoe vlan (4087/4096/1002).
+
+   "Input is not a valid Interface"
+       Returned if interface name is not valid port numbers.
+
+   "Input is not a valid Interface"
+       Returned if interface name is not valid port numbers.
+
+   "Pls specify a valid description"
+       Returned if interface description length is less than 1.
+
+   "Length of the description is more than the allowed size"
+       Returned if interface description length is more than 63.
+
+   "Invalid Virtual IP Address"
+       Returned if input is not a valid IP address
+
+   "Pass VIP address without netmask"
+       Returned if IP address input is with netwmask e.g. 10.0.0.1/22.
+
+   "Device is pre-configured with ip version"
+       Returned if the device is already configured with the same IP address
+
+   "Invalid Input types while creating VRRPE group"
+       Returned if any one of the input is invalid.
+
+   "Invalid input values vrid, rbridge_id, vmac"
+       Returned if any one of the input is invalid during VMAC to the extender group association.
+
+   "Invalid input values vrid, rbridge_id, ve_name"
+       Returned if any one of the input is invalid during short path forwarding configuration
+
+.. _Add_l3_tenant_endpoint_evpn:
+
+Add_l3_tenant_endpoint_evpn
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Description
+```````````
+The Add_l3_tenant_endpoint_evpn workflow automates the configuration of the edge ports of the
+BGP EVPN based IP fabric. The workflow automates creation of port-channel interfaces (LAGs and
+vLAGs), configuration of the port-channel interface as access or trunk, creation and association
+of VLANs with the port-channel interfaces, validation of the port channel state as well as
+creation of layer 3 gateway using Anycast Gateway protocol and modify ARP ND ageing on the
+vLAG pair or leaf switch and association of the layer 3 gateways with a VRF. 
+
+Requirements
+````````````
+This workflow is designed for operating in IP Fabric mode. 
+
+Parameters
+``````````
+   mgmt_ip
+       Management IP of the switch.
+
+   intf_desc (optional)
+        Interface description name
+
+   intf_type (optional)
+        Interface type gigabitethernet, tengigabitethernet, fortygigabitethernet, hundredgigabitethernet.
+        port_channel. Default is tengigabitethernet
+
+   intf_name
+       Single interface name/range of interfaces which will be associated with port-channel.
+
+   vlan_id
+       Single vlan or range of vlans e.g. 100.
+
+   vrf_name
+        VRF Name e.g. vrf101.
+
+   auto_pick_port_channel_id
+       Flag Auto picks Port_channel id <1-6144> if user does not want to specify the 
+       port-channel id e.g True. Default is False (which does not enable auto picking)
+
+   port_channel_id (optional)
+       Portchannel interface number. <NUMBER: 1-6144> if not interested in auto picking.
+
+   switchport_mode (optional)
+       Switch port mode e.g. access, trunk
+
+   mode (optional)
+       Port channel mode type, e.g. standard or brcd
+
+   protocol (optional)
+       Port channel protocol type. e.g. active, passive, mode on
+
+   anycast_address
+       Ipv4 address with subnet/prefix length, e.g. 10.1.1.1/24.
+
+Output
+``````
+   Result
+       Boolean - True/False, if workflow succeeded
+
+
+Error Messages
+``````````````
+   "Not a valid VLAN"
+       Returned if VLAN provided are invalid, e.g. > 4094
+
+   "vlan 1 is default vlan"
+       Returned if VLAN provided is 1.
+
+   "Vlan cannot be created, as it is not a user/fcoe vlan"
+       Returned if VLAN provided is part of user/fcoe vlan (4087/4096/1002).
+
+    Invalid IP “anycast_address”
+
+.. note::
+   autopick_port_channel_id flag has to be unset and port-channel id has to be specified
+   if the workflow has to be re-run.
+
+.. _Configure_edge_ports:
+
+Configure_edge_ports
 ~~~~~~~~~~~~~~~~~~~~
 
 Description
 ```````````
+The Configure_edge_ports workflow automates the configuration of the edge ports. 
+The workflow automates creation of port-channel interfaces (LAGs and vLAGs), 
+configuration of the port-channel interface as access or trunk, creation and
+association of VLANs with the port-channel interfaces as well as validation of
+the port channel state.
 
-This workflow automates the configuration of the edge ports of the VCS fabric.
-The workflow automates creation of port-channel interfaces (LAGs and vLAGs), configuration of the
-port-channel interface as access or trunk, creation and association of VLANs with the port-channel
-interfaces as well as validation of the port channel state.
+Requirements
+````````````
+This workflow is designed for operating on edge devices.
 
-.. _configure_interface_vlan:
+Parameters
+``````````
+   mgmt_ip
+       Management IP of the switch. At least one switch mgmt ip must be provided.
 
-configure_interface_vlan
-~~~~~~~~~~~~~~~~~~~~~~~~
+   vlan_id
+       Single vlan_id. At least one vlan_id must be provided. e.g. 10
+    
+   intf_desc (optional)
+        Interface description name
+   
+   intf_type (optional)
+        Interface type gigabitethernet/tengigabitethernet/fortygigabitethernet/hundredgigabitethernet
+         Default Value is tengigabitethernet
 
-This workflow can be used to configure or modify edge Layer 2 interfaces of the VCS fabric.
-However, unlike configure_edge_ports, this workflow does not create the corresponding VLANs
-or perform any validation.
+   ports
+       Single interface or list of interfaces separated by comma that needs   to be mapped to the port channel e.g 1/2/10, 3/4/15
+
+   vlan_id
+       Single vlan_id or range of vlans. At least one vlan_id must be provided. e.g. 10
+
+   port_channel_id
+       Portchannel interface number. <NUMBER: 1-6144>
+
+   
+   mode (optional)
+       Port channel mode type, e.g. standard or brcd
+	   Default Value is standard
+
+
+   protocol (optional)
+       Port channel protocol type. e.g. active, passive, mode on
+           Default Value is active
+	   
+Output
+``````
+   Result
+       Boolean - True/False, if workflow succeeded
+
+Error Messages
+``````````````
+   "Not a valid VLAN"
+       Returned if VLAN provided are invalid, e.g. > 4094
+
+   "vlan 1 is default vlan"
+       Returned if VLAN provided is 1.
+
+   "Vlan cannot be created, as it is not a user/fcoe vlan"
+       Returned if VLAN provided is part of user/fcoe vlan (4087/4096/1002).
+	
+   "Input is not a valid Interface"
+       Returned if interface name is not valid port numbers.
+
+   “SWITCHING_NOT_ENABLED | %Error: Interface not configured for switching”
+       Returned if given interfaces are already part of a port-channel 
  
-.. _configure_vrrpe_gw:
+.. _Configure_vrrpe_gw:
 
-configure_vrrpe_gw
+Configure_vrrpe_gw
 ~~~~~~~~~~~~~~~~~~
 
-The configure_vrrpe_gw workflow automates the creation of a VRRP-E based default gateway
-in a VCS fabric including the VE interfaces.
+Description
+```````````
 
-.. _add_l3_tenant_endpoint:
+The Configure_vrrpe_gw workflow automates the creation of a VRRP-E based default gateway
+including the VE interfaces.
 
-add_l3_tenant_endpoint
-~~~~~~~~~~~~~~~~~~~~~~
+Requirements
+````````````
 
-The add_l3_tenant_endpoint workflow automates the addition of an endpoint which needs
-Layer 3 termination within the VCS fabric. It automates the provisioning of both the
-edge ports as well as the VRRP-E based redundant gateway. It combines the actions in
-:ref: `configure_edge_ports` and :ref: `configure_vrrpe_gw`.
+This workflow is designed for operating in both VCS and IP Fabric mode.
+
+Parameters
+``````````
+
+   mgmt_ip
+       Management IP of the switch.
+
+   rbridge_id (optional)
+       Single/List of rbridge ID's, e.g. rbridge_id=1 or rbridge_id=1,2,3
+
+   vlan_id
+       Single or range of vlan_id. At least one vlan_id must be provided. e.g. 4-10
+
+   intf_desc (optional)
+       Interface specific description. Must be a text string <string, min: 1 chars, 
+       max: 63 chars>.
+
+   ve_ip
+       Single ip if Rbridge id is one or list of ip's for multiple Rbridge-id's separated by
+       comma that needs to be configured on ve interface.
+
+   vrid (optional)
+       Vrrpe Router ID
+
+   virtual_ip
+       Vrrpe Virtual IP
+
+   virtual_mac
+       Vrrpe Virtual MAC with 02e0.5200.00XX, 2nd byte from right can be replace with user 
+       defined values
+
+Output
+``````
+
+   result
+       Boolean - True/False, if workflow succeeded
+
+   ve_ip
+       IP address assigned to the VE interface
+
+   vrid
+       Vrrpe Router ID assigned to the VE interface
+
+   virtual_ip
+       Vrrpe Virtual IP assigned to the VE interface
+
+   virtual-mac
+       Vrrpe Virtual Mac assigned to the VE interface
+
+Error Messages
+``````````````
+   "Not a valid VLAN"
+       Returned if VLAN provided are invalid, e.g. > 4094
+
+   "vlan 1 is default vlan"
+       Returned if VLAN provided is 1.
+
+   "Vlan cannot be created, as it is not a user/fcoe vlan"
+       Returned if VLAN provided is part of user/fcoe vlan (4087/4096/1002).
+
+   "Pls specify a valid description"
+       Returned if interface description length is less than 1.
+
+   "Length of the description is more than the allowed size"
+       Returned if interface description length is more than 63.
+
+   "rbridge_id and ip_address lists are not matching"
+       Returned if given rbridge_id and ip_address lists are not matching
+
+   "Invalid IP address <ip-address>"
+       Returned if ip address format is wrong e.g. 10.0.0.10.1
+
+   "Pass IP address along with netmask.(ip-address/netmask)"
+       Returned if IP address input is without netwmask e.g. 10.0.0.1.
+
+   "Invalid Input values while creating to Ve"
+       Returned if any one of the input is invalid.
+
+   "Invalid Input values while assigning IP address to Ve"
+       Returned if any one of the input is invalid.
+
+   "Invalid Input values while configuring IPV6 link local"
+       Returned if input is invalid.
 
 .. _Create_l2_tenant_evpn:
 
@@ -101,26 +450,15 @@ Error Messages
    "VLAG PAIR must be <= 2 leaf nodes"
        Returned if VLAG pair is more than two nodes
 
+.. _Create_l3_tenant_evpn:
 
-.. _add_l2_tenant_endpoint_evpn:
-
-add_l2_tenant_endpoint_evpn
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The add_l2_tenant_endpoint_evpn is an alias for configure_edge_ports and hence performs
-the same automation actions. Once Layer 2 extension is created in a BGP EVPN based IP
-fabric using Create_l2_tenant_evpn workflow, the connection of a network endpoint requiring
-layer 2 extension, to the vLAG pairs can be configured using this workflow.
-
-.. _create_l3_tenant_evpn:
-
-create_l3_tenant_evpn
+Create_l3_tenant_evpn
 ~~~~~~~~~~~~~~~~~~~~~
 
 Description
 ```````````
 
-The create_l3_tenant_evpn workflow provisions the BGP EVPN based IP fabric with an L3 tenant
+The Create_l3_tenant_evpn workflow provisions the BGP EVPN based IP fabric with an L3 tenant
 identified by a VRF. This workflow provisions the vlan, VRF for the Layer 3 tenant at the identified
 leaf switches or vLAG pairs, enables routing for the VRF across the IP fabric by enabling the
 VRF address family in BGP and creating L3VNI interface and also enables redistribution of
@@ -171,15 +509,64 @@ Error Messages
    "Vlan cannot be created, as it is not a user/fcoe vlan"
        Returned if VLAN provided is part of user/fcoe vlan (4087/4096/1002).
 
-.. _add_l3_tenant_endpoint_evpn:
+.. _provision_evpn_instance:
 
-add_l3_tenant_endpoint_evpn
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+provision_evpn_instance
+~~~~~~~~~~~~~~~~~~~~~~~
 
-The add_l3_tenant_endpoint_evpn workflow automates the configuration of the edge
-ports of the BGP EVPN based IP fabric. The workflow automates creation of
-port-channel interfaces (LAGs and vLAGs), configuration of the port-channel
-interface as access or trunk, creation and association of VLANs with the port-channel
-interfaces, validation of the port channel state as well as creation of layer 3
-gateway using Anycast Gateway protocol on the vLAG pair or leaf switch and
-association of the layer 3 gateways with a VRF.
+Description
+```````````
+
+The provision_evpn_instance workflow provisions the BGP EVPN instance which includes configure evpn 
+instance, evpn vtep, conversational arp, conversational mac and mac move thresold.
+
+Requirements
+````````````
+
+This workflow is designed for operating in IP Fabric mode.
+
+Parameters
+``````````
+
+   mgmt_ip
+       Management IP of the switch.
+
+   rbridge_id (optional)
+       Single/List of rbridge ID's, e.g. rbridge_id=1 or rbridge_id=1,2,3
+
+   evi_name
+       evpn instance name.Must be a text string <Word:1-64>, e.g. evi1.
+
+   vtep_name
+       Overlay Gateway Name. Can contain alphabets, digits, hyphen or underscore
+       Must be a text string <WORD:1-32>, e.g. vtep1.
+
+   vtep_loopback_id
+       Vtep loopback id. Must be an integer <NUMBER:1-255>, e.g. 250 
+
+   mac_move_threshold
+        mac move threshold. Must be an integer <NUMBER:5-500>, default 20, e.g 30
+
+Output
+``````
+
+   result
+       Boolean - True/False, if workflow succeeded
+
+
+Error Messages
+``````````````
+   "Loopback Id is Invalid. Not in <1-255> range"
+       Returned if loopback id provided is > 255 or < 1, e.g. 256
+
+   "Overlay Gateway Name is Invalid. Not in <1-32> range"
+       Returned if length of Vtep name provided is > 32 or < 1, e.g 35
+
+   "Input for Overlay Gateway name can contain only alphabets digits, hyphen or underscore"
+       Returned if Vtep name contains any special characters.
+
+   "Overlay Gateway name is already configured"
+       Returned if vtep name is already configured on the device.
+
+   "Mac Move Threshold is Invalid. Not in <5-500> range"
+       Returned if given mac move threshold is < 5 and > 500. e.g. 501
