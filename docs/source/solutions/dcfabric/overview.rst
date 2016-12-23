@@ -54,10 +54,9 @@ dual-side vLAG:
 
 Workflows for VCS fabric include:
 
-* configure_edge_ports
-* configure_interface_vlan
-* configure_vrrpe_gw
-* add_l3_tenant_endpoint
+* Configure_edge_ports
+* Configure_vrrpe_gw
+* Add_l3_tenant_endpoint
 
 See the :doc:`operation/overview` documentation for details about these workflows.
 
@@ -102,15 +101,13 @@ and `Network Virtualization in IP Fabric with BGP EVPN Brocade Validated Design
 
 Workflows for IP Fabric architecture include:
 
-* configure_switch
-* configure_edge_ports
-* configure_interface_vlan
-* configure_vrrpe_gw
+* Configure_edge_ports
+* Configure_vrrpe_gw
 * Add_l3_tenant_endpoint
 * Create_l2_tenant_evpn
-* add_l2_tenant_endpoint_evpn
+* Add_l2_tenant_endpoint_evpn
 * Create_l3_tenant_evpn
-* add_l3_tenant_endpoint_evpn
+* Add_l3_tenant_endpoint_evpn
 
 See the :doc:`operation/overview` documentation for details about these workflows.
 
