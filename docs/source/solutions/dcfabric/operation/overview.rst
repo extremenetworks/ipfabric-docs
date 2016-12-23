@@ -108,7 +108,7 @@ Here are the steps to configure L2 tenant on a vLAG pair:
      show running-config interface TenGigabitEthernet 37/0/11
      show running-config interface TenGigabitEthernet 38/0/11
 
-2. Next, use the ``create_l2_tenant_evpn`` workflow to provision an L2 domain extension, on the selected
+2. Next, use the ``Create_l2_tenant_evpn`` workflow to provision an L2 domain extension, on the selected
    leaves or vLAG pairs. The workflow must be provided with the management IP of the vLAG pair or the
    leaf switch. In this example, provide the management IP of the vLAG pair to attach the VNI created
    in the previous setp to EVPN instance:
@@ -142,7 +142,7 @@ Here are the steps to configure an L2 tenant on a single ToR (non vLAG):
 
      show running-config interface TenGigabitEthernet 21/0/1
 
-2. Next, use the ``create_l2_tenant_evpn`` workflow to provision an L2 domain extension in the BGP
+2. Next, use the ``Create_l2_tenant_evpn`` workflow to provision an L2 domain extension in the BGP
    EVPN based IP fabric, on the selected leaves or vLAG pairs. The workflow must be provided with the
    management IP of the vLAG pair or leaf switch between which the layer 2 extension is required.
    In this example, provide the management IP of the single ToR to attach the VNI created in the
@@ -165,7 +165,7 @@ IP Fabric EVPN - L3 Tenant provisoning on vLAG pair
 
 Here are the steps to configure an L3 tenant on a vLAG pair:
 
-1. Use ``dcfabric.create_l3_tenant_evpn`` workflow to provision an L3 tenant identified by a VRF.
+1. Use ``dcfabric.Create_l3_tenant_evpn`` workflow to provision an L3 tenant identified by a VRF.
    This workflow provisions the VRF for the Layer 3 tenant at the identified leaf switches or vLAG
    pairs, enables routing for the VRF across the IP fabric by enabling the VRF address family in BGP
    and creating L3VNI interface and also enables redistribution of connected routes in the VRF to BGP
@@ -184,7 +184,7 @@ Here are the steps to configure an L3 tenant on a vLAG pair:
      show running-config rbridge-id interface ve 500 
      show running-config rbridge-id router bgp address-family ipv4 unicast vrf vrf2 
 
-2. Use ``dcfabric.add_l3_tenant_endpoint_evpn`` workflow to automate the configuration of the edge
+2. Use ``dcfabric.Add_l3_tenant_endpoint_evpn`` workflow to automate the configuration of the edge
    ports of IP Fabric with EVPN. This workflow automates creation of port-channel interfaces (LAGs
    and vLAGs), configuration of the port-channel interface as access or trunk, creation and
    association of VLANs with the port-channel interfaces, validation of the port channel state as
@@ -209,7 +209,7 @@ IP Fabric EVPN - L3 Tenant provisoning on a single ToR (non vLAG)
 
 Here are the steps to configure L3 tenant on a vLAG pair:
 
-1. User ``dcfabric.create_l3_tenant_evpn`` workflow to provision an L3 tenant identified by a VRF.
+1. User ``dcfabric.Create_l3_tenant_evpn`` workflow to provision an L3 tenant identified by a VRF.
    This workflow provisions the VRF for the Layer 3 tenant at the identified leaf switches or
    vLAG pairs, enables routing for the VRF across the IP fabric by enabling the VRF address
    family in BGP and creating L3VNI interface and also enables redistribution of connected
@@ -220,7 +220,7 @@ Here are the steps to configure L3 tenant on a vLAG pair:
 
      st2 run dcfabric.Create_l3_tenant_evpn mgmt_ip=10.70.61.21 vrf_name=vrf2 l3vni=500 route_distinguisher=172.32.254.8 tenant_addressing_type=both rt=101
 
-2. Use ``dcfabric.add_l3_tenant_endpoint_evpn`` workflow to automate the configuration of the
+2. Use ``dcfabric.Add_l3_tenant_endpoint_evpn`` workflow to automate the configuration of the
    edge ports of IP Fabric with EVPN. This workflow automates creation of port-channel interfaces
    (LAGs and vLAGs), configuration of the port-channel interface as access or trunk, creation and
    association of VLANs with the port-channel interfaces, validation of the port channel state as
