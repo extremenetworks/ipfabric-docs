@@ -29,6 +29,11 @@ This will launch Workflow Designer with a new, blank workflow:
 .. figure:: /_static/images/flow/new_workflow.png
     :align: center
 
+.. note::
+    Note: You must set a name for the workflow before you can save it. Click on the "gears" icon
+    at the top centre to access workflow settings. Here you can specify which pack the workflow
+    belongs to, and its name.
+
 Edit an Existing Workflow
 -------------------------
 
