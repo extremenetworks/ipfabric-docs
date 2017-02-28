@@ -5,7 +5,7 @@ This is a reference documentation for Network Essentials Actions and Workflows t
 
 .. contents::
    :local:
-   :depth: 2
+   :depth: 1
 
 Most of the actions below can be used to automate Brocade SLX or VDX switches, however there are few actions that are only valid for  VDX switches as outlined below. If an action is only valid for VDX it will be documented in the action details, otherwise the action is supported for both VDX and SLX.  
 
@@ -104,7 +104,8 @@ VCS Specific Actions
 
 .. include:: /_includes/solutions/essentials/find_my_host_vcs.rst
 
-
+Known Issues
+------------
 
 
 
