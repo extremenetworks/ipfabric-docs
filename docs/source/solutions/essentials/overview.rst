@@ -13,20 +13,29 @@ Included Actions
 
 High level summary of the Actions included in this release:
 
-* Edge Ports Configuration
- - Configuration and deletion of VLAN, Port Channel, VE, VRRPe, VRF on a switch
- - Configuration of Access or Trunk VLANs on interfaces
- - Setting MTU size at an interface level or system level
- - Applying or removing an ACL on interfaces
+  * Edge Ports Configuration
+  
+    - Configuration and deletion of VLAN, Port Channel, VE, VRRPe, VRF on a switch
+    
+    - Configuration of Access or Trunk VLANs on interfaces
+ 
+    - Setting MTU size at an interface level or system level
+    
+    - Applying or removing an ACL on interfaces
 
-* ACL Management
- - Creation and deletion of L2 or L3 ACLs 
- - Add or remove IPv4 or IPv6 rules to an ACL
+  * ACL Management
+  
+    - Creation and deletion of L2 or L3 ACLs 
+    
+    - Add or remove IPv4 or IPv6 rules to an ACL
 
-* Validation and Troubleshooting
- - Validation of VLAN, Port Channel, VE, VRRPe, VRF on a switch
- - Ping and validate connectivity from a switch to target IPs using the specified VRF
- - Find to which switch, interface a physical or virtual host is connected to using IP or MAC address of the host
+  * Validation and Troubleshooting
+ 
+    - Validation of VLAN, Port Channel, VE, VRRPe, VRF on a switch
+    
+    - Ping and validate connectivity from a switch to target IPs using the specified VRF
+
+    - Find to which switch, interface a physical or virtual host is connected to using IP or MAC address of the host
 
 For more information about each action, read the :doc:`workflows` guide.
 
