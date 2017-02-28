@@ -19,6 +19,7 @@ For example, on Redhat/CentOS
 
   sudo yum groupinstall "Development Tools"
   sudo yum install libxml2-dev libxslt1-dev
+  sudo yum install gcc
 
 After installing the above pre-requisites, install the pack using:
 
