@@ -17,7 +17,6 @@ For example, on Redhat/CentOS
 
 .. code-block:: bash
 
-  sudo yum groupinstall "Development Tools"
   sudo yum install libxml2-dev libxslt1-dev
   sudo yum install gcc
 
