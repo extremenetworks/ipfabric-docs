@@ -11,23 +11,22 @@ On Ubuntu:
 
 .. code-block:: bash
 
-sudo apt-get install build-essential libxml2-dev libxslt1-dev
+  sudo apt-get install build-essential libxml2-dev libxslt1-dev
 
 For example, on Redhat/CentOS
 
 .. code-block:: bash
 
-sudo yum groupinstall "Development Tools"
-sudo yum install libxml2-dev libxslt1-dev
+  sudo yum groupinstall "Development Tools"
+  sudo yum install libxml2-dev libxslt1-dev
 
 After installing the above pre-requisites, install the pack using:
 
 .. code-block:: bash
 
-st2 pack install network_essentials
+  st2 pack install network_essentials
 
-    To install Network Essentials, follow the installation instructions for the :doc:`DC Fabric Automation
-    Suite <../dcfabric/install>`
+To install DC Fabric Suite, follow the installation instructions for the :doc:`DC Fabric Automation Suite <../dcfabric/install>`
 
 * New to |bwc|? Go to fundamentals - start with :doc:`/start`.
 * Understand the Network Essentials :doc:`Actions and Workflows<workflows>`.
