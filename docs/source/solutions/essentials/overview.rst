@@ -1,8 +1,6 @@
 Network Essentials
 ==================
 
-.. include:: ../__tech_preview.rst
-
 Overview
 --------
 
