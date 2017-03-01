@@ -32,7 +32,7 @@ Brocade Data Center Fabrics - both VCS Fabric and IP Fabric architectures. It in
 * Find and provision edge ports
 
 It works with all current Brocade VDX switches, and SLX-9850 switches when used as a super-spine. It is currently
-available as a Technical Preview.
+available as a Technology Preview.
 
 See more details :doc:`here<dcfabric/overview>`.
 
@@ -44,7 +44,7 @@ Workflows include customer port provisioning, move systems to quarantine, MAC AC
 server validation.
 
 It will work with Brocade SLX-9850 and 9540 switches. Future updates will include Brocade MLXe support.
-Technical Preview versions of this automation suite will begin shipping soon.
+Technology Preview versions of this automation suite will begin shipping soon.
 
 .. rubric:: What's Next?
 
