@@ -1,5 +1,5 @@
-Actions
-=========
+Network Essentials Actions
+==========================
 
 This is a reference documentation for Network Essentials Actions and Workflows to automate Brocade VDX and SLX switches. These actions can be used as independent actions, or as part of a more complex workflow. :doc:`Actions</actions>` can be manually triggered, or they can be tied to :doc:`sensors </sensors>` using rules.
 
