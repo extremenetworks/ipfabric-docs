@@ -23,7 +23,7 @@ Description
 The Add_l3_tenant_endpoint workflow automates the addition of an endpoint which need Layer
 3 termination within the VCS fabric. It automates the provisioning of both the edge ports 
 as well as the VRRP-E based redundant gateway. It combines the actions in 
-:ref:`server_provision<server_provision>`, :ref:`Configure_edge_ports<Configure_edge_ports>`,  
+server_provision<server_provision, :ref:`Configure_edge_ports<Configure_edge_ports>`,  
 and :ref:`Configure_vrrpe_gw<Configure_vrrpe_gw>`.
 
 Requirements
