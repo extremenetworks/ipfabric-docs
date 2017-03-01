@@ -106,7 +106,7 @@ VCS Specific Actions
 
 Known Issues
 ------------
-This section includes known issues in Network Essentials 1.0.0 release.  Common issues are listed in the beginning of the section and the issues specific to a particular network device platform are organized under the corresponding platform sub-section.
+This section includes the known issues in Network Essentials 1.0.0 release.  Common issues are listed in the beginning of the section and the issues specific to a particular network device platform are organized under the corresponding platform sub-section.
 
 1. ID:277 remove_acl fails with an unknown error on port_channel interfaces
 2. ID:312 set_l3_mtu returns success when setting the MTU size back to default value but the switch is not configured with the default MTU size.
