@@ -70,15 +70,109 @@ Validation and Troubleshooting
 
 .. include:: /_includes/solutions/essentials/find_host_ip.rst
 
+**Sample Output:**
+
+.. code-block:: json
+
+  [
+    {
+      "interface-name": null,
+      "is-resolved": "true",
+      "age": "02:02:12",
+      "interface-type": "unknown",
+      "ip-address": "80.0.110.11",
+      "entry-type": "dynamic",
+      "mac-address": "0000.07ab.839a"
+    }
+  ]
+
 .. include:: /_includes/solutions/essentials/find_mac.rst
+
+**Sample Output:**
+
+.. code-block:: json
+
+  [
+    {
+      "vlanid": "5308",
+      "mac-state": "active",
+      "mac-address": "22:00:00:11:11:19",
+      "mac-type": "dynamic",
+      "forwarding-interface": {
+      "interface-type": "tengigabitethernet",
+      "interface-name": "21/0/1"
+      }
+    },
+    {
+      "vlanid": "2",
+      "mac-state": "active",
+      "mac-address": "00:d0:b0:11:01:01",
+      "mac-type": "dynamic",
+      "forwarding-interface": {
+      "interface-type": "tengigabitethernet",
+      "interface-name": "21/0/1"
+      }
+    }
+  ]
 
 .. include:: /_includes/solutions/essentials/ping_vrf_targets.rst
 
 .. include:: /_includes/solutions/essentials/validate_L2_port_channel_state.rst
 
+**Sample Output:**
+
+.. code-block:: json
+ 
+  {
+    "member-ports": [
+      "tengigabitethernet 37/0/12",
+      "tengigabitethernet 37/0/13",
+      "tengigabitethernet 37/0/14",
+      "tengigabitethernet 38/0/11",
+      "tengigabitethernet 38/0/12",
+      "tengigabitethernet 38/0/13"
+    ],
+    "state": "in_sync"
+  }
+
+  {
+    "member-ports": [
+      "tengigabitethernet 37/0/11",
+      "tengigabitethernet 38/0/14"
+    ],
+    "state": "out_of_sync"
+  }
+
 .. include:: /_includes/solutions/essentials/validate_interface_state.rst
 
+**Sample Output:**
+
+.. code-block:: json
+
+  {
+    "state": "down",
+    "intf": true
+  }
+  {
+    "state": "up",
+    "intf": true
+  }
+  {
+    "state": false,
+    "intf": true
+  }
+
 .. include:: /_includes/solutions/essentials/validate_interface_vlan.rst
+
+.. code-block:: json
+
+  {
+    "vlan": true
+  }
+  {
+    "vlan": false
+  }
+
 
 .. include:: /_includes/solutions/essentials/validate_vrrpe_state.rst
 
