@@ -1,11 +1,12 @@
 Installation
 ============
 
-Pre-requisites
---------------
-Network Essentials pack requires gcc plus the libxml2-dev and libxslt1-dev libraries.
+.. warning::
+    If you had previously installed DC Fabric Automation Suite TP release, please do not install this pack, wait for the new release of DC Fabric Automation Suite.  When you install DC Fabric Automation Suite, it installs the compatible version of Network Essentials pack automatically.
 
-Before installing this pack, please run these commands:
+Installing Pre-requisites
+-------------------------
+Network Essentials pack requires gcc plus the libxml2-dev and libxslt1-dev libraries.  Before installing Network Essentials pack, please run these commands:
 
 On Ubuntu:
 
@@ -13,14 +14,16 @@ On Ubuntu:
 
   sudo apt-get install build-essential libxml2-dev libxslt1-dev
 
-For example, on Redhat/CentOS
+On Redhat/CentOS:
 
 .. code-block:: bash
 
   sudo yum install libxml2-dev libxslt1-dev
   sudo yum install gcc
 
-After installing the above pre-requisites, install the pack using:
+Installing Network Essentials
+-----------------------------
+After installing the above pre-requisites, install Network Essentials pack using:
 
 .. code-block:: bash
 
