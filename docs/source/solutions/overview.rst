@@ -1,8 +1,6 @@
 Overview
 ========
 
-.. include:: __tech_preview.rst
-
 Automation Suites are collections of workflows, actions, sensors and services that target
 specific networking use-cases, e.g. Data Center Fabric architectures, or Internet Exchanges.
 They deliver turnkey workflows for provisioning, validation, troubleshooting and remediation
@@ -33,7 +31,9 @@ Brocade Data Center Fabrics - both VCS Fabric and IP Fabric architectures. It in
 * Perform Layer-2 path traces across VCS Fabrics
 * Find and provision edge ports
 
-It works with all current Brocade VDX switches, and SLX-9850 switches when used as a super-spine.
+It works with all current Brocade VDX switches, and SLX-9850 switches when used as a super-spine. It is currently
+available as a Technical Preview.
+
 See more details :doc:`here<dcfabric/overview>`.
 
 Internet Exchange
