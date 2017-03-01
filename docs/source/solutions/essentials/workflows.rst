@@ -106,6 +106,19 @@ VCS Specific Actions
 
 Known Issues
 ------------
+This section includes known issues in Network Essentials 1.0.0 release.  Common issues are listed in the beginning of the section and the issues specific to a particular network device platform are organized under the corresponding platform sub-section.
 
+1. ID:277 remove_acl fails with an unknown error on port_channel interfaces
+2. ID:312 set_l3_mtu returns success when setting the MTU size back to default value but the switch is not configured with the default MTU size.
+3. ID:300 set_l2_mtu returns success when setting the MTU size back to default value but the switch is not configured with the default MTU size.
 
+SLX:
+~~~~
+4. ID:314 set_l3_mtu not supported on VE interface.
+5. ID:309 validate_interface_state not supported on VE interface.
+6. ID:308 create_ve times out on SLX.
+7. ID:311 ping_vrf_targets is not supported on SLX.
 
+VDX:
+~~~~
+8. ID:303 validate_interface_vlan doesn’t validate GVLANs i.e. VLANs with ID over 4K.
