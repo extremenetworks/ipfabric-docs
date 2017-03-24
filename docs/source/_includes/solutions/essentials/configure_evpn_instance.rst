@@ -26,7 +26,7 @@ configure_evpn_instance
    *rbridge_id*                      Rbridge id of the device
 
                                      Type: ``array``
-   **evi_name**                      vrf name.Example:- 'evpn1 or 32'
+   **evi_name**                      vrf name. For example 'evpn1 or 32'
 
                                      Type: ``string``
    *duplicate_mac_timer*             Value in integer,default 10

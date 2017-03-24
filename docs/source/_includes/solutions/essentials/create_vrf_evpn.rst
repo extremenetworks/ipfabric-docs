@@ -23,7 +23,7 @@ create_vrf_evpn
                                      Type: ``string``
 
                                      **Default**: password
-   **vrf_name**                      vrf name.Example:- 'vrf32 or 32'
+   **vrf_name**                      VRF name. For example vrf32 or 32
 
                                      Type: ``string``
    **l3vni**                         vni for the VRF. '<NUMBER:1-16777215>'
