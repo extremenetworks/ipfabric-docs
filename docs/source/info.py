@@ -11,8 +11,8 @@ project = u'ipfabric-docs'
 copyright = u'2016, Brocade Communications Inc'
 author = u'Brocade Communications Inc'
 
-base_url = u'http://bwc-docs.brocade.com/'
-htmlhelp_basename = 'ipfabric-doc'
+base_url = u'https://bwc-docs.brocade.com/'
+htmlhelp_basename = 'bwc-doc'
 
 man_pages = [
     ('index', 'ipfabric-docs', u'IPFabric Documentation',
