@@ -11,7 +11,7 @@ project = u'bwc-docs'
 copyright = u'2016, Brocade Communications Inc'
 author = u'Brocade Communications Inc'
 
-base_url = u'http://bwc-docs.brocade.com/'
+base_url = u'https://bwc-docs.brocade.com/'
 htmlhelp_basename = 'bwc-doc'
 
 man_pages = [
