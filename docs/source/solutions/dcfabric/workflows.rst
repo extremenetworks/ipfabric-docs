@@ -226,8 +226,7 @@ Description
 ```````````
 The add_multihomed_endpoint_and_gw workflow automates the addition of an endpoint which needs Layer
 3 termination within the fabric. It automates the provisioning of both the edge ports 
-as well as the VRRP-E based redundant gateway. It combines the actions in :ref:`add_multihomed_endpoint<add_multihomed_endpoint>`,  
-and :ref:`Configure_vrrpe_gw<Configure_vrrpe_gw>`.
+as well as the VRRP-E based redundant gateway.
 
 Requirements
 ````````````
