@@ -44,11 +44,10 @@ Build IP Fabric Infrastructure
 Manage EVPN Tenants and Edge Ports
 ----------------------------------
 
-create_l2_tenant_evpn
-~~~~~~~~~~~~~~~~~~~~~
+.. include:: /_includes/solutions/dcfabric/create_l2_tenant_evpn.rst
 
-Description
-```````````
+Details
+```````
 
 The create_l2_tenant_evpn workflow provisions an L2 domain extension in the BGP EVPN based IP fabric,
 on the selected leaves or vLAG pairs.The workflow must be provided with the set of vLAG pairs or
@@ -57,9 +56,7 @@ leaf switches between which the layer 2 extension is required.
 Requirements
 ````````````
 
-This workflow is designed for operating in IP Fabric mode.
-
-.. include:: /_includes/solutions/dcfabric/create_l2_tenant_evpn.rst
+This workflow is designed for use in IP Fabric EVPN networks only.
 
 Output
 ``````
@@ -82,11 +79,10 @@ Error Messages
    "VLAG PAIR must be <= 2 leaf nodes"
        Returned if VLAG pair is more than two nodes
 
-create_l3_tenant_evpn
-~~~~~~~~~~~~~~~~~~~~~
+.. include:: /_includes/solutions/dcfabric/create_l3_tenant_evpn.rst
 
-Description
-```````````
+Details
+```````
 
 The Create_l3_tenant_evpn workflow provisions the BGP EVPN based IP fabric with an L3 tenant
 identified by a VRF. This workflow provisions the vlan, VRF for the Layer 3 tenant at the identified
@@ -98,8 +94,6 @@ Requirements
 ````````````
 
 This workflow is designed for operating in IP Fabric mode.
-
-.. include:: /_includes/solutions/dcfabric/create_l3_tenant_evpn.rst
 
 Output
 ``````
@@ -122,11 +116,10 @@ Error Messages
 
 .. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint.rst
 
-add_multihomed_endpoint_and_gw_evpn
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint_and_gw_evpn.rst
 
-Description
-```````````
+Details
+```````
 The add_multihomed_endpoint_and_gw_evpn workflow automates the configuration of the edge ports of the
 BGP EVPN based IP fabric. The workflow automates creation of port-channel interfaces (LAGs and
 vLAGs), configuration of the port-channel interface as access or trunk, creation and association
@@ -137,8 +130,6 @@ vLAG pair or leaf switch and association of the layer 3 gateways with a VRF.
 Requirements
 ````````````
 This workflow is designed for use in IP Fabric with EVPN networks. 
-
-.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint_and_gw_evpn.rst
 
 Output
 ``````
@@ -180,11 +171,10 @@ IP Fabric Validation and Troubleshooting
 Manage VCS Fabric Tenants and Edge Ports
 ----------------------------------------
 
-add_multihomed_endpoint
-~~~~~~~~~~~~~~~~~~~~~~~
+.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint.rst
 
-Description
-```````````
+Details
+```````
 The add_multihomed_endpoint workflow automates the configuration of the edge ports. 
 The workflow automates creation of port-channel interfaces (LAGs and vLAGs), 
 configuration of the port-channel interface as access or trunk, creation and
@@ -194,8 +184,6 @@ the port channel state.
 Requirements
 ````````````
 This workflow is designed for operating on edge devices of IP Fabric, EVPN or VCS networks.
-
-.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint.rst
 
 Output
 ``````
@@ -219,11 +207,10 @@ Error Messages
    “SWITCHING_NOT_ENABLED | %Error: Interface not configured for switching”
        Returned if given interfaces are already part of a port-channel 
  
+.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint_and_gw.rst
 
-add_multihomed_endpoint_and_gw
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Description
-```````````
+Details
+```````
 The add_multihomed_endpoint_and_gw workflow automates the addition of an endpoint which needs Layer
 3 termination within the fabric. It automates the provisioning of both the edge ports 
 as well as the VRRP-E based redundant gateway.
@@ -231,8 +218,6 @@ as well as the VRRP-E based redundant gateway.
 Requirements
 ````````````
 This workflow is designed for use in IP Fabric (no EVPN) and VCS Fabric networks.
-
-.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint_and_gw.rst
 
 Output
 ``````
@@ -248,21 +233,12 @@ Output
 
 .. include:: /_includes/solutions/dcfabric/add_singlehomed_endpoint.rst
 
-Configure_vrrpe_gw
-~~~~~~~~~~~~~~~~~~
-
-Description
-```````````
-
-The Configure_vrrpe_gw workflow automates the creation of a VRRP-E based default gateway
-including the VE interfaces.
+.. include:: /_includes/solutions/dcfabric/configure_vrrpe_gw.rst
 
 Requirements
 ````````````
 
-This workflow is designed for operating in both VCS and IP Fabric mode.
-
-.. include:: /_includes/solutions/dcfabric/configure_vrrpe_gw.rst
+This workflow is designed for use in IP Fabric, EVPN and VCS networks.
 
 Output
 ``````
