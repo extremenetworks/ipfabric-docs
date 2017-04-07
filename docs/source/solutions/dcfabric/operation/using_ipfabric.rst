@@ -24,8 +24,6 @@ fabric. The external connections can be to endpoints in the network like physica
 network services like load balancers and firewalls or can be to other networking devices like
 Core devices from the border leaf.
 
-Reference: :ref:`Configure_edge_ports<Configure_edge_ports>`
-
 Configure VRRPe Gateway
 -----------------------
 
@@ -37,8 +35,6 @@ in an IP fabric vLAG pair including the VE interfaces.
 This workflow can be used to create the L3 boundary at the leaf vLAG pair
 of the IP Fabric. 
 
-Reference: :ref:`Configure_vrrpe_gw<Configure_vrrpe_gw>`
-
 Add L3 Tenant Endpoint
 ----------------------
 
@@ -48,8 +44,6 @@ The Add_l3_tenant_endpoint workflow automates the addition of an endpoint along 
 the provisioning of the Layer 3 gateway at leaf vLAG pair. It automates the provisioning
 of both the edge ports as well as the VRRP-E based redundant gateway. It combines the
 actions in Configure_edge_ports and Configure_vrrpe_gw
-
-Reference: :ref:`Add_l3_tenant_endpoint<Add_l3_tenant_endpoint>`
 
 BGP EVPN-Specific Workflows
 ---------------------------
@@ -73,8 +67,6 @@ Layer 2 extension is an input to this workflow. The extension of the VNI across
 the set of vLAG pairs or leaf switches is automated by this workflow. No edge port
 provisioning is performed in this workflow.
 
-Reference: :ref:`Create_l2_tenant_evpn<Create_l2_tenant_evpn>`
-
 Create L3 Tenant EVPN
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -92,8 +84,6 @@ After the switch is added to the fabric, this workflow can be used to create a l
 VRF routing services within the BGP EVPN IP fabric. No edge port provisioning is performed
 in this workflow.
 
-Reference: :ref:`Create_l3_tenant_evpn<Create_l3_tenant_evpn>`
-
 Add L3 Tenant Endpoint EVPN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -110,5 +100,3 @@ association of the layer 3 gateways with a VRF.
 Once Layer 3 VRF routing services are created in a BGP EVPN based IP fabric using
 Create_l3_tenant_evpn workflow, the connection of a network endpoint requiring
 layer 3 VRF routing services and a default gateway can be configured using this workflow.
-
-Reference: :ref:`Add_l3_tenant_endpoint_evpn<Add_l3_tenant_endpoint_evpn>`
