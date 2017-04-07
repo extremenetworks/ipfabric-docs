@@ -24,8 +24,6 @@ VCS fabric. The external connections can be to endpoints in the network like phy
 or network services like load balancers and firewalls or can be to other networking devices
 like Core devices.
 
-Reference: :ref:`Configure_edge_ports<Configure_edge_ports>`
-
 Configure VRRPe Gateway
 -----------------------
 
@@ -39,8 +37,6 @@ This could be at the spine in a VRRP-E based redundant gateway for the VLANs
 present in the fabric, the provisioning for which is automated through this workflow. 
 It could also be used where the Layer 3 boundary is at the border leaves.
 
-Reference: :ref:`Configure_vrrpe_gw<Configure_vrrpe_gw>`
-
 Add L3 Tenant Endpoint
 ----------------------
 
@@ -50,5 +46,3 @@ The Add_l3_tenant_endpoint workflow automates the addition of an endpoint which 
 Layer 3 termination within the VCS fabric. It automates the provisioning of both the
 edge ports as well as the VRRP-E based redundant gateway. It combines the actions in
 Configure_edge_ports and Configure_vrrpe_gw.
-
-Reference: :ref:`Add_l3_tenant_endpoint<Add_l3_tenant_endpoint>`
