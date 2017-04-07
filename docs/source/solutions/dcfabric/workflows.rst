@@ -570,3 +570,88 @@ Error Messages
 
    "Mac Move Threshold is Invalid. Not in <5-500> range"
        Returned if given mac move threshold is < 5 and > 500. e.g. 501
+
+
+.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint_and_gw_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint_and_gw.rst
+
+.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint.rst
+
+.. include:: /_includes/solutions/dcfabric/add_singlehomed_endpoint.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_anycast_gateway_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_anycast_gw_mac_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_arp_nd_suppression.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_bgp_ipfabric.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_bgp_neighbor.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_bgp_parameters_ipfabric.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_bgp_redistribute_connected.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_conversational_arp_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_conversational_mac_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_device_ipfabric.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_evpn_instance.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_evpn_vtep.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_fabric_infra.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_interface_ipfabric.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_intfs_ipfabric.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_vrrpe_gw.rst
+
+.. include:: /_includes/solutions/dcfabric/create_l2_tenant_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/create_l3_tenant_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/create_vrf_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/fabric_add.rst
+
+.. include:: /_includes/solutions/dcfabric/fabric_config_delete.rst
+
+.. include:: /_includes/solutions/dcfabric/fabric_config_set.rst
+
+.. include:: /_includes/solutions/dcfabric/fabric_delete.rst
+
+.. include:: /_includes/solutions/dcfabric/fabric_list.rst
+
+.. include:: /_includes/solutions/dcfabric/get_flow_trace_ip_fabric.rst
+
+.. include:: /_includes/solutions/dcfabric/modify_arp_nd_aging_ve.rst
+
+.. include:: /_includes/solutions/dcfabric/provision_evpn_instance.rst
+
+.. include:: /_includes/solutions/dcfabric/query_topology.rst
+
+.. include:: /_includes/solutions/dcfabric/redistribute_connected_bgp_vrf.rst
+
+.. include:: /_includes/solutions/dcfabric/set_max_path_bgp.rst
+
+.. include:: /_includes/solutions/dcfabric/show_config_bgp.rst
+
+.. include:: /_includes/solutions/dcfabric/show_lldp_links.rst
+
+.. include:: /_includes/solutions/dcfabric/show_vcs_links.rst
+
+.. include:: /_includes/solutions/dcfabric/switch_add.rst
+
+.. include:: /_includes/solutions/dcfabric/switch_delete.rst
+
+.. include:: /_includes/solutions/dcfabric/switch_list.rst
+
+.. include:: /_includes/solutions/dcfabric/switch_update.rst
+
+.. include:: /_includes/solutions/dcfabric/topology_generate.rst
