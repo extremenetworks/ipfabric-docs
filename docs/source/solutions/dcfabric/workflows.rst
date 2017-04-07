@@ -1,93 +1,87 @@
 Workflows
 =========
 
-This document provides an overview of how to use the DC Fabric Automation Suite workflows
-with Brocade VDX and SLX switches. These can be used as independent workflows, or tied
-together to form more complex workflows. They can be manually triggered,
-or they can be tied to :doc:`sensors </sensors>` using rules.
+DC Fabric Automation Suite includes turnkey automations required to provision, validate and troubleshoot data center networks spanning Day 0 and Day n activities.  Designed to work with multiple data center architectures such as IP Fabric, IP Fabric with EVPN overlay, VCS Fabric as well as multiple device families such as VDX, SLX.  
+
+This is a reference documentation organized around key usecases as outlined below.  These can be used as independent workflows, or tied together to form more complex workflows. They can be manually triggered, or they can be tied to :doc:`sensors </sensors>` using rules.
 
 .. note::
     Content is still being added to this section
 
 .. contents::
    :local:
-   :depth: 1
+   :depth: 2
 
-.. _Add_l3_tenant_endpoint:
+Manage Fabric Templates
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Add_l3_tenant_endpoint
-~~~~~~~~~~~~~~~~~~~~~~
+.. include:: /_includes/solutions/dcfabric/fabric_add.rst
+
+.. include:: /_includes/solutions/dcfabric/fabric_delete.rst
+
+.. include:: /_includes/solutions/dcfabric/fabric_list.rst
+
+.. include:: /_includes/solutions/dcfabric/fabric_config_set.rst
+
+.. include:: /_includes/solutions/dcfabric/fabric_config_delete.rst
+
+
+Build IP Fabric Infrastructure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. include:: /_includes/solutions/dcfabric/switch_add.rst
+
+.. include:: /_includes/solutions/dcfabric/switch_delete.rst
+
+.. include:: /_includes/solutions/dcfabric/switch_list.rst
+
+.. include:: /_includes/solutions/dcfabric/switch_update.rst
+
+.. include:: /_includes/solutions/dcfabric/topology_generate.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_fabric_infra.rst
+
+Manage EVPN Tenants and Edge Ports
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. include:: /_includes/solutions/dcfabric/create_l2_tenant_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/create_l3_tenant_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint.rst
+
+.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint_and_gw_evpn.rst
+
+
+IP Fabric Validation and Troubleshooting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. include:: /_includes/solutions/dcfabric/get_flow_trace_ip_fabric.rst
+
+.. include:: /_includes/solutions/dcfabric/query_topology.rst
+
+.. include:: /_includes/solutions/dcfabric/show_config_bgp.rst
+
+.. include:: /_includes/solutions/dcfabric/show_lldp_links.rst
+
+.. include:: /_includes/solutions/dcfabric/show_vcs_links.rst
+
+
+Manage VCS Fabric Tenants and Edge Ports
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Description
 ```````````
-The Add_l3_tenant_endpoint workflow automates the addition of an endpoint which need Layer
-3 termination within the VCS fabric. It automates the provisioning of both the edge ports 
-as well as the VRRP-E based redundant gateway. It combines the actions in 
-server_provision, :ref:`Configure_edge_ports<Configure_edge_ports>`,  
+The add_multihomed_endpoint_and_gw workflow automates the addition of an endpoint which needs Layer
+3 termination within the fabric. It automates the provisioning of both the edge ports 
+as well as the VRRP-E based redundant gateway. It combines the actions in :ref:`add_multihomed_endpoint<add_multihomed_endpoint>`,  
 and :ref:`Configure_vrrpe_gw<Configure_vrrpe_gw>`.
 
 Requirements
 ````````````
+This workflow is designed for use in IP Fabric (no EVPN) and VCS Fabric networks.
 
-This workflow is designed for operating in VCS Fabric mode.
-
-Parameters
-``````````
-
-   mgmt_ip
-       Management IP of the switch.
-
-   rbridge_id (optional)
-       Single/List of rbridge ID's, e.g. rbridge_id=1 or rbridge_id=1,2,3
-
-   intf_type
-       Interface type gigabitethernet or tengigabitethernet or port_channel,
-
-   intf_name
-       Interface name in 3-tuple format (example: 2/0/96) or port-channel number <1-6144>       
-
-   enabled
-       Admin setting on the interface. Boolean type. <True/False>       
-
-   vlan_id
-       Single or range of vlan_id. At least one vlan_id must be provided. e.g. 4-10
-	
-   switchport_mode
-       Switchport mode to be configured under the interface access/trunk, e.g. trunk.
-       Default Value is 'access'  
-
-   intf_desc (optional)
-       Vlan Description to be configured. Must be a text string, e.g. test_vlan   
-
-   ports
-       Single interface or list of interfaces separated by comma that needs to be mapped to 
-       the port channel e.g 1/2/10, 3/4/15
-
-   vlan_id
-       Single vlan_id or range of vlans. At least one vlan_id must be provided. e.g. 10
-
-   port_channel_id
-       Portchannel interface number. <NUMBER: 1-6144>
-
-   mode (optional)
-       Port channel mode type, e.g. standard or brcd. Default Value is standard
-
-   protocol (optional)
-       Port channel protocol type. e.g. active, passive, mode on. Default Value is active
-  
-   ve_ip
-       Single ip if Rbridge id is one or list of ip's for multiple Rbridge-id's separated by
-       comma that needs to be configured on ve interface.
-
-   vrid (optional)
-       Vrrpe Router ID
-
-   virtual_ip
-       Vrrpe Virtual IP
-
-   virtual_mac
-       Vrrpe Virtual MAC with 02e0.5200.00XX, 2nd byte from right can be replaced with user
-       defined values
+.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint.rst
 
 Output
 ``````
@@ -101,53 +95,47 @@ Output
    vrid
        Vrrpe Router ID assigned to the VE interface
 
-   virtual_ip
-       Vrrpe Virtual IP assigned to the VE interface
+.. include:: /_includes/solutions/dcfabric/add_singlehomed_endpoint.rst
 
-   virtual-mac
-       Vrrpe Virtual Mac assigned to the VE interface
+.. include:: /_includes/solutions/dcfabric/configure_vrrpe_gw.rst
+
+.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint_and_gw.rst
+
+Misc
+~~~~
+.. include:: /_includes/solutions/dcfabric/configure_anycast_gateway_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_anycast_gw_mac_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_conversational_arp_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_conversational_mac_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/create_vrf_evpn.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_arp_nd_suppression.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_bgp_redistribute_connected.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_device_ipfabric.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_evpn_instance.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_evpn_vtep.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_interface_ipfabric.rst
+
+.. include:: /_includes/solutions/dcfabric/configure_intfs_ipfabric.rst
+
+.. include:: /_includes/solutions/dcfabric/modify_arp_nd_aging_ve.rst
+
+.. include:: /_includes/solutions/dcfabric/provision_evpn_instance.rst
+
+.. include:: /_includes/solutions/dcfabric/redistribute_connected_bgp_vrf.rst
+
+.. include:: /_includes/solutions/dcfabric/set_max_path_bgp.rst
 
 
-Error Messages
-``````````````
-   "Not a valid VLAN"
-       Returned if VLAN provided are invalid, e.g. > 4094
-
-   "vlan 1 is default vlan"
-       Returned if VLAN provided is 1.
-
-   "Vlan cannot be created, as it is not a user/fcoe vlan"
-       Returned if VLAN provided is part of user/fcoe vlan (4087/4096/1002).
-
-   "Input is not a valid Interface"
-       Returned if interface name is not valid port numbers.
-
-   "Input is not a valid Interface"
-       Returned if interface name is not valid port numbers.
-
-   "Pls specify a valid description"
-       Returned if interface description length is less than 1.
-
-   "Length of the description is more than the allowed size"
-       Returned if interface description length is more than 63.
-
-   "Invalid Virtual IP Address"
-       Returned if input is not a valid IP address
-
-   "Pass VIP address without netmask"
-       Returned if IP address input is with netwmask e.g. 10.0.0.1/22.
-
-   "Device is pre-configured with ip version"
-       Returned if the device is already configured with the same IP address
-
-   "Invalid Input types while creating VRRPE group"
-       Returned if any one of the input is invalid.
-
-   "Invalid input values vrid, rbridge_id, vmac"
-       Returned if any one of the input is invalid during VMAC to the extender group association.
-
-   "Invalid input values vrid, rbridge_id, ve_name"
-       Returned if any one of the input is invalid during short path forwarding configuration
 
 .. _Add_l3_tenant_endpoint_evpn:
 
@@ -570,88 +558,3 @@ Error Messages
 
    "Mac Move Threshold is Invalid. Not in <5-500> range"
        Returned if given mac move threshold is < 5 and > 500. e.g. 501
-
-
-.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint_and_gw_evpn.rst
-
-.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint_and_gw.rst
-
-.. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint.rst
-
-.. include:: /_includes/solutions/dcfabric/add_singlehomed_endpoint.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_anycast_gateway_evpn.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_anycast_gw_mac_evpn.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_arp_nd_suppression.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_bgp_ipfabric.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_bgp_neighbor.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_bgp_parameters_ipfabric.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_bgp_redistribute_connected.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_conversational_arp_evpn.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_conversational_mac_evpn.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_device_ipfabric.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_evpn_instance.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_evpn_vtep.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_fabric_infra.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_interface_ipfabric.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_intfs_ipfabric.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_vrrpe_gw.rst
-
-.. include:: /_includes/solutions/dcfabric/create_l2_tenant_evpn.rst
-
-.. include:: /_includes/solutions/dcfabric/create_l3_tenant_evpn.rst
-
-.. include:: /_includes/solutions/dcfabric/create_vrf_evpn.rst
-
-.. include:: /_includes/solutions/dcfabric/fabric_add.rst
-
-.. include:: /_includes/solutions/dcfabric/fabric_config_delete.rst
-
-.. include:: /_includes/solutions/dcfabric/fabric_config_set.rst
-
-.. include:: /_includes/solutions/dcfabric/fabric_delete.rst
-
-.. include:: /_includes/solutions/dcfabric/fabric_list.rst
-
-.. include:: /_includes/solutions/dcfabric/get_flow_trace_ip_fabric.rst
-
-.. include:: /_includes/solutions/dcfabric/modify_arp_nd_aging_ve.rst
-
-.. include:: /_includes/solutions/dcfabric/provision_evpn_instance.rst
-
-.. include:: /_includes/solutions/dcfabric/query_topology.rst
-
-.. include:: /_includes/solutions/dcfabric/redistribute_connected_bgp_vrf.rst
-
-.. include:: /_includes/solutions/dcfabric/set_max_path_bgp.rst
-
-.. include:: /_includes/solutions/dcfabric/show_config_bgp.rst
-
-.. include:: /_includes/solutions/dcfabric/show_lldp_links.rst
-
-.. include:: /_includes/solutions/dcfabric/show_vcs_links.rst
-
-.. include:: /_includes/solutions/dcfabric/switch_add.rst
-
-.. include:: /_includes/solutions/dcfabric/switch_delete.rst
-
-.. include:: /_includes/solutions/dcfabric/switch_list.rst
-
-.. include:: /_includes/solutions/dcfabric/switch_update.rst
-
-.. include:: /_includes/solutions/dcfabric/topology_generate.rst
