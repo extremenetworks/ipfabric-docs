@@ -493,6 +493,8 @@ command:
       | anycast_mac          | aabb.ccdd.eeff  |
       | loopback_ip_range    | 172.32.254.0/24 |
       | bfd_rx               | 300             |
+      | mtu                  | 9216            |
+      | ip_mtu               | 9018            |
       +----------------------+-----------------+
 
 
