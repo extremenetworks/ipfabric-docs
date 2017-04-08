@@ -88,7 +88,7 @@ IP Fabric EVPN - L2 Tenant provisoning on vLAG pair
 
 Here are the steps to configure L2 tenant on a vLAG pair:
 
-1. Use ``dcfabric.Configure_edge_ports`` to configure edge ports facing end points such as a server.
+1. Use ``dcfabric.add_multihomed_endpoint`` to configure edge ports facing end points such as a server.
    This workflow automates creation of port-channel interfaces, configuration of the port-channel
    interface as access or trunk, creation and association of VLANs with the port-channel interfaces
    as well as validation of the port channel state.
@@ -97,7 +97,7 @@ Here are the steps to configure L2 tenant on a vLAG pair:
 
    .. code-block:: bash
 
-     st2 run dcfabric.Configure_edge_ports mgmt_ip=10.70.61.37 vlan_id=201 intf_desc="customer-a" intf_type=tengigabitethernet ports=37/0/11,38/0/11 port_channel_id=400 mode=standard protocol=active 
+     st2 run dcfabric.add_multihomed_endpoint mgmt_ip=10.70.61.37 vlan_id=201 intf_desc="customer-a" intf_type=tengigabitethernet ports=37/0/11,38/0/11 port_channel_id=400 mode=standard protocol=active 
 
    The workflow runs the following show commands on the switch and logs the results. You can review
    this in the action results. Or you can directly run the following commands on the switch to verify:
@@ -108,14 +108,14 @@ Here are the steps to configure L2 tenant on a vLAG pair:
      show running-config interface TenGigabitEthernet 37/0/11
      show running-config interface TenGigabitEthernet 38/0/11
 
-2. Next, use the ``Create_l2_tenant_evpn`` workflow to provision an L2 domain extension, on the selected
+2. Next, use the ``create_l2_tenant_evpn`` workflow to provision an L2 domain extension, on the selected
    leaves or vLAG pairs. The workflow must be provided with the management IP of the vLAG pair or the
    leaf switch. In this example, provide the management IP of the vLAG pair to attach the VNI created
    in the previous setp to EVPN instance:
    
    .. code-block:: bash
 
-     st2 run dcfabric.Create_l2_tenant_evpn mgmt_ip=10.70.61.37 vni=201
+     st2 run dcfabric.create_l2_tenant_evpn mgmt_ip=10.70.61.37 vni=201
    
    To verify review the action logs on the workflow or use the following commands directly on the switch:
    
@@ -128,13 +128,13 @@ IP Fabric EVPN - L2 Tenant provisoning on a single ToR
 
 Here are the steps to configure an L2 tenant on a single ToR (non vLAG):
 
-1. Use ``network_essentials.server_provision`` to configure edge ports facing end points such as a
+1. Use ``network_essentials.add_singlehomed_endpoint`` to configure edge ports facing end points such as a
    server. This workflow automates configuration of the interface as access or trunk, creation and
    association of VLANs with the interface.
    
    .. code-block:: bash
 
-     st2 run network_essentials.server_provision mgmt_ip=10.70.61.21 vlan_id=201 intf_desc="customer-a" intf_type=tengigabitethernet intf_name=21/0/1 switchport_mode=trunk 
+     st2 run network_essentials.add_singlehomed_endpoint mgmt_ip=10.70.61.21 vlan_id=201 intf_desc="customer-a" intf_type=tengigabitethernet intf_name=21/0/1 switchport_mode=trunk 
 
    To verify, review the action logs on the workflow or use the following commands directly on the switch:
    
@@ -142,7 +142,7 @@ Here are the steps to configure an L2 tenant on a single ToR (non vLAG):
 
      show running-config interface TenGigabitEthernet 21/0/1
 
-2. Next, use the ``Create_l2_tenant_evpn`` workflow to provision an L2 domain extension in the BGP
+2. Next, use the ``create_l2_tenant_evpn`` workflow to provision an L2 domain extension in the BGP
    EVPN based IP fabric, on the selected leaves or vLAG pairs. The workflow must be provided with the
    management IP of the vLAG pair or leaf switch between which the layer 2 extension is required.
    In this example, provide the management IP of the single ToR to attach the VNI created in the
@@ -150,7 +150,7 @@ Here are the steps to configure an L2 tenant on a single ToR (non vLAG):
    
    .. code-block:: bash
 
-     st2 run dcfabric.Create_l2_tenant_evpn mgmt_ip=10.70.61.21 vni=201
+     st2 run dcfabric.create_l2_tenant_evpn mgmt_ip=10.70.61.21 vni=201
    
    To verify, review the action logs on the workflow or use the following commands directly on the switch:
    
@@ -165,7 +165,7 @@ IP Fabric EVPN - L3 Tenant provisoning on vLAG pair
 
 Here are the steps to configure an L3 tenant on a vLAG pair:
 
-1. Use ``dcfabric.Create_l3_tenant_evpn`` workflow to provision an L3 tenant identified by a VRF.
+1. Use ``dcfabric.create_l3_tenant_evpn`` workflow to provision an L3 tenant identified by a VRF.
    This workflow provisions the VRF for the Layer 3 tenant at the identified leaf switches or vLAG
    pairs, enables routing for the VRF across the IP fabric by enabling the VRF address family in BGP
    and creating L3VNI interface and also enables redistribution of connected routes in the VRF to BGP
@@ -174,7 +174,7 @@ Here are the steps to configure an L3 tenant on a vLAG pair:
    
    .. code-block:: bash
 
-    st2 run dcfabric.Create_l3_tenant_evpn mgmt_ip=10.70.61.37 vrf_name=vrf2 l3vni=500 route_distinguisher=172.32.254.5,172.32.254.6 tenant_addressing_type=both rt=101
+    st2 run dcfabric.create_l3_tenant_evpn mgmt_ip=10.70.61.37 vrf_name=vrf2 l3vni=500 route_distinguisher=172.32.254.5,172.32.254.6 tenant_addressing_type=both rt=101
    
    To verify, review the action logs on the workflow or use the following commands directly on the switch:
    
@@ -184,7 +184,7 @@ Here are the steps to configure an L3 tenant on a vLAG pair:
      show running-config rbridge-id interface ve 500 
      show running-config rbridge-id router bgp address-family ipv4 unicast vrf vrf2 
 
-2. Use ``dcfabric.Add_l3_tenant_endpoint_evpn`` workflow to automate the configuration of the edge
+2. Use ``dcfabric.add_multihomed_endpoint_and_gw_evpn`` workflow to automate the configuration of the edge
    ports of IP Fabric with EVPN. This workflow automates creation of port-channel interfaces (LAGs
    and vLAGs), configuration of the port-channel interface as access or trunk, creation and
    association of VLANs with the port-channel interfaces, validation of the port channel state as
@@ -193,7 +193,7 @@ Here are the steps to configure an L3 tenant on a vLAG pair:
    
    .. code-block:: bash
 
-     st2 run dcfabric.Add_l3_tenant_endpoint_evpn mgmt_ip=10.70.61.37 intf_desc="customer-a" intf_name=37/0/11,38/0/11 vlan_id=201 switchport_mode=trunk arp_aging_type=arp_aging anycast_address=10.70.20.20/24 vrf_name=vrf2 auto_pick_port_channel_id=true
+     st2 run dcfabric.add_multihomed_endpoint_and_gw_evpn mgmt_ip=10.70.61.37 intf_desc="customer-a" intf_name=37/0/11,38/0/11 vlan_id=201 switchport_mode=trunk arp_aging_type=arp_aging anycast_address=10.70.20.20/24 vrf_name=vrf2 auto_pick_port_channel_id=true
    
    To verify, review the action logs on the workflow or use the following commands directly on the switch:
    
@@ -209,7 +209,7 @@ IP Fabric EVPN - L3 Tenant provisoning on a single ToR (non vLAG)
 
 Here are the steps to configure L3 tenant on a vLAG pair:
 
-1. User ``dcfabric.Create_l3_tenant_evpn`` workflow to provision an L3 tenant identified by a VRF.
+1. User ``dcfabric.create_l3_tenant_evpn`` workflow to provision an L3 tenant identified by a VRF.
    This workflow provisions the VRF for the Layer 3 tenant at the identified leaf switches or
    vLAG pairs, enables routing for the VRF across the IP fabric by enabling the VRF address
    family in BGP and creating L3VNI interface and also enables redistribution of connected
@@ -218,9 +218,9 @@ Here are the steps to configure L3 tenant on a vLAG pair:
 
    .. code-block:: bash
 
-     st2 run dcfabric.Create_l3_tenant_evpn mgmt_ip=10.70.61.21 vrf_name=vrf2 l3vni=500 route_distinguisher=172.32.254.8 tenant_addressing_type=both rt=101
+     st2 run dcfabric.create_l3_tenant_evpn mgmt_ip=10.70.61.21 vrf_name=vrf2 l3vni=500 route_distinguisher=172.32.254.8 tenant_addressing_type=both rt=101
 
-2. Use ``dcfabric.Add_l3_tenant_endpoint_evpn`` workflow to automate the configuration of the
+2. Use ``dcfabric.add_multihomed_endpoint_and_gw_evpn`` workflow to automate the configuration of the
    edge ports of IP Fabric with EVPN. This workflow automates creation of port-channel interfaces
    (LAGs and vLAGs), configuration of the port-channel interface as access or trunk, creation and
    association of VLANs with the port-channel interfaces, validation of the port channel state as
@@ -229,7 +229,7 @@ Here are the steps to configure L3 tenant on a vLAG pair:
    
    .. code-block:: bash
 
-     st2 run dcfabric.Add_l3_tenant_endpoint_evpn mgmt_ip=10.70.61.21 intf_desc="customer-a" intf_name=21/0/1 vlan_id=201 switchport_mode=trunk arp_aging_type=arp_aging anycast_address=10.70.70.20/24 vrf_name=vrf2 
+     st2 run dcfabric.add_multihomed_endpoint_and_gw_evpn mgmt_ip=10.70.61.21 intf_desc="customer-a" intf_name=21/0/1 vlan_id=201 switchport_mode=trunk arp_aging_type=arp_aging anycast_address=10.70.70.20/24 vrf_name=vrf2 
    
    To verify, review the action logs on the workflow or use the following commands directly on the switch:
    
