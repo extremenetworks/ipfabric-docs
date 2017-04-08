@@ -54,9 +54,10 @@ dual-side vLAG:
 
 Workflows for VCS fabric include:
 
-* Configure_edge_ports
-* Configure_vrrpe_gw
-* Add_l3_tenant_endpoint
+* add_multihomed_endpoint
+* add_singlehomed_endpoint
+* configure_vrrpe_gw
+* add_multihomed_endpoint_and_gw
 
 See the :doc:`operation/overview` documentation for details about these workflows.
 
