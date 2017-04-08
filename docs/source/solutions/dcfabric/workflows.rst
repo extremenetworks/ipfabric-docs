@@ -15,6 +15,8 @@ This is a reference documentation organized around key usecases as outlined belo
 Manage Fabric Templates
 -----------------------
 
+As explained in section :doc:`Setting UP IP Fabric<operation/setup_ipfabric>`, fabric template is used to provision an IP Fabric network.  DC Fabric Suite includes a default fabric template which has a set of predefined parameters used to create the fabric, such as ASN range, IP address ranges, etc.  However, if a different set of configuration parameters are needed, users can create a new IP Fabric template and define the values for the configuration parameters using the actions in this section. For documentation regarding the various fabric parameters, refer to :ref:`IP Fabric parameters<ip_fabric_parameters>`.
+
 .. include:: /_includes/solutions/dcfabric/fabric_add.rst
 
 .. include:: /_includes/solutions/dcfabric/fabric_delete.rst
