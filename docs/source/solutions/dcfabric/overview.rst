@@ -101,13 +101,13 @@ and `Network Virtualization in IP Fabric with BGP EVPN Brocade Validated Design
 
 Workflows for IP Fabric architecture include:
 
-* Configure_edge_ports
-* Configure_vrrpe_gw
-* Add_l3_tenant_endpoint
-* Create_l2_tenant_evpn
-* Add_l2_tenant_endpoint_evpn
-* Create_l3_tenant_evpn
-* Add_l3_tenant_endpoint_evpn
+* add_multihomed_endpoint
+* add_singlehomed_endpoint
+* configure_vrrpe_gw
+* add_multihomed_endpoint_and_gw
+* create_l2_tenant_evpn
+* create_l3_tenant_evpn
+* add_multihomed_endpoint_and_gw_evpn
 
 See the :doc:`operation/overview` documentation for details about these workflows.
 
@@ -119,7 +119,7 @@ The DC Fabric Automation Suite supports the following devices:
 * Brocade VDX 6740 running Network OS 7.1.0 and later
 * Brocade VDX 6940 running Network OS 7.1.0 and later
 * Brocade VDX 8770 running Network OS 7.1.0 and later
-* Brocade SLX 9850 running SLX-OS 16r.1.01 and later [NOT SUPPORTED FOR TP - MAY BE FOR GA]
+* Brocade SLX 9850 running SLX-OS 16r.1.01 and later [Coming Soon]
 
 What's Next?
 -------------------------------
