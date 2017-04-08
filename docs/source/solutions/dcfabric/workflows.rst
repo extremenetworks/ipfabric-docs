@@ -1,7 +1,7 @@
 Workflows
 =========
 
-DC Fabric Automation Suite includes turnkey automations required to provision, validate and troubleshoot data center networks spanning Day 0 and Day n activities.  Designed to work with multiple data center architectures such as IP Fabric, IP Fabric with EVPN overlay, VCS Fabric as well as multiple device families such as VDX, SLX.  
+DC Fabric Automation Suite includes turnkey automations required to provision, validate and troubleshoot data center networks spanning Day-0 and Day-N activities.  Designed to work with multiple data center architectures such as IP Fabric, IP Fabric with EVPN overlay, VCS Fabric as well as multiple device families such as VDX, SLX.  
 
 This is a reference documentation organized around key usecases as outlined below.  These can be used as independent workflows, or tied together to form more complex workflows. They can be manually triggered, or they can be tied to :doc:`sensors </sensors>` using rules.
 
@@ -30,6 +30,8 @@ As explained in section :doc:`Setting UP IP Fabric<operation/setup_ipfabric>`, f
 
 Build IP Fabric Infrastructure
 ------------------------------
+
+Actions in this section enable the user to register switches into the inventory as part of a pre-defined fabric and automatically configure all the switch interfaces, BGP peering and related settings as per the fabric template parameters.  Please refer to the :doc:`Setting UP IP Fabric<operation/setup_ipfabric>` section for additional details.
 
 .. include:: /_includes/solutions/dcfabric/switch_add.rst
 
@@ -174,6 +176,8 @@ IP Fabric Validation and Troubleshooting
 
 Manage VCS Fabric Tenants and Edge Ports
 ----------------------------------------
+
+Brocade VCS fabric automatically forms with minimal Day-0 configurations.  This section includes the actions and workflows to automate Day-N services such as provisioning of tenants, gateways and edge ports to enable the deployment of endpoints such as Servers, Firewalls and Load Balancers etc. on a VCS fabric.  Refer to :doc:`Brocade VCS Fabric<overview>` for various deployment models.
 
 .. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint.rst
 
