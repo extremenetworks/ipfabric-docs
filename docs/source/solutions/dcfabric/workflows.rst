@@ -166,6 +166,42 @@ IP Fabric Validation and Troubleshooting
 
 .. include:: /_includes/solutions/dcfabric/get_flow_trace_ip_fabric.rst
 
+Details
+```````
+Based on source and destination information provided by the user, this workflow determines the path of the packet flow in the IP Fabric topology and connects and runs diagnostic scripts on ingress leaf, spine and egress leaf.   Diagnostic actions on each node are intended for use by this workflow and not to be directly run by the end user.
+
+Output
+``````
+    Result
+       Boolean - True/False, to indicate success or failure of the action.
+
+Error Messages
+``````````````
+   "The host ip address 10.18.245.150 is not the fabric host list"
+       Returned if the input switch IP address is not part of fabric topology
+       
+   "the connection parameters  are incorrect"
+       Returned if any of the connection parameters (Username, Password or Host IP) is incorrect.
+
+   "username for %s not found."
+   "password for %s not found."
+       Returned if authentication fails
+
+   "Unsupported version running on the switch"
+       Returned if the switch software version is < 7.0.1a
+
+   "Length of the description is more than the allowed size"
+       Returned if interface description length is more than 63.
+
+   "The mgmt_ip could not find for loopback_ip"
+       Loopback IP address provided in the debug cannot be found from topology
+
+   "Not able to open the file located at /tmp/debug_ingress"
+       Returned if the debug file cannot be opened
+
+   "Failed to run on switch 10.18.245.166 due to exception"
+       Returned if the command is not be able to run on the switch because of some exceptions.
+
 .. include:: /_includes/solutions/dcfabric/query_topology.rst
 
 .. include:: /_includes/solutions/dcfabric/show_config_bgp.rst
