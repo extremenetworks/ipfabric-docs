@@ -184,6 +184,8 @@ Error Messages
        Returned if any of the connection parameters (Username, Password or Host IP) is incorrect.
 
    "username for %s not found."
+       Returned if authentication fails
+       
    "password for %s not found."
        Returned if authentication fails
 
