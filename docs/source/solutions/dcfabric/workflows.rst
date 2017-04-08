@@ -5,6 +5,8 @@ DC Fabric Automation Suite includes turnkey automations required to provision, v
 
 This is a reference documentation organized around key usecases as outlined below.  These can be used as independent workflows, or tied together to form more complex workflows. They can be manually triggered, or they can be tied to :doc:`sensors </sensors>` using rules.
 
+All actions and workflows return a boolean True/False to indicate success or failure of the run.  Some actions, workflows return additional variables which are documented in the corresponding section.
+
 .. note::
     Content is still being added to this section
 
@@ -77,7 +79,7 @@ Error Messages
        Returned if VNI value is < 1 or > 16777215
 
    "EVPN instance not configured under rbridge-id"
-       Returned if evpn instance is not already configured
+       Returned if EVPN instance is not already configured
 
    "Invalid Input values for VNI <vni> add for evi <evi> under rbridge <rbridge-id>
        Returned if input is invalid.
@@ -118,7 +120,7 @@ Error Messages
        Returned if VLAN provided is 1.
 
    "Vlan cannot be created, as it is not a user/fcoe vlan"
-       Returned if VLAN provided is part of user/fcoe vlan (4087/4096/1002).
+       Returned if VLAN provided is part of user/FCOE VLAN (4087/4096/1002).
 
 .. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint.rst
 
@@ -156,8 +158,7 @@ Error Messages
     Invalid IP “anycast_address”
 
 .. note::
-   autopick_port_channel_id flag has to be unset and port-channel id has to be specified
-   if the workflow has to be re-run.
+   To re-run this workflow, autopick_port_channel_id flag must be unset and port-channel ID must be specified.
 
 
 IP Fabric Validation and Troubleshooting
@@ -201,16 +202,16 @@ Output
 Error Messages
 ``````````````
    "Not a valid VLAN"
-       Returned if VLAN provided are invalid, e.g. > 4094
+       Returned if the VLAN provided is invalid, e.g. > 4094
 
    "vlan 1 is default vlan"
        Returned if VLAN provided is 1.
 
    "Vlan cannot be created, as it is not a user/fcoe vlan"
-       Returned if VLAN provided is part of user/fcoe vlan (4087/4096/1002).
+       Returned if VLAN provided is part of user/FCOE VLAN (4087/4096/1002).
 	
    "Input is not a valid Interface"
-       Returned if interface name is not valid port numbers.
+       Returned if interface name is not a valid port number.
 
    “SWITCHING_NOT_ENABLED | %Error: Interface not configured for switching”
        Returned if given interfaces are already part of a port-channel 
@@ -233,11 +234,9 @@ Output
    result
        Boolean - True/False, to indicate success or failure of the action.
 
-   ve_ip
-       IP address assigned to the VE interface
+   ve_ip: IP address assigned to the VE interface
 
-   vrid
-       Vrrpe Router ID assigned to the VE interface
+   vrid: VRRPe router ID assigned to the VE interface
 
 .. include:: /_includes/solutions/dcfabric/add_singlehomed_endpoint.rst
 
@@ -254,28 +253,24 @@ Output
    result
        Boolean - True/False, to indicate success or failure of the action.
 
-   ve_ip
-       IP address assigned to the VE interface
+   ve_ip: IP address assigned to the VE interface
 
-   vrid
-       Vrrpe Router ID assigned to the VE interface
+   vrid: VRRPe router ID assigned to the VE interface
 
-   virtual_ip
-       Vrrpe Virtual IP assigned to the VE interface
+   virtual_ip: VRRPe virtual IP assigned to the VE interface
 
-   virtual-mac
-       Vrrpe Virtual Mac assigned to the VE interface
+   virtual-mac: VRRPe virtual MAC assigned to the VE interface
 
 Error Messages
 ``````````````
    "Not a valid VLAN"
-       Returned if VLAN provided are invalid, e.g. > 4094
+       Returned if VLAN provided is invalid, e.g. > 4094
 
    "vlan 1 is default vlan"
        Returned if VLAN provided is 1.
 
    "Vlan cannot be created, as it is not a user/fcoe vlan"
-       Returned if VLAN provided is part of user/fcoe vlan (4087/4096/1002).
+       Returned if VLAN provided is part of user/FCOE VLAN (4087/4096/1002).
 
    "Pls specify a valid description"
        Returned if interface description length is less than 1.
@@ -301,8 +296,10 @@ Error Messages
    "Invalid Input values while configuring IPV6 link local"
        Returned if input is invalid.
 
-Misc
-----
+Actions
+-------
+This section includes various building block actions that are used by the workflows above.  These are provided as a reference, can be used to build workflows for any custom scenarios.
+
 .. include:: /_includes/solutions/dcfabric/configure_anycast_gateway_evpn.rst
 
 .. include:: /_includes/solutions/dcfabric/configure_anycast_gw_mac_evpn.rst
@@ -317,15 +314,9 @@ Misc
 
 .. include:: /_includes/solutions/dcfabric/configure_bgp_redistribute_connected.rst
 
-.. include:: /_includes/solutions/dcfabric/configure_device_ipfabric.rst
-
 .. include:: /_includes/solutions/dcfabric/configure_evpn_instance.rst
 
 .. include:: /_includes/solutions/dcfabric/configure_evpn_vtep.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_interface_ipfabric.rst
-
-.. include:: /_includes/solutions/dcfabric/configure_intfs_ipfabric.rst
 
 .. include:: /_includes/solutions/dcfabric/modify_arp_nd_aging_ve.rst
 
