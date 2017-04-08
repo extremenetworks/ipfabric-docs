@@ -46,6 +46,8 @@ Build IP Fabric Infrastructure
 Manage EVPN Tenants and Edge Ports
 ----------------------------------
 
+Once IP Fabric is provisioned, check out the :doc:`Using IP Fabric<operation/using_ipfabric>` documentation for Day-N service provisioning workflows.  This section includes the actions and workflows to automate Day-N services such as provisioning of tenants, gateways and edge ports to enable the deployment of endpoints such as Servers, Firewalls and Load Balancers etc. on the fabric.
+
 .. include:: /_includes/solutions/dcfabric/create_l2_tenant_evpn.rst
 
 Details
@@ -64,7 +66,7 @@ Output
 ``````
 
    result
-       Boolean - True/False, if action succeeded
+       Boolean - True/False, to indicate success or failure of the action.
 
 Error Messages
 ``````````````
@@ -101,7 +103,7 @@ Output
 ``````
 
    result
-       Boolean - True/False, if workflow succeeded
+       Boolean - True/False, to indicate success or failure of the action.
 
 
 Error Messages
@@ -136,7 +138,7 @@ This workflow is designed for use in IP Fabric with EVPN networks.
 Output
 ``````
    Result
-       Boolean - True/False, if workflow succeeded
+       Boolean - True/False, to indicate success or failure of the action.
 
 Error Messages
 ``````````````
@@ -190,7 +192,7 @@ This workflow is designed for operating on edge devices of IP Fabric, EVPN or VC
 Output
 ``````
    Result
-       Boolean - True/False, if workflow succeeded
+       Boolean - True/False, to indicate success or failure of the action.
 
 Error Messages
 ``````````````
@@ -225,7 +227,7 @@ Output
 ``````
 
    result
-       Boolean - True/False, if workflow succeeded
+       Boolean - True/False, to indicate success or failure of the action.
 
    ve_ip
        IP address assigned to the VE interface
@@ -246,7 +248,7 @@ Output
 ``````
 
    result
-       Boolean - True/False, if workflow succeeded
+       Boolean - True/False, to indicate success or failure of the action.
 
    ve_ip
        IP address assigned to the VE interface
