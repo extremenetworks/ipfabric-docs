@@ -10,15 +10,15 @@ create_vrf_evpn
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Ip address of the device
+   **mgmt_ip**                       Management IP address of the target device
 
                                      Type: ``string``
-   *username*                        login username
+   *username*                        Login user name to connect to the device
 
                                      Type: ``string``
 
                                      **Default**: admin
-   *password*                        login password
+   *password*                        Login password to connect to the device
 
                                      Type: ``string``
 
@@ -26,25 +26,25 @@ create_vrf_evpn
    **vrf_name**                      VRF name. For example vrf32 or 32
 
                                      Type: ``string``
-   **l3vni**                         vni for the VRF. '<NUMBER:1-16777215>'
+   **l3vni**                         VNI for the VRF. '<NUMBER:1-16777215>'. Supported only for VDX
 
                                      Type: ``integer``
-   *route_distinguisher*             VPN Route Distinguisher. '<ASN:nn or IP-address:nn>'
+   *route_distinguisher*             VPN route Distinguisher. '<ASN:nn or IP-address:nn>'
 
                                      Type: ``array``
-   *ipv4_route_target_import_evpn*   ipv4 import Target VPN community. 'ASN:nn'
+   *ipv4_route_target_import_evpn*   IPv4 import target VPN community. 'ASN:nn'. Supported only for VDX
 
                                      Type: ``string``
-   *ipv4_route_target_export_evpn*   ipv4 export Target VPN community. 'ASN:nn'
+   *ipv4_route_target_export_evpn*   IPv4 export target VPN community. 'ASN:nn'. Supported only for VDX
 
                                      Type: ``string``
-   *ipv6_route_target_import_evpn*   ipv6 import Target VPN community. 'ASN:nn'
+   *ipv6_route_target_import_evpn*   IPv6 import target VPN community. 'ASN:nn'. Supported only for VDX
 
                                      Type: ``string``
-   *ipv6_route_target_export_evpn*   ipv6 import Target VPN community. 'ASN:nn'
+   *ipv6_route_target_export_evpn*   IPv6 import target VPN community. 'ASN:nn'. Supported only for VDX
 
                                      Type: ``string``
-   *rbridge_id*                      Single/List of rbridge ID's(example rbridge_id=1 or rbridge_id=1,2,3)
+   *rbridge_id*                      Single or list of RBridge IDs separated by comma, for example, 1 or 1,2, 4.  This parameter is only applicable for VDX switches.
 
                                      Type: ``array``
    ================================  ======================================================================

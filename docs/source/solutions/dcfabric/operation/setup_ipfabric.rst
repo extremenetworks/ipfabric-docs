@@ -493,6 +493,8 @@ command:
       | anycast_mac          | aabb.ccdd.eeff  |
       | loopback_ip_range    | 172.32.254.0/24 |
       | bfd_rx               | 300             |
+      | mtu                  | 9216            |
+      | ip_mtu               | 9018            |
       +----------------------+-----------------+
 
 
@@ -535,6 +537,12 @@ command as explained in next section:
 | loopback_port_number   | **(Required)** A number from 1 through 255                        |
 +------------------------+-------------------------------------------------------------------+                       
 | allowas_in             | A number from 1 through 10                                        |
++------------------------+-------------------------------------------------------------------+
+| mtu                    | MTU size, min: 1522; max: 9216.                                   |
+|                        | These values may change based on the switch operating system.     |
++------------------------+-------------------------------------------------------------------+
+| ip_mtu                 | IP MTU size, min: 1300; max: 9018.                                |
+|                        | These values may change based on the switch operating system.     |
 +------------------------+-------------------------------------------------------------------+
 
 The required parameters must be added to the user-defined/custom configuration. The other
