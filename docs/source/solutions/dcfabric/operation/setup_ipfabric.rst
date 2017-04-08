@@ -538,6 +538,12 @@ command as explained in next section:
 +------------------------+-------------------------------------------------------------------+                       
 | allowas_in             | A number from 1 through 10                                        |
 +------------------------+-------------------------------------------------------------------+
+| mtu                    | MTU size, min, max limits depend on the switch version.           |
+|                        | Refer to the device documentation.                                |
++------------------------+-------------------------------------------------------------------+
+| ip_mtu                 | IP MTU size, min, max limits depend on the switch version.        |
+|                        | Refer to the device documentation.                                |
++------------------------+-------------------------------------------------------------------+
 
 The required parameters must be added to the user-defined/custom configuration. The other
 parameters are not optional.If you do not add optional parameters, Brocade Workflow Composer
