@@ -9,8 +9,8 @@ details on requirements, parameters, return codes and error messages.
    :local:
    :depth: 1
 
-Configure Edge Ports
---------------------
+Add a Multihomed Endpoint
+-------------------------
 
 **Workflow Name: add_multihomed_endpoint**
 
@@ -35,8 +35,8 @@ in an IP fabric vLAG pair including the VE interfaces.
 This workflow can be used to create the L3 boundary at the leaf vLAG pair
 of the IP Fabric. 
 
-Add L3 Tenant Endpoint
-----------------------
+Add Multihomed Endpoint and Configure L3 Gateway 
+------------------------------------------------
 
 ** Workflow Name: add_multihomed_endpoint_and_gw**
 
@@ -84,8 +84,8 @@ After the switch is added to the fabric, this workflow can be used to create a l
 VRF routing services within the BGP EVPN IP fabric. No edge port provisioning is performed
 in this workflow.
 
-Add L3 Tenant Endpoint EVPN
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Add Multihomed Endpoint and Configure L3 Gateway in EVPN 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ** Workflow Name: add_multihomed_endpoint_and_gw_evpn**
 
