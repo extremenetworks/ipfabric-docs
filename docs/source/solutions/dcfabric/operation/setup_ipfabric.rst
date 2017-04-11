@@ -538,11 +538,11 @@ command as explained in next section:
 +------------------------+-------------------------------------------------------------------+                       
 | allowas_in             | A number from 1 through 10                                        |
 +------------------------+-------------------------------------------------------------------+
-| mtu                    | MTU size. Min, max limits depend on the switch version.           |
-|                        | Refer to the device documentation.                                |
+| mtu                    | MTU size, min: 1522; max: 9216.                                   |
+|                        | These values may change based on the switch operating system.     |
 +------------------------+-------------------------------------------------------------------+
-| ip_mtu                 | IP MTU size. Min, max limits depend on the switch version.        |
-|                        | Refer to the device documentation.                                |
+| ip_mtu                 | IP MTU size, min: 1300; max: 9018.                                |
+|                        | These values may change based on the switch operating system.     |
 +------------------------+-------------------------------------------------------------------+
 
 The required parameters must be added to the user-defined/custom configuration. The other

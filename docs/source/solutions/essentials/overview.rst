@@ -42,10 +42,12 @@ Supported Devices
 
 The Network Essentials Suite supports the following devices:
 
-* Brocade VDX 6740 running Network OS 7.0.1b, 7.1.0 and later
-* Brocade VDX 6940 running Network OS 7.0.1b, 7.1.0 and later
-* Brocade VDX 8770 running Network OS 7.0.1b, 7.1.0 and later
-* Brocade SLX 9850 running SLX-OS SLX-OS_16r.1.1 and later
+* Brocade VDX 6740, 6940, 8770 running Network OS 6.0.2c, 7.0.1b, 7.1.0 and later
+* Brocade SLX 9850 running SLX-OS SLX-OS_16r.1.1, SLX-OS_17r.1.00 and later
+*	Brocade SLX 9540 running OS SLX-OS_17r.1.00 and later 
+*	Brocade SLX 9240 running OS SLX-OS_17s.1.00 and later
+*	Brocade SLX 9140 running OS SLX-OS_17s.1.00 and later
+
 
 .. rubric:: What's Next?
 
