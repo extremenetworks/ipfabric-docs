@@ -9,12 +9,14 @@ details on requirements, parameters, return codes and error messages.
    :local:
    :depth: 1
 
-Configure Edge Ports
---------------------
+Add a Multihomed or Singlehomed Endpoint
+----------------------------------------
 
-**Workflow Name: Configure_edge_ports**
+**Workflow Name: add_multihomed_endpoint**
 
-The Configure_edge_ports workflow automates the configuration of the edge ports of the VCS fabric.
+**Workflow Name: add_singlehomed_endpoint**
+
+The add_multihomed_endpoint workflow automates the configuration of the edge ports of the VCS fabric.
 The workflow automates creation of port-channel interfaces (LAGs and vLAGs), configuration of the
 port-channel interface as access or trunk, creation and association of VLANs with the port-channel
 interfaces as well as validation of the port channel state.
@@ -24,12 +26,14 @@ VCS fabric. The external connections can be to endpoints in the network like phy
 or network services like load balancers and firewalls or can be to other networking devices
 like Core devices.
 
+When deploying single homed endpoints, use **add_singlehomed_endpoint** workflow, which works similar to the above except without creating a port channel.
+
 Configure VRRPe Gateway
 -----------------------
 
-**Workflow Name: Configure_vrrpe_gw**
+**Workflow Name: configure_vrrpe_gw**
 
-The Configure_vrrpe_gw workflow automates the creation of a VRRP-E based default gateway
+The configure_vrrpe_gw workflow automates the creation of a VRRP-E based default gateway
 in a VCS fabric including the VE interfaces.
 
 This workflow can be used for use cases where L3 boundary is present in the VCS fabric.
@@ -37,12 +41,12 @@ This could be at the spine in a VRRP-E based redundant gateway for the VLANs
 present in the fabric, the provisioning for which is automated through this workflow. 
 It could also be used where the Layer 3 boundary is at the border leaves.
 
-Add L3 Tenant Endpoint
-----------------------
+Add Multihomed Endpoint and Configure L3 Gateway
+------------------------------------------------
 
-** Workflow Name: Add_l3_tenant_endpoint**
+** Workflow Name: add_multihomed_endpoint_and_gw**
 
-The Add_l3_tenant_endpoint workflow automates the addition of an endpoint which needs
+The add_multihomed_endpoint_and_gw workflow automates the addition of an endpoint which needs
 Layer 3 termination within the VCS fabric. It automates the provisioning of both the
 edge ports as well as the VRRP-E based redundant gateway. It combines the actions in
-Configure_edge_ports and Configure_vrrpe_gw.
+add_multihomed_endpoint and configure_vrrpe_gw.

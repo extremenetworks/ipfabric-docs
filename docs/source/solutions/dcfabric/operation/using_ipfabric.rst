@@ -9,12 +9,12 @@ details on requirements, parameters, return codes and error messages.
    :local:
    :depth: 1
 
-Configure Edge Ports
---------------------
+Add a Multihomed Endpoint
+-------------------------
 
-**Workflow Name: Configure_edge_ports**
+**Workflow Name: add_multihomed_endpoint**
 
-The Configure_edge_ports workflow automates the configuration of the edge ports of the IP fabric.
+The add_multihomed_endpoint workflow automates the configuration of the edge ports of the IP fabric.
 The workflow automates creation of port-channel interfaces (LAGs and vLAGs), configuration of the
 port-channel interface as access or trunk, creation and association of VLANs with the port-channel
 interfaces as well as validation of the port channel state.
@@ -27,23 +27,23 @@ Core devices from the border leaf.
 Configure VRRPe Gateway
 -----------------------
 
-**Workflow Name: Configure_vrrpe_gw**
+**Workflow Name: configure_vrrpe_gw**
 
-The Configure_vrrpe_gw workflow automates the creation of a VRRP-E based default gateway
+The configure_vrrpe_gw workflow automates the creation of a VRRP-E based default gateway
 in an IP fabric vLAG pair including the VE interfaces.
 
 This workflow can be used to create the L3 boundary at the leaf vLAG pair
 of the IP Fabric. 
 
-Add L3 Tenant Endpoint
-----------------------
+Add Multihomed Endpoint and Configure L3 Gateway 
+------------------------------------------------
 
-** Workflow Name: Add_l3_tenant_endpoint**
+** Workflow Name: add_multihomed_endpoint_and_gw**
 
-The Add_l3_tenant_endpoint workflow automates the addition of an endpoint along with
+The add_multihomed_endpoint_and_gw workflow automates the addition of an endpoint along with
 the provisioning of the Layer 3 gateway at leaf vLAG pair. It automates the provisioning
 of both the edge ports as well as the VRRP-E based redundant gateway. It combines the
-actions in Configure_edge_ports and Configure_vrrpe_gw
+actions in add_multihomed_endpoint and configure_vrrpe_gw
 
 BGP EVPN-Specific Workflows
 ---------------------------
@@ -54,7 +54,7 @@ BGP EVPN-Specific Workflows
 Create L2 Tenant EVPN
 ~~~~~~~~~~~~~~~~~~~~~
 
-** Workflow Name: Create_l2_tenant_evpn**
+** Workflow Name: create_l2_tenant_evpn**
 
 The Create_l2_tenant_evpn workflow provisions an L2 domain extension in the BGP
 EVPN based IP fabric, on the selected leaves or vLAG pairs. The workflow must be
@@ -70,9 +70,9 @@ provisioning is performed in this workflow.
 Create L3 Tenant EVPN
 ~~~~~~~~~~~~~~~~~~~~~
 
-** Workflow Name: Create_l3_tenant_evpn**
+** Workflow Name: create_l3_tenant_evpn**
 
-The Create_l3_tenant_evpn workflow provisions the BGP EVPN based IP fabric with an L3
+The create_l3_tenant_evpn workflow provisions the BGP EVPN based IP fabric with an L3
 tenant identified by a VRF. This workflow provisions the VRF for the Layer 3 tenant
 at the identified leaf switches or vLAG pairs, enables routing for the VRF across
 the IP fabric by enabling the VRF address family in BGP and creating L3VNI interface
@@ -84,12 +84,12 @@ After the switch is added to the fabric, this workflow can be used to create a l
 VRF routing services within the BGP EVPN IP fabric. No edge port provisioning is performed
 in this workflow.
 
-Add L3 Tenant Endpoint EVPN
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Add Multihomed Endpoint and Configure L3 Gateway in EVPN 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-** Workflow Name: Add_l3_tenant_endpoint_evpn**
+** Workflow Name: add_multihomed_endpoint_and_gw_evpn**
 
-The Add_l3_tenant_endpoint_evpn workflow automates the configuration of the edge
+The add_multihomed_endpoint_and_gw_evpn workflow automates the configuration of the edge
 ports of the BGP EVPN based IP fabric. The workflow automates creation of
 port-channel interfaces (LAGs and vLAGs), configuration of the port-channel
 interface as access or trunk, creation and association of VLANs with the port-channel
