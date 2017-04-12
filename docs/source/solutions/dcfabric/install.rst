@@ -37,8 +37,17 @@ The rest of this document will explain how to how to manually install and config
 System requirements
 -------------------
 
-The system requirements for |bwc| with DC Fabric Automation Suite are the same as the core platform requirements.
+The system requirements for |bwc| with DC Fabric Automation Suite are same as the core platform requirements, except the memory requirements outlined below should be used.
 See the :doc:`system requirements documentation</install/system_requirements>` for more details.
+
++--------------------------------------+-----------------------------------+
+|            Testing                   |         Production                |
++======================================+===================================+
+|  * Dual CPU system                   | * Quad core CPU system            |
+|  * 8GB RAM                           | * >16GB RAM                       |
+|  * 10GB storage                      | * 40GB storage                    |
+|  * Recommended EC2: **t2.large**     | * Recommended EC2: **m4.xlarge**  |
++--------------------------------------+-----------------------------------+
 
 Components
 ----------
