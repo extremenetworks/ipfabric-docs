@@ -1,8 +1,6 @@
 DC Fabric Automation Suite
 ==========================
 
-.. include:: ../__tech_preview.rst
-
 Brocade Data Center products enable customers to build cloud optimized network and network virtualization architectures using VDX and SLX products.  Brocade supports multiple network architectures for data center fabric depending on the customer application and scale requirements.  Two main fabric architectures are “VCS Fabric” and “IP Fabric”.  VCS Fabric is a TRILL-based Layer-2 fabric, while IP Fabric is a BGP-based Layer-3 fabric, which can be used with or without BGP-EVPN.  The section below describes most common topologies for these two network architectures.
 
 The DC Fabric Automation Suite can be used to manage both fabric architectures. Workflows include
@@ -117,10 +115,10 @@ Supported Devices
 
 The DC Fabric Automation Suite supports the following devices:
 
-* Brocade VDX 6740 running Network OS 7.1.0 and later
-* Brocade VDX 6940 running Network OS 7.1.0 and later
-* Brocade VDX 8770 running Network OS 7.1.0 and later
-* Brocade SLX 9850 running SLX-OS 16r.1.01 and later [Coming Soon]
+* Brocade VDX 6740 running Network OS 7.0.1b and later
+* Brocade VDX 6940 running Network OS 7.0.1b and later
+* Brocade VDX 8770 running Network OS 7.0.1b and later
+* Brocade SLX 9850, 9450, 9140, 9240 [Coming Soon]
 
 What's Next?
 -------------------------------
