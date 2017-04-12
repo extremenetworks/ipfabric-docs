@@ -6,12 +6,6 @@ Installation
     no direct upgrade.  If you had previously installed the BWC 2.0 IP Fabric Automation Suite,
     we recommend installing the DC Fabric Automation Suite on a new Virtual Machine.
 
-.. note::
-    During Technology Preview phase, there is one single installation for all suites. In future
-    there will be separate installation scripts for each suite, so customers can choose which
-    suite(s) they wish to run. The instructions below will install both DC Fabric and Network 
-    Essentials Automation Suites.
-
 To quickly install |bwc| with DC Fabric Automation Suite, obtain a license key from
 `brocade.com/bwc <https://www.brocade.com/bwc>`_, and run the commands below, replacing
 ``${BWC_LICENSE_KEY}`` with the key you received when registering for evaluation or
