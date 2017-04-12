@@ -37,7 +37,7 @@ The rest of this document will explain how to how to manually install and config
 System requirements
 -------------------
 
-The system requirements for |bwc| with DC Fabric Automation Suite are same as the core platform requirements, except the memory requirements outlined below should be used.
+The system requirements for |bwc| with DC Fabric Automation Suite are same as the core platform requirements, except the memory requirements outlined below will overwrite the system requirements in the platform page.
 See the :doc:`system requirements documentation</install/system_requirements>` for more details.
 
 +--------------------------------------+-----------------------------------+
