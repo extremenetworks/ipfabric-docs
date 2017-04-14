@@ -6,16 +6,50 @@ Installation
     no direct upgrade.  If you had previously installed the BWC 2.0 IP Fabric Automation Suite,
     we recommend installing the DC Fabric Automation Suite on a new Virtual Machine.
 
+.. contents::
+   :local:
+   :depth: 2
+   
+System requirements
+-------------------
+
+The system requirements for |bwc| with DC Fabric Automation Suite are same as the core platform requirements, except the memory requirements outlined below will overwrite the system requirements in the platform page.
+See the :doc:`system requirements documentation</install/system_requirements>` for more details.
+
++--------------------------------------+-----------------------------------+
+|            Testing                   |         Production                |
++======================================+===================================+
+|  * Dual CPU system                   | * Quad core CPU system            |
+|  * 8GB RAM                           | * >16GB RAM                       |
+|  * 10GB storage                      | * 40GB storage                    |
+|  * Recommended EC2: **t2.large**     | * Recommended EC2: **m4.xlarge**  |
++--------------------------------------+-----------------------------------+
+
+Installing Pre-requisites
+-------------------------
+
+Make sure you are running the latest version of ``curl``, to get the latest version follow the instructions below:
+
+On Ubuntu:
+
+.. code-block:: bash
+
+run ``sudo apt-get install curl ca-certificates``
+
+On Redhat/CentOS:
+
+.. code-block:: bash
+
+run ``sudo yum update curl nss``
+
+Simple Installation
+-------------------
+
 To quickly install |bwc| with DC Fabric Automation Suite, obtain a license key from
 `brocade.com/bwc <https://www.brocade.com/bwc>`_, and run the commands below, replacing
 ``${BWC_LICENSE_KEY}`` with the key you received when registering for evaluation or
 purchasing. These commands will install |bwc|, Network Essentials, DC Fabric Automation Suite,
 and configure all components to work together on a single host:
-
-.. warning::
-    Make sure you are running the latest version of ``curl``. If you are using RHEL/CentOS,
-    run ``sudo yum update curl nss``. For Ubuntu systems, run ``sudo apt-get install curl ca-certificates``.
-    The commands below may fail if you do not update ``curl`` first.
 
 .. code-block:: bash
 
@@ -34,23 +68,11 @@ registering for evaluation or purchasing:
 If you have a more complex environment, or you just want to see exactly what the scripts are doing, read on.
 The rest of this document will explain how to how to manually install and configure the individual components.
 
-System requirements
+Custom Installation
 -------------------
 
-The system requirements for |bwc| with DC Fabric Automation Suite are same as the core platform requirements, except the memory requirements outlined below will overwrite the system requirements in the platform page.
-See the :doc:`system requirements documentation</install/system_requirements>` for more details.
-
-+--------------------------------------+-----------------------------------+
-|            Testing                   |         Production                |
-+======================================+===================================+
-|  * Dual CPU system                   | * Quad core CPU system            |
-|  * 8GB RAM                           | * >16GB RAM                       |
-|  * 10GB storage                      | * 40GB storage                    |
-|  * Recommended EC2: **t2.large**     | * Recommended EC2: **m4.xlarge**  |
-+--------------------------------------+-----------------------------------+
-
 Components
-----------
+~~~~~~~~~~
 
 The DC Fabric Automation Suite installs on top of |bwc|. It adds an inventory & topology service, and
 DC Fabric automation packs containing actions and workflows to simplify Brocade Data Center Fabric management.
@@ -59,7 +81,7 @@ This suite uses components of the :doc:`../essentials/overview` suite. If the Ne
 currently installed it will be automatically installed during DC Fabric suite installation.
 
 1. Install |bwc|
-----------------
+~~~~~~~~~~~~~~~~
 
 To install |bwc|, follow the detailed installation instructions for your Linux flavor.
 It will walk you through installing and configuring StackStorm first, and upgrade it
@@ -72,7 +94,7 @@ purchasing. This last step will also set up the |bwc| repository on your box.
 
 
 2. Install DC Fabric Suite
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Make sure that |bwc| repository is set up on the box.
 
@@ -87,7 +109,7 @@ Install the DC Fabric suite:
     yum install -y dcfabric-suite
 
 3. Configure Topology Service
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Generate an API key to connect the topology service to st2 API: ::
 
@@ -130,7 +152,7 @@ Install the DC Fabric suite:
       systemctl bwc-topology status
 
 4. Smoke-check the Installation
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Run some ``bwc dcf`` CLI commands to see that everything is installed.
 
