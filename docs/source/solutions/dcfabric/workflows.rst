@@ -7,9 +7,6 @@ This is a reference documentation organized around key usecases as outlined belo
 
 All actions and workflows return a boolean True/False to indicate success or failure of the run.  Some actions, workflows return additional variables which are documented in the corresponding section.
 
-.. note::
-    Content is still being added to this section
-
 .. contents::
    :local:
    :depth: 2
