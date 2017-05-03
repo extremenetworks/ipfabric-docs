@@ -34,13 +34,13 @@ On Ubuntu:
 
 .. code-block:: bash
 
-run ``sudo apt-get install curl ca-certificates``
+  sudo apt-get install curl ca-certificates
 
 On Redhat/CentOS:
 
 .. code-block:: bash
 
-run ``sudo yum update curl nss``
+  sudo yum update curl nss
 
 Simple Installation
 -------------------
