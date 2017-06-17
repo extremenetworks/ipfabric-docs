@@ -493,6 +493,7 @@ command:
       | allowas_in           | 5               | 1               |
       | bfd_multiplier       | 3               | 3               |
       | p2p_link_range       | 10.10.10.0/23   | 10.10.10.0/23   |
+      |                      | or "unnumbered" | or "unnumbered" |
       | bfd_tx               | 300             | 300             |
       | anycast_mac          | aabb.ccdd.eeff  | 02aa.bbcc.ddee  |
       | loopback_ip_range    | 172.32.254.0/24 | 172.32.254.0/24 |
@@ -500,7 +501,15 @@ command:
       | mtu                  | 9216            | 9216            |
       | ip_mtu               | 9018            | 9018            |
       +----------------------+-----------------+-----------------+
- 
+
+.. note::
+
+  SLX support is available from DC Fabric Automation Suite v1.1 with the following limitations:
+- IP Unnumbered option for p2p_link_range in fabric deployment is not supported.
+- EVPN is not supported in this release, hence any workflows that end with “_evpn” are not supported when configuring SLX devices.
+- BGP peer groups is not supported.
+
+
 If you want a different set of configuration parameters or a configuration with
 **unnumbered** for the IP address, you must create a new IP Fabric and define the
 values for the configuration parameters. The following parameters can be added
@@ -519,7 +528,7 @@ command as explained in next section:
 +------------------------+-------------------------------------------------------------------+
 | bfd_multiplier         | An integer from 3 through 50                                      |
 +------------------------+-------------------------------------------------------------------+                 
-| bgp_multihop           | An integer from 1 through 55                                      |
+| bgp_multihop           | An integer from 1 through 55. **Recommended value is 2**          |
 +------------------------+-------------------------------------------------------------------+               
 | max_paths              | An integer from 1 through 32                                      |
 +------------------------+-------------------------------------------------------------------+
@@ -539,7 +548,7 @@ command as explained in next section:
 +------------------------+-------------------------------------------------------------------+                  
 | loopback_port_number   | **(Required)** A number from 1 through 255                        |
 +------------------------+-------------------------------------------------------------------+                       
-| allowas_in             | A number from 1 through 10                                        |
+| allowas_in             | A number from 1 through 10. **Recommended value is 1**            |
 +------------------------+-------------------------------------------------------------------+
 | mtu                    | MTU size, min: 1522; max: 9216.                                   |
 |                        | These values may change based on the switch operating system.     |
@@ -614,10 +623,10 @@ Creating a new IP Fabric with user-defined parameters
       | Field                | Value           |
       +----------------------+-----------------+
       | Fabric Name          | user_fab        |
-      | spine_asn_block      | 64512-64999     |
+      | spine_asn_block      | 64512           |
       | leaf_asn_block       | 65000-65534     |
       | loopback_port_number | 1               |
-      | allowas_in           | 7               |
+      | allowas_in           | 1               |
       | bfd_multiplier       | 10              |
       | p2p_link_range       | 10.10.10.0/23   |
       | bfd_tx               | 888             |
