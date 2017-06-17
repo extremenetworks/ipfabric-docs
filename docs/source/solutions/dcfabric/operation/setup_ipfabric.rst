@@ -478,26 +478,29 @@ command:
     
     $ bwc dcf fabric config show fabric=default
 
-      +----------------------+-----------------+
-      | Fabric Name          | default         |
-      | bgp_multihop         | 5               |
-      | spine_asn_block      | 64512-64999     |
-      | leaf_asn_block       | 65000-65534     |
-      | max_paths            | 8               |
-      | loopback_port_number | 1               |
-      | evpn_enabled         | Yes             |
-      | allowas_in           | 5               |
-      | bfd_multiplier       | 3               |
-      | p2p_link_range       | 10.10.10.0/23   |
-      | bfd_tx               | 300             |
-      | anycast_mac          | aabb.ccdd.eeff  |
-      | loopback_ip_range    | 172.32.254.0/24 |
-      | bfd_rx               | 300             |
-      | mtu                  | 9216            |
-      | ip_mtu               | 9018            |
-      +----------------------+-----------------+
-
-
+      +----------------------+-----------------+-----------------+
+      | Parameter Name       | DCF v1.0        | DCF v1.1        |
+      +----------------------+-----------------+-----------------+
+      | Fabric Name          | default         | default         |
+      | bgp_multihop         | 5               | 2               |
+      | spine_asn_block      | 64512-64999     | 64512           |
+      | leaf_asn_block       | 65000-65534     | 65000-65534     |
+      | spine_peer_group     | Not Supported   | leaf_group      |
+      | leaf_peer_group      | Not Supported   | spine_group     |
+      | max_paths            | 8               | 8               |
+      | loopback_port_number | 1               | 1               |
+      | evpn_enabled         | Yes             | Yes             |
+      | allowas_in           | 5               | 1               |
+      | bfd_multiplier       | 3               | 3               |
+      | p2p_link_range       | 10.10.10.0/23   | 10.10.10.0/23   |
+      | bfd_tx               | 300             | 300             |
+      | anycast_mac          | aabb.ccdd.eeff  | 02aa.bbcc.ddee  |
+      | loopback_ip_range    | 172.32.254.0/24 | 172.32.254.0/24 |
+      | bfd_rx               | 300             | 300             |
+      | mtu                  | 9216            | 9216            |
+      | ip_mtu               | 9018            | 9018            |
+      +----------------------+-----------------+-----------------+
+ 
 If you want a different set of configuration parameters or a configuration with
 **unnumbered** for the IP address, you must create a new IP Fabric and define the
 values for the configuration parameters. The following parameters can be added
