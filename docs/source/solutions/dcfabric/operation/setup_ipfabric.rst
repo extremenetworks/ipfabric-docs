@@ -470,9 +470,7 @@ IP Fabric configuration parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This suite has a default set of configuration parameters defined for an IP Fabric. The values
-defined in this default configuration parameter set are fixed and cannot be changed. You
-can display the values of the parameters using the ``bwc dcf fabric config show`` CLI
-command:
+defined in this default configuration parameter set are fixed and cannot be changed by users. Some of the parameters have been changed in v1.1 based on the validated designs. In addition some new parameters have also been added in v1.1.  You can display the values of the parameters using the ``bwc dcf fabric config show`` CLI command.  The table below shows both v1.0 and v1.1 values for comparison, however the command shows only one version.
 
 .. code:: shell
     
