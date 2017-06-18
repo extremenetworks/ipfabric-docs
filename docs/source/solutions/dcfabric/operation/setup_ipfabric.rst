@@ -470,7 +470,7 @@ IP Fabric configuration parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This suite has a default set of configuration parameters defined for an IP Fabric. The values
-defined in this default configuration parameter set are fixed and cannot be changed by users. Some of the parameters have been changed in v1.1 based on the validated designs. In addition some new parameters have also been added in v1.1.  You can display the values of the parameters using the ``bwc dcf fabric config show`` CLI command.  The table below shows both v1.0 and v1.1 values for comparison, however the command shows only one version.
+defined in this default configuration parameter set are fixed and cannot be changed by users. Some of the parameters have been changed in v1.1 based on `Brocade IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ recommendations. In addition some new parameters have also been added in v1.1.  You can display the values of the parameters using the ``bwc dcf fabric config show`` CLI command.  The table below shows both v1.0 and v1.1 values for comparison, however the command shows only one version.
 
 .. code:: shell
     
