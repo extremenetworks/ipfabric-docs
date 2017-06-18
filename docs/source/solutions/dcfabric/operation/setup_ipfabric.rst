@@ -505,6 +505,7 @@ command:
 .. note::
 
   SLX support is available from DC Fabric Automation Suite v1.1 with the following limitations:
+  
 - IP Unnumbered option for p2p_link_range in fabric deployment is not supported.
 - EVPN is not supported in this release, hence any workflows that end with “_evpn” are not supported when configuring SLX devices.
 - BGP peer groups is not supported.
