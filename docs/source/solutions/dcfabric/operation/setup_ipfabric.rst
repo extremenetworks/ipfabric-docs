@@ -544,6 +544,10 @@ command as explained in next section:
 | leaf_asn_block         |  **(Required)** A single value or range from 1 through 4294967295 |
 +------------------------+-------------------------------------------------------------------+                 
 | spine_asn_block        | **(Required)** A single value or range from 1 through 4294967295  |
++------------------------+-------------------------------------------------------------------+                    
+| leaf_peer_group        | Label for leaf peer group, for example, spine_group.              |
++------------------------+-------------------------------------------------------------------+                 
+| spine_peer_group       | Label for spine peer group, for example, spine_group.             |
 +------------------------+-------------------------------------------------------------------+                  
 | loopback_port_number   | **(Required)** A number from 1 through 255                        |
 +------------------------+-------------------------------------------------------------------+                       
