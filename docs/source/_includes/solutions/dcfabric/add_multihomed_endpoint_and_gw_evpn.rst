@@ -37,10 +37,10 @@ add_multihomed_endpoint_and_gw_evpn
    **intf_name**                     List of ports that are members of the port channel. Examples for VDX, SLX are 24/0/1, 24/0/2 or 1/13, 1/14.
 
                                      Type: ``array``
-   *intf_desc*                       Interface description
+   *intf_desc*                       Description for all the ports, space is not allowed, use '_' instead.
 
                                      Type: ``string``
-   *enabled*                         Admin setting on the interface.
+   *enabled*                         Select true to enable the port, false to disable the port
 
                                      Type: ``boolean``
 
@@ -49,6 +49,9 @@ add_multihomed_endpoint_and_gw_evpn
 
                                      Type: ``boolean``
    *port_channel_id*                 Portchannel interface number <NUMBER:1-6144>, if auto pick option is selected and switchport_mode is access no need to specify the VLAN ID.
+
+                                     Type: ``string``
+   *port_channel_desc*               Port channel description without any space
 
                                      Type: ``string``
    *mode*                            Port channel type.
@@ -79,6 +82,9 @@ add_multihomed_endpoint_and_gw_evpn
    **vlan_id**                       Single VLAN ID
 
                                      Type: ``string``
+   *vlan_desc*                       VLAN description, space is not allowed, use '_' instead.  Same VLAN description is configured on all the VLANs when the range is provided.
+
+                                     Type: ``string``
    **vrf_name**                      VRF name
 
                                      Type: ``string``
@@ -103,5 +109,8 @@ add_multihomed_endpoint_and_gw_evpn
                                      Type: ``integer``
 
                                      **Default**: 270
+   *mtu*                             L2 MTU size in bytes <Number:1522-9216>
+
+                                     Type: ``integer``
    ================================  ======================================================================
 

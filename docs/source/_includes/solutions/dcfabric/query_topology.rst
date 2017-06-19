@@ -15,5 +15,13 @@ query_topology
                                      Type: ``string``
 
                                      **Default**: default
+   **state**                         Filter to fetch all or just unprovisioned devices
+
+                                     Choose from:
+
+                                     - All
+                                     - Unprovisioned
+
+                                     **Default**: All
    ================================  ======================================================================
 

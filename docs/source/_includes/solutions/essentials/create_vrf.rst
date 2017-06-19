@@ -28,7 +28,7 @@ create_vrf
                                      Type: ``string``
    *rbridge_id*                      RBridge ID of the switch. This parameter is only applicable for VDX switches.
 
-                                     Type: ``string``
+                                     Type: ``array``
    *afi*                             IP address type
 
                                      Choose from:

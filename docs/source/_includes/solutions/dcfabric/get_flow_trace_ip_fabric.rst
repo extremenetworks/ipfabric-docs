@@ -3,7 +3,7 @@
 get-flow-trace-ip-fabric
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Troubleshoot why a traffic flow is not reaching its destination in an IP Fabric network based on flow information such as source, destination address. 
+**Description**: Traces the data path through the IP Fabric network and checks the integrity of the route-programming on the devices along the data path.  Can be used to trace the path of the packet flow in IP fabric topology as well as in identifying the point of failure when a flow is dropped and not reaching the destination. 
 
 .. table::
 
@@ -13,12 +13,12 @@ get-flow-trace-ip-fabric
    **host**                          Management IP address of the target device
 
                                      Type: ``string``
-   *user*                            Login user name to connect to the device
+   *username*                        username to ssh into host
 
                                      Type: ``string``
 
                                      **Default**: admin
-   *passwd*                          Login password to connect to the device
+   *password*                        password for login into switch
 
                                      Type: ``string``
 

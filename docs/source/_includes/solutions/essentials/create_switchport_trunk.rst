@@ -38,7 +38,7 @@ create_switchport_trunk
    **intf_name**                     Interface name, for VDX in 3-tuple format (24/0/1), SLX in 2-tuple format (24/1) or Port-channel number <1-6144>.
 
                                      Type: ``string``
-   **vlan_id**                       VLAN ID to be configure on the interface
+   **vlan_id**                       VLAN ID/all to be configured on the interface. e.g 5 or 4-7 or all
 
                                      Type: ``string``
    ================================  ======================================================================

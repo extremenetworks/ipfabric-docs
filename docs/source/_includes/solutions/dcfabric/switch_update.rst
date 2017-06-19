@@ -22,5 +22,11 @@ switch_update
    *passwd*                          Login password to connect to the device
 
                                      Type: ``string``
+   *state*                           Device Provisioning State. Its mainly needed to mark the state during workflow execution.
+
+                                     Choose from:
+
+                                     - Provisioned
+                                     - Failed
    ================================  ======================================================================
 

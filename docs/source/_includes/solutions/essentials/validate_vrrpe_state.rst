@@ -17,12 +17,12 @@ validate_vrrpe_state
 
                                      Type: ``array``
 
-                                     **Default**: admin
+                                     **Default**: ['admin']
    *password*                        Login password to connect to the device
 
                                      Type: ``array``
 
-                                     **Default**: password
+                                     **Default**: ['password']
    **vlan_id**                       VLAN ID. <NUMBER:1-4090/8191>, can be greater than 4090 only if VF is enabled.
 
                                      Type: ``string``
