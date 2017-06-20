@@ -25,6 +25,9 @@ configure_bgp_parameters_ipfabric
    **rbridge_id**                    RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
 
                                      Type: ``string``
+   **role**                          Switch role
+
+                                     Type: ``string``
    *vrf*                             VRF name in <1-32> characters.
 
                                      Type: ``string``
@@ -51,13 +54,25 @@ configure_bgp_parameters_ipfabric
    *recursion*                       Configure next hop recursion
 
                                      Type: ``boolean``
-   *retain_rt_all*                   Retain RT all
-
-                                     Type: ``boolean``
    *evpn*                            Enable EVPN
 
                                      Type: ``boolean``
    *loopback_port_number*            Loopback port number
+
+                                     Type: ``string``
+   *update_source*                   Update source
+
+                                     Type: ``string``
+   *leaf_peer_group*                 Peer group name for all leaf nodes
+
+                                     Type: ``string``
+   *spine_peer_group*                Peer group name for all spine nodes
+
+                                     Type: ``string``
+   *peer_ebgp_multihop*              Enable BGP multihop peering
+
+                                     Type: ``string``
+   *single_spine_as*                 Flag to indicate that all spines have the same AS number assigned
 
                                      Type: ``string``
    ================================  ======================================================================

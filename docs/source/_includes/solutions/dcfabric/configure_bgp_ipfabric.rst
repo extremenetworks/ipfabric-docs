@@ -26,6 +26,9 @@ configure_bgp_ipfabric
    **rbridge_id**                    RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
 
                                      Type: ``string``
+   *role*                            Switch role
+
+                                     Type: ``string``
    *afi*                             IP address family
 
                                      Type: ``string``
@@ -69,9 +72,6 @@ configure_bgp_ipfabric
                                      Type: ``boolean``
 
                                      **Default**: True
-   *retain_rt_all*                   Retain RT all
-
-                                     Type: ``boolean``
    *source*                          Source
 
                                      Type: ``string``
@@ -79,6 +79,18 @@ configure_bgp_ipfabric
 
                                      Type: ``string``
    *vrf*                             VRF name
+
+                                     Type: ``string``
+   *leaf_peer_group*                 Peer group name for all leaf nodes
+
+                                     Type: ``string``
+   *spine_peer_group*                Peer group name for all spine nodes
+
+                                     Type: ``string``
+   *network*                         Bgp network to be advertised
+
+                                     Type: ``string``
+   *single_spine_as*                 AS number to be assigned to all spines
 
                                      Type: ``string``
    ================================  ======================================================================

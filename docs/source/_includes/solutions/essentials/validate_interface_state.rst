@@ -3,7 +3,7 @@
 validate_interface_state
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Validate L1 and L2 state for port channel or physical interface is UP. 
+**Description**: Validate L1 and L2 state for port channel, physical, ve, loopback interface is UP. 
 
 .. table::
 
@@ -33,9 +33,11 @@ validate_interface_state
                                      - hundredgigabitethernet
                                      - port_channel
                                      - ethernet
+                                     - ve
+                                     - loopback
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     Interface names, can be comma separated physical ports, port channel numbers. Examples are 224/0/1, 224/0/2 or 7, 8, 9
+   **intf_name**                     Interface name physical port, port channel number, ve, loopback. Examples are 224/0/1 or 7
 
                                      Type: ``string``
    **intf_state**                    Interface state (up or down)
@@ -44,5 +46,8 @@ validate_interface_state
 
                                      - up
                                      - down
+   *rbridge_id*                      Single or list of RBridge IDs separated by comma, for example, 1 or 1,2, 4.  This parameter is only applicable for VDX switches.
+
+                                     Type: ``array``
    ================================  ======================================================================
 

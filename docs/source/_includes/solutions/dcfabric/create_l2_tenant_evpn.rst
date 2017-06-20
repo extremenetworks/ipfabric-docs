@@ -23,8 +23,8 @@ create_l2_tenant_evpn
                                      Type: ``string``
 
                                      **Default**: password
-   **vni**                           VNI to be added for EVPN Instance (<NUMBER:1-16777215>)
+   **vni**                           VNI to be added for EVPN Instance (<NUMBER:1-16777215>) example 1,2,4-6
 
-                                     Type: ``integer``
+                                     Type: ``string``
    ================================  ======================================================================
 

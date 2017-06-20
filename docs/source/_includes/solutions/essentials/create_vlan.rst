@@ -23,10 +23,10 @@ create_vlan
                                      Type: ``string``
 
                                      **Default**: password
-   **vlan_id**                       Single VLAN or range of VLANs. For example 21 or 21-26
+   **vlan_id**                       Single VLAN/range of VLANS/batch wise values. For example 21 or 21-26 or 10,13-14,89-91
 
                                      Type: ``string``
-   *intf_desc*                       VLAN description.  Same description is used when creating multiple VLANs
+   *vlan_desc*                       VLAN description without any space. Same description is used when creating multiple VLANs
 
                                      Type: ``string``
    ================================  ======================================================================

@@ -27,6 +27,7 @@ set_intf_admin_state
 
                                      Choose from:
 
+                                     - ethernet
                                      - gigabitethernet
                                      - tengigabitethernet
                                      - fortygigabitethernet
@@ -36,7 +37,7 @@ set_intf_admin_state
                                      - loopback
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     Interface names, can be comma separated physical ports, port channel numbers or VEs. Examples are 224/0/1, 224/0/2 or 7, 8, 9
+   **intf_name**                     Interface names, port channel numbers or VEs. Examples are 224/0/1, 224/0/2, 52/0/15-16 or 7, 8, 9
 
                                      Type: ``string``
    *enabled*                         Admin setting of the interface(s)
@@ -44,7 +45,7 @@ set_intf_admin_state
                                      Type: ``boolean``
 
                                      **Default**: True
-   *intf_desc*                       Interface description
+   *intf_desc*                       Interface description without any space
 
                                      Type: ``string``
    *rbridge_id*                      RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
