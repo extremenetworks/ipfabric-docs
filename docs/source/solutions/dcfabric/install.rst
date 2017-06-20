@@ -2,8 +2,7 @@ Installation
 ============
 
 .. warning::
-    The DC Fabric Automation Suite replaces the previous IP Fabric Automation Suite. There is
-    no direct upgrade.  If you had previously installed the BWC 2.0 IP Fabric Automation Suite,
+    If you had previously installed the BWC 2.0 IP Fabric Automation Suite,
     we recommend installing the DC Fabric Automation Suite on a new Virtual Machine.
 
 .. contents::
@@ -151,8 +150,8 @@ Install the DC Fabric suite:
       # Check that it is running indeed
       systemctl bwc-topology status
 
-4. Smoke-check the Installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4. Verification of the Installation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Run some ``bwc dcf`` CLI commands to see that everything is installed.
 
@@ -161,6 +160,57 @@ Run some ``bwc dcf`` CLI commands to see that everything is installed.
   bwc --version
   bwc --help
   bwc dcf fabric list
+  
+Upgrade from previous version
+------------------------------
+If you have previously installed DC Fabric Automation Suite and want to upgrade to next version, please follow the instructions below:
+
+**On Ubuntu/Debian or RHEL/CentOS 6.x:**
+
+.. code-block:: bash
+
+  # Upgrade bwc/dcfabric packages
+  sudo apt-get update
+  sudo apt-get install bwc-topology bwc-cli dcfabric-packs dcfabric-suite
+ 
+  # For Database migration from DCF 1.0 to DCF 1.1
+  sudo -u postgres psql -d bwc_topology -a -f /usr/share/doc/bwc-topology/etc/migration.sql
+
+  sudo -u postgres psql -d bwc_topology -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO bwc;"
+
+  sudo -u postgres psql -d bwc_topology -c "GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO bwc;"
+ 
+  # Update Network Essentials Pack
+  st2 pack install network_essentials
+
+  # Restart Topology Service
+  sudo service bwc-topology restart
+
+  # For verification, run the following command to check the version number for network_essentials, network_inventory and dcfabric packs 
+  st2 pack list
+
+**On RHEL/CentOS 7.x:**
+
+.. code-block:: bash
+
+  # Upgrade bwc/dcfabric packages
+  sudo yum update bwc-cli bwc-topology dcfabric-packs dcfabric-suite 
+ 
+  # For Database migration from DCF 1.0 to DCF 1.1
+  sudo -u postgres psql -d bwc_topology -a -f /usr/share/doc/bwc-topology/etc/migration.sql
+
+  sudo -u postgres psql -d bwc_topology -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO bwc;"
+
+  sudo -u postgres psql -d bwc_topology -c "GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO bwc;"
+ 
+  # Update Network Essentials Pack
+  st2 pack install network_essentials
+
+  # Restart Topology Service
+  sudo service bwc-topology restart
+
+  # For verification, run the following command to check the version number for network_essentials, network_inventory and dcfabric packs 
+  st2 pack list
 
 .. rubric:: What's Next?
 

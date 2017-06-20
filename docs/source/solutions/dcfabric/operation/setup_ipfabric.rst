@@ -470,32 +470,43 @@ IP Fabric configuration parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This suite has a default set of configuration parameters defined for an IP Fabric. The values
-defined in this default configuration parameter set are fixed and cannot be changed. You
-can display the values of the parameters using the ``bwc dcf fabric config show`` CLI
-command:
+defined in this default configuration parameter set are fixed and cannot be changed by users. Some of the parameters have been changed in v1.1 based on `Brocade IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ recommendations. In addition some new parameters have also been added in v1.1.  You can display the values of the parameters using the ``bwc dcf fabric config show`` CLI command.  The table below shows both v1.0 and v1.1 values for comparison, however the command shows only one version.
 
 .. code:: shell
     
     $ bwc dcf fabric config show fabric=default
 
-      +----------------------+-----------------+
-      | Fabric Name          | default         |
-      | bgp_multihop         | 5               |
-      | spine_asn_block      | 64512-64999     |
-      | leaf_asn_block       | 65000-65534     |
-      | max_paths            | 8               |
-      | loopback_port_number | 1               |
-      | evpn_enabled         | Yes             |
-      | allowas_in           | 5               |
-      | bfd_multiplier       | 3               |
-      | p2p_link_range       | 10.10.10.0/23   |
-      | bfd_tx               | 300             |
-      | anycast_mac          | aabb.ccdd.eeff  |
-      | loopback_ip_range    | 172.32.254.0/24 |
-      | bfd_rx               | 300             |
-      | mtu                  | 9216            |
-      | ip_mtu               | 9018            |
-      +----------------------+-----------------+
+      +----------------------+-----------------+-----------------+
+      | Parameter Name       | DCF v1.0        | DCF v1.1        |
+      +----------------------+-----------------+-----------------+
+      | Fabric Name          | default         | default         |
+      | bgp_multihop         | 5               | 2               |
+      | spine_asn_block      | 64512-64999     | 64512           |
+      | leaf_asn_block       | 65000-65534     | 65000-65534     |
+      | spine_peer_group     | Not Supported   | leaf_group      |
+      | leaf_peer_group      | Not Supported   | spine_group     |
+      | max_paths            | 8               | 8               |
+      | loopback_port_number | 1               | 1               |
+      | evpn_enabled         | Yes             | Yes             |
+      | allowas_in           | 5               | 1               |
+      | bfd_multiplier       | 3               | 3               |
+      | p2p_link_range       | 10.10.10.0/23   | 10.10.10.0/23   |
+      |                      | or "unnumbered" | or "unnumbered" |
+      | bfd_tx               | 300             | 300             |
+      | anycast_mac          | aabb.ccdd.eeff  | 02aa.bbcc.ddee  |
+      | loopback_ip_range    | 172.32.254.0/24 | 172.32.254.0/24 |
+      | bfd_rx               | 300             | 300             |
+      | mtu                  | 9216            | 9216            |
+      | ip_mtu               | 9018            | 9018            |
+      +----------------------+-----------------+-----------------+
+
+.. note::
+
+  SLX support is available from DC Fabric Automation Suite v1.1 with the following limitations:
+  
+- IP Unnumbered option for p2p_link_range in fabric deployment is not supported.
+- EVPN is not supported in this release, hence any workflows that end with “_evpn” are not supported when configuring SLX devices.
+- BGP peer groups is not supported.
 
 
 If you want a different set of configuration parameters or a configuration with
@@ -516,7 +527,7 @@ command as explained in next section:
 +------------------------+-------------------------------------------------------------------+
 | bfd_multiplier         | An integer from 3 through 50                                      |
 +------------------------+-------------------------------------------------------------------+                 
-| bgp_multihop           | An integer from 1 through 55                                      |
+| bgp_multihop           | An integer from 1 through 55. **Recommended value is 2**          |
 +------------------------+-------------------------------------------------------------------+               
 | max_paths              | An integer from 1 through 32                                      |
 +------------------------+-------------------------------------------------------------------+
@@ -533,10 +544,14 @@ command as explained in next section:
 | leaf_asn_block         |  **(Required)** A single value or range from 1 through 4294967295 |
 +------------------------+-------------------------------------------------------------------+                 
 | spine_asn_block        | **(Required)** A single value or range from 1 through 4294967295  |
++------------------------+-------------------------------------------------------------------+                    
+| leaf_peer_group        | Label for leaf peer group, for example, spine_group.              |
++------------------------+-------------------------------------------------------------------+                 
+| spine_peer_group       | Label for spine peer group, for example, spine_group.             |
 +------------------------+-------------------------------------------------------------------+                  
 | loopback_port_number   | **(Required)** A number from 1 through 255                        |
 +------------------------+-------------------------------------------------------------------+                       
-| allowas_in             | A number from 1 through 10                                        |
+| allowas_in             | A number from 1 through 10. **Recommended value is 1**            |
 +------------------------+-------------------------------------------------------------------+
 | mtu                    | MTU size, min: 1522; max: 9216.                                   |
 |                        | These values may change based on the switch operating system.     |
@@ -611,10 +626,10 @@ Creating a new IP Fabric with user-defined parameters
       | Field                | Value           |
       +----------------------+-----------------+
       | Fabric Name          | user_fab        |
-      | spine_asn_block      | 64512-64999     |
+      | spine_asn_block      | 64512           |
       | leaf_asn_block       | 65000-65534     |
       | loopback_port_number | 1               |
-      | allowas_in           | 7               |
+      | allowas_in           | 1               |
       | bfd_multiplier       | 10              |
       | p2p_link_range       | 10.10.10.0/23   |
       | bfd_tx               | 888             |

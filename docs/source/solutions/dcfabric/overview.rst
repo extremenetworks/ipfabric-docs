@@ -115,10 +115,16 @@ Supported Devices
 
 The DC Fabric Automation Suite supports the following devices:
 
-* Brocade VDX 6740 running Network OS 7.0.1b and later
-* Brocade VDX 6940 running Network OS 7.0.1b and later
-* Brocade VDX 8770 running Network OS 7.0.1b and later
-* Brocade SLX 9850, 9450, 9140, 9240 [Coming Soon]
+**DC Fabric Automation Suite v1.0**
+
+* VCS Fabric - VDX 6740, 6940, 8770 running Network OS 6.0.2c 
+* IP Fabric & EVPN - VDX 6740, 6940, 8770 running Network OS 7.0.1b and 7.1 
+
+**DC Fabric Automation Suite v1.1**
+
+In addition to above device, 1.1 includes support for the following SLX devices:
+* IP Fabric (no EVPN) - Brocade SLX 9850 running SLX-OS SLX-OS_16r.1.1, SLX-OS_17r.1.00 and later
+* IP Fabric (no EVPN) - Brocade SLX 9540 running OS SLX-OS_17r.1.00 and later
 
 What's Next?
 -------------------------------
