@@ -26,9 +26,6 @@ add_multihomed_endpoint_and_gw
    *rbridge_id*                      Single or comma separated RBridge ID(s) to create VE, VRRPe.  Applicable only for VDX switches.
 
                                      Type: ``array``
-   *intf_desc*                       Interface description
-
-                                     Type: ``string``
    **intf_type**                     Interface type
 
                                      Choose from:
@@ -46,12 +43,18 @@ add_multihomed_endpoint_and_gw
    **intf_name**                     Single or list of ports that are members of the port channel. Examples for VDX, SLX are  24/0/1, 24/0/2 or 24/1, 24/2
 
                                      Type: ``array``
+   *intf_desc*                       Description for all the ports, space is not allowed, use '_' instead.
+
+                                     Type: ``string``
    *enabled*                         Enable or disable admin setting on the interface
 
                                      Type: ``boolean``
 
                                      **Default**: True
    **vlan_id**                       Single or range of VLAN(s)
+
+                                     Type: ``string``
+   *vlan_desc*                       VLAN description, space is not allowed, use '_' instead.  Same VLAN description is configured on all the VLANs when the range is provided.
 
                                      Type: ``string``
    **switchport_mode**               Switch port mode
@@ -62,7 +65,13 @@ add_multihomed_endpoint_and_gw
                                      - trunk
 
                                      **Default**: access
+   *auto_pick_port_channel_id*       If selected, workflow will pick the lowest available port channel on the switch.
+
+                                     Type: ``boolean``
    *port_channel_id*                 Port channel interface number.<NUMBER:1-6144>
+
+                                     Type: ``string``
+   *port_channel_desc*               Port channel description without any space
 
                                      Type: ``string``
    *mode*                            Portchannel type
@@ -102,5 +111,8 @@ add_multihomed_endpoint_and_gw
                                      - ipv6
 
                                      **Default**: ipv4
+   *mtu*                             L2 MTU size in bytes <Number:1522-9216>
+
+                                     Type: ``integer``
    ================================  ======================================================================
 

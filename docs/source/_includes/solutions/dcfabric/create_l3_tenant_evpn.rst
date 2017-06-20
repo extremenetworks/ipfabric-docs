@@ -42,5 +42,10 @@ create_l3_tenant_evpn
                                      - ipv4
                                      - ipv6
                                      - both
+   **maximum_paths**                 Forward packets over multiple paths
+
+                                     Type: ``integer``
+
+                                     **Default**: 8
    ================================  ======================================================================
 

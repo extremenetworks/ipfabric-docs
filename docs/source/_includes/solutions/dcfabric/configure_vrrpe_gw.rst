@@ -29,7 +29,7 @@ configure_vrrpe_gw
    **vlan_id**                       VLAN ID
 
                                      Type: ``string``
-   *intf_desc*                       Interface description
+   *vlan_desc*                       Vlan description without any space
 
                                      Type: ``string``
    *ve_ip*                           Single or list of RBridge IDs separated by comma, for example, 1 or 1,2, 4.  This parameter is only applicable for VDX switches.

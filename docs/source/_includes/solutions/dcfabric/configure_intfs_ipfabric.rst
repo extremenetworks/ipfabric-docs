@@ -3,7 +3,7 @@
 configure_intfs_ipfabric
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Configure switch interfaces 
+**Description**: Configure IP addresses on a device 
 
 .. table::
 

@@ -26,6 +26,9 @@ add_singlehomed_endpoint
    **vlan_id**                       Single or range of VLANs
 
                                      Type: ``string``
+   *vlan_desc*                       VLAN description, space is not allowed, use '_' instead.  Same VLAN description is configured on all the VLANs when the range is provided.
+
+                                     Type: ``string``
    **intf_type**                     Interface type
 
                                      Choose from:
@@ -40,7 +43,10 @@ add_singlehomed_endpoint
                                      - loopback
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     Single or list of ports that are members of the port channel. Examples for VDX, SLX are  24/0/1, 24/0/2 or 1/13, 1/14
+   **intf_name**                     Single port. Examples for VDX, SLX are  24/0/1 or 1/13.
+
+                                     Type: ``string``
+   *intf_desc*                       Port description, space is not allowed, use '_' instead.
 
                                      Type: ``string``
    *enabled*                         Select true to enable the port, false to disable the port
@@ -56,8 +62,5 @@ add_singlehomed_endpoint
                                      - trunk
 
                                      **Default**: access
-   *intf_desc*                       Interface description
-
-                                     Type: ``string``
    ================================  ======================================================================
 

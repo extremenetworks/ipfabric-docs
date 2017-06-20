@@ -28,6 +28,9 @@ configure_bgp_neighbor
    **rbridge_id**                    RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
 
                                      Type: ``string``
+   **role**                          Switch role
+
+                                     Type: ``string``
    *vrf*                             VRF name <1-32> characters
 
                                      Type: ``string``
@@ -43,6 +46,18 @@ configure_bgp_neighbor
 
                                      Type: ``boolean``
    *update_source*                   Update source
+
+                                     Type: ``string``
+   *leaf_peer_group*                 Peer group for all leaf nodes
+
+                                     Type: ``string``
+   *spine_peer_group*                Peer group for all spine nodes
+
+                                     Type: ``string``
+   *network*                         network to be advertised
+
+                                     Type: ``string``
+   *single_spine_as*                 Flag to indicate that all spines have the same AS number assigned
 
                                      Type: ``string``
    ================================  ======================================================================

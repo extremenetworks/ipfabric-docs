@@ -87,9 +87,6 @@ configure_device_ipfabric
                                      Type: ``boolean``
 
                                      **Default**: True
-   *retain_rt_all*                   Retain RT all
-
-                                     Type: ``boolean``
    *role*                            Switch role
 
                                      Type: ``string``
@@ -108,5 +105,20 @@ configure_device_ipfabric
    *mac_move_threshold*              MAC move threshold
 
                                      Type: ``integer``
+   *leaf_peer_group*                 Peer group name for all the leaf nodes
+
+                                     Type: ``string``
+   *spine_peer_group*                Peer group name for all the spines
+
+                                     Type: ``string``
+   *network*                         network to be advertised
+
+                                     Type: ``string``
+   *single_spine_as*                 AS number to be assigned to all spines
+
+                                     Type: ``string``
+   **device**                        IP address of the target device.
+
+                                     Type: ``string``
    ================================  ======================================================================
 

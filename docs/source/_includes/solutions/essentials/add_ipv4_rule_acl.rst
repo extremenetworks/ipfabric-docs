@@ -41,12 +41,12 @@ add_ipv4_rule_acl
    *protocol_type*                   Type of IP packets to be filtered based on protocol. Valid values are <0-255> or key words tcp, udp, icmp or ip
 
                                      Type: ``string``
-   **source**                        Source address filters { any | S_IPaddress mask | host S_IPaddress } [ source-operator [ S_port-numbers ] ]
+   **source**                        Source address filters { any | S_IPaddress/mask(0.0.0.255) | host,S_IPaddress } [ source-operator [ S_port-numbers ] ]
 
                                      Type: ``string``
 
                                      **Default**: any
-   *destination*                     Destination address filters { any | S_IPaddress mask | host S_IPaddress } [ source-operator [ S_port-numbers ] ]
+   *destination*                     Destination address filters { any | S_IPaddress/mask(0.0.0.255) | host,S_IPaddress } [ source-operator [ S_port-numbers ] ]
 
                                      Type: ``string``
    *dscp*                            Matches the specified value against the DSCP value of the packet to filter.  Allowed values are 0 through 63.

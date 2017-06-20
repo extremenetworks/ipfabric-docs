@@ -3,7 +3,7 @@
 create_l2_port_channel
 ~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Create a port channel and map it to the interface and enable channel-group mode 
+**Description**: Create an L2 port channel (LAG or vLAG) in Static or LACP mode 
 
 .. table::
 
@@ -13,12 +13,12 @@ create_l2_port_channel
    **mgmt_ip**                       Management IP address of the target device
 
                                      Type: ``string``
-   *username*                        login username
+   *username*                        Login user name to connect to the device
 
                                      Type: ``string``
 
                                      **Default**: admin
-   *password*                        login password
+   *password*                        Login password to connect to the device
 
                                      Type: ``string``
 
@@ -48,7 +48,7 @@ create_l2_port_channel
                                      - brocade
 
                                      **Default**: standard
-   *protocol*                        port channel mode type
+   *protocol*                        Port channel mode
 
                                      Choose from:
 
@@ -57,7 +57,7 @@ create_l2_port_channel
                                      - modeon
 
                                      **Default**: active
-   *intf_desc*                       Port channel Interface description name
+   *port_channel_desc*               Port channel Interface description name without any space
 
                                      Type: ``string``
    ================================  ======================================================================

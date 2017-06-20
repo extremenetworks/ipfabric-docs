@@ -26,5 +26,13 @@ configure_fabric_infra
                                      Type: ``integer``
 
                                      **Default**: 10
+   **state**                         Filter to fetch all or just unprovisioned devices
+
+                                     Choose from:
+
+                                     - Unprovisioned
+                                     - All
+
+                                     **Default**: Unprovisioned
    ================================  ======================================================================
 

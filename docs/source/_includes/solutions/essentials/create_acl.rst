@@ -23,7 +23,7 @@ create_acl
                                      Type: ``string``
 
                                      **Default**: password
-   *address_type*                    ACL address type, IPv4 or IPv6 or MAC
+   *address_type*                    ACL address type, ip or ipv6 or mac
 
                                      Choose from:
 
