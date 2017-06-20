@@ -547,7 +547,7 @@ command as explained in next section:
 +------------------------+-------------------------------------------------------------------+                    
 | leaf_peer_group        | Label for leaf peer group, for example, spine_group.              |
 +------------------------+-------------------------------------------------------------------+                 
-| spine_peer_group       | Label for spine peer group, for example, spine_group.             |
+| spine_peer_group       | Label for spine peer group, for example, leaf_group.              |
 +------------------------+-------------------------------------------------------------------+                  
 | loopback_port_number   | **(Required)** A number from 1 through 255                        |
 +------------------------+-------------------------------------------------------------------+                       
