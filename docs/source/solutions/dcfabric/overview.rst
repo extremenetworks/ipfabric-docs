@@ -123,6 +123,7 @@ The DC Fabric Automation Suite supports the following devices:
 **DC Fabric Automation Suite v1.1**
 
 In addition to above device, 1.1 includes support for the following SLX devices:
+
 * IP Fabric (no EVPN) - Brocade SLX 9850 running SLX-OS SLX-OS_16r.1.1, SLX-OS_17r.1.00 and later
 * IP Fabric (no EVPN) - Brocade SLX 9540 running OS SLX-OS_17r.1.00 and later
 
