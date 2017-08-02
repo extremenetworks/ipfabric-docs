@@ -476,29 +476,30 @@ defined in this default configuration parameter set are fixed and cannot be chan
     
     $ bwc dcf fabric config show fabric=default
 
-      +----------------------+-----------------+-----------------+
-      | Parameter Name       | DCF v1.0        | DCF v1.1        |
-      +----------------------+-----------------+-----------------+
-      | Fabric Name          | default         | default         |
-      | bgp_multihop         | 5               | 2               |
-      | spine_asn_block      | 64512-64999     | 64512           |
-      | leaf_asn_block       | 65000-65534     | 65000-65534     |
-      | spine_peer_group     | Not Supported   | leaf_group      |
-      | leaf_peer_group      | Not Supported   | spine_group     |
-      | max_paths            | 8               | 8               |
-      | loopback_port_number | 1               | 1               |
-      | evpn_enabled         | Yes             | Yes             |
-      | allowas_in           | 5               | 1               |
-      | bfd_multiplier       | 3               | 3               |
-      | p2p_link_range       | 10.10.10.0/23   | 10.10.10.0/23   |
-      |                      | or "unnumbered" | or "unnumbered" |
-      | bfd_tx               | 300             | 300             |
-      | anycast_mac          | aabb.ccdd.eeff  | 02aa.bbcc.ddee  |
-      | loopback_ip_range    | 172.32.254.0/24 | 172.32.254.0/24 |
-      | bfd_rx               | 300             | 300             |
-      | mtu                  | 9216            | 9216            |
-      | ip_mtu               | 9018            | 9018            |
-      +----------------------+-----------------+-----------------+
+      +----------------------+-----------------+-----------------+-----------------+
+      | Parameter Name       | DCF v1.0        | DCF v1.1        | DCF v1.2        |
+      +----------------------+-----------------+-----------------+-----------------+
+      | Fabric Name          | default         | default         | default         |
+      | bgp_multihop         | 5               | 2               | 2               |
+      | spine_asn_block      | 64512-64999     | 64512           | 64512           |
+      | leaf_asn_block       | 65000-65534     | 65000-65534     | 65000-65534     |
+      | spine_peer_group     | Not Supported   | leaf_group      | leaf_group      |
+      | leaf_peer_group      | Not Supported   | spine_group     | spine_group     |
+      | max_paths            | 8               | 8               | 8               |
+      | loopback_port_number | 1               | 1               | 1               |
+      | evpn_enabled         | Yes             | Yes             | Yes             |
+      | allowas_in           | 5               | 1               | 1               |
+      | bfd_multiplier       | 3               | 3               | 3               |
+      | p2p_link_range       | 10.10.10.0/23   | 10.10.10.0/23   | 10.10.10.0/23   |
+      |                      | or "unnumbered" | or "unnumbered" | or "unnumbered" |
+      | bfd_tx               | 300             | 300             | 300             |
+      | anycast_mac          | aabb.ccdd.eeff  | 02aa.bbcc.ddee  | 02aa.bbcc.ddee  |
+      | loopback_ip_range    | 172.32.254.0/24 | 172.32.254.0/24 | 172.32.254.0/24 |
+      | bfd_rx               | 300             | 300             | 300             |
+      | mtu                  | 9216            | 9216            | 9216            |
+      | ip_mtu               | 9018            | 9018            | 9018            |
+      | vlan_vni_auto_map    | Not Supported   | Not Supported   | Yes             |
+      +----------------------+-----------------+-----------------+-----------------+
 
 .. note::
 
@@ -558,6 +559,9 @@ command as explained in next section:
 +------------------------+-------------------------------------------------------------------+
 | ip_mtu                 | IP MTU size, min: 1300; max: 9018.                                |
 |                        | These values may change based on the switch operating system.     |
++------------------------+-------------------------------------------------------------------+
+| vlan_vni_auto_map      | Yes or No. Default is Yes. If 'Yes', configures VLAN to VNI       |
+|                        | mapping as auto under overlay gateway.                            |
 +------------------------+-------------------------------------------------------------------+
 
 The required parameters must be added to the user-defined/custom configuration. The other
