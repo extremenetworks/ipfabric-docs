@@ -30,9 +30,13 @@ Edge Ports Configuration
 
 .. include:: /_includes/solutions/essentials/delete_l2_port_channel.rst
 
+.. include:: /_includes/solutions/essentials/delete_switchport.rst
+
 .. include:: /_includes/solutions/essentials/delete_ve.rst
 
 .. include:: /_includes/solutions/essentials/delete_vlan.rst
+
+.. include:: /_includes/solutions/essentials/remove_switchport_trunk_allowed_vlan.rst
 
 .. include:: /_includes/solutions/essentials/delete_vrf.rst
 
