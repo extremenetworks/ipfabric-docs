@@ -38,8 +38,11 @@ create_switchport_access
    **intf_name**                     Interface name, for VDX in 3-tuple format (24/0/1), SLX in 2-tuple format (24/1)
 
                                      Type: ``string``
-   **vlan_id**                       VLAN ID to be configure on the interface
+   **vlan_id**                       VLAN ID to be configure on the interface.Valid values <1-4090/8191 when VFAB disabled/enabled>
 
                                      Type: ``string``
+   *mac_group_id*                    Mac Group id. Valid Range [1,500]
+
+                                     Type: ``array``
    ================================  ======================================================================
 

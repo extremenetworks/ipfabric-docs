@@ -105,6 +105,9 @@ configure_device_ipfabric
    *mac_move_threshold*              MAC move threshold
 
                                      Type: ``integer``
+   *vlan_vni_auto_map*               Configure vlan to vni auto mapping under overlay gateway
+
+                                     Type: ``boolean``
    *leaf_peer_group*                 Peer group name for all the leaf nodes
 
                                      Type: ``string``

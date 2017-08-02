@@ -33,6 +33,7 @@ set_l3_mtu
                                      - fortygigabitethernet
                                      - hundredgigabitethernet
                                      - port_channel
+                                     - ve
 
                                      **Default**: tengigabitethernet
    **intf_name**                     Interface names, can be comma separated physical ports, port channel numbers. Examples are 224/0/1, 224/0/2 or 7, 8, 9

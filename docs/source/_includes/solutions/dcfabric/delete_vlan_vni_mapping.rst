@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-provision_evpn_instance
+delete_vlan_vni_mapping
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Provision overlay EVPN Instance on a switch or a vLAG pair, also configure overlay gateway and advertise the overlay gateway through BGP. 
+**Description**: Delete VLAN to VNI mapping on an overlay gateway, also set the VLAN to VNI mapping mode to Auto or Manual. 
 
 .. table::
 
@@ -23,27 +23,11 @@ provision_evpn_instance
                                      Type: ``string``
 
                                      **Default**: password
-   *rbridge_id*                      RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
+   *vlan_id*                         Single or range of VLAN IDs, e.g. 10 or 10-15 or 10,12,13-15.  For 802.1Q VLANs ID must be below 4096, for service or transport VFs in a Virtual Fabrics context, valid range is from 4096 through 8191.
 
                                      Type: ``string``
-   **evi_name**                      EVI instance name
-
-                                     Type: ``string``
-   **vtep_name**                     Overlay gateway name
-
-                                     Type: ``string``
-   **vtep_loopback_id**              VTEP loopback ID <NUMBER:1-255>
-
-                                     Type: ``integer``
-   **mac_move_threshold**            MAC move threshold <NUMBER:5-500>
-
-                                     Type: ``integer``
-
-                                     **Default**: 5
-   *vlan_vni_auto_map*               Enable or disable auto-mapping of VLANs to VNIs.
+   *auto*                            If set to True, delete vlan to vni auto mapping under overlay gateway
 
                                      Type: ``boolean``
-
-                                     **Default**: True
    ================================  ======================================================================
 

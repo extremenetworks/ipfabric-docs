@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-provision_evpn_instance
-~~~~~~~~~~~~~~~~~~~~~~~
+configure_vf
+~~~~~~~~~~~~
 
-**Description**: Provision overlay EVPN Instance on a switch or a vLAG pair, also configure overlay gateway and advertise the overlay gateway through BGP. 
+**Description**: Enable/Disable vcs virtual fabric. 
 
 .. table::
 
@@ -23,24 +23,7 @@ provision_evpn_instance
                                      Type: ``string``
 
                                      **Default**: password
-   *rbridge_id*                      RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
-
-                                     Type: ``string``
-   **evi_name**                      EVI instance name
-
-                                     Type: ``string``
-   **vtep_name**                     Overlay gateway name
-
-                                     Type: ``string``
-   **vtep_loopback_id**              VTEP loopback ID <NUMBER:1-255>
-
-                                     Type: ``integer``
-   **mac_move_threshold**            MAC move threshold <NUMBER:5-500>
-
-                                     Type: ``integer``
-
-                                     **Default**: 5
-   *vlan_vni_auto_map*               Enable or disable auto-mapping of VLANs to VNIs.
+   *virtual_fabric_enable*           Enable/Disable VCS Virtual Fabric
 
                                      Type: ``boolean``
 

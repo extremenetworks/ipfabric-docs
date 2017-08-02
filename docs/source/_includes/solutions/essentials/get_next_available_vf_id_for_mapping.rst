@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-configure_evpn_vtep
-~~~~~~~~~~~~~~~~~~~
+get_next_available_vf_id_for_mapping
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Configure EVPN VTEP on a leaf or vLAG pair 
+**Description**: Auto pick the lowest available VF ID(4096-8191) on the device. 
 
 .. table::
 
@@ -23,19 +23,5 @@ configure_evpn_vtep
                                      Type: ``string``
 
                                      **Default**: password
-   **loopback_id**                   Loopback ID, <NUMBER:1-255>
-
-                                     Type: ``integer``
-   *rbridge_id*                      Single or list of RBridge IDs separated by comma, for example, 1 or 1,2, 4.  This parameter is only applicable for VDX switches.
-
-                                     Type: ``array``
-   **name**                          Overlay gateway name
-
-                                     Type: ``string``
-   *vlan_vni_auto_map*               Configure vlan to vni auto mapping under overlay gateway
-
-                                     Type: ``boolean``
-
-                                     **Default**: True
    ================================  ======================================================================
 

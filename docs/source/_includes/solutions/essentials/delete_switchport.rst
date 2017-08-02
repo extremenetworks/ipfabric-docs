@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-create_switchport_trunk
-~~~~~~~~~~~~~~~~~~~~~~~
+delete_switchport
+~~~~~~~~~~~~~~~~~
 
-**Description**: Configure port channel or a physical interface as a Trunk interface. 
+**Description**: Delete Switchport on an interface. 
 
 .. table::
 
@@ -35,13 +35,7 @@ create_switchport_trunk
                                      - port_channel
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     Interface name, for VDX in 3-tuple format (24/0/1), SLX in 2-tuple format (24/1) or Port-channel number <1-6144>.
-
-                                     Type: ``string``
-   **vlan_id**                       Single or range of VLANs to be configured on the interface. NOS - Valid values <1-4090/8191 when VFAB disabled/enabled> SLX - Valid values <1-4090> For example, 5 or 4-7 or 4,6,9-11 or all. Range not supported for VFAB vlans.
-
-                                     Type: ``string``
-   *c_tag*                           Ctag Vlan ID.Valid values <1-4090>. Valid only on NOS devices
+   **intf_name**                     Interface name, for VDX in 3-tuple format (24/0/1), SLX in 2-tuple format (24/1). Example for interface 235/0/35 or 235/0/35-40 Example for port-channel 10 or 1-10
 
                                      Type: ``string``
    ================================  ======================================================================

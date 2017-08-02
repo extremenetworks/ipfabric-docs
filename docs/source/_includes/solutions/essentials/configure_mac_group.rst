@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-configure_evpn_vtep
+configure_mac_group
 ~~~~~~~~~~~~~~~~~~~
 
-**Description**: Configure EVPN VTEP on a leaf or vLAG pair 
+**Description**: Configure Mac Group and the mac addresses. 
 
 .. table::
 
@@ -23,19 +23,11 @@ configure_evpn_vtep
                                      Type: ``string``
 
                                      **Default**: password
-   **loopback_id**                   Loopback ID, <NUMBER:1-255>
+   **mac_group_id**                  Mac Group id. Valid Range [1,500]
 
                                      Type: ``integer``
-   *rbridge_id*                      Single or list of RBridge IDs separated by comma, for example, 1 or 1,2, 4.  This parameter is only applicable for VDX switches.
+   *mac_address*                     Single/list of Mac addresses to be part of the mac group. Mac Address -> HHHH.HHHH.HHHH format
 
                                      Type: ``array``
-   **name**                          Overlay gateway name
-
-                                     Type: ``string``
-   *vlan_vni_auto_map*               Configure vlan to vni auto mapping under overlay gateway
-
-                                     Type: ``boolean``
-
-                                     **Default**: True
    ================================  ======================================================================
 

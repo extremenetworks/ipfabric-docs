@@ -51,12 +51,6 @@ add_multihomed_endpoint_and_gw
                                      Type: ``boolean``
 
                                      **Default**: True
-   **vlan_id**                       Single or range of VLAN(s)
-
-                                     Type: ``string``
-   *vlan_desc*                       VLAN description, space is not allowed, use '_' instead.  Same VLAN description is configured on all the VLANs when the range is provided.
-
-                                     Type: ``string``
    **switchport_mode**               Switch port mode
 
                                      Choose from:
@@ -91,6 +85,21 @@ add_multihomed_endpoint_and_gw
                                      - modeon
 
                                      **Default**: active
+   **vlan_id**                       Single VLAN ID.  For 802.1Q VLANs ID must be below 4096, for service or transport VFs in a Virtual Fabrics context, valid range is from 4096 through 8191.
+
+                                     Type: ``string``
+   *vlan_desc*                       VLAN description, space is not allowed, use '_' instead.
+
+                                     Type: ``string``
+   *c_tag*                           Single VLAN ID <NUMBER:1-4090>. Valid only on NOS devices & if switchport_mode is trunk.
+
+                                     Type: ``string``
+   *mac_group_id*                    MAC group ID <NUMBER:1,500>. Only applicable if switchport_mode is access.
+
+                                     Type: ``array``
+   *vni*                             Specify single or range of VNI <NUMBER:1-16777215> mappings for VLANs, for example 10 or 10-15 or 10,12,13-15. When using ranges, the number of values in a VLAN ID range must correspond to the number of values in a VNI range.
+
+                                     Type: ``string``
    *ve_ip*                           Single or list of IPv4/IPv6 addresses to be configured on the VE. IPv4/subnet-length or IPv6/prefix-length, for example 10.0.0.10/22, 30.0.0.10/22.
 
                                      Type: ``array``
@@ -114,5 +123,8 @@ add_multihomed_endpoint_and_gw
    *mtu*                             L2 MTU size in bytes <Number:1522-9216>
 
                                      Type: ``integer``
+   *display_show_results*            Enable or disable execution of show commands on the device to display the output.
+
+                                     Type: ``boolean``
    ================================  ======================================================================
 

@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-create_switchport_trunk
-~~~~~~~~~~~~~~~~~~~~~~~
+remove_switchport_trunk_allowed_vlan
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Configure port channel or a physical interface as a Trunk interface. 
+**Description**: Remove switch port trunk allowed vlan from an interface. 
 
 .. table::
 
