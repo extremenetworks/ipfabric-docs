@@ -46,6 +46,23 @@ Edge Ports Configuration
 
 .. include:: /_includes/solutions/essentials/configure_mac_move_detection.rst
 
+Virtual Fabrics
+---------------
+
+The Virtual Fabrics (VF) feature in NOS enables Layer 2 multi-tenancy solutions that provide support for overlapping VLANs, VLAN scaling, and transparent VLAN services by providing both traditional VLAN service and a transport service.  The Virtual Fabrics feature is deployed in data centers that require logical switch partitioning with large number of customer VLAN domains that must be isolated from each other in the data plane. On the hardware platforms that support this feature, such as Brocade VDX 8770 series and Brocade VDX 6740 series, the VLAN ID range is extended from the standard 802.1Q limit of 4095, to 8191.  
+
+Network Essentials v1.2 release includes new workflows and enhancements to the existing workflows to automate VF provisioning.  
+
+A VF operates like a regular 802.1Q VLAN, but allows the number of networks to scale beyond the standard 4K (4096) limit.  Users can use  enable_vf action to enable VF on a switch. After enabling VF, users can use existing workflows to manage VFs, for example, to create or delete a VF, use create_vlan or delete_vlan actions.  
+
+.. include:: /_includes/solutions/essentials/enable_vf.rst
+
+.. include:: /_includes/solutions/essentials/get_next_available_vf_id_for_mapping.rst
+
+.. include:: /_includes/solutions/essentials/configure_mac_group.rst
+
+.. include:: /_includes/solutions/essentials/delete_mac_group.rst
+
 ACL Management
 ---------------
 
