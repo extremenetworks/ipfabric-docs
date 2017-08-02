@@ -331,6 +331,18 @@ Error Messages
    "Invalid Input values while configuring IPV6 link local"
        Returned if input is invalid.
 
+VLAN to VNI Mapping
+-------------------
+Prior releases of DC Fabric Automation Suite (version < 1.2) only supported auto-mapping of VLAN to VNI, i.e., configure_fabric_infra workflow configures VLAN to VNI mapping as auto under overlay gateway on all the leaf switches in the fabric.  When auto-mapping is enabled, overlay gateway associates the VLANs the VNIs with the same ID.  Auto-mapping is convenient in some deployments, however, in deployments where VLAN scaling and overlapping is required, users need to use manual mapping.  This release provides user configurable option in fabric template so that users can choose auto or manual VLAN to VNI mapping during the fabric deployment.
+
+A new fabric configuration parameter vlan_vni_auto_map has been introduced as part of fabric template, which can be set as ‘Yes/No’ while configuring the fabric settings. By default auto-mapping is enabled, however, users can create a fabric and set the value to No for manual mapping option.
+
+NOTE: If a switch has been deployed using DC Fabric Automation Suite (version < v1.2), switch will contain VLAN to VNI mapping as auto under the overlay gateway configuration.  To change from auto to manual mapping, auto mapping configured previously needs to be disabled on the switch using delete_vlan_vni_mapping action.
+
+.. include:: /_includes/solutions/dcfabric/configure_vlan_vni_mapping.rst
+
+.. include:: /_includes/solutions/dcfabric/delete_vlan_vni_mapping.rst
+
 Actions
 -------
 This section includes various building block actions that are used by the workflows above.  These are provided as a reference, can be used to build workflows for any custom scenarios.

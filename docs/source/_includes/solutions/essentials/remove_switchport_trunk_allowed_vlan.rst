@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-create_switchport_trunk
-~~~~~~~~~~~~~~~~~~~~~~~
+remove_switchport_trunk_allowed_vlan
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Configure port channel or a physical interface as a Trunk interface. 
+**Description**: Remove switch port trunk allowed vlan from an interface. 
 
 .. table::
 
@@ -38,10 +38,10 @@ create_switchport_trunk
    **intf_name**                     Interface name, for VDX in 3-tuple format (24/0/1), SLX in 2-tuple format (24/1) or Port-channel number <1-6144>.
 
                                      Type: ``string``
-   **vlan_id**                       For 802.1Q VLANs, single or range of VLANs, for example, 5 or 4-7 or 4,6,9-11 or all; ID must be below 4096.  For service or transport VFs, single ID, range can be from 4096 through 8191.
+   **vlan_id**                       Single or range of VLANs to be configured on the interface. NOS - Valid values <1-4090/8191 when VFAB disabled/enabled> SLX - Valid values <1-4090> For example, 5 or 4-7 or 4,6,9-11 or all. Range not supported for VFAB vlans.
 
                                      Type: ``string``
-   *c_tag*                           Specifies an incoming C-TAG or range of C-TAGs for service or transport VLANs in a Virtual Fabrics context.  For service VF only single ID is allowed, for Transport VFs a range of IDs, for example, 100-200, or 10,20,100-200.
+   *c_tag*                           Ctag Vlan ID.Valid values <1-4090>. Valid only on NOS devices
 
                                      Type: ``string``
    ================================  ======================================================================

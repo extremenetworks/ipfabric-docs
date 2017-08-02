@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-delete_vlan
-~~~~~~~~~~~
+get_next_available_vf_id_for_mapping
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Delete one or more VLANs on a switch 
+**Description**: Auto pick the lowest available VF ID(4096-8191) on the device. 
 
 .. table::
 
@@ -23,8 +23,5 @@ delete_vlan
                                      Type: ``string``
 
                                      **Default**: password
-   **vlan_id**                       VLAN ID, can be single or range of VLANs. For example 21 or 21-26 or 10,13-14,89-91.
-
-                                     Type: ``string``
    ================================  ======================================================================
 

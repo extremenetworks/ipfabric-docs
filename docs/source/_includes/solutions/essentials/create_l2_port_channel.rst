@@ -57,7 +57,7 @@ create_l2_port_channel
                                      - modeon
 
                                      **Default**: active
-   *port_channel_desc*               Port channel Interface description name without any space
+   *port_channel_desc*               Port channel interface description without any space
 
                                      Type: ``string``
    ================================  ======================================================================

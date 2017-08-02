@@ -79,12 +79,21 @@ add_multihomed_endpoint_and_gw_evpn
                                      - trunk
 
                                      **Default**: access
-   **vlan_id**                       Single VLAN ID
+   **vlan_id**                       Single VLAN ID.  For 802.1Q VLANs ID must be below 4096, for service or transport VFs in a Virtual Fabrics context, valid range is from 4096 through 8191.
 
                                      Type: ``string``
-   *vlan_desc*                       VLAN description, space is not allowed, use '_' instead.  Same VLAN description is configured on all the VLANs when the range is provided.
+   *vlan_desc*                       VLAN description, space is not allowed, use '_' instead.
 
                                      Type: ``string``
+   *c_tag*                           Single VLAN ID <NUMBER:1-4090>. Valid only on NOS devices & if switchport_mode is trunk.
+
+                                     Type: ``string``
+   *vni*                             Specify the VNI mapping for the VLAN. <NUMBER:1-16777215>.
+
+                                     Type: ``string``
+   *mac_group_id*                    MAC group ID <NUMBER:1,500>. Only applicable if switchport_mode is access.
+
+                                     Type: ``array``
    **vrf_name**                      VRF name
 
                                      Type: ``string``
@@ -112,5 +121,8 @@ add_multihomed_endpoint_and_gw_evpn
    *mtu*                             L2 MTU size in bytes <Number:1522-9216>
 
                                      Type: ``integer``
+   *display_show_results*            Enable or disable execution of show commands on the device to display the output.
+
+                                     Type: ``boolean``
    ================================  ======================================================================
 

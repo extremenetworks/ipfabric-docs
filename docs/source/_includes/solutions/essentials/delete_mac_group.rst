@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-delete_vlan
-~~~~~~~~~~~
+delete_mac_group
+~~~~~~~~~~~~~~~~
 
-**Description**: Delete one or more VLANs on a switch 
+**Description**: Delete Mac Groups. 
 
 .. table::
 
@@ -23,7 +23,7 @@ delete_vlan
                                      Type: ``string``
 
                                      **Default**: password
-   **vlan_id**                       VLAN ID, can be single or range of VLANs. For example 21 or 21-26 or 10,13-14,89-91.
+   **mac_group_id**                  Single Mac Group id/range of Mac Group id/batch wise values. Valid Values [1,500]. For example 10 or 1-10 or 1,2-10,15
 
                                      Type: ``string``
    ================================  ======================================================================

@@ -23,7 +23,7 @@ configure_vrrpe_gw
                                      Type: ``string``
 
                                      **Default**: password
-   **rbridge_id**                    Single Rbridge or list of Rbridge's separated by comma that needs ve/vrrpe creation
+   *rbridge_id*                      Single Rbridge or list of Rbridge's separated by comma that needs ve/vrrpe creation
 
                                      Type: ``array``
    **vlan_id**                       VLAN ID
@@ -41,7 +41,7 @@ configure_vrrpe_gw
    **virtual_ip**                    VRRPe virtual IP address without the netmask
 
                                      Type: ``string``
-   **vrf_name**                      VRF name, for example vrf32 or 32
+   *vrf_name*                        VRF name, for example vrf32 or 32
 
                                      Type: ``string``
    *afi*                             IP address type
@@ -52,5 +52,8 @@ configure_vrrpe_gw
                                      - ipv6
 
                                      **Default**: ipv4
+   *display_show_results*            Enable/Disable output display of show commands executed on the devices.
+
+                                     Type: ``boolean``
    ================================  ======================================================================
 
