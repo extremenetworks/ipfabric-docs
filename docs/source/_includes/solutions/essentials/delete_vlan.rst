@@ -23,7 +23,7 @@ delete_vlan
                                      Type: ``string``
 
                                      **Default**: password
-   **vlan_id**                       VLAN ID, can be single or range of VLANs. For example 5 or 5-9
+   **vlan_id**                       VLAN ID, can be single or range of VLANs. For example 21 or 21-26 or 10,13-14,89-91.
 
                                      Type: ``string``
    ================================  ======================================================================

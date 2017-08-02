@@ -38,10 +38,10 @@ create_switchport_access
    **intf_name**                     Interface name, for VDX in 3-tuple format (24/0/1), SLX in 2-tuple format (24/1)
 
                                      Type: ``string``
-   **vlan_id**                       VLAN ID to be configure on the interface.Valid values <1-4090/8191 when VFAB disabled/enabled>
+   **vlan_id**                       VLAN ID to be configure on the interface. For 802.1Q VLANs, ID must be below 4096, for service or transport VFs valid range is from 4096 through 8191.
 
                                      Type: ``string``
-   *mac_group_id*                    Mac Group id. Valid Range [1,500]
+   *mac_group_id*                    ID of previously created MAC group to be used in MAC-based VLAN classification at the access port.  Applicable only when Virtual Fabric is enabled.  This is a fabric-wide ID, valid values are 1 through 500.
 
                                      Type: ``array``
    ================================  ======================================================================

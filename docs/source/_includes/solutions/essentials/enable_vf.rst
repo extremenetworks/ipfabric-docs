@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-configure_mac_group
-~~~~~~~~~~~~~~~~~~~
+enable_vf
+~~~~~~~~~
 
-**Description**: Create a new Mac group on a device and configure member mac addresses. 
+**Description**: Enable or disable VCS virtual-fabric on a VCS fabric, when enabled, expands the VLAN ID address space beyond the 802.1Q limit in the fabric, allowing VLANs with IDs greater than 4095, up through 8191. 
 
 .. table::
 
@@ -23,11 +23,10 @@ configure_mac_group
                                      Type: ``string``
 
                                      **Default**: password
-   **mac_group_id**                  MAC group ID <NUMBER:1,500>
+   *virtual_fabric_enable*           Set True to enable or False to disable virtual-fabric on VCS.
 
-                                     Type: ``integer``
-   *mac_address*                     Single or comma seperated list of MAC addresses to be part of the MAC group. MAC address in HHHH.HHHH.HHHH format.
+                                     Type: ``boolean``
 
-                                     Type: ``array``
+                                     **Default**: True
    ================================  ======================================================================
 
