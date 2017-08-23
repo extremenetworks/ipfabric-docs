@@ -134,7 +134,7 @@ Here are the steps to configure an L2 tenant on a single ToR (non vLAG):
    
    .. code-block:: bash
 
-     st2 run network_essentials.add_singlehomed_endpoint mgmt_ip=10.70.61.21 vlan_id=201 intf_desc="customer-a" intf_type=tengigabitethernet intf_name=21/0/1 switchport_mode=trunk 
+     st2 run dcfabric.add_singlehomed_endpoint mgmt_ip=10.70.61.21 vlan_id=201 intf_desc="customer-a" intf_type=tengigabitethernet intf_name=21/0/1 switchport_mode=trunk 
 
    To verify, review the action logs on the workflow or use the following commands directly on the switch:
    
