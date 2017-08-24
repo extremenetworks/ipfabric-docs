@@ -128,7 +128,7 @@ IP Fabric EVPN - L2 Tenant provisoning on a single ToR
 
 Here are the steps to configure an L2 tenant on a single ToR (non vLAG):
 
-1. Use ``network_essentials.add_singlehomed_endpoint`` to configure edge ports facing end points such as a
+1. Use ``dcfabric.add_singlehomed_endpoint`` to configure edge ports facing end points such as a
    server. This workflow automates configuration of the interface as access or trunk, creation and
    association of VLANs with the interface.
    
