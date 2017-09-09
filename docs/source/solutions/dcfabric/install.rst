@@ -44,6 +44,13 @@ On Redhat/CentOS:
 Simple Installation
 -------------------
 
+.. warning::
+   There is a known issue with installing the DC Fabric Automation Suite on |bwc| 2.4. At this time,
+   you should only install the DC Fabric Automation Suite on |bwc| 2.2 or 2.3. Follow the instructions below
+   to install |bwc| version 2.3.2.
+
+   This issue will be resolved shortly.
+
 To quickly install |bwc| with DC Fabric Automation Suite, obtain a license key from
 `brocade.com/bwc <https://www.brocade.com/bwc>`_, and run the commands below, replacing
 ``${BWC_LICENSE_KEY}`` with the key you received when registering for evaluation or
@@ -53,9 +60,11 @@ and configure all components to work together on a single host:
 .. code-block:: bash
 
   curl -SsL -O https://brocade.com/bwc/install/install.sh && chmod +x install.sh
-  ./install.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${BWC_LICENSE_KEY}
+  ./install.sh --user=st2admin --password=Ch@ngeMe --license=${BWC_LICENSE_KEY} --version=2.3.2
+  curl -SsL -O https://brocade.com/bwc/install/install-suite.sh && chmod +x install-suite.sh
+  ./install-suite.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${BWC_LICENSE_KEY}
 
-If you already have |bwc| installed, and need to add DC Fabric on top of an existing |bwc| installation,
+If you already have |bwc| installed, and need to add DC Fabric on top of an existing |bwc| 2.2 or 2.3 installation,
 run the following commands, replacing ``${BWC_LICENSE_KEY}`` with the key you received when 
 registering for evaluation or purchasing:
 
@@ -63,6 +72,9 @@ registering for evaluation or purchasing:
 
   curl -SsL -O https://brocade.com/bwc/install/install-suite.sh && chmod +x install-suite.sh
   ./install-suite.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${BWC_LICENSE_KEY}
+
+If you attempt to install this on |bwc| 2.4, it will cause problems with the Web UI. If you have an existing
+2.4 installation, you must downgrade to install the DC Fabric Automation Suite.
 
 If you have a more complex environment, or you just want to see exactly what the scripts are doing, read on.
 The rest of this document will explain how to how to manually install and configure the individual components.
