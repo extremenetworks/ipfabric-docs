@@ -64,6 +64,22 @@ registering for evaluation or purchasing:
   curl -SsL -O https://brocade.com/bwc/install/install-suite.sh && chmod +x install-suite.sh
   ./install-suite.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${BWC_LICENSE_KEY}
 
+.. note::
+
+  If you are using |bwc| v2.4, you may see error messages similar to this:
+
+  .. code-block:: bash
+
+    2017-09-11 12:23:11,808 ERROR [-] Pack "network_inventory" contains a deprecated config.yaml file (/opt/stackstorm/packs/network_inventory/config.yaml). Support for "config.yaml" files has been deprecated in StackStorm v1.6.0 in favor of config.schema.yaml config schema files and config files in /opt/stackstorm/configs/
+
+  To resolve this, run this command:
+  
+  .. code-block:: bash
+  
+    $ sudo rm -f /opt/stackstorm/packs/network_inventory/config.yaml /opt/stackstorm/packs/dcfabric/config.yaml
+
+  This will be resolved in a future release
+
 If you have a more complex environment, or you just want to see exactly what the scripts are doing, read on.
 The rest of this document will explain how to how to manually install and configure the individual components.
 
