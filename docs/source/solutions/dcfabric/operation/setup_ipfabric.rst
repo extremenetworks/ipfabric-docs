@@ -1,34 +1,36 @@
-Setting Up IP Fabric
+Setting Up An IP Fabric
 ====================
 
-This document provides an overview of how to use the DC Fabric Automation Suite to automate provisioning and 
-maintenance of a Brocade IP Fabric. The DC Fabric Automation Suite can automatically configure
-interfaces, BGP peerings and related settings. This ensures consistent configuration
-across the fabric, with minimal effort.
+This document provides an overview of how to use the Brocade Workflow Composer DC Fabric Automation Suite to automate the provisioning and the maintenance of a Brocade IP Fabric. The DC Fabric Automation Suite can automatically configure
+interfaces, BGP peering and related settings. This ensures consistent configuration
+across the IP fabric, with minimal effort.
 
 .. note::
-    This document covers the operation of the |bwc| DC Fabric suite. For more information
-    about Brocade IP Fabrics in general, see the `Brocade Network OS IP Fabric
+    This document covers the operation of the |bwc| DC Fabric Automation Suite. For more information
+    about Brocade IP Fabrics in general, refer to the `Brocade Network OS IP Fabric
     Configuration Guide <http://www.brocade.com/content/html/en/configuration-guide/nos-701-ipfabrics/index.html>`_
     and the `Brocade IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ 
 
-The DC Fabric suite supports easy integration with Zero-Touch Provisioning (ZTP). It can also be used 
-without ZTP, but initial switch setup and registration will be a manual process.
+The BWC DC Fabric automation suite supports easy integration with Zero-Touch Provisioning (ZTP). It can also be used 
+without ZTP, however, initial switch setup and registration will be a manual process.
 
-The default configuration has a set of predefined parameters used to create the fabric, such 
-as ASN range, IP address ranges, etc. To see these parameters, and change them, refer to the
-:ref:`IP Fabric parameters<ip_fabric_parameters>` documentation.
+The BWC DC Fabric automation suite's default configuration comes with a set of predefined configuration parameters such 
+as ASN range, and IP address ranges which can be used to create an IP fabric. The values of these predefined configuration parameters are fixed and cannot be changed. To see the list of these predefined parameters, refer to the
+:ref:`IP Fabric configuration parameters<ip_fabric_parameters>` documentation.
 
 .. figure:: ../../../_static/images/solutions/dcfabric/bwc_components.jpg
     :align: center
 
-    **Components of Brocade Flow Composer**
+    **Components of Brocade Workflow Composer**
+
+The illustration shows the components of the Brocade Workflow Composer and the switch spines and leaves connectivity. This will be
+the example setup for showing how to initially provision an IP Fabric using BWC.
 
 Once your IP Fabric is provisioned, check out the :doc:`Using IP Fabric<using_ipfabric>` documentation
 for Day-N service provisioning workflows.
 
 .. note::
-    The VCS ID for spine and leaves should be different in both the ZTP-enabled configuration and
+    The VCS ID for switch spine and leaves should be different in both the ZTP-enabled configuration and
     non-ZTP enabled configuration. If the VCS IDs are same, the switches will automatically form an
     Ethernet fabric. For example, the VCS ID for spines can be 1 and for leaves can be 2.
 
@@ -38,8 +40,12 @@ Initial Fabric Provisioning
 Configuring an IP Fabric with ZTP enabled
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-DC Fabric suite can automatically provision a Brocade VDX switch and create an IP Fabric on the switch
+The BWC DC Fabric automation suite can automatically provision a Brocade VDX switch and create an IP Fabric on the switch
 if the switch has ZTP enabled and if no management IP address has been assigned to the switch.
+
+Zero Touch Provisioning (ZTP) can be used to bring up a switch with new firmware and a preset configuration automatically. The switch does not need to be configured via the console. ZTP uses a DHCP-based process known as DHCP Automatic Deployment (DAD) to handle basic configuration such as assigning a VCS ID, VCS mode, an RBridge ID, and downloading firmware.
+
+As part of the ZTP process, the switch can execute a local script. This stage is used to register the switch with Brocade Workflow Composer and run the BGP workflow if desired.
 
 .. note::
     For detailed information about ZTP, refer to the :doc:`ZTP reference <../ztp_reference>`
@@ -52,12 +58,12 @@ if the switch has ZTP enabled and if no management IP address has been assigned 
 If the switch has ZTP enabled, complete the following steps:
 
     1.  Ensure that DHCP and FTP servers to be used in the fabric have been installed.
-    2.  Ensure that |bwc| and DC Fabric suite have been installed.
+    2.  Ensure that |bwc| and DC Fabric automation suite have been installed.
     3.  After the process has finished executing, enter the ``bwc dcf show config bgp`` command
 
 .. note::
-    Make sure switches have not been powered on. Connect the switches in a leaf-spine topology.
-    DC Fabric suite assigns management IP addresses to the switches, registers the switches in its 
+    Make sure switches have not been powered on. Connect the switches in a leaf-spine topology as shown in the illustration.
+    BWC DC Fabric automation suite assigns management IP addresses to the switches, registers the switches in its 
     database, and creates an IP Fabric.
 
 .. code:: shell
@@ -139,27 +145,34 @@ If the switch has ZTP enabled, complete the following steps:
            neighbor 10.10.10.18 allowas-in 5
            neighbor 10.10.10.18 next-hop-unchanged
 
-Configuring an IP Fabric without ZTP enabled
+Configuring an IP Fabric manually or without ZTP enabled
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If the Brocade VDX switch does not have ZTP enabled or if you want to configure an IP Fabric
 manually, complete the following steps:
 
+    1.  Register the switch in the Brocade Workflow Composer database   
+    2.  Verify that the switch is registered.    
+    3.  Repeat Steps 1 and 2 for each switch that will be added to the IP Fabric. 
+    4.  Execute the BGP workflow
+    5.  Review and verify the IP Fabric configuration using the the bwc dcf show config bgp command 
+
 .. note::
-    To use the DC Fabric suite to configure an IP Fabric without ZTP enabled, your environment must meet
+    To use the BWC DC Fabric automation suite to configure an IP Fabric without ZTP enabled, your environment must meet
     these prerequisites: 
 
-     * Switches are physically connected in a leaf-spine topology.
+     * The switches are physically connected in a leaf-spine topology.
      * Each switch has a management IP address and gateway assigned.
      * All switches are reachable via SSH from the |st2| server.
      * All switches have a working username and password. 
 
 .. warning::
-    The first switch that is added to the server must always be a **spine**. If it is not,
-    delete the leaf switch from the |bwc| server and add a spine first. After the first spine
-    has been added, the order does not matter.
+    The first switch that is added to the server must always be a **spine** switch. If it is not,
+    delete the leaf switch from the |bwc| server and add a spine switch first. After the first spine
+    has been added, the order of adding more switches will not matter as they will be automatically identified as Spine or Leaf      
+    switches using LLDP.
 
-Use the DC Fabric CLI to configure an IP Fabric by completing the following steps:
+Use the BWC DC Fabric automation suite CLI to configure an IP Fabric by completing the following steps:
 
 1. Register the switches in the |bwc| database by entering the ``bwc dcf inventory
    register`` command:
@@ -194,8 +207,8 @@ Use the DC Fabric CLI to configure an IP Fabric by completing the following step
       | 10.24.39.224 | VDX6740     |        224 | 7.1.0    | sw0            | Spine | 64512 | default |
       +--------------+-------------+------------+----------+----------------+-------+-------+---------+
 
-3. Repeat the step 1 through 2 to register the remaining switches. If some value changes
-   on the switch, the fabric can be updated:
+3. Repeat steps 1 and 2 above to register the remaining switches to be added. If some configuration parameter value changes
+   on the switch, the IP fabric can be updated:
 
 .. code:: shell
 
@@ -446,13 +459,13 @@ Refer the :doc:`dcf CLI <../dcf_cli/basic_cli>` page for options available for t
    file and a dot file is generated in *tmp* folder if format flag and render_dir
    flags are not used.
 
-2. Open the topology file that was generated using appropriate software.
+2. Open the topology file that was generated using the appropriate software.
 
 
 Confirming IP Fabric details
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To check the details of the registered switches in the |bwc| server against the current
+To check the details of the registered switches in the |bwc| server and compare it with the current
 switch configuration, use following commands:
 
 
@@ -469,8 +482,7 @@ switch configuration, use following commands:
 IP Fabric configuration parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This suite has a default set of configuration parameters defined for an IP Fabric. The values
-defined in this default configuration parameter set are fixed and cannot be changed by users. Some of the parameters have been changed in v1.1 based on `Brocade IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ recommendations. In addition some new parameters have also been added in v1.1.  You can display the values of the parameters using the ``bwc dcf fabric config show`` CLI command.  The table below shows both v1.0 and v1.1 values for comparison, however the command shows only one version.
+This BWC DC IP Fabric automation suite has a default set of configuration parameters defined for an IP Fabric. The default set of configuration paramter values are fixed and cannot be changed by users. Some of the parameters have been changed in v1.1 of the automation suite based on `Brocade IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ recommendations. In addition some new parameters have also been added in v1.1.  You can display the values of the parameters using the ``bwc dcf fabric config show`` CLI command.  The table below shows the comparison for both DC IP Fabirc automation suite v1.0 and v1.1 values with the display showing only one version.
 
 .. code:: shell
     
@@ -506,13 +518,13 @@ defined in this default configuration parameter set are fixed and cannot be chan
   SLX support is available from DC Fabric Automation Suite v1.1 with the following limitations:
   
 - IP Unnumbered option for p2p_link_range in fabric deployment is not supported.
-- EVPN is not supported in this release, hence any workflows that end with “_evpn” are not supported when configuring SLX devices.
+- EVPN is not supported in this release, therefore any workflows that end with “_evpn” are not supported when configuring SLX devices.
 - BGP peer groups is not supported.
 
 
-If you want a different set of configuration parameters or a configuration with
-**unnumbered** for the IP address, you must create a new IP Fabric and define the
-values for the configuration parameters. The following parameters can be added
+If you want a different set of configuration parameters or a different configuration with
+**unnumbered** for the IP address, you must create a new IP Fabric and then define the
+values for the configuration parameters. The following configuration parameters can be added
 with the ``bwc dcf fabric config set fabric=<fabric_name> key=<key_name> value=<valu_name>``
 command as explained in next section:
 
@@ -569,10 +581,10 @@ parameters are not optional.If you do not add optional parameters, Brocade Workf
 will use the values from the default configuration.
 
 .. note::
-    Once the required parameters are added to the user-defined fabric, they cannot be modified or deleted.
-    To modify/update the mandatory values create a new fabric and define the parameters for this fabric.
+    Once the required configuration parameters are added to the user-defined fabric, they cannot be modified or deleted.
+    To modify/update the mandatory parameter values, create a new fabric and then define the parameters required for this fabric.
 
-Creating a new IP Fabric with user-defined parameters
+Creating a new IP Fabric with user-defined configuration parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Use the ``bwc dcf fabric add fabric=<fabric_name>`` command to create a new fabric
@@ -615,9 +627,10 @@ Creating a new IP Fabric with user-defined parameters
       Setting bfd_tx with value 888 added to fabric user_fab
    
     $ bwc dcf fabric config set key=allowas_in value=7 fabric=user_fab
-      Setting allowas_in with value 7 added to fabric user_fab
 
-3. Check the parameter values before saving the configuration.
+Setting allowas_in with value 7 added to fabric user_fab
+
+3. Check and vereify the parameter values before saving the configuration.
 4. Use the ``bwc dcf fabric config show fabric=<fabric_name>`` command to display the fabric
    details added in step 2.
 
@@ -643,7 +656,15 @@ Creating a new IP Fabric with user-defined parameters
 
 Use :command:`fabric=<fabric name>` parameter to display details for a specific fabric.
 
+Deleting an IP Fabric
+~~~~~~~~~~~~~~~~~~~~~
+
+To delete an IP Fabric, use the CLI ``bwc dcf fabric delete fabric=<fabric_name>`` command. .
+
+    $ bwc dcf fabric delete fabric+ipfabric
+
 .. rubric:: What's Next?
 
 * Check out the :doc:`Day-N workflows <using_ipfabric>`.
 * Understand the DC Fabric CLI - read the :doc:`../dcf_cli/basic_cli`.
+
