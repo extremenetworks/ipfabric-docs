@@ -1,5 +1,5 @@
 Setting Up An IP Fabric
-====================
+=======================
 
 This document provides an overview of how to use the Brocade Workflow Composer DC Fabric Automation Suite to automate the provisioning and the maintenance of a Brocade IP Fabric. The DC Fabric Automation Suite can automatically configure
 interfaces, BGP peering and related settings. This ensures consistent configuration
@@ -146,7 +146,7 @@ If the switch has ZTP enabled, complete the following steps:
            neighbor 10.10.10.18 next-hop-unchanged
 
 Configuring an IP Fabric manually or without ZTP enabled
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If the Brocade VDX switch does not have ZTP enabled or if you want to configure an IP Fabric
 manually, complete the following steps:
@@ -226,8 +226,6 @@ Use the BWC DC Fabric automation suite CLI to configure an IP Fabric by completi
       | 10.24.39.224 | VDX6740     |        224 | 7.1.0    | sw0            | Spine | 64512 | default |
       | 10.24.39.223 | VDX6740T-1G |        223 | 7.1.0    | sw0            | Spine |       | default |
       +--------------+-------------+------------+----------+----------------+-------+-------+---------+
-
-
 
 4. Execute the BGP workflow by entering the command ``bwc dcf workflow bgp`` command:
 
@@ -585,7 +583,7 @@ will use the values from the default configuration.
     To modify/update the mandatory parameter values, create a new fabric and then define the parameters required for this fabric.
 
 Creating a new IP Fabric with user-defined configuration parameters
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Use the ``bwc dcf fabric add fabric=<fabric_name>`` command to create a new fabric
    configuration. For example, the following command creates a new user-defined IP Fabric
