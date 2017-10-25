@@ -480,7 +480,7 @@ switch configuration, use following commands:
 IP Fabric configuration parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This BWC DC IP Fabric automation suite has a default set of configuration parameters defined for an IP Fabric. The default set of configuration paramter values are fixed and cannot be changed by users. Some of the parameters have been changed in v1.1 of the automation suite based on `Brocade IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ recommendations. In addition some new parameters have also been added in v1.1.  You can display the values of the parameters using the ``bwc dcf fabric config show`` CLI command.  The table below shows the comparison for both DC IP Fabirc automation suite v1.0 and v1.1 values with the display showing only one version.
+This BWC DC IP Fabric automation suite has a default set of configuration parameters defined for an IP Fabric. The default set of configuration paramter values are fixed and cannot be changed by users. Some of the parameters have been changed in v1.1 of the automation suite based on `Brocade IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ recommendations. In addition some new parameters have also been added in v1.1.  You can display the values of the parameters using the ``bwc dcf fabric config show`` CLI command.  The table below shows the comparison for both DC IP Fabric automation suite v1.0 and v1.1 values with the display showing only one version.
 
 .. code:: shell
     
