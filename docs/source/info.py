@@ -28,9 +28,9 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-# TODO(dzimine): find a way for links to work for both bwc and st2docs.
-# For now, optimize for where most docs written.
-github_repo = 'StackStorm/st2docs'
+# Over-ride this in page github_url metadata
+github_user = 'StackStorm'
+github_repo = 'st2docs'
 github_version = 'master'
 
 theme_base_url = u'https://bwc-docs.brocade.com/'
