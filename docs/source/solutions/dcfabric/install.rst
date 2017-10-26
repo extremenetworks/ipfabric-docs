@@ -12,7 +12,8 @@ Installation
 System requirements
 -------------------
 
-The system requirements for |bwc| with DC Fabric Automation Suite are same as the core platform requirements, except the memory requirements outlined below will overwrite the system requirements in the platform page.
+The system requirements for |bwc| with DC Fabric Automation Suite are same as the core platform requirements,
+except the memory requirements outlined below will overwrite the system requirements in the platform page.
 See the :doc:`system requirements documentation</install/system_requirements>` for more details.
 
 +--------------------------------------+-----------------------------------+
@@ -63,6 +64,11 @@ registering for evaluation or purchasing:
 
   curl -SsL -O https://brocade.com/bwc/install/install-suite.sh && chmod +x install-suite.sh
   ./install-suite.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${BWC_LICENSE_KEY}
+
+.. note::
+
+  If you are adding this Suite to an existing |bwc| system, ensure it is running >= v2.5. If you are using an
+  older version of |bwc|, :doc:`upgrade the system </install/upgrades>` before installing this Suite.
 
 If you have a more complex environment, or you just want to see exactly what the scripts are doing, read on.
 The rest of this document will explain how to how to manually install and configure the individual components.
