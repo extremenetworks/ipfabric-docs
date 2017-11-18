@@ -493,8 +493,8 @@ This BWC DC IP Fabric automation suite has a default set of configuration parame
       | bgp_multihop         | 5               | 2               | 2               |
       | spine_asn_block      | 64512-64999     | 64512           | 64512           |
       | leaf_asn_block       | 65000-65534     | 65000-65534     | 65000-65534     |
-      | spine_peer_group     | Not Supported   | leaf_group      | leaf_group      |
-      | leaf_peer_group      | Not Supported   | spine_group     | spine_group     |
+      | spine_peer_group     | Not Supported   | leaf-group      | leaf-group      |
+      | leaf_peer_group      | Not Supported   | spine-group     | spine-group     |
       | max_paths            | 8               | 8               | 8               |
       | loopback_port_number | 1               | 1               | 1               |
       | evpn_enabled         | Yes             | Yes             | Yes             |
