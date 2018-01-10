@@ -16,13 +16,9 @@ enable_vf
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    *virtual_fabric_enable*           Set True to enable or False to disable virtual-fabric on VCS.
 
                                      Type: ``boolean``

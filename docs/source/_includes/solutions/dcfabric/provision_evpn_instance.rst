@@ -40,10 +40,29 @@ provision_evpn_instance
                                      Type: ``integer``
 
                                      **Default**: 5
-   *vlan_vni_auto_map*               Enable or disable auto-mapping of VLANs to VNIs.
+   *vni_auto_map*                    Enable or disable auto-mapping of VLANs/Bridge-Domains to VNIs.
 
                                      Type: ``boolean``
 
                                      **Default**: True
+   **principal_ip**                  Principal IP address of the target device
+
+                                     Type: ``string``
+   **mct_interfaces**                List of ports that are members of the port channel. 1/13, 1/14.
+
+                                     Type: ``array``
+   **node_id**                       ID of the node values <1-128>.
+
+                                     Type: ``integer``
+
+                                     **Default**: 1
+   *evpn*                            EVPN enabled fabric.
+
+                                     Type: ``boolean``
+
+                                     **Default**: True
+   *is_principal*                    Principal Node of Cluster.
+
+                                     Type: ``boolean``
    ================================  ======================================================================
 

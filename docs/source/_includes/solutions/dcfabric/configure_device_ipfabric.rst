@@ -105,7 +105,7 @@ configure_device_ipfabric
    *mac_move_threshold*              MAC move threshold
 
                                      Type: ``integer``
-   *vlan_vni_auto_map*               Configure vlan to vni auto mapping under overlay gateway
+   *vni_auto_map*                    Configure vlan/bridge-domain to vni auto mapping under overlay gateway
 
                                      Type: ``boolean``
    *leaf_peer_group*                 Peer group name for all the leaf nodes
@@ -123,5 +123,31 @@ configure_device_ipfabric
    **device**                        IP address of the target device.
 
                                      Type: ``string``
+   *enable_vf*                       Enable or disable VCS virtual-fabric on a VCS fabric
+
+                                     Type: ``boolean``
+   **principal_ip**                  Principal IP address of the target device
+
+                                     Type: ``string``
+   *control_vlan*                    Control VLAN for MCT cluster
+
+                                     Type: ``string``
+   *switch_model*                    Model of the device
+
+                                     Type: ``string``
+   *mct_interfaces*                  List of ports that are members of the port channel. 1/13, 1/14.
+
+                                     Type: ``array``
+   *cluster_peer_ip*                 Cluster peer ip address in a.b.c.d format
+
+                                     Type: ``string``
+   *node_id*                         ID of the node values <1-128>.
+
+                                     Type: ``integer``
+
+                                     **Default**: 1
+   *is_principal*                    Principal Node of Cluster.
+
+                                     Type: ``boolean``
    ================================  ======================================================================
 

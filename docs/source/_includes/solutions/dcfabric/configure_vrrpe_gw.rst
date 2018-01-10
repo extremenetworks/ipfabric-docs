@@ -32,7 +32,7 @@ configure_vrrpe_gw
    *vlan_desc*                       Vlan description without any space
 
                                      Type: ``string``
-   *ve_ip*                           Single or list of RBridge IDs separated by comma, for example, 1 or 1,2, 4.  This parameter is only applicable for VDX switches.
+   *ve_ip*                           Single or list of IPv4/IPv6 addresses to be configured on the VE. IPv4/subnet-length or IPv6/prefix-length, for example 10.0.0.10/22, 30.0.0.10/22.
 
                                      Type: ``array``
    *vrid*                            Virtual group ID
@@ -52,6 +52,17 @@ configure_vrrpe_gw
                                      - ipv6
 
                                      **Default**: ipv4
+   **intf_type**                     Interface type, VDX/SLX supports only ve and MLX supports both
+
+                                     Choose from:
+
+                                     - ethernet
+                                     - ve
+
+                                     **Default**: ve
+   **intf_name**                     name of the interface, for ethernet slot/port, for ve, ve-id like 10,20
+
+                                     Type: ``string``
    *display_show_results*            Enable/Disable output display of show commands executed on the devices.
 
                                      Type: ``boolean``

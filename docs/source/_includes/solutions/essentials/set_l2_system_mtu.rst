@@ -3,7 +3,7 @@
 set_l2_system_mtu
 ~~~~~~~~~~~~~~~~~
 
-**Description**: Set L2 system MTU on the VCS fabric or vLag pairs.  Only supported on VDX devices. 
+**Description**: Set L2 system global MTU. 
 
 .. table::
 
@@ -16,14 +16,10 @@ set_l2_system_mtu
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
-   **mtu_size**                      MTU size in bytes <Number:1522-9216>
+   **mtu_size**                      MTU size in bytes <Number:1522-9216>. for MLX MTU <1298-9216>.
 
                                      Type: ``integer``
    ================================  ======================================================================

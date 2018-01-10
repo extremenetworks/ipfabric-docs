@@ -54,19 +54,40 @@ add_singlehomed_endpoint
 
                                      - access
                                      - trunk
+                                     - trunk_no_default_native
 
                                      **Default**: access
-   **vlan_id**                       Single or range of VLANs to be configured on the interface, e.g. 5 or 4-7 or 4,6,9-11 or all. For 802.1Q VLANs ID must be below 4096, for service or transport VFs in a Virtual Fabrics context, valid range is from 4096 through 8191.
+   *auto_pick_network_id*            For service or transport VFs in a Virtual Fabrics context, if selected, workflow will pick the lowest available Single/Range of VF IDs available on the switch, valid range is from 4096 through 8191. In Bridge-domain context, if selected, workflow will pick the lowest available Single/Range of BRIDGE-DOMAIN IDs available on the switch, valid range is from 1 through 4096. For Virtual Fabric/Bridge-Domain and ctag classification , use auto_pick_network_id or network_id.
+
+                                     Type: ``boolean``
+   *network_id*                      If auto_pick_network_id=False, Single or range of VLANs to be configured on the interface.For service or transport VFs in a Virtual Fabrics context, valid range is from 4096 through 8191. Single or range of Bridge-domain ID in SLXOS platforms, valid range is from 1 through 4096.
+
+                                     Type: ``string``
+   *vlan_id*                         Single or range of VLANs to be configured on the interface. For 802.1Q VLANs ID must be below 4096. Valid for vlan_id only use cases. For Virtual Fabric/Bridge-Domain and ctag classification , use auto_pick_network_id or network_id.
 
                                      Type: ``string``
    *vlan_desc*                       VLAN description, space is not allowed, use '_' instead.  Same VLAN description is configured on all the VLANs when the range is provided.
 
                                      Type: ``string``
-   *c_tag*                           Single or range of VLAN IDs <NUMBER:1-4090>. Valid only on NOS devices & if switchport_mode is trunk.
+   *c_tag*                           Single or range of VLAN IDs <NUMBER:1-4090>. Valid only if switchport_mode is trunk.
 
                                      Type: ``string``
-   *mac_group_id*                    MAC group ID <NUMBER:1,500>. Only applicable if switchport_mode is access.
+   *mac_group_id*                    MAC group ID <NUMBER:1,500>. Only applicable if switchport_mode is access and on VDX platforms.
 
                                      Type: ``array``
+   *auto_pick_lif_id*                Auto generate physical port lifs or port channel lifs.
+
+                                     Type: ``boolean``
+   *vlan_type*                       vlan tag type to be configured under logical interface.
+
+                                     Choose from:
+
+                                     - untagged
+                                     - tagged
+
+                                     **Default**: tagged
+   *vni*                             Specify single or range of VNI <NUMBER:1-16777215> mappings for VLANs/BDs, for example 10 or 10-15 or 10,12,13-15. When using ranges, the number of values in a VLAN/BD ID range must correspond to the number of values in a VNI range.
+
+                                     Type: ``string``
    ================================  ======================================================================
 

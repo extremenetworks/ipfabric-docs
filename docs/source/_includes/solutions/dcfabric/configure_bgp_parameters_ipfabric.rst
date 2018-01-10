@@ -39,6 +39,8 @@ configure_bgp_parameters_ipfabric
 
                                      - ipv4
                                      - ipv6
+
+                                     **Default**: ipv4
    *bfd_tx*                          BFD TX timer
 
                                      Type: ``string``

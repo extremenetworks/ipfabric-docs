@@ -16,19 +16,21 @@ delete_vrrpe
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
+   **intf_type**                     Interface type, VDX/SLX supports only ve and MLX supports both
 
-                                     **Default**: password
+                                     Choose from:
+
+                                     - ethernet
+                                     - ve
+   **intf_name**                     name of the interface, for ethernet slot/port, for ve, ve-id like 10,20
+
+                                     Type: ``string``
    *rbridge_id*                      RBridge IDs of the VDX switches, for example 51 or 51,52. This parameter is only applicable for VDX switches.
 
                                      Type: ``array``
-   **vlan_id**                       VLAN ID. Allowed range for SLX devices <NUMBER:1-4090>, for VDX <NUMBER:1-4090/8191> greater than 4090 only if VF is enabled
-
-                                     Type: ``string``
    *vrrpe_group*                     Virtual extender group ID
 
                                      Type: ``string``

@@ -16,18 +16,14 @@ delete_ipv4_rule_acl
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
-   **acl_name**                      Name of the ACL (standard or extended) to delete the rule from
+   **acl_name**                      Name of the ACL (standard or extended) to delete the rule from required-by:- [All] accepted-by:- [SLX, NOS, MLX]
 
                                      Type: ``string``
-   **seq_id**                        Sequence number of the rule to be deleted
+   **seq_id**                        Sequence numbers of rules to be deleted { seq id | all | comman and hyphen separated seq ids } Example:- { 10 | all | 1,2,3-10,20,35-  } Note:- "-" separated values will look for seq_ids in range including the values and 35- is equal to starting from 35 delete all configured sequence ids, including 35. required-by:- [None] accepted-by:- [SLX, NOS, MLX]
 
-                                     Type: ``integer``
+                                     Type: ``string``
    ================================  ======================================================================
 

@@ -23,5 +23,15 @@ configure_conversational_mac_evpn
                                      Type: ``string``
 
                                      **Default**: password
+   *aging_time*                      aging-time for mac address
+
+                                     Type: ``integer``
+
+                                     **Default**: 300
+   *legacy_aging_time*               legacy-aging-time for mac address
+
+                                     Type: ``integer``
+
+                                     **Default**: 1800
    ================================  ======================================================================
 

@@ -16,13 +16,9 @@ create_l2_port_channel
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    **intf_type**                     Interface type ethernet/gigabitethernet/tengigabitethernet/fortygigabitethernet/hundredgigabitethernet
 
                                      Choose from:
@@ -37,10 +33,19 @@ create_l2_port_channel
    **ports**                         Single or list of ports that are members of the port channel. Examples for VDX, SLX are  24/0/1, 24/0/2 or 1/13, 1/14
 
                                      Type: ``array``
-   **port_channel_id**               Port channel interface number.<NUMBER:1-6144>
+   *port_speed*                      Configurable port speed. Supported on SLX and VDX.
+
+                                     Choose from:
+
+                                     - 1000
+                                     - 10000
+                                     - 25000
+                                     - 40000
+                                     - 100000
+   **port_channel_id**               Port channel interface number.<NUMBER:1-6144>. For MLX range is <1-256>
 
                                      Type: ``string``
-   *mode*                            Port channel type
+   *mode*                            Port channel type. SLX and MLX supports standard type only.
 
                                      Choose from:
 
@@ -48,7 +53,7 @@ create_l2_port_channel
                                      - brocade
 
                                      **Default**: standard
-   *protocol*                        Port channel mode
+   *protocol*                        Port channel mode. For MLX use active for dynamic and modeon for static.
 
                                      Choose from:
 
@@ -57,7 +62,7 @@ create_l2_port_channel
                                      - modeon
 
                                      **Default**: active
-   *port_channel_desc*               Port channel interface description without any space
+   *port_channel_desc*               Port channel interface description.For MLX this is mandatory field.
 
                                      Type: ``string``
    ================================  ======================================================================

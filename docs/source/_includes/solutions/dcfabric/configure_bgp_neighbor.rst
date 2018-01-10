@@ -60,5 +60,10 @@ configure_bgp_neighbor
    *single_spine_as*                 Flag to indicate that all spines have the same AS number assigned
 
                                      Type: ``string``
+   *encapsulation_type*              Encapsulation type for BGP neighbor. e.g. nsh, vxlan
+
+                                     Type: ``string``
+
+                                     **Default**: vxlan
    ================================  ======================================================================
 

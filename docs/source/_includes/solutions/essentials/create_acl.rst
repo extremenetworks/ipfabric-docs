@@ -16,14 +16,10 @@ create_acl
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
-   *address_type*                    ACL address type, ip or ipv6 or mac
+   *address_type*                    ACL address type, ip or ipv6 or mac required-by:- [SLX, NOS, MLX] accepted-by:- [SLX, NOS, MLX]
 
                                      Choose from:
 
@@ -32,13 +28,13 @@ create_acl
                                      - mac
 
                                      **Default**: ip
-   **acl_type**                      ACL type, extended or standard
+   *acl_type*                        ACL type, extended or standard required-by:- [SLX, NOS] accepted-by:- [SLX, NOS, MLX]
 
                                      Choose from:
 
                                      - standard
                                      - extended
-   **acl_name**                      Unique name for ACL, can be up to 63 characters long, and must begin with a-z, A-Z or 0-9. You can also use underscore (_) or hyphen (-) in an ACL name, but not as the first character.
+   **acl_name**                      Unique name for ACL which must begin with a-z, A-Z. accepted-by:- [SLX, NOS, MLX]
 
                                      Type: ``string``
    ================================  ======================================================================

@@ -16,13 +16,9 @@ delete_acl
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    **acl_name**                      Name of the ACL to be deleted
 
                                      Type: ``string``

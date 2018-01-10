@@ -16,13 +16,9 @@ find_mac
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    **macs**                          Single MAC or comma separated list of MACs to be found
 
                                      Type: ``array``

@@ -16,15 +16,11 @@ validate_L2_port_channel_state
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
+   **port_channel_id**               Portchannel interface number. <NUMBER:1-6144>. For MLX range is <1-256>
 
-                                     **Default**: password
-   **port_channel_id**               Portchannel interface number. <NUMBER:1-6144>
-
-                                     Type: ``string``
+                                     Type: ``integer``
    ================================  ======================================================================
 

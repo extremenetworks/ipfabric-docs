@@ -26,13 +26,19 @@ create_l3_tenant_evpn
    **vrf_name**                      VRF name, 1-32 characters
 
                                      Type: ``string``
-   **l3vni**                         L3VNI for the VRF <1-8191>
+   *vlan_id*                         Single VLAN ID. VDX <1-8191> and SLXOS <1-4090>. In Bridge-domain context for SLXOS, use network_id
+
+                                     Type: ``string``
+   *l3vni*                           L3VNI for the VRF. VDX <1-8191> and SLX <1-4096>
+
+                                     Type: ``integer``
+   *network_id*                      In Bridge-domain context for SLXOS, if selected, workflow will associate L3VNI as BRIDGE-DOMAIN ID valid range is from 1 through 4096.
 
                                      Type: ``integer``
    **route_distinguisher**           BGP router ID of the leafs, for example, 10.20.31.1, 10.20.31.2
 
                                      Type: ``array``
-   **rt**                            RT for the address family, for example, 101
+   **route_target**                  Route Target for the address family, for example, 101
 
                                      Type: ``integer``
    **tenant_addressing_type**        Tenant IP addressing type
@@ -42,6 +48,8 @@ create_l3_tenant_evpn
                                      - ipv4
                                      - ipv6
                                      - both
+
+                                     **Default**: ipv4
    **maximum_paths**                 Forward packets over multiple paths
 
                                      Type: ``integer``

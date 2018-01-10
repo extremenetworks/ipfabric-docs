@@ -16,13 +16,9 @@ configure_mac_group
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    **mac_group_id**                  MAC group ID <NUMBER:1,500>
 
                                      Type: ``integer``

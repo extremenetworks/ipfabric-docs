@@ -16,19 +16,21 @@ create_vrrpe
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
+   **intf_type**                     Interface type, VDX/SLX supports only ve and MLX supports both
 
-                                     **Default**: password
+                                     Choose from:
+
+                                     - ethernet
+                                     - ve
+   **intf_name**                     name of the interface
+
+                                     Type: ``string``
    *rbridge_id*                      RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
 
-                                     Type: ``string``
-   **ve_name**                       Interface VE name
-
-                                     Type: ``string``
+                                     Type: ``array``
    **vrid**                          Virtual group ID
 
                                      Type: ``string``

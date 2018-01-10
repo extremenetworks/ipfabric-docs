@@ -16,13 +16,9 @@ ping_vrf_targets
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    **targets**                       One or more comma separated target IP addresses
 
                                      Type: ``array``
@@ -31,11 +27,9 @@ ping_vrf_targets
                                      Type: ``string``
 
                                      **Default**: default-vrf
-   *timeout_value*                   Timeout parameter for the ping command. Specifies the time (in seconds) to wait for a response.
+   *timeout_value*                   Timeout parameter for the ping command. Specifies the time (in seconds) to wait for a response. Default value 1 sec for SLX/VDX and 50 sec for MLX.
 
                                      Type: ``integer``
-
-                                     **Default**: 1
    *count*                           Count parameter for the ping command. Specifies the number of transmissions (pings).
 
                                      Type: ``integer``

@@ -16,13 +16,9 @@ configure_mac_move_detection
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    **move_threshold**                MAC move threshold <NUMBER:5-500>
 
                                      Type: ``integer``

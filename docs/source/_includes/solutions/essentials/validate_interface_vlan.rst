@@ -16,16 +16,22 @@ validate_interface_vlan
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    **vlan_id**                       Single VLAN or range of VLANs, for example 2 or 3-9
 
                                      Type: ``string``
+   **intf_type**                     Interface type
+
+                                     Choose from:
+
+                                     - gigabitethernet
+                                     - tengigabitethernet
+                                     - fortygigabitethernet
+                                     - hundredgigabitethernet
+                                     - port_channel
+                                     - ethernet
    **intf_name**                     Interface names, can be comma separated physical ports, port channel numbers. Examples are 224/0/1, 224/0/2 or 7, 8, 9
 
                                      Type: ``string``

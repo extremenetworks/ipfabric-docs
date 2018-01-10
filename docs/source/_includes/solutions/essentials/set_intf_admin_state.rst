@@ -3,7 +3,7 @@
 set_intf_admin_state
 ~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Enable or disable a single physical port, port-channel, loopback or VE interface on a device.  Optionally set the interface description. 
+**Description**: Enable or disable a single physical port, port-channel, loopback or VE interface on a device.  Optionally set the interface description, For MLX port-channel admin state changes means it changes member port's admin state 
 
 .. table::
 
@@ -16,13 +16,9 @@ set_intf_admin_state
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    **intf_type**                     Interface type
 
                                      Choose from:
@@ -37,7 +33,7 @@ set_intf_admin_state
                                      - loopback
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     Interface names, port channel numbers or VEs. Examples are 224/0/1, 224/0/2, 52/0/15-16 or 7, 8, 9
+   **intf_name**                     Interface names, port channel numbers or VEs. Examples are 224/0/1, 224/0/2, 0/1 or 7, 8, 9
 
                                      Type: ``string``
    *enabled*                         Admin setting of the interface(s)

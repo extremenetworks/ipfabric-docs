@@ -3,7 +3,7 @@
 create_vlan
 ~~~~~~~~~~~
 
-**Description**: Create a VLANs and provide VLAN descriptions 
+**Description**: Create a single or range of VLANs on a switch 
 
 .. table::
 
@@ -16,17 +16,13 @@ create_vlan
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
-   **vlan_id**                       Single VLAN/range of VLANS/batch wise values. For example 21 or 21-26 or 10,13-14,89-91
+   **vlan_id**                       Single VLAN ID or range of VLAN IDs. For example 21 or 21-26 or 10,13-14,89-91
 
                                      Type: ``string``
-   *vlan_desc*                       VLAN description without any space. Same description is used when creating multiple VLANs
+   *vlan_desc*                       VLAN description. Same description is used when creating multiple VLANs
 
                                      Type: ``string``
    ================================  ======================================================================

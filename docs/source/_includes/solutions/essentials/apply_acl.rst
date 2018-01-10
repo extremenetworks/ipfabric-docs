@@ -16,14 +16,10 @@ apply_acl
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
-   **intf_type**                     Interface type, can be a physical port, port channel, VE or management interface
+   **intf_type**                     Interface type, can be a physical port, port channel, VE or management interface required-by:- [All] accepted-by:- [SLX, NOS, MLX]
 
                                      Choose from:
 
@@ -35,18 +31,20 @@ apply_acl
                                      - ve
                                      - loopback
                                      - ethernet
+                                     - management
+                                     - vlan
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     Interface names, can be comma separated physical ports, port channel numbers or VEs. Examples are 224/0/1, 224/0/2 or 4, 5, 6 or 80, 81.
+   **intf_name**                     Interface names, can be comma separated physical ports, port channel numbers or VEs. Examples are 224/0/1, 224/0/2 or 4, 5, 6 or 80, 81. required-by:- [All] accepted-by:- [SLX, NOS, MLX]
 
                                      Type: ``array``
-   *rbridge_id*                      RBridge ID of the VDX switch under which VE will be configured, only needed for VDX device.
+   *rbridge_id*                      RBridge ID of the VDX switch under which VE will be configured, only needed for VDX device. required-by:- [None] accepted-by:- [NOS]
 
                                      Type: ``string``
-   **acl_name**                      Name of the access list
+   **acl_name**                      Name of the access list required-by:- [All] accepted-by:- [SLX, NOS, MLX]
 
                                      Type: ``string``
-   **acl_direction**                 Direction of ACL binding on the specified interface
+   **acl_direction**                 Direction of ACL binding on the specified interface required-by:- [SLX, NOS, MLX] accepted-by:- [SLX, NOS, MLX]
 
                                      Choose from:
 
@@ -54,7 +52,7 @@ apply_acl
                                      - out
 
                                      **Default**: in
-   *traffic_type*                    Traffic type for the ACL being applied
+   *traffic_type*                    Traffic type for the ACL being applied required-by:- [None] accepted-by:- [SLX, NOS]
 
                                      Choose from:
 

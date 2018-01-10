@@ -57,6 +57,7 @@ add_multihomed_endpoint_and_gw
 
                                      - access
                                      - trunk
+                                     - trunk_no_default_native
 
                                      **Default**: access
    *auto_pick_port_channel_id*       If selected, workflow will pick the lowest available port channel on the switch.
@@ -85,7 +86,13 @@ add_multihomed_endpoint_and_gw
                                      - modeon
 
                                      **Default**: active
-   **vlan_id**                       Single VLAN ID.  For 802.1Q VLANs ID must be below 4096, for service or transport VFs in a Virtual Fabrics context, valid range is from 4096 through 8191.
+   *auto_pick_network_id*            For service or transport VFs in a Virtual Fabrics context, if selected, workflow will pick the lowest available Single/Range of VF IDs available on the switch, valid range is from 4096 through 8191. For Virtual Fabric/Bridge-Domain and ctag classification , use auto_pick_network_id or network_id. Valid only on VDX platform.
+
+                                     Type: ``boolean``
+   *network_id*                      If auto_pick_network_id=False, Single or range of VLANs to be configured on the interface.For service or transport VFs in a Virtual Fabrics context, valid range is from 4096 through 8191. Valid only on VDX platform.
+
+                                     Type: ``string``
+   *vlan_id*                         Single or range of VLANs to be configured on the interface. For 802.1Q VLANs ID must be below 4096. Valid for vlan_id only use cases. For Virtual Fabric and ctag classification , use auto_pick_network_id or network_id.
 
                                      Type: ``string``
    *vlan_desc*                       VLAN description, space is not allowed, use '_' instead.
@@ -97,9 +104,6 @@ add_multihomed_endpoint_and_gw
    *mac_group_id*                    MAC group ID <NUMBER:1,500>. Only applicable if switchport_mode is access.
 
                                      Type: ``array``
-   *vni*                             Specify single or range of VNI <NUMBER:1-16777215> mappings for VLANs, for example 10 or 10-15 or 10,12,13-15. When using ranges, the number of values in a VLAN ID range must correspond to the number of values in a VNI range.
-
-                                     Type: ``string``
    *ve_ip*                           Single or list of IPv4/IPv6 addresses to be configured on the VE. IPv4/subnet-length or IPv6/prefix-length, for example 10.0.0.10/22, 30.0.0.10/22.
 
                                      Type: ``array``

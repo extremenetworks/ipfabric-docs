@@ -13,13 +13,9 @@ find_my_host_vcs
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    **mgmt_ip**                       Virtual management IP address of the VCS fabric
 
                                      Type: ``string``

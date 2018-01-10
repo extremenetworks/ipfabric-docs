@@ -3,7 +3,7 @@
 create_vrf
 ~~~~~~~~~~
 
-**Description**: Create Virtual Routing and Forwarding (VRF) instance on the switch for L3 tenants. 
+**Description**: Create Virtual Routing and Forwarding (VRF) instance on a switch for L3 tenants. 
 
 .. table::
 
@@ -16,13 +16,9 @@ create_vrf
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    **vrf_name**                      VRF name, for example vrf32 or 32
 
                                      Type: ``string``
@@ -37,5 +33,8 @@ create_vrf
                                      - ipv6
 
                                      **Default**: ipv4
+   *rd*                              Route Distinguisher <ASN:nn or VPN Route Distinguisher>, it is mandatory for MLX
+
+                                     Type: ``string``
    ================================  ======================================================================
 

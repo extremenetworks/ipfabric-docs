@@ -16,13 +16,9 @@ delete_vlan
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    **vlan_id**                       VLAN ID, can be single or range of VLANs. For example 21 or 21-26 or 10,13-14,89-91.
 
                                      Type: ``string``

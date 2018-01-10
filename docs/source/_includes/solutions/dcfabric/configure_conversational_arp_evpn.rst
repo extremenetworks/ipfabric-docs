@@ -23,5 +23,10 @@ configure_conversational_arp_evpn
                                      Type: ``string``
 
                                      **Default**: password
+   *conversational_timeout*          Aging conversational timeout value
+
+                                     Type: ``integer``
+
+                                     **Default**: 300
    ================================  ======================================================================
 

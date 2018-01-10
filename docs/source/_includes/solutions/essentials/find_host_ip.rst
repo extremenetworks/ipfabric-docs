@@ -16,13 +16,9 @@ find_host_ip
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    **ip_address**                    IPv4 or IPv6 address of the VM or physical host to be found
 
                                      Type: ``string``

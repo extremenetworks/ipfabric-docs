@@ -16,14 +16,10 @@ remove_acl
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
-   **intf_type**                     Interface type
+   **intf_type**                     Interface type required-by:- [All] accepted-by:- [SLX, NOS, MLX]
 
                                      Choose from:
 
@@ -35,18 +31,20 @@ remove_acl
                                      - ve
                                      - loopback
                                      - ethernet
+                                     - management
+                                     - vlan
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     Interface names, can be comma separated physical ports, port channel numbers or VEs. Examples are 224/0/1, 224/0/2 or 7, 8, 9
+   **intf_name**                     Interface names, can be comma separated physical ports, port channel numbers or VEs. Examples are 224/0/1, 224/0/2 or 7, 8, 9 required-by:- [All] accepted-by:- [SLX, NOS, MLX]
 
                                      Type: ``array``
-   *rbridge_id*                      RBridge ID of the VDX switch.  This parameter is only applicable to VDX switches
+   *rbridge_id*                      RBridge ID of the VDX switch under which VE will be configured, only needed for VDX device. required-by:- [None] accepted-by:- [NOS]
 
                                      Type: ``string``
-   **acl_name**                      ACL name
+   **acl_name**                      ACL name required-by:- [All] accepted-by:- [SLX, NOS, MLX]
 
                                      Type: ``string``
-   **acl_direction**                 ACL direction
+   **acl_direction**                 ACL direction required-by:- [All] accepted-by:- [SLX, NOS, MLX]
 
                                      Choose from:
 
@@ -54,7 +52,7 @@ remove_acl
                                      - out
 
                                      **Default**: in
-   *traffic_type*                    Traffic type for the ACL being removed
+   *traffic_type*                    Traffic type for the ACL being removed required-by:- [None] accepted-by:- [None]
 
                                      Choose from:
 

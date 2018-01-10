@@ -35,6 +35,8 @@ modify_arp_nd_aging_ve
 
                                      - arp_aging
                                      - nd_cache_expiry
+
+                                     **Default**: arp_aging
    *arp_aging_timeout*               ARP aging timeout in minutes <0..240>.
 
                                      Type: ``integer``

@@ -3,7 +3,7 @@
 get_os_version
 ~~~~~~~~~~~~~~
 
-**Description**: Get Operating System (OS) version of a VDX or SLX device 
+**Description**: Get Operating System (OS) version of the network device 
 
 .. table::
 
@@ -16,12 +16,8 @@ get_os_version
    *username*                        Login user name to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        Login password to connect to the device
 
                                      Type: ``string``
-
-                                     **Default**: password
    ================================  ======================================================================
 

@@ -32,7 +32,7 @@ configure_evpn_vtep
    **name**                          Overlay gateway name
 
                                      Type: ``string``
-   *vlan_vni_auto_map*               Configure vlan to vni auto mapping under overlay gateway
+   *vni_auto_map*                    Configure vlan/bridge-domain to vni auto mapping under overlay gateway
 
                                      Type: ``boolean``
 
