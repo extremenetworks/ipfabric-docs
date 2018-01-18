@@ -14,24 +14,25 @@ Users may modify these workflows to customise them to their needs.
 Network Essentials
 ~~~~~~~~~~~~~~~~~~
 
-Network Essentials is a foundational set of workflows for operating Brocade network devices. It
+Network Essentials is a foundational set of workflows for operating Extreme network devices. It
 includes actions such as port provisioning, SNMP, NTP & AAA configuration. These are basic building
 blocks that are used by other suites. Customers can also use these blocks to create their own
 customised workflows.
 
-It currently supports Brocade VDX and SLX devices. See more details :doc:`here<essentials/overview>`.
+It currently supports Extreme VDX and SLX devices. See more details :doc:`here<essentials/overview>`.
 
 DC Fabric
 ~~~~~~~~~~
 
-The DC Fabric Automation Suite is an add-on package for |bwc| that provides services and pre-built automations for managing
-Brocade Data Center Fabrics - both VCS Fabric and IP Fabric architectures. It includes workflows such as:
+The DC Fabric Automation Suite is an add-on package for |bwc| that provides services and pre-built
+automations for managing Data Center Fabrics - both VCS Fabric and IP Fabric architectures. It
+includes workflows such as:
 
-* Provision and validate Brocade IP Fabrics and BGP-EVPN
+* Provision and validate IP Fabrics and BGP-EVPN
 * Perform Layer-2 path traces across VCS Fabrics
 * Find and provision edge ports
 
-It works with all current Brocade VDX switches, and SLX-9850 switches when used as a super-spine. It is currently
+It works with all current VDX switches, and SLX-9850 switches when used as a super-spine. It is currently
 available as a Technology Preview.
 
 See more details :doc:`here<dcfabric/overview>`.
@@ -43,12 +44,12 @@ The Internet Exchange suite provides workflows that target common use-cases seen
 Workflows include customer port provisioning, move systems to quarantine, MAC ACL updates, and route
 server validation.
 
-It will work with Brocade SLX-9850 and 9540 switches. Future updates will include Brocade MLXe support.
+It will work with SLX-9850 and 9540 switches. Future updates will include MLXe support.
 Technology Preview versions of this automation suite will begin shipping soon.
 
 .. rubric:: What's Next?
 
-* :doc:`Install BWC<../install/bwc>` if you haven't already!
+* :doc:`Install EWC<../install/bwc>` if you haven't already!
 * Choose which suites you need, and install them. Follow these instructions:
 
   + :doc:`Network Essentials<essentials/install>`

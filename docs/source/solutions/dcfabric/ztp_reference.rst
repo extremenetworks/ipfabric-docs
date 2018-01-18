@@ -1,5 +1,5 @@
-Using ZTP with Brocade Workflow Composer
-========================================
+Using ZTP with |bwc|
+====================
 
 Zero Touch Provisioning (ZTP) can be used to bring up a switch with new firmware and a
 preset configuration automatically. The switch does not need to be configured via the
@@ -8,7 +8,7 @@ handle basic configuration such as assigning a VCS ID, VCS mode, an RBridge ID, 
 downloading firmware. 
 
 For more information, refer to the `Using DHCP Automatic Deployment <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-B70DA4FE-6819-45A9-9E07-65785D7DB402.html>`_
-section of the `Brocade Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-E7A18ADA-3D26-475A-BE56-13088EC74EFF-homepage.html>`_.
+section of the `Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-E7A18ADA-3D26-475A-BE56-13088EC74EFF-homepage.html>`_.
 
 As part of the ZTP process, the switch can execute a local script. This stage is used to
 register the switch with |bwc| and run the BGP workflow.
@@ -429,7 +429,7 @@ Use the following guidelines when running ZTP and DAD:
 
     When running ZTP or DAD, if you use dhcp autodeployment enable, if anything is wrong
     in the setup or configurations, DC Fabric Automation suite will display the incorrect configuration.
-    While running ZTP, Brocade recommends that you run this command and see if everything is set
+    While running ZTP, Extreme recommends that you run this command and see if everything is set
     up correctly. If everything is correct, you will be prompted to reboot the switch. At
     this point you can enter “no” if you want to run ZTP and then use the write erase command.
     This step is helpful because the ZTP and DAD process itself is lengthy.
@@ -446,7 +446,7 @@ To verify whether the ZTP and DAD process ran correctly, complete the following 
 2. Run the ``show dad status`` command to make sure the DAD and ZTP process ran. Look for the
    ``DAD 1314`` code. If there any other error codes, refer to the `Using DHCP Automatic Deployment
    <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-B70DA4FE-6819-45A9-9E07-65785D7DB402.html>`_
-   section of the `Brocade Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-E7A18ADA-3D26-475A-BE56-13088EC74EFF-homepage.html>`_
+   section of the `Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-E7A18ADA-3D26-475A-BE56-13088EC74EFF-homepage.html>`_
    for more information about additional DAD codes.
 
 3. Check the |bwc| server to see if the switch is registered and the BGP workflow completed

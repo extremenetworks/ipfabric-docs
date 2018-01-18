@@ -1,13 +1,18 @@
 Network Essentials Actions
 ==========================
 
-This is a reference documentation for Network Essentials Actions and Workflows to automate Brocade VDX and SLX switches. These actions can be used as independent actions, or as part of a more complex workflow. :doc:`Actions</actions>` can be manually triggered, or they can be tied to :doc:`sensors </sensors>` using rules.
+This is a reference documentation for Network Essentials Actions and Workflows to automate VDX and
+SLX switches. These actions can be used as independent actions, or as part of a more complex
+workflow. :doc:`Actions</actions>` can be manually triggered, or they can be tied to
+:doc:`sensors </sensors>` using rules.
 
 .. contents::
    :local:
    :depth: 1
 
-Most of the actions below can be used to automate Brocade SLX or VDX switches, however there are few actions that are only valid for  VDX switches as outlined below. If an action is only valid for VDX it will be documented in the action details, otherwise the action is supported for both VDX and SLX.  
+Most of the actions below can be used to automate SLX or VDX switches, however there are some
+actions that are only valid for VDX switches as outlined below. If an action is only valid for VDX
+it will be documented in the action details, otherwise the action is supported for both VDX and SLX.  
 
 Edge Ports Configuration
 ------------------------
@@ -53,11 +58,21 @@ Edge Ports Configuration
 Virtual Fabrics
 ---------------
 
-The Virtual Fabrics (VF) feature in NOS enables Layer 2 multi-tenancy solutions that provide support for overlapping VLANs, VLAN scaling, and transparent VLAN services by providing both traditional VLAN service and a transport service.  The Virtual Fabrics feature is deployed in data centers that require logical switch partitioning with large number of customer VLAN domains that must be isolated from each other in the data plane. On the hardware platforms that support this feature, such as Brocade VDX 8770 series and Brocade VDX 6740 series, the VLAN ID range is extended from the standard 802.1Q limit of 4095, to 8191.  
+The Virtual Fabrics (VF) feature in NOS enables Layer 2 multi-tenancy solutions that provide
+support for overlapping VLANs, VLAN scaling, and transparent VLAN services by providing both
+traditional VLAN service and a transport service. The Virtual Fabrics feature is deployed in data
+centers that require logical switch partitioning with a large number of customer VLAN domains that
+must be isolated from each other in the data plane. On the hardware platforms that support this
+feature, such as VDX 8770 series and VDX 6740 series, the VLAN ID range is extended from the
+standard 802.1Q limit of 4095, to 8191.  
 
-Network Essentials v1.2 release includes new workflows and enhancements to the existing workflows to automate VF provisioning.  
+Network Essentials v1.2 release includes new workflows and enhancements to the existing workflows
+to automate VF provisioning.  
 
-A VF operates like a regular 802.1Q VLAN, but allows the number of networks to scale beyond the standard 4K (4096) limit.  Users can use  enable_vf action to enable VF on a switch. After enabling VF, users can use existing workflows to manage VFs, for example, to create or delete a VF, use create_vlan or delete_vlan actions.  
+A VF operates like a regular 802.1Q VLAN, but allows the number of networks to scale beyond the
+standard 4K (4096) limit. Users can use enable_vf action to enable VF on a switch. After enabling
+VF, users can use existing workflows to manage VFs, for example, to create or delete a VF, use
+create_vlan or delete_vlan actions.  
 
 .. include:: /_includes/solutions/essentials/enable_vf.rst
 

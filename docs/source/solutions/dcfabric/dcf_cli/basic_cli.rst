@@ -66,7 +66,7 @@ Refer to :command:`bwc dcf inventory/fabric <command> --help` for more informati
 Examples
 ~~~~~~~~
 
-Use the ``bwc --help`` command to display Brocade Workflow Composer commands and their functions.
+Use the ``bwc --help`` command to display Extreme Workflow Composer commands and their functions.
 
 
 .. code-block:: guess
