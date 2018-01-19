@@ -5,15 +5,15 @@ Introduction
 ------------
 
 This document provides an overview of how to use the DC Fabric suite to automate provisioning and 
-maintenance of a Brocade IP or VCS Fabric. The DC Fabric suite can automatically configure
+maintenance of an IP or VCS Fabric. The DC Fabric suite can automatically configure
 interfaces, BGP peerings and related settings. This ensures consistent configuration
 across the fabric, with minimal effort.
 
 .. note::
     This document covers the operation of the |bwc| DC Fabric suite. For more information
-    about Brocade IP Fabrics in general, see the `Brocade Network OS IP Fabric
+    about IP Fabrics in general, see the `Network OS IP Fabric
     Configuration Guide <http://www.brocade.com/content/html/en/configuration-guide/nos-701-ipfabrics/index.html>`_
-    and the `Brocade IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ 
+    and the `IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ 
 
 The DC Fabric suite supports easy integration with Zero-Touch Provisioning (ZTP). It can also be used 
 without ZTP, but initial switch setup and registration will be a manual process.
@@ -25,7 +25,7 @@ as ASN range, IP address ranges, etc. To see these parameters, and change them, 
 .. figure:: ../../../_static/images/solutions/dcfabric/bwc_components.jpg
     :align: center
 
-    **Components of Brocade Flow Composer**
+    **Components of Extreme Flow Composer**
 
 .. note::
     The VCS ID for spine and leaves should be different in both the ZTP-enabled configuration and
@@ -51,7 +51,7 @@ Setting up IP Fabric with EVPN
    This example uses the default fabric. First switch added must be a spine, and roles
    for the rest of the switches are automatically discovered by the DC Fabric automation suite. 
    
-   Using BWC CLI you can register the switches as below:
+   Using ``bwc`` CLI you can register the switches as below:
 
    .. code-block:: bash
 

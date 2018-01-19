@@ -213,7 +213,10 @@ Error Messages
 Manage VCS Fabric Tenants and Edge Ports
 ----------------------------------------
 
-Brocade VCS fabric automatically forms with minimal Day-0 configurations.  This section includes the actions and workflows to automate Day-N services such as provisioning of tenants, gateways and edge ports to enable the deployment of endpoints such as Servers, Firewalls and Load Balancers etc. on a VCS fabric.  Refer to :doc:`Brocade VCS Fabric<overview>` for various deployment models.
+VCS fabric automatically forms with minimal Day-0 configurations.  This section includes the
+actions and workflows to automate Day-N services such as provisioning of tenants, gateways and edge
+ports to enable the deployment of endpoints such as Servers, Firewalls and Load Balancers etc. on a
+VCS fabric.  Refer to :doc:`VCS Fabric<overview>` for various deployment models.
 
 .. include:: /_includes/solutions/dcfabric/add_multihomed_endpoint.rst
 

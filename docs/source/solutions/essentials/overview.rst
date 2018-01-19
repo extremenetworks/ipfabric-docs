@@ -4,7 +4,11 @@ Network Essentials
 Overview
 --------
 
-Network Essentials includes key foundational actions and workflows to automate Brocade network devices.  This release includes automation building blocks for common networking tasks such as Edge Ports configuration and validation, Access Control List management.  These basic building blocks are used by other Brocade Automation Suites.  Customers can also use these Actions to create their own custom workflows for their specific automation needs.
+Network Essentials includes key foundational actions and workflows to automate Extreme network
+devices. This release includes automation building blocks for common networking tasks such as Edge
+Ports configuration and validation, Access Control List management. These basic building blocks are
+used by other Automation Suites. Customers can also use these Actions to create their own custom
+workflows for their specific automation needs.
 
 Included Actions
 ----------------
@@ -42,11 +46,11 @@ Supported Devices
 
 The Network Essentials Suite supports the following devices:
 
-* Brocade VDX 6740, 6940, 8770 running Network OS 6.0.2c, 7.0.1b, 7.1.0 and later
-* Brocade SLX 9850 running SLX-OS SLX-OS_16r.1.1, SLX-OS_17r.1.00 and later
-*	Brocade SLX 9540 running OS SLX-OS_17r.1.00 and later 
-*	Brocade SLX 9240 running OS SLX-OS_17s.1.00 and later
-*	Brocade SLX 9140 running OS SLX-OS_17s.1.00 and later
+* VDX 6740, 6940, 8770 running Network OS 6.0.2c, 7.0.1b, 7.1.0 and later
+* SLX 9850 running SLX-OS SLX-OS_16r.1.1, SLX-OS_17r.1.00 and later
+*	SLX 9540 running OS SLX-OS_17r.1.00 and later 
+*	SLX 9240 running OS SLX-OS_17s.1.00 and later
+*	SLX 9140 running OS SLX-OS_17s.1.00 and later
 
 
 .. rubric:: What's Next?

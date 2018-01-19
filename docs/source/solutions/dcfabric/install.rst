@@ -2,7 +2,7 @@ Installation
 ============
 
 .. warning::
-    If you had previously installed the BWC 2.0 IP Fabric Automation Suite,
+    If you had previously installed the EWC 2.0 IP Fabric Automation Suite,
     we recommend installing the DC Fabric Automation Suite on a new Virtual Machine.
 
 .. contents::
@@ -46,24 +46,24 @@ Simple Installation
 -------------------
 
 To quickly install |bwc| with DC Fabric Automation Suite, obtain a license key from
-`brocade.com/bwc <https://www.brocade.com/bwc>`_, and run the commands below, replacing
-``${BWC_LICENSE_KEY}`` with the key you received when registering for evaluation or
+`www.extremenetworks.com/product/workflow-composer/ <https://www.extremenetworks.com/product/workflow-composer/>`_, and run the commands below, replacing
+``${EWC_LICENSE_KEY}`` with the key you received when registering for evaluation or
 purchasing. These commands will install |bwc|, Network Essentials, DC Fabric Automation Suite,
 and configure all components to work together on a single host:
 
 .. code-block:: bash
 
   curl -SsL -O https://brocade.com/bwc/install/install.sh && chmod +x install.sh
-  ./install.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${BWC_LICENSE_KEY}
+  ./install.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${EWC_LICENSE_KEY}
 
 If you already have |bwc| installed, and need to add DC Fabric on top of an existing |bwc| installation,
-run the following commands, replacing ``${BWC_LICENSE_KEY}`` with the key you received when 
+run the following commands, replacing ``${EWC_LICENSE_KEY}`` with the key you received when 
 registering for evaluation or purchasing:
 
 .. code-block:: bash
 
   curl -SsL -O https://brocade.com/bwc/install/install-suite.sh && chmod +x install-suite.sh
-  ./install-suite.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${BWC_LICENSE_KEY}
+  ./install-suite.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${EWC_LICENSE_KEY}
 
 .. note::
 
@@ -80,7 +80,7 @@ Components
 ~~~~~~~~~~
 
 The DC Fabric Automation Suite installs on top of |bwc|. It adds an inventory & topology service, and
-DC Fabric automation packs containing actions and workflows to simplify Brocade Data Center Fabric management.
+DC Fabric automation packs containing actions and workflows to simplify Data Center Fabric management.
 It also includes the ``bwc dcf`` CLI, and Zero Touch Provisioning scripts for integration with :doc:`ZTP <ztp_reference>`.
 This suite uses components of the :doc:`../essentials/overview` suite. If the Network Essentials suite is not
 currently installed it will be automatically installed during DC Fabric suite installation.
@@ -118,7 +118,7 @@ Install the DC Fabric suite:
 
 * Generate an API key to connect the topology service to st2 API: ::
 
-    st2 apikey create -k -m '{"used_for": "BWC topology service"}'
+    st2 apikey create -k -m '{"used_for": "EWC topology service"}'
 
 * Edit the configuration file ``/etc/brocade/bwc/bwc-topology-service.conf``,
   set ``st2_api_key`` value to the st2 API key, and change the default DB
@@ -220,6 +220,6 @@ If you have previously installed DC Fabric Automation Suite and want to upgrade 
 
 .. rubric:: What's Next?
 
-* New to |BWC|? Go to fundamentals - start with :doc:`/start`.
+* New to |bwc|? Go to fundamentals - start with :doc:`/start`.
 * Understand the DC Fabric operations - go over :doc:`./operation/overview`.
 * Understand the DC Fabric CLI - read the :doc:`./dcf_cli/basic_cli`.
