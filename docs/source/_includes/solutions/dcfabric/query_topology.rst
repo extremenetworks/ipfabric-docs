@@ -3,19 +3,19 @@
 query_topology
 ~~~~~~~~~~~~~~
 
-**Description**: Construct the IP Fabric topology using the inventory 
+**Description**: This will construct the IP Fabric topology using the inventory. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   *fabric*                          Name of the IP fabric
+   *fabric*                          The name of the IP fabric.
 
                                      Type: ``string``
 
                                      **Default**: default
-   **state**                         Filter to fetch all or just unprovisioned devices
+   **state**                         The ilter to fetch all or just unprovisioned devices.
 
                                      Choose from:
 

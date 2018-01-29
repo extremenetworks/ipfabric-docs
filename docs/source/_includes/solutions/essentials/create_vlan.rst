@@ -3,26 +3,26 @@
 create_vlan
 ~~~~~~~~~~~
 
-**Description**: Create a single or range of VLANs on a switch 
+**Description**: This creates a single or range of VLANs on a switch. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **vlan_id**                       Single VLAN ID or range of VLAN IDs. For example 21 or 21-26 or 10,13-14,89-91
+   **vlan_id**                       A single VLAN ID or a range of VLAN IDs. For example, 21 or 21-26 or 10, 13-14, 89-91.
 
                                      Type: ``string``
-   *vlan_desc*                       VLAN description. Same description is used when creating multiple VLANs
+   *vlan_desc*                       The VLAN description. The same description is used when creating multiple VLANs.
 
                                      Type: ``string``
    ================================  ======================================================================

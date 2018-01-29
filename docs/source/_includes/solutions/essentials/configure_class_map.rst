@@ -3,30 +3,30 @@
 configure_class_map
 ~~~~~~~~~~~~~~~~~~~
 
-**Description**: Create Class Map and set the match criteris. 
+**Description**: This creates the Class Map and sets the match criteris. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: password
-   **class_name**                    Policy Map Class Name (Max Size -64)
+   **class_name**                    The Policy Map Class Name (Max Size -64).
 
                                      Type: ``string``
-   *match_type*                      Interface type
+   *match_type*                      The interface type
 
                                      Choose from:
 

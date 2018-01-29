@@ -3,23 +3,23 @@
 set_intf_admin_state
 ~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Enable or disable a single physical port, port-channel, loopback or VE interface on a device.  Optionally set the interface description, For MLX port-channel admin state changes means it changes member port's admin state 
+**Description**: This enable or disable a single physical port, port-channel, loopback or VE interface on a device.  Optionally, sets the interface description. For MLX, port-channel admin state changes means it changes member port's admin state. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **intf_type**                     Interface type
+   **intf_type**                     The interface type.
 
                                      Choose from:
 
@@ -33,18 +33,18 @@ set_intf_admin_state
                                      - loopback
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     Interface names, port channel numbers or VEs. Examples are 224/0/1, 224/0/2, 0/1 or 7, 8, 9
+   **intf_name**                     The interface names, port channel numbers or VEs. Examples are 224/0/1, 224/0/2, 0/1 or 7, 8, 9.
 
                                      Type: ``string``
-   *enabled*                         Admin setting of the interface(s)
+   *enabled*                         The admin setting of the interface(s).
 
                                      Type: ``boolean``
 
                                      **Default**: True
-   *intf_desc*                       Interface description without any space
+   *intf_desc*                       The interface description without any space.
 
                                      Type: ``string``
-   *rbridge_id*                      RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
+   *rbridge_id*                      The RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
 
                                      Type: ``string``
    ================================  ======================================================================

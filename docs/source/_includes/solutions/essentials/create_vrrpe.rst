@@ -3,38 +3,38 @@
 create_vrrpe
 ~~~~~~~~~~~~
 
-**Description**: Create a VRRPe session on multiple switches by creating VRRPe group and assigning virtual IP 
+**Description**: This creates a VRRPe session on multiple switches by creating VRRPe group and assigning virtual IP. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **intf_type**                     Interface type, VDX/SLX supports only ve and MLX supports both
+   **intf_type**                     The interface type. VDX/SLX supports only ve and MLX supports both ve and ethernet.
 
                                      Choose from:
 
                                      - ethernet
                                      - ve
-   **intf_name**                     name of the interface
+   **intf_name**                     The name of the interface.
 
                                      Type: ``string``
-   *rbridge_id*                      RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
+   *rbridge_id*                      The RBridge ID of the VDX switch. This parameter is only applicable for VDX switches.
 
                                      Type: ``array``
    **vrid**                          Virtual group ID
 
                                      Type: ``string``
-   **virtual_ip**                    VRRPe virtual IP address without the netmask
+   **virtual_ip**                    The VRRPe virtual IP address without the netmask.
 
                                      Type: ``string``
    ================================  ======================================================================

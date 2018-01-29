@@ -3,7 +3,7 @@
 drop_unprovision
 ~~~~~~~~~~~~~~~~
 
-**Description**: This workflow accomplishes the task of allowing traffic back on a specified interface by first deleting the deny ACL currently on that interface. If may also delete the acl, if it is empty. 
+**Description**: This workflow accomplishes the task of allowing traffic back on a specified interface by first deleting the deny ACL currently on that interface. It may also delete the acl, if it is empty. 
 
 .. table::
 
@@ -16,19 +16,17 @@ drop_unprovision
    *username*                        login username
 
                                      Type: ``string``
+
+                                     **Default**: admin
    *password*                        login password
 
                                      Type: ``string``
+
+                                     **Default**: password
    **acl_name**                      access list name (max 63)
 
                                      Type: ``string``
-   *seq_ids*                         A list of ACL rules sequence ids separated by comma, Examples 30 or 20,30,50
-
-                                     Type: ``array``
-   *rbridge_id*                      RBridge ID of the VDX switch under which VE will be configured, only needed for VDX device.
-
-                                     Type: ``string``
-   *intf_type*                       Interface type gigabitethernet or tengigabitethernet, etc
+   **intf_type**                     The interface type gigabitethernet or tengigabitethernet, etc.
 
                                      Choose from:
 
@@ -36,31 +34,24 @@ drop_unprovision
                                      - tengigabitethernet
                                      - fortygigabitethernet
                                      - hundredgigabitethernet
-                                     - port_channel
-                                     - ve
-                                     - loopback
                                      - ethernet
 
                                      **Default**: tengigabitethernet
-   *intf_name*                       interface name as array (182/0/97)
+   **intf_name**                     The interface name as an array (182/0/97).
 
                                      Type: ``array``
-   *acl_direction*                   Direction of ACL binding on the specified interface
+   **address_type**                  the address type IPv4 IPv6 or MAC used to create the acl.
 
                                      Choose from:
 
-                                     - in
-                                     - out
-
-                                     **Default**: in
-   *traffic_type*                    Traffic type for the ACL being applied
-
-                                     Choose from:
-
-                                     - switched
-                                     - routed
-   *delete_acl*                      Indicates whether the acl should be deleted.
+                                     - ip
+                                     - ipv6
+                                     - mac
+   *delete_acl*                      This ndicates whether the ACL should be deleted.
 
                                      Type: ``boolean``
+   *seq_id*                          Sequence number of the rule, if not specified, the rule is added at the end of the list. Valid range is 0 to 4294967290
+
+                                     Type: ``integer``
    ================================  ======================================================================
 

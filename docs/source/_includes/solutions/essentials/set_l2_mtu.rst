@@ -3,23 +3,23 @@
 set_l2_mtu
 ~~~~~~~~~~
 
-**Description**: Set L2 MTU size on physical or port channel interfaces 
+**Description**: This sets the L2 MTU size on physical or port channel interfaces. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **intf_type**                     Interface type
+   **intf_type**                     The interface type.
 
                                      Choose from:
 
@@ -31,10 +31,10 @@ set_l2_mtu
                                      - port_channel
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     Interface names, can be comma separated physical ports, port channel numbers. Examples are 224/0/1, 224/0/2 or 7, 8, 9
+   **intf_name**                     The interface names that can be comma separated physical ports, port channel numbers. Examples are 224/0/1, 224/0/2 or 7, 8, 9
 
                                      Type: ``array``
-   **mtu_size**                      For SLX MTU size in bytes <Number:1548-9216>. For VDX <Number:1522-9216>
+   **mtu_size**                      For SLX MTU size in bytes <Number:1548-9216>. For VDX <Number:1522-9216>.
 
                                      Type: ``integer``
    ================================  ======================================================================

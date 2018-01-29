@@ -3,23 +3,23 @@
 find_my_host_vcs
 ~~~~~~~~~~~~~~~~
 
-**Description**: Find the switch port in a VCS fabric to which a virtual or physical host is connected using host IP 
+**Description**: This finds the switch port in a VCS fabric to which a virtual or physical host. is connected using host IP. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **mgmt_ip**                       Virtual management IP address of the VCS fabric
+   **mgmt_ip**                       The virtual management IP address of the VCS fabric.
 
                                      Type: ``string``
-   **ip_address**                    Host IP address
+   **ip_address**                    The host IP address.
 
                                      Type: ``string``
    ================================  ======================================================================

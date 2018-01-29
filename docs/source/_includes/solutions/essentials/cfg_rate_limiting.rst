@@ -23,10 +23,10 @@ cfg_rate_limiting
                                      Type: ``string``
 
                                      **Default**: password
-   **acl_name**                      access list name (max 63)
+   **acl_name**                      The access control list name (max 63)
 
                                      Type: ``string``
-   **intf_type**                     Interface type gigabitethernet or tengigabitethernet, etc
+   **intf_type**                     The interface type, gigabitethernet or tengigabitethernet, etc
 
                                      Choose from:
 
@@ -37,18 +37,18 @@ cfg_rate_limiting
                                      - ethernet
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     interface name as array (182/0/97)
+   **intf_name**                     The nterface name as an array (182/0/97)
 
                                      Type: ``array``
-   **class_map_name**                the class map name that will be a part of the service policy.
+   **class_map_name**                The class map name that will be a part of the service policy.
 
                                      Type: ``string``
-   *class_map_name_exists*           Indicates the class map name already exists.
+   *class_map_name_exists*           This indicates the class map name that already exists.
 
                                      Type: ``boolean``
 
                                      **Default**: True
-   **policy_map_name**               the class map name that will be a part of the service policy.
+   **policy_map_name**               The class map name that will be a part of the service policy.
 
                                      Type: ``array``
    *policy_map_name_exists*          Indicates the policy map name already exists.
@@ -56,13 +56,13 @@ cfg_rate_limiting
                                      Type: ``boolean``
 
                                      **Default**: True
-   **cir**                           the max cir that can be allowed through the interface.
+   **cir**                           The maximum cir that can be allowed through the interface.
 
                                      Type: ``integer``
    **policy_type**                   In, Out or Both.
 
                                      Type: ``string``
-   **protocol_type**                 Protocol Number Custom value between 0 and 255, tcp, udp, icmp or ip
+   **protocol_type**                 The Protocol Number Custom value between 0 and 255, tcp, udp, icmp or ip
 
                                      Type: ``string``
    **source**                        The source MAC in HHHH.HHHH.HHHH format or source IPv4 or IPv6 address, including tcp and udp port numbers. { any | S_IPaddress mask | host S_IPaddress } [ source-operator [ S_port-numbers ] ]
@@ -70,42 +70,42 @@ cfg_rate_limiting
                                      Type: ``string``
 
                                      **Default**: any
-   *acl_exists*                      Indicates is the acl already exists.
+   *acl_exists*                      This indicates that the acl already exists.
 
                                      Type: ``boolean``
-   *match_type*                      Indicates class match type.
+   *match_type*                      This indicates the class match type.
 
                                      Type: ``string``
 
                                      **Default**: True
-   *rbridge_id*                      RBridge ID of the VDX switch under which VE will be configured, only needed for VDX device.
+   *rbridge_id*                      The RBridge ID of the VDX switch under which VE will be configured, only needed for VDX device.
 
                                      Type: ``string``
-   *address_type*                    Address type - ip or ipv6
+   *address_type*                    The Address type - ip or ipv6
 
                                      Choose from:
 
                                      - ip
                                      - ipv6
-   *destination*                     Destination address filters { any | S_IPaddress/mask(0.0.0.255) | host,S_IPaddress } [ source-operator [ S_port-numbers ] ]
+   *destination*                     The destination IP address filters { any | S_IPaddress/mask(0.0.0.255) | host,S_IPaddress } [ source-operator [ S_port-numbers ] ]
 
                                      Type: ``string``
-   *seq_id*                          Sequence number of the rule, if not specified, the rule is added at the end of the list. Valid range is 0 to 4294967290
+   *seq_id*                          The sequence number of the rule, if not specified, the rule is added at the end of the list. Valid range is 0 to 4294967290
 
                                      Type: ``integer``
-   *dst_mac_addr_mask*               the dst_mac_addr_mask - the mask for destination MAC in HHHH.HHHH.HHHH format.
+   *dst_mac_addr_mask*               The dst_mac_addr_mask - the mask for the destination MAC in HHHH.HHHH.HHHH format.
 
                                      Type: ``string``
-   *src_mac_addr_mask*               Source address filters { any | S_IPaddress/mask(0.0.0.255) | host,S_IPaddress } [ source-operator [ S_port-numbers ] ]
+   *src_mac_addr_mask*               The source IP address filters { any | S_IPaddress/mask(0.0.0.255) | host,S_IPaddress } [ source-operator [ S_port-numbers ] ]
 
                                      Type: ``string``
-   *dscp*                            DSCP value to match against. Can be either a numerical value or DSCP name
+   *dscp*                            The DSCP value to match against. This can be either a numerical value or DSCP name
 
                                      Type: ``string``
-   *vlan_id*                         VLAN interface to which the ACL is bound
+   *vlan_id*                         The VLAN interface to which the ACL is bound
 
                                      Type: ``integer``
-   *ethertype*                       the ethertype - 'arp', 'fcoe', 'ipv4' or custom value between 1536 and 65535.
+   *ethertype*                       The ethertype - 'arp', 'fcoe', 'ipv4' or a custom value between 1536 and 65535.
 
                                      Type: ``string``
 

@@ -3,42 +3,42 @@
 configure_intfs_ipfabric
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Configure IP addresses on a device 
+**Description**: This will configure IP addresses on a device. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **host**                          Management IP address of the target device
+   **host**                          The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: password
-   **interfaces**                    Interfaces
+   **interfaces**                    The interfaces.
 
                                      Type: ``array``
-   *bfd_multiplier*                  BFD multiplier
+   *bfd_multiplier*                  The BFD multiplier.
 
                                      Type: ``string``
-   *bfd_rx*                          BFD RX receive timer
+   *bfd_rx*                          The BFD RX receive timer.
 
                                      Type: ``string``
-   *bfd_tx*                          BFD TX transmit timer
+   *bfd_tx*                          The BFD TX transmit timer.
 
                                      Type: ``string``
-   *mtu*                             MTU size
+   *mtu*                             The MTU size.
 
                                      Type: ``string``
-   *ip_mtu*                          IP MTU size
+   *ip_mtu*                          The IP MTU size.
 
                                      Type: ``string``
    ================================  ======================================================================

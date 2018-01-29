@@ -3,26 +3,26 @@
 configure_mac_group
 ~~~~~~~~~~~~~~~~~~~
 
-**Description**: Create a new Mac group on a device and configure member mac addresses. 
+**Description**: This creates a new MAC group on a device and configures the member MAC addresses. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **mac_group_id**                  MAC group ID <NUMBER:1,500>
+   **mac_group_id**                  The MAC group ID <NUMBER:1,500>.
 
                                      Type: ``integer``
-   *mac_address*                     Single or comma seperated list of MAC addresses to be part of the MAC group. MAC address in HHHH.HHHH.HHHH format.
+   *mac_address*                     A single or comma seperated list of MAC addresses to be part of the MAC group. The MAC address is in HHHH.HHHH.HHHH format.
 
                                      Type: ``array``
    ================================  ======================================================================

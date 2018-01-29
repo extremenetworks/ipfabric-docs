@@ -3,26 +3,26 @@
 validate_interface_vlan
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Validate port channel or physical interface belongs to the specified VLAN 
+**Description**: This validates the port channel or physical interface belonging to the specified VLAN. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **vlan_id**                       Single VLAN or range of VLANs, for example 2 or 3-9
+   **vlan_id**                       A single VLAN or range of VLANs, for example 2 or 3-9.
 
                                      Type: ``string``
-   **intf_type**                     Interface type
+   **intf_type**                     The interface type.
 
                                      Choose from:
 
@@ -32,10 +32,10 @@ validate_interface_vlan
                                      - hundredgigabitethernet
                                      - port_channel
                                      - ethernet
-   **intf_name**                     Interface names, can be comma separated physical ports, port channel numbers. Examples are 224/0/1, 224/0/2 or 7, 8, 9
+   **intf_name**                     Interface name, for VDX in 3-tuple format (24/0/1), SLX/NI in 2-tuple format (24/1) or Port-channel number <1-6144>, for NI <1-256>.
 
                                      Type: ``string``
-   *intf_mode*                       Interface mode
+   *intf_mode*                       The interface mode.
 
                                      Choose from:
 

@@ -3,29 +3,29 @@
 execute_cli
 ~~~~~~~~~~~
 
-**Description**: Execute CLI command and return the result. Device type should be appropriate to get reliable output. 
+**Description**: Executes CLI command and returns the result. The device type should be appropriate to get reliable output. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Ip address of the device
+   **mgmt_ip**                       The IP address of the device.
 
                                      Type: ``string``
-   *username*                        login username
+   *username*                        The login username.
 
                                      Type: ``string``
-   *password*                        login password
+   *password*                        The login password.
 
                                      Type: ``string``
-   **cli_cmd**                       CLI commands to execute on the device
+   **cli_cmd**                       The CLI commands to execute on the device.
 
                                      Type: ``array``
-   *config_operation*                Flag to indicate whether commands are for configuration or show
+   *config_operation*                The flag to indicate whether commands are for configuration or for show.
 
                                      Type: ``boolean``
-   **device_type**                   Connecting device type
+   **device_type**                   Specifies the connecting device type.
 
                                      Choose from:
 
@@ -34,7 +34,7 @@ execute_cli
                                      - ni
 
                                      **Default**: nos
-   *enable_passwd*                   privilege exec mode password. Applicable only to MLX device.
+   *enable_passwd*                   The privilege exec mode password. Applicable only to MLX device.
 
                                      Type: ``string``
    ================================  ======================================================================

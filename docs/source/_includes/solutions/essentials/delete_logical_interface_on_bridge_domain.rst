@@ -3,30 +3,30 @@
 delete_logical_interface_on_bridge_domain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Delete logical interfaces under a bridge domain. 
+**Description**: This deletes the logical interfaces under a bridge domain. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device..
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: password
-   **bridge_domain_id**              Bridge-domain IDs. <1-4096> on SLX9140,SLX9850 and <1-3566> on SLX9240.
+   **bridge_domain_id**              The bridge domain IDs. <1-4096> on SLX9140,SLX9850 and <1-3566> on SLX9240.
 
                                      Type: ``string``
-   *bridge_domain_service_type*      bridge domain service type. `p2p` is not supported on SLX9140 and SLX9240 platforms.
+   *bridge_domain_service_type*      The bridge domain service type. `p2p` is not supported on SLX9140 and SLX9240 platforms.
 
                                      Choose from:
 
@@ -34,7 +34,7 @@ delete_logical_interface_on_bridge_domain
                                      - p2p
 
                                      **Default**: p2mp
-   *intf_type*                       Interface type to be deleted from the bridge_domain.
+   *intf_type*                       The interface type to be deleted from the bridge_domain.
 
                                      Choose from:
 

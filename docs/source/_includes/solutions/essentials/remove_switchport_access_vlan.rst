@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-delete_logical_interface_on_interface
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+remove_switchport_access_vlan
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: This deletes the logical interface under the physical/port-channel interface. 
+**Description**: This removes a physical interface or port-channel from a VLAN. 
 
 .. table::
 
@@ -16,25 +16,25 @@ delete_logical_interface_on_interface
    *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: admin
    *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: password
-   *intf_type*                       The interface type.
+   **intf_type**                     The interface type.
 
                                      Choose from:
 
                                      - ethernet
+                                     - tengigabitethernet
+                                     - gigabitethernet
+                                     - fortygigabitethernet
+                                     - hundredgigabitethernet
                                      - port_channel
 
-                                     **Default**: ethernet
-   **intf_name**                     The interface Port number or Port channel number. Examples for SLX are 1/13, 1/14.
+                                     **Default**: tengigabitethernet
+   **intf_name**                     The interface name, for VDX in 3-tuple format (24/0/1), SLX/NI in 2-tuple format (24/1) or Port-channel number <1-6144>, for NI <1-256>.
 
                                      Type: ``string``
-   **logical_interface_number**      A single or list of Interface name, physical port or port channel number separated by comma. E.g:0/1.1,0/1.2 or 7.1. If 'all', it will delete all the LIFs under the interface.
+   **vlan_id**                       The VLAN ID to be configured on the interface. For 802.1Q VLANs, ID must be below 4096, for service or transport VFs valid range is from 4096 through 8191, for NI, vlan range <1-4090>.
 
                                      Type: ``string``
    ================================  ======================================================================

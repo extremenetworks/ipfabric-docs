@@ -3,22 +3,22 @@
 get_mct_cluster_status
 ~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Get the status of the cluster. The logic is there should be 2 nodes in the cluster and status of one of the nodes should be Primary and for the other should be Secondary Connected To Cluster. 
+**Description**: This will get the status of the cluster. The logic for this is there should be 2 nodes in the cluster and status of one of the nodes should be Primary and for the other should be Secondary Connected To Cluster. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP of the Device
+   **mgmt_ip**                       The management IP address of the device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
 

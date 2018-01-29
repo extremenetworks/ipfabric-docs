@@ -3,23 +3,23 @@
 find_mac
 ~~~~~~~~
 
-**Description**: Find which switch port a host is connected to using host MAC address 
+**Description**: This finds which switch port a host is connected to using host MAC address. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **macs**                          Single MAC or comma separated list of MACs to be found
+   **macs**                          A single MAC or comma separated list of MACs to be found.
 
                                      Type: ``array``
    ================================  ======================================================================

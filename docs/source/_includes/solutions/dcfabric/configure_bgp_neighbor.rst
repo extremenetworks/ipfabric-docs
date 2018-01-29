@@ -3,64 +3,64 @@
 configure_bgp_neighbor
 ~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Configure BGP neighbors on the switch. This action is not intended to be run directly by the end users. Used by configure_fabric_infra to configure IP Fabric infrastructure. 
+**Description**: This configure BGP neighbors on the switch. This action is not intended to be run directly by the end users. Used by configure_fabric_infra to configure IP Fabric infrastructure. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **host**                          Device to configure
+   **host**                          The device to configure.
 
                                      Type: ``string``
-   *user*                            Login user name to connect to the device
+   *user*                            The login user name to connect to the device.
 
                                      Type: ``string``
-   *passwd*                          Login password to connect to the device
+   *passwd*                          The login password to connect to the device.
 
                                      Type: ``string``
-   **peer_asn**                      Peer ASN
+   **peer_asn**                      The peer ASN.
 
                                      Type: ``string``
-   **peer_ip**                       Peer IP address
+   **peer_ip**                       The peer IP address.
 
                                      Type: ``string``
-   **rbridge_id**                    RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
+   **rbridge_id**                    The RBridge ID of the VDX switch. This parameter is only applicable. for VDX switches.
 
                                      Type: ``string``
-   **role**                          Switch role
+   **role**                          The switch role.
 
                                      Type: ``string``
-   *vrf*                             VRF name <1-32> characters
+   *vrf*                             The VRF name <1-32> characters.
 
                                      Type: ``string``
 
                                      **Default**: default
-   *multihop*                        Enable BGP multihop peering
+   *multihop*                        This enable BGP multihop peering.
 
                                      Type: ``string``
-   *allowas_in*                      Allow AS in
+   *allowas_in*                      This allow AS in.
 
                                      Type: ``string``
-   *evpn*                            Enable EVPN
+   *evpn*                            This enable EVPN.
 
                                      Type: ``boolean``
-   *update_source*                   Update source
+   *update_source*                   The update source.
 
                                      Type: ``string``
-   *leaf_peer_group*                 Peer group for all leaf nodes
+   *leaf_peer_group*                 The peer group for all leaf nodes.
 
                                      Type: ``string``
-   *spine_peer_group*                Peer group for all spine nodes
+   *spine_peer_group*                The peer group for all spine nodes.
 
                                      Type: ``string``
-   *network*                         network to be advertised
+   *network*                         The network to be advertised.
 
                                      Type: ``string``
-   *single_spine_as*                 Flag to indicate that all spines have the same AS number assigned
+   *single_spine_as*                 The flag to indicate that all spines have the same AS number assigned.
 
                                      Type: ``string``
-   *encapsulation_type*              Encapsulation type for BGP neighbor. e.g. nsh, vxlan
+   *encapsulation_type*              The encapsulation type for BGP neighbor. e.g. nsh, vxlan.
 
                                      Type: ``string``
 

@@ -3,38 +3,38 @@
 configure_bgp_redistribute_connected
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Configure BGP route redistribution 
+**Description**: This configure BGP route redistribution. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **host**                          Management IP address of the target device
+   **host**                          The management IP address of the target device.
 
                                      Type: ``string``
-   *user*                            Login user name to connect to the device
+   *user*                            The login user name to connect to the device.
 
                                      Type: ``string``
-   *passwd*                          Login password to connect to the device
+   *passwd*                          The login password to connect to the device.
 
                                      Type: ``string``
-   **rbridge_id**                    RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
+   **rbridge_id**                    The RBridge ID of the VDX switch. This parameter is only applicable. for VDX switches.
 
                                      Type: ``string``
-   *vrf*                             VRF name <1-32> characters.
+   *vrf*                             The VRF name <1-32> characters.
 
                                      Type: ``string``
 
                                      **Default**: default
-   **source**                        Source type
+   **source**                        The source type.
 
                                      Choose from:
 
                                      - connected
 
                                      **Default**: connected
-   *afi*                             IP address type
+   *afi*                             The IP address type.
 
                                      Choose from:
 

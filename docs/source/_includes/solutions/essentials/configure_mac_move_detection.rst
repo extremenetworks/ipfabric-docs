@@ -3,23 +3,23 @@
 configure_mac_move_detection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Configure the switch to enable MAC move detection and set the threshold for number of MAC moves in time-window to trigger the detection. 
+**Description**: This configures the switch to enable MAC move detection and set the threshold for the number of MAC moves in time-window to trigger the detection. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-   *password*                        Login password to connect to the device
+   *password*                        THe login password to connect to the device.
 
                                      Type: ``string``
-   **move_threshold**                MAC move threshold <NUMBER:5-500>
+   **move_threshold**                The MAC move threshold <NUMBER:5-500>.
 
                                      Type: ``integer``
 

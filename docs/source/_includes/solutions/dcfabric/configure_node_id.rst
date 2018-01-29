@@ -3,30 +3,30 @@
 configure_node_id
 ~~~~~~~~~~~~~~~~~
 
-**Description**: Configure Node Id 
+**Description**: This configures the Node ID. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP of the Device
+   **mgmt_ip**                       The management IP of the Device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: password
-   **nodeid**                        node id for the device (1-255)
+   **nodeid**                        The node id for the device (1-255).
 
                                      Type: ``integer``
-   *principal_priority*              node id for the device (1-128)
+   *principal_priority*              The node id for the device (1-128).
 
                                      Type: ``integer``
    ================================  ======================================================================

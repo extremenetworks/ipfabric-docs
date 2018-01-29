@@ -3,23 +3,23 @@
 delete_l2_port_channel
 ~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Delete the port channel interface and delete the port chanel configuration from all the member ports 
+**Description**: This deletes the port channel interface and deletes the port chanel configuration from all the member ports. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **port_channel_id**               Port-channel interface number <NUMBER:1-6144>. For MLX range is <1-256>
+   **port_channel_id**               The Port-channel interface number <NUMBER:1-6144>. For MLX, the range is <1-256>.
 
                                      Type: ``integer``
    ================================  ======================================================================

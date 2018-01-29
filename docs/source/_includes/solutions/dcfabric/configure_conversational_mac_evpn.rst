@@ -3,32 +3,32 @@
 configure_conversational_mac_evpn
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Configure conversational MAC learning 
+**Description**: This configure conversational MAC learning. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: password
-   *aging_time*                      aging-time for mac address
+   *aging_time*                      The aging-time for MAC address.
 
                                      Type: ``integer``
 
                                      **Default**: 300
-   *legacy_aging_time*               legacy-aging-time for mac address
+   *legacy_aging_time*               The legacy-aging-time for MAC address.
 
                                      Type: ``integer``
 

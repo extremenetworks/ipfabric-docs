@@ -3,30 +3,30 @@
 clear_bgp_evpn_neighbor
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Clear bgp evpn neighbor session. 
+**Description**: This clears BGP EVPN neighbor session. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: password
-   **neighbor_address**              Neighbor IP address in format.
+   **neighbor_address**              The neighbor IP address in format.
 
                                      Type: ``array``
-   **role**                          Role of the Node.
+   **role**                          The role of the Node.
 
                                      Type: ``string``
 

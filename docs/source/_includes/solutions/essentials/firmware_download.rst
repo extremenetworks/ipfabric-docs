@@ -3,35 +3,35 @@
 firmware_download
 ~~~~~~~~~~~~~~~~~
 
-**Description**: Download Firmware and Check the status 
+**Description**: This downloads Firmware and checks the status. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   **host_ip**                       IP address of the firmware download server
+   **host_ip**                       The IP address of the firmware download server.
 
                                      Type: ``string``
-   *proto_username*                  Username to use for firmwaredownload protocol
+   *proto_username*                  The username to use for firmwaredownload protocol.
 
                                      Type: ``string``
-   *proto_password*                  Password to use for firmwaredownload protocol
+   *proto_password*                  The password to use for firmwaredownload protocol.
 
                                      Type: ``string``
-   **firmware_path**                 Full firmware path.
+   **firmware_path**                 The full firmware path.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   *protocol_type*                   Protocol to use for firmwaredownload
+   *protocol_type*                   The protocol to use for firmwaredownload.
 
                                      Choose from:
 
@@ -40,10 +40,10 @@ firmware_download
                                      - ftp
 
                                      **Default**: scp
-   *disruptive_download*             Should the download be ISSU upgrade or disruptive download
+   *disruptive_download*             Specifies if download is an ISSU upgrade or a disruptive download.
 
                                      Type: ``boolean``
-   *timeout*                         Action timeout .
+   *timeout*                         The action timeout.
 
                                      Type: ``integer``
 

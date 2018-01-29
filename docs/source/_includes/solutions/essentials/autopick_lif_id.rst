@@ -3,23 +3,23 @@
 autopick_lif_id
 ~~~~~~~~~~~~~~~
 
-**Description**: Returns the next lowest available Logical Interface ID on SLX platforms. 
+**Description**: This returns the next lowest available Logical Interface ID on SLX platforms. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   *intf_type*                       Interface type
+   *intf_type*                       The interface type.
 
                                      Choose from:
 
@@ -27,10 +27,10 @@ autopick_lif_id
                                      - port_channel
 
                                      **Default**: ethernet
-   **intf_name**                     Interface Port number or Port channel number. Examples for SLX are 1/13, 1/14
+   **intf_name**                     The interface Port number or Port channel number. Examples for SLX are 1/13, 1/14.
 
                                      Type: ``string``
-   *length_of_the_range*             Returns the lowest available Single/Range of Logical Interface values. For example 1/1.1 or 1/1.1,1/1.2 or 1.1 or 1.1,1.2.
+   *length_of_the_range*             This returns the lowest available Single/Range of Logical Interface values. For example 1/1.1 or 1/1.1,1/1.2 or 1.1 or 1.1,1.2.
 
                                      Type: ``string``
 
