@@ -4080,7 +4080,7 @@ div[class^='highlight'] pre {
 
 .wy-side-nav-search {
   z-index: 200;
-  background: linear-gradient(45deg, rgb(189, 80, 48) 0%, rgb(165, 24, 144) 100%);
+  background: linear-gradient(45deg, rgb(64, 0, 153) 0%, rgb(165, 24, 144) 100%);
   text-align: center;
   padding: 1.618em 1.618em 1.203em;
   display: block;
