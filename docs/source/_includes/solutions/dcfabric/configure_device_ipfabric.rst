@@ -3,125 +3,151 @@
 configure_device_ipfabric
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Configure switch 
+**Description**: This configures the switch. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **host**                          Management IP address of the target device
+   **host**                          The anagement IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: password
-   *afi*                             IP address family
+   *afi*                             The IP address family.
 
                                      Type: ``string``
-   *allowas_in*                      Allow AS in
+   *allowas_in*                      Allows AS in.
 
                                      Type: ``string``
-   *anycast_mac*                     Anycast MAC address
+   *anycast_mac*                     The Anycast MAC address.
 
                                      Type: ``string``
-   *bfd_multiplier*                  BFD multiplier
+   *bfd_multiplier*                  The BFD multiplier.
 
                                      Type: ``string``
-   *bfd_rx*                          BFD receive
+   *bfd_rx*                          The BFD receive.
 
                                      Type: ``string``
-   *bfd_tx*                          BFD transmit
+   *bfd_tx*                          The BFD transmit.
 
                                      Type: ``string``
-   *mtu*                             MTU size
+   *mtu*                             The MTU size.
 
                                      Type: ``string``
-   *ip_mtu*                          IP MTU size
+   *ip_mtu*                          The IP MTU size.
 
                                      Type: ``string``
-   *bgp_local_asn*                   BGP local ASN
+   *bgp_local_asn*                   The BGP local ASN.
 
                                      Type: ``string``
-   *bgp_multihop*                    Multihop
+   *bgp_multihop*                    The Multihop.
 
                                      Type: ``string``
-   **bgp_neighbors**                 BGP neighbors
+   **bgp_neighbors**                 The BGP neighbors.
 
                                      Type: ``array``
-   *bgp_vrf*                         BGP VRF name
+   *bgp_vrf*                         The BGP VRF name.
 
                                      Type: ``string``
-   *chassis*                         Chassis
+   *chassis*                         The chassis.
 
                                      Type: ``boolean``
-   *evpn*                            Enable EVPN
+   *evpn*                            This enable EVPN.
 
                                      Type: ``boolean``
 
                                      **Default**: True
-   **interfaces**                    Interface list
+   **interfaces**                    The interface list.
 
                                      Type: ``array``
-   *loopback_port_number*            Loopback port number
+   *loopback_port_number*            The loopback port number.
 
                                      Type: ``string``
-   *max_paths*                       Maximum paths
+   *max_paths*                       The maximum paths.
 
                                      Type: ``string``
-   *p2p_link_range*                  P2P link range
+   *p2p_link_range*                  The P2P link range.
 
                                      Type: ``string``
-   **rbridge_id**                    RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
+   **rbridge_id**                    The RBridge ID of the VDX switch. This parameter is only applicable. for VDX switches.
 
                                      Type: ``string``
-   *recursion*                       Enable recursion
+   *recursion*                       This enables recursion.
 
                                      Type: ``boolean``
 
                                      **Default**: True
-   *role*                            Switch role
+   *role*                            The switch role.
 
                                      Type: ``string``
-   *source*                          Source
+   *source*                          The source.
 
                                      Type: ``string``
-   *update_source*                   Update Source
+   *update_source*                   This updates the source.
 
                                      Type: ``string``
-   *fabric*                          Fabric name
+   *fabric*                          The fabric name.
 
                                      Type: ``string``
-   *vtep_loopback_port_number*       VTEP loopback port number
+   *vtep_loopback_port_number*       The VTEP loopback port number.
 
                                      Type: ``string``
-   *mac_move_threshold*              MAC move threshold
+   *mac_move_threshold*              The MAC move threshold.
 
                                      Type: ``integer``
-   *vlan_vni_auto_map*               Configure vlan to vni auto mapping under overlay gateway
+   *vni_auto_map*                    This cnfigures VLAN/bridge-domain to VNI auto mapping under overlay gateway.
 
                                      Type: ``boolean``
-   *leaf_peer_group*                 Peer group name for all the leaf nodes
+   *leaf_peer_group*                 The peer group name for all the leaf nodes.
 
                                      Type: ``string``
-   *spine_peer_group*                Peer group name for all the spines
+   *spine_peer_group*                The peer group name for all the spines.
 
                                      Type: ``string``
-   *network*                         network to be advertised
+   *network*                         The network to be advertised.
 
                                      Type: ``string``
-   *single_spine_as*                 AS number to be assigned to all spines
+   *single_spine_as*                 The AS number to be assigned to all spines.
 
                                      Type: ``string``
-   **device**                        IP address of the target device.
+   **device**                        The IP address of the target device.
 
                                      Type: ``string``
+   *enable_vf*                       This enable or disable VCS virtual-fabric on a VCS fabric.
+
+                                     Type: ``boolean``
+   **principal_ip**                  The principal IP address of the target device.
+
+                                     Type: ``string``
+   *control_vlan*                    This controls VLAN for MCT cluster
+
+                                     Type: ``string``
+   *switch_model*                    The model of the device.
+
+                                     Type: ``string``
+   *mct_interfaces*                  The list of ports that are members of the port channel. 1/13, 1/14.
+
+                                     Type: ``array``
+   *cluster_peer_ip*                 The cluster peer IP address in a.b.c.d format.
+
+                                     Type: ``string``
+   *node_id*                         The ID of the node, values <1-128>.
+
+                                     Type: ``integer``
+
+                                     **Default**: 1
+   *is_principal*                    The principal Node of Cluster.
+
+                                     Type: ``boolean``
    ================================  ======================================================================
 

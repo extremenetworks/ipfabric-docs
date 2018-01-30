@@ -3,28 +3,39 @@
 execute_cli
 ~~~~~~~~~~~
 
-**Description**: Execute CLI command and return the result 
+**Description**: Executes CLI command and returns the result. The device type should be appropriate to get reliable output. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Ip address of the VDX device
+   **mgmt_ip**                       The IP address of the device.
 
                                      Type: ``string``
-   *username*                        login username
+   *username*                        The login username.
 
                                      Type: ``string``
-
-                                     **Default**: admin
-   *password*                        login password
+   *password*                        The login password.
 
                                      Type: ``string``
-
-                                     **Default**: password
-   **cli_cmd**                       CLI commands to execute on the specified VDX device
+   **cli_cmd**                       The CLI commands to execute on the device.
 
                                      Type: ``array``
+   *config_operation*                The flag to indicate whether commands are for configuration or for show.
+
+                                     Type: ``boolean``
+   **device_type**                   Specifies the connecting device type.
+
+                                     Choose from:
+
+                                     - nos
+                                     - slx
+                                     - ni
+
+                                     **Default**: nos
+   *enable_passwd*                   The privilege exec mode password. Applicable only to MLX device.
+
+                                     Type: ``string``
    ================================  ======================================================================
 

@@ -3,30 +3,26 @@
 set_l3_system_mtu
 ~~~~~~~~~~~~~~~~~
 
-**Description**: Set L3 system MTU on the VCS fabric or vLag pair. Only supported on VDX devices. 
+**Description**: This sets the L3 system global MTU. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Virtual IP of the VCS Fabric or management IP of the switch.
+   **mgmt_ip**                       The virtual IP of the VCS Fabric or management IP of the switch.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: password
-   **mtu_size**                      MTU size in bytes <Number:1300-9100> for IPV4, <Number:1280-9100> for IPV6
+   **mtu_size**                      The MTU size in bytes <Number:1300-9100> for IPV4, <Number:1280-9100> for IPV6. For MLX you may enter any number within range of IPv4 <576-9198> , IPv6 <1280-9198>. However, this value must be 18 bytes less than the value of l2 system mtu(global maximum frame size).
 
                                      Type: ``integer``
-   *afi*                             IP version
+   *afi*                             The IP version.
 
                                      Choose from:
 

@@ -3,27 +3,23 @@
 validate_interface_state
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Validate L1 and L2 state for port channel, physical, ve, loopback interface is UP. 
+**Description**: This validates L1 and L2 state for port channel, physical, ve, loopback interface. is UP. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: password
-   **intf_type**                     Interface type
+   **intf_type**                     The interface type.
 
                                      Choose from:
 
@@ -37,16 +33,16 @@ validate_interface_state
                                      - loopback
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     Interface name physical port, port channel number, ve, loopback. Examples are 224/0/1 or 7
+   **intf_name**                     The interface name physical port, port channel number, ve, loopback. Examples are 224/0/1 or 7
 
                                      Type: ``string``
-   **intf_state**                    Interface state (up or down)
+   **intf_state**                    The interface state (up or down).
 
                                      Choose from:
 
                                      - up
                                      - down
-   *rbridge_id*                      Single or list of RBridge IDs separated by comma, for example, 1 or 1,2, 4.  This parameter is only applicable for VDX switches.
+   *rbridge_id*                      A single or a list of RBridge IDs separated by comma, for example, 1 or 1,2, 4.  This parameter is only applicable for VDX switches.
 
                                      Type: ``array``
    ================================  ======================================================================

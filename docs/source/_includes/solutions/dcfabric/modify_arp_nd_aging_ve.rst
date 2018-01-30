@@ -3,44 +3,46 @@
 modify_arp_nd_aging_ve
 ~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Modify ARP and ND aging timers on VE interface 
+**Description**: This will modify ARP and ND aging timers on the VE interface. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: password
-   *rbridge_id*                      RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
+   *rbridge_id*                      The RBridge ID of the VDX switch. This parameter is only applicable for VDX switches.
 
                                      Type: ``array``
-   **vlan_id**                       VLAN ID
+   **vlan_id**                       This is a single or a range of VLAN IDs, e.g. 10 or 10-15 or 10,12,13-15.
 
                                      Type: ``string``
-   **arp_aging_type**                Aging type
+   **arp_aging_type**                The ARP aging type
 
                                      Choose from:
 
                                      - arp_aging
                                      - nd_cache_expiry
-   *arp_aging_timeout*               ARP aging timeout in minutes <0..240>.
+
+                                     **Default**: arp_aging
+   *arp_aging_timeout*               The ARP aging timeout in minutes <0..240>.
 
                                      Type: ``integer``
 
                                      **Default**: 4
-   *nd_cache_expire_time*            ND cache expiration timeout in seconds <30-14400>.
+   *nd_cache_expire_time*            The ND cache expiration timeout in seconds <30-14400>.
 
                                      Type: ``integer``
 

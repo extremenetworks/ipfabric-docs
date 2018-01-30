@@ -3,7 +3,7 @@
 drop_unprovision
 ~~~~~~~~~~~~~~~~
 
-**Description**: This workflow accomplishes the task of allowing traffic back on a specified interface by first deleting the deny ACL currently on that interface. If may also delete the acl, if it is empty. 
+**Description**: This workflow accomplishes the task of allowing traffic back on a specified interface by first deleting the deny ACL currently on that interface. It may also delete the acl, if it is empty. 
 
 .. table::
 
@@ -26,7 +26,7 @@ drop_unprovision
    **acl_name**                      access list name (max 63)
 
                                      Type: ``string``
-   **intf_type**                     Interface type gigabitethernet or tengigabitethernet, etc
+   **intf_type**                     The interface type gigabitethernet or tengigabitethernet, etc.
 
                                      Choose from:
 
@@ -37,7 +37,7 @@ drop_unprovision
                                      - ethernet
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     interface name as array (182/0/97)
+   **intf_name**                     The interface name as an array (182/0/97).
 
                                      Type: ``array``
    **address_type**                  the address type IPv4 IPv6 or MAC used to create the acl.
@@ -47,7 +47,7 @@ drop_unprovision
                                      - ip
                                      - ipv6
                                      - mac
-   *delete_acl*                      Indicates whether the acl should be deleted.
+   *delete_acl*                      This ndicates whether the ACL should be deleted.
 
                                      Type: ``boolean``
    *seq_id*                          Sequence number of the rule, if not specified, the rule is added at the end of the list. Valid range is 0 to 4294967290

@@ -3,36 +3,36 @@
 configure_evpn_vtep
 ~~~~~~~~~~~~~~~~~~~
 
-**Description**: Configure EVPN VTEP on a leaf or vLAG pair 
+**Description**: This configure EVPN VTEP on a leaf or vLAG pair. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
 
                                      **Default**: password
-   **loopback_id**                   Loopback ID, <NUMBER:1-255>
+   **loopback_id**                   The loopback ID, <NUMBER:1-255>.
 
                                      Type: ``integer``
-   *rbridge_id*                      Single or list of RBridge IDs separated by comma, for example, 1 or 1,2, 4.  This parameter is only applicable for VDX switches.
+   *rbridge_id*                      A single or a list of RBridge IDs separated by comma, for example, 1 or 1,2, 4. This parameter is only applicable for VDX switches.
 
                                      Type: ``array``
-   **name**                          Overlay gateway name
+   **name**                          The overlay gateway name.
 
                                      Type: ``string``
-   *vlan_vni_auto_map*               Configure vlan to vni auto mapping under overlay gateway
+   *vni_auto_map*                    This configure VLAN/bridge-domain to vni auto mapping under overlay gateway.
 
                                      Type: ``boolean``
 

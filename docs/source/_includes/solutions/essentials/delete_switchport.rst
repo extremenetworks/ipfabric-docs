@@ -3,27 +3,23 @@
 delete_switchport
 ~~~~~~~~~~~~~~~~~
 
-**Description**: Delete Switchport on an interface. 
+**Description**: This deletes the Switchport on an interface. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: password
-   **intf_type**                     Interface type
+   **intf_type**                     The interface type.
 
                                      Choose from:
 
@@ -35,7 +31,7 @@ delete_switchport
                                      - port_channel
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     Interface name, for VDX in 3-tuple format (24/0/1), SLX in 2-tuple format (24/1). Example for interface 235/0/35 or 235/0/35-40 Example for port-channel 10 or 1-10
+   **intf_name**                     The interface name, can be port or port channel. For example to specify ports, 24/0/1 (VDX) or 24/1 (SLX). For port channel, 10 or 1-10
 
                                      Type: ``string``
    ================================  ======================================================================

@@ -3,27 +3,23 @@
 set_l2_system_mtu
 ~~~~~~~~~~~~~~~~~
 
-**Description**: Set L2 system MTU on the VCS fabric or vLag pairs.  Only supported on VDX devices. 
+**Description**: This sets the L2 system global MTU. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Virtual IP of VCS Fabric or management IP of the switch.
+   **mgmt_ip**                       The virtual IP of the VCS Fabric or the management IP of the switch.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: password
-   **mtu_size**                      MTU size in bytes <Number:1522-9216>
+   **mtu_size**                      The MTU size in bytes <Number:1522-9216>. For MLX MTU <1298-9216>.
 
                                      Type: ``integer``
    ================================  ======================================================================

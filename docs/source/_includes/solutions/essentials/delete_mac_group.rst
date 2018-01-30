@@ -3,27 +3,23 @@
 delete_mac_group
 ~~~~~~~~~~~~~~~~
 
-**Description**: Delete Mac Groups. 
+**Description**: This deletes the MAC Groups. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: password
-   **mac_group_id**                  Single Mac Group id/range of Mac Group id/batch wise values. Valid Values [1,500]. For example 10 or 1-10 or 1,2-10,15
+   **mac_group_id**                  The single MAC Group id/range of the MAC Group id/batch wise values. Valid Values [1,500]. For example, 10 or 1-10 or 1,2-10,15
 
                                      Type: ``string``
    ================================  ======================================================================

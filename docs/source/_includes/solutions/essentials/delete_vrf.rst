@@ -3,30 +3,26 @@
 delete_vrf
 ~~~~~~~~~~
 
-**Description**: Delete a VRF 
+**Description**: This deletes a VRF. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: password
-   *rbridge_id*                      RBridge IDs of the VDX switches, for example 51 or 51,52. This parameter is only applicable for VDX switches.
+   *rbridge_id*                      The RBridge IDs of the VDX switches, for example 51 or 51,52. This parameter is only applicable for VDX switches.
 
                                      Type: ``array``
-   **vrf_name**                      VRF name, for example vrf32 or 32
+   **vrf_name**                      The VRF name, for example vrf32 or 32.
 
                                      Type: ``string``
    ================================  ======================================================================

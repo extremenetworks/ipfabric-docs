@@ -3,27 +3,23 @@
 create_l2_port_channel
 ~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Create an L2 port channel (LAG or vLAG) in Static or LACP mode 
+**Description**: This create an L2 port channel (LAG or vLAG) in Static or LACP mode. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       Management IP address of the target device
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        Login user name to connect to the device
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: admin
-   *password*                        Login password to connect to the device
+   *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-
-                                     **Default**: password
-   **intf_type**                     Interface type ethernet/gigabitethernet/tengigabitethernet/fortygigabitethernet/hundredgigabitethernet
+   **intf_type**                     The interface type - ethernet/gigabitethernet/tengigabitethernet/fortygigabitethernet/hundredgigabitethernet.
 
                                      Choose from:
 
@@ -34,13 +30,22 @@ create_l2_port_channel
                                      - ethernet
 
                                      **Default**: tengigabitethernet
-   **ports**                         Single or list of ports that are members of the port channel. Examples for VDX, SLX are  24/0/1, 24/0/2 or 1/13, 1/14
+   **ports**                         A single or a list of ports that are members of the port channel. Examples for VDX, SLX are  24/0/1, 24/0/2 or 1/13, 1/14.
 
                                      Type: ``array``
-   **port_channel_id**               Port channel interface number.<NUMBER:1-6144>
+   *port_speed*                      The configurable port speed that is supported on SLX and VDX.
+
+                                     Choose from:
+
+                                     - 1000
+                                     - 10000
+                                     - 25000
+                                     - 40000
+                                     - 100000
+   **port_channel_id**               Port channel interface number.<NUMBER:1-6144>. For MLX range is <1-256>
 
                                      Type: ``string``
-   *mode*                            Port channel type
+   *mode*                            The port channel type. SLX and MLX supports standard type only.
 
                                      Choose from:
 
@@ -48,7 +53,7 @@ create_l2_port_channel
                                      - brocade
 
                                      **Default**: standard
-   *protocol*                        Port channel mode
+   *protocol*                        The port channel mode. For MLX, use active for dynamic and modeon for static.
 
                                      Choose from:
 
@@ -57,7 +62,7 @@ create_l2_port_channel
                                      - modeon
 
                                      **Default**: active
-   *port_channel_desc*               Port channel interface description without any space
+   *port_channel_desc*               The port channel interface description. For MLX, this is mandatory. field.
 
                                      Type: ``string``
    ================================  ======================================================================

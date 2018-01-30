@@ -3,29 +3,29 @@
 configure_interface_ipfabric
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: Configure IP addresses on a device 
+**Description**: This configure IP addresses on a device. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **host**                          Management IP address of the target device
+   **host**                          The management IP address of the target device.
 
                                      Type: ``string``
-   *user*                            Login user name to connect to the device
+   *user*                            The login user name to connect to the device.
 
                                      Type: ``string``
-   *passwd*                          Login password to connect to the device
+   *passwd*                          THe login password to connect to the device.
 
                                      Type: ``string``
-   **interface**                     Interface name
+   **interface**                     The interface name.
 
                                      Type: ``string``
-   *ip*                              IP address to be assigned
+   *ip*                              The IP address to be assigned.
 
                                      Type: ``string``
-   *state*                           State
+   *state*                           The State.
 
                                      Choose from:
 
@@ -33,30 +33,30 @@ configure_interface_ipfabric
                                      - absent
 
                                      **Default**: present
-   *enabled*                         Enabled
+   *enabled*                         Enabled.
 
                                      Type: ``boolean``
 
                                      **Default**: True
-   *rbridge_id*                      RBridge ID of the VDX switch.  This parameter is only applicable for VDX switches.
+   *rbridge_id*                      The RBridge ID of the VDX switch.  This parameter is only applicable. for VDX switches.
 
                                      Type: ``string``
    *donor*                           Donor
 
                                      Type: ``string``
-   *bfd_multiplier*                  BFD Multiplier
+   *bfd_multiplier*                  The BFD Multiplier.
 
                                      Type: ``string``
-   *bfd_rx*                          BFD receive
+   *bfd_rx*                          The BFD receive.
 
                                      Type: ``string``
-   *bfd_tx*                          BFD transmit
+   *bfd_tx*                          The BFD transmit.
 
                                      Type: ``string``
-   *mtu*                             MTU size
+   *mtu*                             The MTU size.
 
                                      Type: ``string``
-   *ip_mtu*                          IP MTU size
+   *ip_mtu*                          The IP MTU size.
 
                                      Type: ``string``
    ================================  ======================================================================
