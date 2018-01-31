@@ -14,6 +14,39 @@ Most of the actions below can be used to automate SLX or VDX switches, however t
 actions that are only valid for VDX switches as outlined below. If an action is only valid for VDX
 it will be documented in the action details, otherwise the action is supported for both VDX and SLX.  
 
+Device Registration
+-------------------
+Starting with Network Essentials (NE) v1.2, device credentials registration feature enables users to register device and associated credentials one time and thereby eliminating the need for providing device credentials in every action invocation.  This is supported for SLX, VDX and MLXe device families.  However based on device type, and user options, users need to provide different set of device credentials.
+
+NE actions use primarily REST and SSH protocols to interact with SLX and VDX devices, username and password are sufficient for these protocols.
+
+However, for MLXe, NE action use primarily SSH and SNMP protocols, requiring following additional credentials:
+Username and password for SSH
+- Users must provide the choice of SNMP version, SNMP v2 and SNMP v3 have different set of credentials.  Community string in case of SNMPV2 and username, auth-priv protocols and the corresponding pass phrases for SNMP v3.
+- CLI perspective NetIron devices have privilege exec mode which is password protected
+
+This release, use of Network Essentials has the following changes:
+- One time device registration is required for all devices including SLX, NOS and NetIron based devices. 
+- Devices must be configured with appropriate credentials prior to registering in NE 
+
+NE includes new actions to register device credentials to register a device.
+
+Factory Default Credentials - if registration is not performed, NE actions use the following factory default credentials to authenticate with a device:
+
+  .. code-block:: bash
+    SSH username: ‘admin’
+    SSH password: ‘password’
+    SNMP version:  ‘v2’
+    SNMPv2_community: ‘public’
+
+For SLX and NOS devices SNMP credentials are not applicable and it can be ignored.
+
+.. include:: /_includes/solutions/essentials/register_device_credentials.rst
+
+.. include:: /_includes/solutions/essentials/get_registered_device_credential_list.rst
+
+.. include:: /_includes/solutions/essentials/delete_device_credentials.rst
+
 Edge Ports Configuration
 ------------------------
 
@@ -43,6 +76,8 @@ Edge Ports Configuration
 
 .. include:: /_includes/solutions/essentials/remove_switchport_trunk_allowed_vlan.rst
 
+.. include:: /_includes/solutions/essentials/remove_switchport_access_vlan.rst
+
 .. include:: /_includes/solutions/essentials/delete_vrf.rst
 
 .. include:: /_includes/solutions/essentials/delete_vrrpe.rst
@@ -55,8 +90,32 @@ Edge Ports Configuration
 
 .. include:: /_includes/solutions/essentials/configure_mac_move_detection.rst
 
+Bridge Domains
+--------------
+
+Bridge Domains(BD) is only supported on SLX family of devices.
+
+.. include:: /_includes/solutions/essentials/configure_bridge_domain.rst
+
+.. include:: /_includes/solutions/essentials/get_next_available_network_id.rst
+
+.. include:: /_includes/solutions/essentials/delete_bridge_domain.rst
+
+.. include:: /_includes/solutions/essentials/configure_logical_interface.rst
+
+.. include:: /_includes/solutions/essentials/autopick_lif_id.rst
+
+.. include:: /_includes/solutions/essentials/delete_logical_interface_on_bridge_domain.rst
+
+.. include:: /_includes/solutions/essentials/delete_logical_interface_on_interface.rst
+
+.. include:: /_includes/solutions/essentials/delete_service_policy_to_interface.rst
+
+
 Virtual Fabrics
 ---------------
+
+Virtual Fabrics are only supported on VDX family of devices.
 
 The Virtual Fabrics (VF) feature in NOS enables Layer 2 multi-tenancy solutions that provide
 support for overlapping VLANs, VLAN scaling, and transparent VLAN services by providing both
@@ -76,7 +135,7 @@ create_vlan or delete_vlan actions.
 
 .. include:: /_includes/solutions/essentials/enable_vf.rst
 
-.. include:: /_includes/solutions/essentials/get_next_available_vf_id_for_mapping.rst
+.. include:: /_includes/solutions/essentials/get_next_available_network_id.rst
 
 .. include:: /_includes/solutions/essentials/configure_mac_group.rst
 
