@@ -83,17 +83,43 @@ Setting up IP Fabric with EVPN
      show running-config rbridge-id evpn-instance
      show overlay-gateway 
 
-IP Fabric EVPN - L2 Tenant provisoning on vLAG pair
-```````````````````````````````````````````````````
+IP Fabric EVPN - L2 Tenant endpoint provisoning on MCT lag or vLAG pair
+```````````````````````````````````````````````````````````````````````
 
-Here are the steps to configure L2 tenant on a vLAG pair:
+Here are the steps to configure L2 tenant on a dual ToR pair:
 
 1. Use ``dcfabric.add_multihomed_endpoint`` to configure edge ports facing end points such as a server.
    This workflow automates creation of port-channel interfaces, configuration of the port-channel
-   interface as access or trunk, creation and association of VLANs with the port-channel interfaces
-   as well as validation of the port channel state.
+   interface as access or trunk, creation and association of VLANs with the port-channel interfaces and MCT client configuration as well as validation of the port channel state.
+
+   Workflow needs to be run on both ToRs part of MCT cluster as below:
+
+   Example MCT LAG with Bridge Domain usecase (SLX):
+
+   .. code-block:: bash
+
+      st2 run dcfabric.add_multihomed_endpoint mgmt_ip=10.20.60.121 intf_type=ethernet ports=0/22,0/24 port_channel_id=2 network_id=4001-4010 c_tag=201-210 auto_pick_lif_id=True vlan_type=tagged mct_client_name=demo_123 vni=201-210 enabled=True mct_client_id=512 intf_desc=standalone mode=standard protocol=modeon mtu=9100
+
+      st2 run dcfabric.add_multihomed_endpoint mgmt_ip=10.20.60.122 intf_type=ethernet ports=0/22,0/24 port_channel_id=2 network_id=4001-4010 c_tag=201-210 auto_pick_lif_id=True vlan_type=tagged mct_client_name=demo_123 vni=201-210 enabled=True mct_client_id=512 intf_desc=standalone mode=standard protocol=modeon mtu=9100
+
+   Example MCT LAG with VLAN usecase (SLX):
+   
+   .. code-block:: bash
+
+      st2 run dcfabric.add_multihomed_endpoint mgmt_ip=10.20.60.121 intf_type=ethernet ports=0/22,0/24 port_channel_id=2 network_id=4001-4010 c_tag=201-210 auto_pick_lif_id=True vlan_type=tagged mct_client_name=demo_123 vni=201-210 enabled=True mct_client_id=512 intf_desc=standalone mode=standard protocol=modeon mtu=9100
+
+      st2 run dcfabric.add_multihomed_endpoint mgmt_ip=10.20.60.122 intf_type=ethernet ports=0/22,0/24 port_channel_id=2 network_id=4001-4010 c_tag=201-210 auto_pick_lif_id=True vlan_type=tagged mct_client_name=demo_123 vni=201-210 enabled=True mct_client_id=512 intf_desc=standalone mode=standard protocol=modeon mtu=9100
+
+   The workflow runs the following show commands on the switch and logs the results. You can review
+   this in the action results. Or you can directly run the following commands on the switch to verify:
+   
+   .. code-block:: guess
+
+     show port-channel 400 
+     show running-config interface ethernet 0/22
+     show running-config interface ethernet 0/24
     
-   Example:
+   Example vLAG (VDX):
 
    .. code-block:: bash
 
@@ -108,10 +134,25 @@ Here are the steps to configure L2 tenant on a vLAG pair:
      show running-config interface TenGigabitEthernet 37/0/11
      show running-config interface TenGigabitEthernet 38/0/11
 
-2. Next, use the ``create_l2_tenant_evpn`` workflow to provision an L2 domain extension, on the selected
-   leaves or vLAG pairs. The workflow must be provided with the management IP of the vLAG pair or the
-   leaf switch. In this example, provide the management IP of the vLAG pair to attach the VNI created
-   in the previous setp to EVPN instance:
+2. Next, use the ``create_l2_tenant_evpn`` workflow to provision an L2 domain extension, on the MCT or vLAG pairs. 
+
+   Example MCT (SLX):
+
+   The workflow must be run on both the switches part of MCT cluster.  This example, provides the management IP of the swtich to attach the VNI created in the previous setp to EVPN instance:
+   
+   .. code-block:: bash
+
+    st2 run dcfabric.create_l2_tenant_evpn mgmt_ip=10.20.60.121 bridge_domain_id=4001-4010
+    st2 run dcfabric.create_l2_tenant_evpn mgmt_ip=10.20.60.122 bridge_domain_id=4001-4010
+
+    or
+
+    st2 run dcfabric.create_l2_tenant_evpn mgmt_ip=10.20.60.121 vlan_id=10-20 
+    st2 run dcfabric.create_l2_tenant_evpn mgmt_ip=10.20.60.122 vlan_id=10-20 
+
+   Example vLAG (VDX):
+
+   The workflow must be provided with the management IP of the vLAG pair or the leaf switch. In this example, provide the management IP of the vLAG pair to attach the VNI created in the previous setp to EVPN instance:
    
    .. code-block:: bash
 
@@ -132,7 +173,17 @@ Here are the steps to configure an L2 tenant on a single ToR (non vLAG):
    server. This workflow automates configuration of the interface as access or trunk, creation and
    association of VLANs with the interface.
    
-   .. code-block:: bash
+     Example (SLX):
+
+    .. code-block:: bash
+
+      st2 run dcfabric.add_multihomed_endpoint mgmt_ip=10.20.60.123 intf_type=ethernet ports=0/10,0/11 auto_pick_port_channel_id=True vlan_id=10-20 vni=110-120
+    
+      st2 run dcfabric.create_l2_tenant_evpn mgmt_ip=10.20.60.123 vlan_id=10-20 
+
+     Example (VDX):
+
+    .. code-block:: bash
 
      st2 run network_essentials.add_singlehomed_endpoint mgmt_ip=10.70.61.21 vlan_id=201 intf_desc="customer-a" intf_type=tengigabitethernet intf_name=21/0/1 switchport_mode=trunk 
 
@@ -160,8 +211,8 @@ Here are the steps to configure an L2 tenant on a single ToR (non vLAG):
      show vlan 201
      show tunnel brief
 
-IP Fabric EVPN - L3 Tenant provisoning on vLAG pair
-```````````````````````````````````````````````````
+IP Fabric EVPN - L3 Tenant provisoning on vLAG pair (VDX)
+`````````````````````````````````````````````````````````
 
 Here are the steps to configure an L3 tenant on a vLAG pair:
 
