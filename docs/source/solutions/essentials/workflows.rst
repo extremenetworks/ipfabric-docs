@@ -103,12 +103,14 @@ Device once registered will be part of st2 store until user deletes it.  Both de
 Device credential lookup - SSH credentials can still come as parameters from actions (which is maintained for backward compatibility).  Other credentials are expected to be registered per device or group default.  NE actions fetch device credentials using the following sequence:
 
 For SSH credentials:
+
 - Check if username and password parameter comes from action (or)
 - Lookup st2 store for device specific username and password (or)
 - Lookup st2 store for group default username and password (or)
 - Code default value (admin/password)
 
 For SNMP credentials:
+
 - Check if version is v2 or v3 accordingly lookup the credentials in the following order:
 - Lookup st2 store for device specific SNMP credentials (or)
 - Lookup st2 store for group default SNMP credentials (or)
