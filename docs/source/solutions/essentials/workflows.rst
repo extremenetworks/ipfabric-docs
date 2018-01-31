@@ -44,9 +44,75 @@ For SLX and NOS devices SNMP credentials are not applicable and it can be ignore
 
 .. include:: /_includes/solutions/essentials/register_device_credentials.rst
 
+Default Credentials - In many environments, customers use common device credentials for most of the devices, users can register these common credentials as default credentials and don't have to register each device separately.  Example below outlines the registration for a mix of platforms:
+
+  .. code-block:: bash
+
+    st2 run network_essentials.register_device_credentials username=admin password=password snmp_version=v2 snmp_v2c=public enable_password=password
+
+    or
+
+    st2 run network_essentials.register_device_credentials mgmt_ip=USER.DEFAULT username=admin password=password snmp_version=v2 snmp_v2c=public enable_password=password
+
+Device Specific Credentials - In environments, some or most of the devices may have unique credentials. If a device credentials are not the same as default credentials, device credentials must be explicitly registered, for example:
+
+- Device specific registration with SNMPv2 credential and enable password for NetIron:
+
+  .. code-block:: bash
+
+    st2 run network_essentials.register_device_credentials mgmt_ip=10.24.85.107 username=admin password=admin snmp_version=v2 snmp_v2c=public enable_password=password
+
+- Device specific registration with SNMPv3 credential and enable password for NetIron:
+
+  .. code-block:: bash
+
+    st2 run network_essentials.register_device_credentials mgmt_ip=10.24.85.107 username=admin password=password snmp_version=v3 snmpv3_user=v3user4 snmpv3_auth=md5 snmpv3_priv=aes auth_pass="md5 user" priv_pass="test aes user"
+
+- Device specific registration for SLX and NOS:
+
+  .. code-block:: bash
+
+    st2 run network_essentials.register_device_credentials mgmt_ip=10.24.86.96  username=admin password=admin
+
+Update Device registration - register_device_credentials action can also be used to overwrite existing device credentials. Since this action overwrites all the existing credentials, user must provide all the parameters not just the changed credentials.  For example:
+
+  .. code-block:: bash
+
+    st2 run network_essentials.register_device_credentials username=admin password=password snmp_version=v2 snmp_v2c=public
+
+Now if user wants to update “enable_password” then user needs to give the existing snmp_version and snmp_v2c. 
+
+  .. code-block:: bash
+
+    st2 run network_essentials.register_device_credentials username=admin password=password snmp_version=v2 snmp_v2c=public enable_password=password
+
 .. include:: /_includes/solutions/essentials/get_registered_device_credential_list.rst
 
+Display registered device - “get_registered_device_credential_list” action lists all the registered devices and provides the corresponding SNMP version configured.
+
 .. include:: /_includes/solutions/essentials/delete_device_credentials.rst
+
+Deleting device registration
+Device once registered will be part of st2 store until user deletes it.  Both default as well as device specific registrations can be deleted from registered device list: 
+
+  .. code-block:: bash
+
+    st2 run network_essentials.delete_device_credentials mgmt_ip=USER.DEFAULT (or)
+    st2 run network_essentials.delete_device_credentials mgmt_ip=1.1.1.1
+
+Device credential lookup - SSH credentials can still come as parameters from actions (which is maintained for backward compatibility).  Other credentials are expected to be registered per device or group default.  NE actions fetch device credentials using the following sequence:
+
+For SSH credentials:
+- Check if username and password parameter comes from action (or)
+- Lookup st2 store for device specific username and password (or)
+- Lookup st2 store for group default username and password (or)
+- Code default value (admin/password)
+
+For SNMP credentials:
+- Check if version is v2 or v3 accordingly lookup the credentials in the following order:
+- Lookup st2 store for device specific SNMP credentials (or)
+- Lookup st2 store for group default SNMP credentials (or)
+- Code default value [SNMPV2 community string “public”]
 
 Edge Ports Configuration
 ------------------------
