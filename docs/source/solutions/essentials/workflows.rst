@@ -34,6 +34,7 @@ NE includes new actions to register device credentials to register a device.
 Factory Default Credentials - if registration is not performed, NE actions use the following factory default credentials to authenticate with a device:
 
   .. code-block:: bash
+
     SSH username: ‘admin’
     SSH password: ‘password’
     SNMP version:  ‘v2’
@@ -87,6 +88,10 @@ Edge Ports Configuration
 .. include:: /_includes/solutions/essentials/set_l2_mtu.rst
 
 .. include:: /_includes/solutions/essentials/set_l3_mtu.rst
+
+.. include:: /_includes/solutions/essentials/set_l2_system_mtu.rst
+
+.. include:: /_includes/solutions/essentials/set_l3_system_mtu.rst
 
 .. include:: /_includes/solutions/essentials/configure_mac_move_detection.rst
 
@@ -284,10 +289,6 @@ Utility Actions
 
 VCS Specific Actions
 --------------------
-
-.. include:: /_includes/solutions/essentials/set_l2_system_mtu.rst
-
-.. include:: /_includes/solutions/essentials/set_l3_system_mtu.rst
 
 .. include:: /_includes/solutions/essentials/configure_mgmt_virtual_ip.rst
 
