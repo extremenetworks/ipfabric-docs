@@ -173,17 +173,17 @@ Here are the steps to configure an L2 tenant on a single ToR (non vLAG):
    server. This workflow automates configuration of the interface as access or trunk, creation and
    association of VLANs with the interface.
    
-     Example (SLX):
+   Example (SLX):
 
-      .. code-block:: bash
+   .. code-block:: bash
 
-        st2 run dcfabric.add_multihomed_endpoint mgmt_ip=10.20.60.123 intf_type=ethernet ports=0/10,0/11 auto_pick_port_channel_id=True vlan_id=10-20 vni=110-120
+     st2 run dcfabric.add_multihomed_endpoint mgmt_ip=10.20.60.123 intf_type=ethernet ports=0/10,0/11 auto_pick_port_channel_id=True vlan_id=10-20 vni=110-120
     
-        st2 run dcfabric.create_l2_tenant_evpn mgmt_ip=10.20.60.123 vlan_id=10-20 
+     st2 run dcfabric.create_l2_tenant_evpn mgmt_ip=10.20.60.123 vlan_id=10-20 
 
-     Example (VDX):
+   Example (VDX):
 
-    .. code-block:: bash
+   .. code-block:: bash
 
       st2 run network_essentials.add_singlehomed_endpoint mgmt_ip=10.70.61.21 vlan_id=201 intf_desc="customer-a" intf_type=tengigabitethernet intf_name=21/0/1 switchport_mode=trunk 
 
