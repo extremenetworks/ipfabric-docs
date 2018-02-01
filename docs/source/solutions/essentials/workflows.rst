@@ -16,22 +16,30 @@ it will be documented in the action details, otherwise the action is supported f
 
 Device Registration
 -------------------
-Starting with Network Essentials (NE) v1.2, device credentials registration feature enables users to register device and associated credentials one time and thereby eliminating the need for providing device credentials in every action invocation.  This is supported for SLX, VDX and MLXe device families.  However based on device type, and user options, users need to provide different set of device credentials.
+Starting with Network Essentials (NE) v1.2, the device credentials registration feature enables users
+to register device and associated credentials once, eliminating the need to provide device credentials
+for each action invocation. This is supported for SLX, VDX and MLXe device families. Based on device
+type and user options, users need to provide different set of device credentials.
 
-NE actions use primarily REST and SSH protocols to interact with SLX and VDX devices, username and password are sufficient for these protocols.
+NE actions use primarily REST and SSH protocols to interact with SLX and VDX devices. Username and
+password are sufficient for these protocols.
 
-However, for MLXe, NE action use primarily SSH and SNMP protocols, requiring following additional credentials:
-Username and password for SSH
-- Users must provide the choice of SNMP version, SNMP v2 and SNMP v3 have different set of credentials.  Community string in case of SNMPV2 and username, auth-priv protocols and the corresponding pass phrases for SNMP v3.
-- CLI perspective NetIron devices have privilege exec mode which is password protected
+However, for MLXe, NE actions use SSH and SNMP protocols, requiring the following additional credentials:
 
-This release, use of Network Essentials has the following changes:
+* Username and password for SSH
+* SNMP version, and then the relevant SNMP credentials - Community string for SNMPv2, Username, auth-priv
+  protocols and the corresponding passphrases for SNMP v3.
+* Enable password for NetIron devices where privileged exec mode is password protected
+
+For this release, Network Essentials has the following changes:
+
 - One time device registration is required for all devices including SLX, NOS and NetIron based devices. 
 - Devices must be configured with appropriate credentials prior to registering in NE 
 
 NE includes new actions to register device credentials to register a device.
 
-Factory Default Credentials - if registration is not performed, NE actions use the following factory default credentials to authenticate with a device:
+Factory Default Credentials - if registration is not performed, NE actions use the following factory default
+credentials:
 
   .. code-block:: bash
 
@@ -40,11 +48,14 @@ Factory Default Credentials - if registration is not performed, NE actions use t
     SNMP version:  ‘v2’
     SNMPv2_community: ‘public’
 
-For SLX and NOS devices SNMP credentials are not applicable and it can be ignored.
+For SLX and NOS devices SNMP credentials are not applicable and can be ignored.
 
 .. include:: /_includes/solutions/essentials/register_device_credentials.rst
 
-Default Credentials - In many environments, customers use common device credentials for most of the devices, users can register these common credentials as default credentials and don't have to register each device separately.  Example below outlines the registration for a mix of platforms:
+Default Credentials: In many environments, customers use common device credentials for most
+devices. Users can register these common credentials as default credentials, rather than
+registering each device separately. This example shows how to set default credentials
+for a mix of platforms:
 
   .. code-block:: bash
 
@@ -54,7 +65,8 @@ Default Credentials - In many environments, customers use common device credenti
 
     st2 run network_essentials.register_device_credentials mgmt_ip=USER.DEFAULT username=admin password=password snmp_version=v2 snmp_v2c=public enable_password=password
 
-Device Specific Credentials - In environments, some or most of the devices may have unique credentials. If a device credentials are not the same as default credentials, device credentials must be explicitly registered, for example:
+Device-Specific Credentials: In environments where devices have unique credentials, they must be
+explicitly registered for each device. For example:
 
 - Device specific registration with SNMPv2 credential and enable password for NetIron:
 
@@ -74,13 +86,16 @@ Device Specific Credentials - In environments, some or most of the devices may h
 
     st2 run network_essentials.register_device_credentials mgmt_ip=10.24.86.96  username=admin password=admin
 
-Update Device registration - register_device_credentials action can also be used to overwrite existing device credentials. Since this action overwrites all the existing credentials, user must provide all the parameters not just the changed credentials.  For example:
+Update Device registration: The ``register_device_credentials`` action can also be used to
+overwrite existing device credentials. Since this action overwrites all the existing credentials,
+the user must provide all the parameters not just the changed credentials. For example:
 
   .. code-block:: bash
 
     st2 run network_essentials.register_device_credentials username=admin password=password snmp_version=v2 snmp_v2c=public
 
-Now if user wants to update “enable_password” then user needs to give the existing snmp_version and snmp_v2c. 
+If you later need to update ``enable_password``, you also need to provide the existing ``snmp_version`` and
+``snmp_v2c`` values:. 
 
   .. code-block:: bash
 
@@ -88,19 +103,22 @@ Now if user wants to update “enable_password” then user needs to give the ex
 
 .. include:: /_includes/solutions/essentials/get_registered_device_credential_list.rst
 
-Display registered device - “get_registered_device_credential_list” action lists all the registered devices and provides the corresponding SNMP version configured.
+Display registered devices: ``get_registered_device_credential_list`` lists all registered
+devices and provides the corresponding SNMP version configured:
 
 .. include:: /_includes/solutions/essentials/delete_device_credentials.rst
 
-Deleting device registration
-Device once registered will be part of st2 store until user deletes it.  Both default as well as device specific registrations can be deleted from registered device list: 
+Deleting device registration: Device details will be maintained until explicitly deleted. 
+Both default and device-specific credentials can be removed: 
 
   .. code-block:: bash
 
     st2 run network_essentials.delete_device_credentials mgmt_ip=USER.DEFAULT (or)
     st2 run network_essentials.delete_device_credentials mgmt_ip=1.1.1.1
 
-Device credential lookup - SSH credentials can still come as parameters from actions (which is maintained for backward compatibility).  Other credentials are expected to be registered per device or group default.  NE actions fetch device credentials using the following sequence:
+Device credential lookup: SSH credentials may be provided as parameters to actions. This is maintained
+for backwards compatibility. Other credentials must be registered per device or group default. NE actions
+to fetch device credentials using the following sequence:
 
 For SSH credentials:
 
@@ -111,7 +129,7 @@ For SSH credentials:
 
 For SNMP credentials:
 
-- Check if version is v2 or v3 accordingly lookup the credentials in the following order:
+- Check if version is v2 or v3 then lookup credentials in the following order:
 - Lookup st2 store for device specific SNMP credentials (or)
 - Lookup st2 store for group default SNMP credentials (or)
 - Code default value [SNMPV2 community string “public”]
@@ -166,7 +184,7 @@ Edge Ports Configuration
 Bridge Domains
 --------------
 
-Bridge Domains(BD) is only supported on SLX family of devices.
+Bridge Domains(BD) are only supported on the SLX family of devices.
 
 .. include:: /_includes/solutions/essentials/configure_bridge_domain.rst
 
@@ -188,7 +206,7 @@ Bridge Domains(BD) is only supported on SLX family of devices.
 Virtual Fabrics
 ---------------
 
-Virtual Fabrics are only supported on VDX family of devices.
+Virtual Fabrics are only supported on the VDX family of devices.
 
 The Virtual Fabrics (VF) feature in NOS enables Layer 2 multi-tenancy solutions that provide
 support for overlapping VLANs, VLAN scaling, and transparent VLAN services by providing both
