@@ -14,6 +14,126 @@ Most of the actions below can be used to automate SLX or VDX switches, however t
 actions that are only valid for VDX switches as outlined below. If an action is only valid for VDX
 it will be documented in the action details, otherwise the action is supported for both VDX and SLX.  
 
+Device Registration
+-------------------
+Starting with Network Essentials (NE) v1.2, the device credentials registration feature enables users
+to register device and associated credentials once, eliminating the need to provide device credentials
+for each action invocation. This is supported for SLX, VDX and MLXe device families. Based on device
+type and user options, users need to provide different set of device credentials.
+
+NE actions use primarily REST and SSH protocols to interact with SLX and VDX devices. Username and
+password are sufficient for these protocols.
+
+However, for MLXe, NE actions use SSH and SNMP protocols, requiring the following additional credentials:
+
+* Username and password for SSH
+* SNMP version, and then the relevant SNMP credentials - Community string for SNMPv2, Username, auth-priv
+  protocols and the corresponding passphrases for SNMP v3.
+* Enable password for NetIron devices where privileged exec mode is password protected
+
+For this release, Network Essentials has the following changes:
+
+- One time device registration is required for all devices including SLX, NOS and NetIron based devices. 
+- Devices must be configured with appropriate credentials prior to registering in NE 
+
+NE includes new actions to register device credentials to register a device.
+
+Factory Default Credentials - if registration is not performed, NE actions use the following factory default
+credentials:
+
+  .. code-block:: bash
+
+    SSH username: ‘admin’
+    SSH password: ‘password’
+    SNMP version:  ‘v2’
+    SNMPv2_community: ‘public’
+
+For SLX and NOS devices SNMP credentials are not applicable and can be ignored.
+
+.. include:: /_includes/solutions/essentials/register_device_credentials.rst
+
+Default Credentials: In many environments, customers use common device credentials for most
+devices. Users can register these common credentials as default credentials, rather than
+registering each device separately. This example shows how to set default credentials
+for a mix of platforms:
+
+  .. code-block:: bash
+
+    st2 run network_essentials.register_device_credentials username=admin password=password snmp_version=v2 snmp_v2c=public enable_password=password
+
+    or
+
+    st2 run network_essentials.register_device_credentials mgmt_ip=USER.DEFAULT username=admin password=password snmp_version=v2 snmp_v2c=public enable_password=password
+
+Device-Specific Credentials: In environments where devices have unique credentials, they must be
+explicitly registered for each device. For example:
+
+- Device specific registration with SNMPv2 credential and enable password for NetIron:
+
+  .. code-block:: bash
+
+    st2 run network_essentials.register_device_credentials mgmt_ip=10.24.85.107 username=admin password=admin snmp_version=v2 snmp_v2c=public enable_password=password
+
+- Device specific registration with SNMPv3 credential and enable password for NetIron:
+
+  .. code-block:: bash
+
+    st2 run network_essentials.register_device_credentials mgmt_ip=10.24.85.107 username=admin password=password snmp_version=v3 snmpv3_user=v3user4 snmpv3_auth=md5 snmpv3_priv=aes auth_pass="md5 user" priv_pass="test aes user"
+
+- Device specific registration for SLX and NOS:
+
+  .. code-block:: bash
+
+    st2 run network_essentials.register_device_credentials mgmt_ip=10.24.86.96  username=admin password=admin
+
+Update Device registration: The ``register_device_credentials`` action can also be used to
+overwrite existing device credentials. Since this action overwrites all the existing credentials,
+the user must provide all the parameters not just the changed credentials. For example:
+
+  .. code-block:: bash
+
+    st2 run network_essentials.register_device_credentials username=admin password=password snmp_version=v2 snmp_v2c=public
+
+If you later need to update ``enable_password``, you also need to provide the existing ``snmp_version`` and
+``snmp_v2c`` values:. 
+
+  .. code-block:: bash
+
+    st2 run network_essentials.register_device_credentials username=admin password=password snmp_version=v2 snmp_v2c=public enable_password=password
+
+.. include:: /_includes/solutions/essentials/get_registered_device_credential_list.rst
+
+Display registered devices: ``get_registered_device_credential_list`` lists all registered
+devices and provides the corresponding SNMP version configured:
+
+.. include:: /_includes/solutions/essentials/delete_device_credentials.rst
+
+Deleting device registration: Device details will be maintained until explicitly deleted. 
+Both default and device-specific credentials can be removed: 
+
+  .. code-block:: bash
+
+    st2 run network_essentials.delete_device_credentials mgmt_ip=USER.DEFAULT (or)
+    st2 run network_essentials.delete_device_credentials mgmt_ip=1.1.1.1
+
+Device credential lookup: SSH credentials may be provided as parameters to actions. This is maintained
+for backwards compatibility. Other credentials must be registered per device or group default. NE actions
+to fetch device credentials using the following sequence:
+
+For SSH credentials:
+
+- Check if username and password parameter comes from action (or)
+- Lookup st2 store for device specific username and password (or)
+- Lookup st2 store for group default username and password (or)
+- Code default value (admin/password)
+
+For SNMP credentials:
+
+- Check if version is v2 or v3 then lookup credentials in the following order:
+- Lookup st2 store for device specific SNMP credentials (or)
+- Lookup st2 store for group default SNMP credentials (or)
+- Code default value [SNMPV2 community string “public”]
+
 Edge Ports Configuration
 ------------------------
 
@@ -43,6 +163,8 @@ Edge Ports Configuration
 
 .. include:: /_includes/solutions/essentials/remove_switchport_trunk_allowed_vlan.rst
 
+.. include:: /_includes/solutions/essentials/remove_switchport_access_vlan.rst
+
 .. include:: /_includes/solutions/essentials/delete_vrf.rst
 
 .. include:: /_includes/solutions/essentials/delete_vrrpe.rst
@@ -53,10 +175,38 @@ Edge Ports Configuration
 
 .. include:: /_includes/solutions/essentials/set_l3_mtu.rst
 
+.. include:: /_includes/solutions/essentials/set_l2_system_mtu.rst
+
+.. include:: /_includes/solutions/essentials/set_l3_system_mtu.rst
+
 .. include:: /_includes/solutions/essentials/configure_mac_move_detection.rst
+
+Bridge Domains
+--------------
+
+Bridge Domains(BD) are only supported on the SLX family of devices.
+
+.. include:: /_includes/solutions/essentials/configure_bridge_domain.rst
+
+.. include:: /_includes/solutions/essentials/get_next_available_network_id.rst
+
+.. include:: /_includes/solutions/essentials/delete_bridge_domain.rst
+
+.. include:: /_includes/solutions/essentials/configure_logical_interface.rst
+
+.. include:: /_includes/solutions/essentials/autopick_lif_id.rst
+
+.. include:: /_includes/solutions/essentials/delete_logical_interface_on_bridge_domain.rst
+
+.. include:: /_includes/solutions/essentials/delete_logical_interface_on_interface.rst
+
+.. include:: /_includes/solutions/essentials/delete_service_policy_to_interface.rst
+
 
 Virtual Fabrics
 ---------------
+
+Virtual Fabrics are only supported on the VDX family of devices.
 
 The Virtual Fabrics (VF) feature in NOS enables Layer 2 multi-tenancy solutions that provide
 support for overlapping VLANs, VLAN scaling, and transparent VLAN services by providing both
@@ -76,7 +226,7 @@ create_vlan or delete_vlan actions.
 
 .. include:: /_includes/solutions/essentials/enable_vf.rst
 
-.. include:: /_includes/solutions/essentials/get_next_available_vf_id_for_mapping.rst
+.. include:: /_includes/solutions/essentials/get_next_available_network_id.rst
 
 .. include:: /_includes/solutions/essentials/configure_mac_group.rst
 
@@ -225,10 +375,6 @@ Utility Actions
 
 VCS Specific Actions
 --------------------
-
-.. include:: /_includes/solutions/essentials/set_l2_system_mtu.rst
-
-.. include:: /_includes/solutions/essentials/set_l3_system_mtu.rst
 
 .. include:: /_includes/solutions/essentials/configure_mgmt_virtual_ip.rst
 

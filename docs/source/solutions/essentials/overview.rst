@@ -44,14 +44,12 @@ For more information about each action, read the :doc:`workflows` guide.
 Supported Devices
 -----------------
 
-The Network Essentials Suite supports the following devices:
+The Network Essentials Suite supports VDX, SLX and MLXe device families.  However, this Tech Preview release has been explicitly tested with the following device & OS combinations only:
 
-* VDX 6740, 6940, 8770 running Network OS 6.0.2c, 7.0.1b, 7.1.0 and later
-* SLX 9850 running SLX-OS SLX-OS_16r.1.1, SLX-OS_17r.1.00 and later
-*	SLX 9540 running OS SLX-OS_17r.1.00 and later 
-*	SLX 9240 running OS SLX-OS_17s.1.00 and later
-*	SLX 9140 running OS SLX-OS_17s.1.00 and later
-
+* SLX 9850 running 17r.1.01ad
+*	SLX 9240 running 17s.1.02
+*	SLX 9140 running 17s.1.02
+* MLXe running NI 5.8f
 
 .. rubric:: What's Next?
 

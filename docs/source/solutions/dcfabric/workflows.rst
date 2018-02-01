@@ -44,6 +44,7 @@ Actions in this section enable the user to register switches into the inventory 
 
 .. include:: /_includes/solutions/dcfabric/configure_fabric_infra.rst
 
+
 Manage EVPN Tenants and Edge Ports
 ----------------------------------
 
@@ -375,3 +376,22 @@ This section includes various building block actions that are used by the workfl
 .. include:: /_includes/solutions/dcfabric/redistribute_connected_bgp_vrf.rst
 
 .. include:: /_includes/solutions/dcfabric/set_max_path_bgp.rst
+
+.. include:: /_includes/solutions/dcfabric/clear_bgp_evpn_neighbor.rst
+
+MCT Related Actions
+-------------------
+
+MCT cluster configuration is performed as part of underlay provisioning by the\
+``configure_fabric_infra`` workflow. MCT client is created as part of endpoint workflows. Users
+don't need to use these actions directly. They are listed here for reference only.
+
+MCT actions are only applicable for SLX. 
+
+.. include:: /_includes/solutions/dcfabric/configure_cluster.rst
+
+.. include:: /_includes/solutions/dcfabric/get_mct_cluster_status.rst
+
+.. include:: /_includes/solutions/dcfabric/provision_mct_cluster.rst
+
+.. include:: /_includes/solutions/dcfabric/create_mct_client.rst
