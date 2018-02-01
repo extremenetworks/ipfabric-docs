@@ -90,9 +90,10 @@ Here are the steps to configure L2 tenant on a dual ToR pair:
 
 1. Use ``dcfabric.add_multihomed_endpoint`` to configure edge ports facing end points such as a server.
    This workflow automates creation of port-channel interfaces, configuration of the port-channel
-   interface as access or trunk, creation and association of VLANs with the port-channel interfaces and MCT client configuration as well as validation of the port channel state.
+   interface as access or trunk, creation and association of VLANs with the port-channel interfaces
+   and MCT client configuration as well as validation of the port channel state.
 
-   Workflow needs to be run on both ToRs part of MCT cluster as below:
+   The workflow needs to be run on both ToRs part of MCT cluster as below:
 
    Example MCT LAG with Bridge Domain usecase (SLX):
 
