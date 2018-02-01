@@ -382,7 +382,9 @@ This section includes various building block actions that are used by the workfl
 MCT Related Actions
 -------------------
 
-MCT cluster configuration is performed as part of underlay provisioning by configure_fabric_infra workflow.  MCT client is created as part of endpoint workflows.  Users don't need to use these actions directly, however, these are listed here for a reference only.
+MCT cluster configuration is performed as part of underlay provisioning by the\
+``configure_fabric_infra`` workflow. MCT client is created as part of endpoint workflows. Users
+don't need to use these actions directly. They are listed here for reference only.
 
 MCT actions are only applicable for SLX. 
 
