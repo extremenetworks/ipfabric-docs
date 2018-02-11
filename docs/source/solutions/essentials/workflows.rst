@@ -235,6 +235,8 @@ create_vlan or delete_vlan actions.
 ACL Management
 ---------------
 
+With the addition of MLX platform support in v1.2, ACL Management actions support SLX, VDX and MLX platforms.  ACL actions provide abstrction covering common features across all these platforms.  However, ACL actions also support platform specific features as optoinal attributes.  Platform specific attributes are documented as part of the field description.  If the field description does not specify any platform restrictions, those fields are applicable to all platforms.
+
 .. include:: /_includes/solutions/essentials/create_acl.rst
 
 .. include:: /_includes/solutions/essentials/delete_acl.rst
