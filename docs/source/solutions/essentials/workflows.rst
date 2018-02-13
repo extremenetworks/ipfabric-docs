@@ -12,7 +12,7 @@ workflow. :doc:`Actions</actions>` can be manually triggered, or they can be tie
 
 Most of the actions below can be used to automate SLX or VDX switches, however, there are some
 actions that are only valid for VDX switches as outlined below. If an action is only valid for VDX,
-it will be documented in the action details, otherwise, the action is supported for both VDX and SLX.  
+it will be documented in the action details, otherwise, the action is supported for both VDX and SLX switches.  
 
 Device Registration
 -------------------
@@ -24,7 +24,7 @@ type and user options, users need to provide a different set of device credentia
 NE Automation Suite actions use primarily REST and SSH protocols to interact with SLX and VDX devices. The username and
 password are sufficient for these protocols.
 
-However, for MLXe, NE actions use SSH and SNMP protocols that requires the following additional credentials:
+However, for MLXe, NE Automation Suite actions use SSH and SNMP protocols that requires the following additional credentials:
 
 * Username and password for SSH
 * SNMP version, and the relevant SNMP credentials - Community string for SNMPv2, Username, auth-priv
@@ -36,7 +36,7 @@ For this release, Network Essentials Automation Suite has the following changes:
 - One time device registration is required for all devices including SLX, NOS and NetIron based devices. 
 - Devices must be configured with appropriate credentials prior to registering in NE. 
 
-NE includes new actions to register device credentials to register a device.
+NE Automation Suite includes new actions to register device credentials to register a device.
 
 Factory Default Credentials - if registration is not performed, the NE Automation Suite actions will use the following factory default
 credentials:
@@ -235,7 +235,7 @@ create_vlan or delete_vlan actions.
 ACL Management
 ---------------
 
-With the addition of MLX platform support in NE Automation Suite v1.2, ACL Management actions support SLX, VDX and MLX platforms. ACL actions provide abstrction covering common features across all these platforms. However, ACL actions also support platform specific features as optoinal attributes.  Platform specific attributes are documented as part of the field description. If the field description does not specify any platform restrictions, those fields are applicable to all platforms.
+With the addition of the MLX platform support in NE Automation Suite v1.2, ACL Management actions support SLX, VDX and MLX platforms. ACL actions provide abstraction covering common features across all these platforms. However, ACL actions also support platform specific features as optoinal attributes. Platform specific attributes are documented as part of the field description. If the field description does not specify any platform restrictions, those fields are applicable to all platforms.
 
 .. include:: /_includes/solutions/essentials/create_acl.rst
 
