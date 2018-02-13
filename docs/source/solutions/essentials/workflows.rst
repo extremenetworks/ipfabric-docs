@@ -1,7 +1,7 @@
 Network Essentials Actions
 ==========================
 
-This is a reference documentation for Network Essentials Actions and Workflows to automate VDX and
+This is a reference documentation for Network Essentials Automation Suite actions and workflows to automate VDX and
 SLX switches. These actions can be used as independent actions, or as part of a more complex
 workflow. :doc:`Actions</actions>` can be manually triggered, or they can be tied to
 :doc:`sensors </sensors>` using rules.
@@ -10,35 +10,35 @@ workflow. :doc:`Actions</actions>` can be manually triggered, or they can be tie
    :local:
    :depth: 1
 
-Most of the actions below can be used to automate SLX or VDX switches, however there are some
-actions that are only valid for VDX switches as outlined below. If an action is only valid for VDX
-it will be documented in the action details, otherwise the action is supported for both VDX and SLX.  
+Most of the actions below can be used to automate SLX or VDX switches, however, there are some
+actions that are only valid for VDX switches as outlined below. If an action is only valid for VDX,
+it will be documented in the action details, otherwise, the action is supported for both VDX and SLX.  
 
 Device Registration
 -------------------
-Starting with Network Essentials (NE) v1.2, the device credentials registration feature enables users
-to register device and associated credentials once, eliminating the need to provide device credentials
+Starting with Network Essentials (NE) Automation Suite v1.2, the device credentials registration feature enables users
+to register a device and its associated credentials once, eliminating the need to provide device credentials
 for each action invocation. This is supported for SLX, VDX and MLXe device families. Based on device
-type and user options, users need to provide different set of device credentials.
+type and user options, users need to provide a different set of device credentials.
 
-NE actions use primarily REST and SSH protocols to interact with SLX and VDX devices. Username and
+NE Automation Suite actions use primarily REST and SSH protocols to interact with SLX and VDX devices. The username and
 password are sufficient for these protocols.
 
-However, for MLXe, NE actions use SSH and SNMP protocols, requiring the following additional credentials:
+However, for MLXe, NE actions use SSH and SNMP protocols that requires the following additional credentials:
 
 * Username and password for SSH
-* SNMP version, and then the relevant SNMP credentials - Community string for SNMPv2, Username, auth-priv
+* SNMP version, and the relevant SNMP credentials - Community string for SNMPv2, Username, auth-priv
   protocols and the corresponding passphrases for SNMP v3.
-* Enable password for NetIron devices where privileged exec mode is password protected
+* Enable password for NetIron devices where privileged exec mode is password protected.
 
-For this release, Network Essentials has the following changes:
+For this release, Network Essentials Automation Suite has the following changes:
 
 - One time device registration is required for all devices including SLX, NOS and NetIron based devices. 
-- Devices must be configured with appropriate credentials prior to registering in NE 
+- Devices must be configured with appropriate credentials prior to registering in NE. 
 
 NE includes new actions to register device credentials to register a device.
 
-Factory Default Credentials - if registration is not performed, NE actions use the following factory default
+Factory Default Credentials - if registration is not performed, the NE Automation Suite actions will use the following factory default
 credentials:
 
   .. code-block:: bash
@@ -88,7 +88,7 @@ explicitly registered for each device. For example:
 
 Update Device registration: The ``register_device_credentials`` action can also be used to
 overwrite existing device credentials. Since this action overwrites all the existing credentials,
-the user must provide all the parameters not just the changed credentials. For example:
+the user must provide all the parameters and not just the changed credentials. For example:
 
   .. code-block:: bash
 
@@ -117,8 +117,8 @@ Both default and device-specific credentials can be removed:
     st2 run network_essentials.delete_device_credentials mgmt_ip=1.1.1.1
 
 Device credential lookup: SSH credentials may be provided as parameters to actions. This is maintained
-for backwards compatibility. Other credentials must be registered per device or group default. NE actions
-to fetch device credentials using the following sequence:
+for backwards compatibility. Other credentials must be registered per device or group default. The NE Automation Suite actions
+to fetch device credentials uses the following sequence:
 
 For SSH credentials:
 
@@ -208,18 +208,18 @@ Virtual Fabrics
 
 Virtual Fabrics are only supported on the VDX family of devices.
 
-The Virtual Fabrics (VF) feature in NOS enables Layer 2 multi-tenancy solutions that provide
-support for overlapping VLANs, VLAN scaling, and transparent VLAN services by providing both
-traditional VLAN service and a transport service. The Virtual Fabrics feature is deployed in data
+The Virtual Fabrics (VF) feature in NOS enables Layer 2 multi-tenancy solutions provides
+support for overlapping VLANs, VLAN scaling, and transparent VLAN services, by providing both
+traditional VLAN service and a transport service. The VF feature is deployed in data
 centers that require logical switch partitioning with a large number of customer VLAN domains that
-must be isolated from each other in the data plane. On the hardware platforms that support this
+must be isolated from each other in the data plane. On hardware platforms that supports the VF
 feature, such as VDX 8770 series and VDX 6740 series, the VLAN ID range is extended from the
 standard 802.1Q limit of 4095, to 8191.  
 
-Network Essentials v1.2 release includes new workflows and enhancements to the existing workflows
+Network Essentials Automation Suite v1.2 release includes new workflows and enhancements to the existing workflows
 to automate VF provisioning.  
 
-A VF operates like a regular 802.1Q VLAN, but allows the number of networks to scale beyond the
+A VF operates like a regular 802.1Q VLAN, while allowing the number of networks to scale beyond the
 standard 4K (4096) limit. Users can use enable_vf action to enable VF on a switch. After enabling
 VF, users can use existing workflows to manage VFs, for example, to create or delete a VF, use
 create_vlan or delete_vlan actions.  
@@ -235,7 +235,7 @@ create_vlan or delete_vlan actions.
 ACL Management
 ---------------
 
-With the addition of MLX platform support in v1.2, ACL Management actions support SLX, VDX and MLX platforms.  ACL actions provide abstrction covering common features across all these platforms.  However, ACL actions also support platform specific features as optoinal attributes.  Platform specific attributes are documented as part of the field description.  If the field description does not specify any platform restrictions, those fields are applicable to all platforms.
+With the addition of MLX platform support in NE Automation Suite v1.2, ACL Management actions support SLX, VDX and MLX platforms. ACL actions provide abstrction covering common features across all these platforms. However, ACL actions also support platform specific features as optoinal attributes.  Platform specific attributes are documented as part of the field description. If the field description does not specify any platform restrictions, those fields are applicable to all platforms.
 
 .. include:: /_includes/solutions/essentials/create_acl.rst
 
@@ -384,7 +384,7 @@ VCS Specific Actions
 
 Known Issues
 ------------
-This section includes the known issues in Network Essentials 1.0.0 release.  Common issues are listed in the beginning of the section and the issues specific to a particular network device platform are organized under the corresponding platform sub-section.
+This section includes the known issues in Network Essentials Automation Suite 1.0.0 release. Common issues are listed in the beginning of the section and the issues specific to a particular network device platform are organized under the corresponding platform sub-section.
 
 1. ID:277 remove_acl fails with an unknown error on port_channel interfaces
 2. ID:312 set_l3_mtu returns success when setting the MTU size back to default value but the switch is not configured with the default MTU size.
