@@ -4,10 +4,10 @@ Network Essentials
 Overview
 --------
 
-Network Essentials includes key foundational actions and workflows to automate Extreme network
+Network Essentials Automation Suite includes key foundational actions and workflows to automate Extreme Networks
 devices. This release includes automation building blocks for common networking tasks such as Edge
-Ports configuration and validation, Access Control List management. These basic building blocks are
-used by other Automation Suites. Customers can also use these Actions to create their own custom
+Ports configuration and validation, and Access Control List management. These basic building blocks are
+used by other Automation Suites. Customers can also use the Network Essentials Automation Suite Actions in creating their own custom
 workflows for their specific automation needs.
 
 Included Actions
@@ -23,13 +23,13 @@ High level summary of the Actions included in this release:
  
     - Setting MTU size at an interface level or system level
     
-    - Applying or removing an ACL on interfaces
+    - Applying or removing an ACL on the interfaces
 
   * ACL Management
   
     - Creation and deletion of L2 or L3 ACLs 
     
-    - Add or remove IPv4 or IPv6 rules to an ACL
+    - Adding or removing IPv4 or IPv6 rules to an ACL
 
   * Validation and Troubleshooting
  
@@ -37,14 +37,14 @@ High level summary of the Actions included in this release:
     
     - Ping and validate connectivity from a switch to target IPs using the specified VRF
 
-    - Find to which switch, interface a physical or virtual host is connected to using IP or MAC address of the host
+    - Find to which switch, and interface a physical or virtual host is connected to using the IP or MAC address of the host
 
 For more information about each action, read the :doc:`workflows` guide.
 
 Supported Devices
 -----------------
 
-The Network Essentials Suite supports VDX, SLX and MLXe device families.  However, this Tech Preview release has been explicitly tested with the following device & OS combinations only:
+The Network Essentials Automation Suite supports VDX, SLX and MLXe device families. However, this Tech Preview release has been explicitly tested with the following device & OS combinations only:
 
 * SLX 9850 running 17r.1.01ad
 *	SLX 9240 running 17s.1.02
