@@ -2,9 +2,9 @@ Setting Up An IP Fabric
 =======================
 
 This document provides an overview of how to use the Extreme Workflow Composer DC Fabric Automation
-Suite to automate the provisioning and the maintenance of a IP Fabric. The DC Fabric Automation
+Suite to automate the provisioning and the maintenance of an IP Fabric. The DC Fabric Automation
 Suite can automatically configure interfaces, BGP peering and related settings. This ensures
-consistent configuration across the IP fabric, with minimal effort.
+consistent configuration across the IP Fabric, with minimal effort.
 
 .. note::
     This document covers the operation of the |bwc| DC Fabric Automation Suite. For more information
@@ -12,11 +12,11 @@ consistent configuration across the IP fabric, with minimal effort.
     Configuration Guide <http://www.brocade.com/content/html/en/configuration-guide/nos-701-ipfabrics/index.html>`_
     and the `IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ 
 
-The EWC DC Fabric automation suite supports easy integration with Zero-Touch Provisioning (ZTP). It can also be used 
+The EWC DC Fabric Automation Suite supports easy integration with Zero-Touch Provisioning (ZTP). It can also be used 
 without ZTP, however, initial switch setup and registration will be a manual process.
 
-The EWC DC Fabric automation suite's default configuration comes with a set of predefined configuration parameters such 
-as ASN range, and IP address ranges which can be used to create an IP fabric. The values of these predefined configuration parameters are fixed and cannot be changed. To see the list of these predefined parameters, refer to the
+The EWC DC Fabric Automation Suite's default configuration comes with a set of predefined configuration parameters such 
+as ASN range, and IP address ranges which can be used to create an IP Fabric. The values of these predefined configuration parameters are fixed and cannot be changed. To see the list of these predefined parameters, refer to the
 :ref:`IP Fabric configuration parameters<ip_fabric_parameters>` documentation.
 
 .. figure:: ../../../_static/images/solutions/dcfabric/bwc_components.jpg
@@ -32,8 +32,8 @@ for Day-N service provisioning workflows.
 
 .. note::
     The VCS ID for switch spine and leaves should be different in both the ZTP-enabled configuration and
-    non-ZTP enabled configuration. If the VCS IDs are same, the switches will automatically form an
-    Ethernet fabric. For example, the VCS ID for spines can be 1 and for leaves can be 2.
+    non-ZTP enabled configuration. If the VCS IDs are the same, the switches will automatically form an
+    Ethernet fabric. For example, the VCS ID for spines can be 1 and for leaves it can be 2.
 
 Initial Fabric Provisioning
 ---------------------------
@@ -41,7 +41,7 @@ Initial Fabric Provisioning
 Configuring an IP Fabric with ZTP enabled
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The DC Fabric automation suite can automatically provision a VDX switch and create an IP Fabric on the switch
+The DC Fabric Automation Suite can automatically provision a VDX switch and create an IP Fabric on the switch
 if the switch has ZTP enabled and if no management IP address has been assigned to the switch.
 
 Zero Touch Provisioning (ZTP) can be used to bring up a switch with new firmware and a preset configuration automatically. The switch does not need to be configured via the console. ZTP uses a DHCP-based process known as DHCP Automatic Deployment (DAD) to handle basic configuration such as assigning a VCS ID, VCS mode, an RBridge ID, and downloading firmware.
@@ -64,7 +64,7 @@ If the switch has ZTP enabled, complete the following steps:
 
 .. note::
     Make sure switches have not been powered on. Connect the switches in a leaf-spine topology as shown in the illustration.
-    DC Fabric automation suite assigns management IP addresses to the switches, registers the switches in its 
+    DC Fabric Automation Suite assigns management IP addresses to the switches, registers the switches in its 
     database, and creates an IP Fabric.
 
 .. code:: shell
@@ -149,17 +149,17 @@ If the switch has ZTP enabled, complete the following steps:
 Configuring an IP Fabric manually or without ZTP enabled
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If the VDX switch does not have ZTP enabled or if you want to configure an IP Fabric
+If the VDX switch does not have ZTP enabled, or if you want to configure an IP Fabric
 manually, complete the following steps:
 
-    1.  Register the switch in the |bwc| database   
+    1.  Register the switch in the |bwc| database.  
     2.  Verify that the switch is registered.    
     3.  Repeat Steps 1 and 2 for each switch that will be added to the IP Fabric. 
-    4.  Execute the BGP workflow
-    5.  Review and verify the IP Fabric configuration using the the bwc dcf show config bgp command 
+    4.  Execute the BGP workflow.
+    5.  Review and verify the IP Fabric configuration using the the bwc dcf show config bgp command. 
 
 .. note::
-    To use the DC Fabric automation suite to configure an IP Fabric without ZTP enabled, your environment must meet
+    To use the DC Fabric Automation Suite to configure an IP Fabric without ZTP enabled, your environment must meet
     these prerequisites: 
 
      * The switches are physically connected in a leaf-spine topology.
@@ -173,7 +173,7 @@ manually, complete the following steps:
     has been added, the order of adding more switches will not matter as they will be automatically identified as Spine or Leaf      
     switches using LLDP.
 
-Use the DC Fabric automation suite CLI to configure an IP Fabric by completing the following steps:
+Use the DC Fabric Automation Suite CLI to configure an IP Fabric by completing the following steps:
 
 1. Register the switches in the |bwc| database by entering the ``bwc dcf inventory
    register`` command:
@@ -209,7 +209,7 @@ Use the DC Fabric automation suite CLI to configure an IP Fabric by completing t
       +--------------+-------------+------------+----------+----------------+-------+-------+---------+
 
 3. Repeat steps 1 and 2 above to register the remaining switches to be added. If some configuration parameter value changes
-   on the switch, the IP fabric can be updated:
+   on the switch, the IP Fabric can be updated:
 
 .. code:: shell
 
@@ -481,13 +481,13 @@ switch configuration, use following commands:
 IP Fabric configuration parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This DC IP Fabric automation suite has a default set of configuration parameters defined for an
-IP Fabric. The default set of configuration paramter values are fixed and cannot be changed by
+This DC IP Fabric Automation Suite has a default set of configuration parameters defined for an
+IP Fabric. The default set of configuration parameter values are fixed and cannot be changed by
 users. Some of the parameters have been changed in v1.1 of the automation suite based on
 `IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_
 recommendations. In addition some new parameters have also been added in v1.1. You can display the
 values of the parameters using the ``bwc dcf fabric config show`` CLI command.  The table below
-shows the comparison for both DC IP Fabric automation suite v1.0 and v1.1 values with the display
+shows the comparison for both DC IP Fabric Automation Suite v1.0 and v1.1 values with the display
 showing only one version.
 
 .. code:: shell
@@ -636,7 +636,7 @@ Creating a new IP Fabric with user-defined configuration parameters
 
 Setting allowas_in with value 7 added to fabric user_fab
 
-3. Check and vereify the parameter values before saving the configuration.
+3. Check and verify the parameter values before saving the configuration.
 4. Use the ``bwc dcf fabric config show fabric=<fabric_name>`` command to display the fabric
    details added in step 2.
 
