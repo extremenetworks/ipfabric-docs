@@ -400,7 +400,7 @@ variables set by editing the ``bwc-automation.py`` file.
 
 You can copy the file to the switch using ``scp`` or any other file transfer methods you prefer to
 test the script. On the switch, the script should be deployed to ``/var/config/vcs/scripts``.
-Please make sure execute bit is set for the script. To test the script manually, run
+Please make sure the execute bit is set for the script. To test the script manually, run
 
 .. code-block:: shell
 
@@ -428,7 +428,7 @@ Use the following guidelines when running ZTP and DAD:
 .. note::
 
     When running ZTP or DAD, if you use dhcp autodeployment enable, if anything is wrong
-    in the setup or configurations, DC Fabric Automation suite will display the incorrect configuration.
+    in the setup or configurations, the DC Fabric Automation Suite will display the incorrect configuration.
     While running ZTP, Extreme recommends that you run this command and see if everything is set
     up correctly. If everything is correct, you will be prompted to reboot the switch. At
     this point you can enter “no” if you want to run ZTP and then use the write erase command.
