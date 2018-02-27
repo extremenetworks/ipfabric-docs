@@ -12,7 +12,7 @@ Installation
 System requirements
 -------------------
 
-The system requirements for |bwc| with DC Fabric Automation Suite are same as the core platform requirements,
+The system requirements for |bwc| with DC Fabric Automation Suite are the same as the core platform requirements,
 except the memory requirements outlined below will overwrite the system requirements in the platform page.
 See the :doc:`system requirements documentation</install/system_requirements>` for more details.
 
@@ -28,7 +28,7 @@ See the :doc:`system requirements documentation</install/system_requirements>` f
 Installing Pre-requisites
 -------------------------
 
-Make sure you are running the latest version of ``curl``, to get the latest version follow the instructions below:
+Make sure you are running the latest version of ``curl``, to get the latest version, follow the instructions below:
 
 On Ubuntu:
 
@@ -47,18 +47,18 @@ Simple Installation
 
 To quickly install |bwc| with DC Fabric Automation Suite, obtain a license key from
 `www.extremenetworks.com/product/workflow-composer/ <https://www.extremenetworks.com/product/workflow-composer/>`_, and run the commands below, replacing
-``${EWC_LICENSE_KEY}`` with the key you received when registering for evaluation or
+``${EWC_LICENSE_KEY}`` with the key you received when registering for evaluation or when
 purchasing. These commands will install |bwc|, Network Essentials, DC Fabric Automation Suite,
-and configure all components to work together on a single host:
+and then configure all components to work together on a single host:
 
 .. code-block:: bash
 
   curl -SsL -O https://brocade.com/bwc/install/install.sh && chmod +x install.sh
   ./install.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${EWC_LICENSE_KEY}
 
-If you already have |bwc| installed, and need to add DC Fabric on top of an existing |bwc| installation,
+If you already have |bwc| installed, and need to add DC Fabric Automation Suite on top of an existing |bwc| installation,
 run the following commands, replacing ``${EWC_LICENSE_KEY}`` with the key you received when 
-registering for evaluation or purchasing:
+registering for evaluation or when purchasing:
 
 .. code-block:: bash
 
@@ -67,11 +67,11 @@ registering for evaluation or purchasing:
 
 .. note::
 
-  If you are adding this Suite to an existing |bwc| system, ensure it is running >= v2.5. If you are using an
-  older version of |bwc|, :doc:`upgrade the system </install/upgrades>` before installing this Suite.
+  If you are adding DC Fabric Automation Suite to an existing |bwc| system, ensure it is running >= v2.5. If you are using an
+  older version of |bwc|, :doc:`upgrade the system </install/upgrades>` before installing DC Fabric Automation Suite.
 
 If you have a more complex environment, or you just want to see exactly what the scripts are doing, read on.
-The rest of this document will explain how to how to manually install and configure the individual components.
+The rest of this document will explain how to manually install and configure the individual components.
 
 Custom Installation
 -------------------
@@ -82,15 +82,15 @@ Components
 The DC Fabric Automation Suite installs on top of |bwc|. It adds an inventory & topology service, and
 DC Fabric automation packs containing actions and workflows to simplify Data Center Fabric management.
 It also includes the ``bwc dcf`` CLI, and Zero Touch Provisioning scripts for integration with :doc:`ZTP <ztp_reference>`.
-This suite uses components of the :doc:`../essentials/overview` suite. If the Network Essentials suite is not
-currently installed it will be automatically installed during DC Fabric suite installation.
+This suite uses components of the :doc:`../essentials/overview` suite. If the Network Essentials Automation Suite is not
+currently installed, it will automatically be installed during DC Fabric Automation Suite installation.
 
 1. Install |bwc|
 ~~~~~~~~~~~~~~~~
 
 To install |bwc|, follow the detailed installation instructions for your Linux flavor.
 It will walk you through installing and configuring StackStorm first, and upgrade it
-to |bwc| with the license key you received when registering for evaluation or
+to |bwc| with the license key you received when registering for evaluation or when 
 purchasing. This last step will also set up the |bwc| repository on your box.
 
 * :doc:`/install/deb`
