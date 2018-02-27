@@ -2,11 +2,11 @@ DC Fabric Automation Suite
 ==========================
 
 Extreme Networks Data Center products enable customers to build cloud optimized network and network
-virtualization architectures using VDX and SLX products. Extrme supports multiple network
+virtualization architectures using VDX and SLX products. Extreme supports multiple network
 architectures for data center fabric depending on the customer application and scale requirements.
-Two main fabric architectures are “VCS Fabric” and “IP Fabric”.  VCS Fabric is a TRILL-based
+Two main fabric architectures are “VCS Fabric” and “IP Fabric”. VCS Fabric is a TRILL-based
 Layer-2 fabric, while IP Fabric is a BGP-based Layer-3 fabric, which can be used with or without
-BGP-EVPN. The section below describes most common topologies for these two network architectures.
+BGP-EVPN. The section below describes the most common topologies for these two fabric architectures.
 
 The DC Fabric Automation Suite can be used to manage both fabric architectures. Workflows include
 initial fabric configuration, tenant provisioning, edge port configuration, etc. Some workflows
@@ -68,8 +68,8 @@ See the :doc:`operation/overview` documentation for details about these workflow
 IP Fabric
 ---------
 
-IP fabric provides a Layer 3 Clos deployment architecture for data center sites. With
-IP fabric, all links in the Clos topology are Layer 3 links. A data center PoD built with IP fabrics
+IP Fabric provides a Layer 3 Clos deployment architecture for data center sites. With
+IP Fabric, all links in the Clos topology are Layer 3 links. A data center PoD built with IP fabrics
 supports dual-homing of network endpoints using multiswitch port channel interfaces formed between a
 pair of VDX switches participating in a vLAG. This pair of leaf switches is called a vLAG
 pair. For more details on the design considerations for IP fabric, refer to the
