@@ -14,14 +14,14 @@ Add a Multihomed Endpoint
 
 **Workflow Name: add_multihomed_endpoint**
 
-The add_multihomed_endpoint workflow automates the configuration of the edge ports of the IP fabric.
+The add_multihomed_endpoint workflow automates the configuration of the edge ports of the IP Fabric.
 The workflow automates creation of port-channel interfaces (LAGs and vLAGs), configuration of the
 port-channel interface as access or trunk, creation and association of VLANs with the port-channel
 interfaces as well as validation of the port channel state.
 
-This workflow must be used to automate the provisioning external layer 2 connections from the IP
-fabric. The external connections can be to endpoints in the network like physical hosts or
-network services like load balancers and firewalls or can be to other networking devices like
+This workflow must be used to automate the provisioning of external layer 2 connections from the IP
+Fabric. The external connections can be to endpoints in the network like physical hosts or
+network services like load balancers and firewalls, or can be to other networking devices like
 Core devices from the border leaf.
 
 Configure VRRPe Gateway
@@ -43,7 +43,7 @@ Add Multihomed Endpoint and Configure L3 Gateway
 The add_multihomed_endpoint_and_gw workflow automates the addition of an endpoint along with
 the provisioning of the Layer 3 gateway at leaf vLAG pair. It automates the provisioning
 of both the edge ports as well as the VRRP-E based redundant gateway. It combines the
-actions in add_multihomed_endpoint and configure_vrrpe_gw
+actions in add_multihomed_endpoint and configure_vrrpe_gw.
 
 BGP EVPN-Specific Workflows
 ---------------------------
@@ -56,8 +56,8 @@ Create L2 Tenant EVPN
 
 ** Workflow Name: create_l2_tenant_evpn**
 
-The Create_l2_tenant_evpn workflow provisions an L2 domain extension in the BGP
-EVPN based IP fabric, on the selected leaves or vLAG pairs. The workflow must be
+The create_l2_tenant_evpn workflow provisions an L2 domain extension in the BGP
+EVPN based IP Fabric, on the selected leaves or vLAG pairs. The workflow must be
 provided with the set of vLAG pairs or leaf switches between which the Layer 2
 extension is required.
 
@@ -72,16 +72,16 @@ Create L3 Tenant EVPN
 
 ** Workflow Name: create_l3_tenant_evpn**
 
-The create_l3_tenant_evpn workflow provisions the BGP EVPN based IP fabric with an L3
+The create_l3_tenant_evpn workflow provisions the BGP EVPN based IP Fabric with a L3
 tenant identified by a VRF. This workflow provisions the VRF for the Layer 3 tenant
 at the identified leaf switches or vLAG pairs, enables routing for the VRF across
-the IP fabric by enabling the VRF address family in BGP and creating L3VNI interface
-and also enables redistribution of connected routes in the VRF to BGP EVPN. The
+the IP fabric by enabling the VRF address family in BGP and creating L3VNI interface. This workflow
+also enables redistribution of connected routes in the VRF to BGP EVPN. The
 workflow must be provided with the set of vLAG pairs or leaf switches between which
 the layer 3 services for the VRF are required.
 
 After the switch is added to the fabric, this workflow can be used to create a layer 3
-VRF routing services within the BGP EVPN IP fabric. No edge port provisioning is performed
+VRF routing services within the BGP EVPN IP Fabric. No edge port provisioning is performed
 in this workflow.
 
 Add Multihomed Endpoint and Configure L3 Gateway in EVPN 
@@ -90,13 +90,13 @@ Add Multihomed Endpoint and Configure L3 Gateway in EVPN
 ** Workflow Name: add_multihomed_endpoint_and_gw_evpn**
 
 The add_multihomed_endpoint_and_gw_evpn workflow automates the configuration of the edge
-ports of the BGP EVPN based IP fabric. The workflow automates creation of
+ports of the BGP EVPN based IP Fabric. The workflow automates creation of
 port-channel interfaces (LAGs and vLAGs), configuration of the port-channel
 interface as access or trunk, creation and association of VLANs with the port-channel
 interfaces, validation of the port channel state as well as creation of layer 3
 gateway using Anycast Gateway protocol on the vLAG pair or leaf switch and
 association of the layer 3 gateways with a VRF.
 
-Once Layer 3 VRF routing services are created in a BGP EVPN based IP fabric using
+Once Layer 3 VRF routing services are created in a BGP EVPN based IP Fabric using
 Create_l3_tenant_evpn workflow, the connection of a network endpoint requiring
 layer 3 VRF routing services and a default gateway can be configured using this workflow.
