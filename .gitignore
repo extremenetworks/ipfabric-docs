@@ -10,4 +10,4 @@ build
 
 # mac
 .DS_Store
-
+.vscode
