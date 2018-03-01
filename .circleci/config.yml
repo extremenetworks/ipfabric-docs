@@ -2,7 +2,6 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
-      command: /sbin/init
+    - image: circleci/python:2.7
     steps:
     - run: git clone https://github.com/StackStorm/st2docs.git ${HOME}/st2docs && cd ${HOME}/st2docs && BWC_BRANCH=${CIRCLE_BRANCH} make bwcdocs
