@@ -1,5 +1,5 @@
 Workflow Designer
-===============
+=================
 
 Workflow Designer is an HTML5-based graphical tool for managing workflows.  Using a web browser,
 users can quickly create new workflows and modify existing ones. 
