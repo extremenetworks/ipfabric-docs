@@ -53,7 +53,7 @@ and then configure all components to work together on a single host:
 
 .. code-block:: bash
 
-  curl -SsL -O https://brocade.com/bwc/install/install.sh && chmod +x install.sh
+  curl -SsL -O https://stackstorm.com/bwc/install.sh && chmod +x install.sh
   ./install.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${EWC_LICENSE_KEY}
 
 If you already have |bwc| installed, and need to add DC Fabric Automation Suite on top of an existing |bwc| installation,
@@ -62,7 +62,7 @@ registering for evaluation or when purchasing:
 
 .. code-block:: bash
 
-  curl -SsL -O https://brocade.com/bwc/install/install-suite.sh && chmod +x install-suite.sh
+  curl -SsL -O https://stackstorm.com/bwc/install-suite.sh && chmod +x install-suite.sh
   ./install-suite.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${EWC_LICENSE_KEY}
 
 .. note::
