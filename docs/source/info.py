@@ -7,24 +7,24 @@
 
 master_doc = 'index'
 
-project = u'bwc-docs'
+project = u'ewc-docs'
 copyright = u'2018, Extreme Networks, Inc'
 author = u'Extreme Networks, Inc'
 
-base_url = u'https://bwc-docs.brocade.com/'
-htmlhelp_basename = 'bwc-doc'
+base_url = u'https://ewc-docs.extremenetworks.com/'
+htmlhelp_basename = 'ewc-doc'
 
 man_pages = [
-    ('index', 'bwc-docs', u'EWC Documentation',
+    ('index', 'ewc-docs', u'EWC Documentation',
      [u'Extreme Networks'], 1)
 ]
 latex_documents = [
-    (master_doc, 'bwc-docs.tex', u'bwc-docs Documentation',
+    (master_doc, 'ewc-docs.tex', u'EWC Documentation',
      u'Extreme Networks, Inc', 'manual'),
 ]
 texinfo_documents = [
-    (master_doc, 'bwc-docs', u'EWC Documentation',
-     u'Extreme Networks', 'bwc-docs', 'One line description of project.',
+    (master_doc, 'ewc-docs', u'EWC Documentation',
+     u'Extreme Networks', 'ewc-docs', 'Extreme Workflow Composer.',
      'Miscellaneous'),
 ]
 
@@ -33,4 +33,4 @@ github_user = 'StackStorm'
 github_repo = 'st2docs'
 github_version = 'master'
 
-theme_base_url = u'https://bwc-docs.brocade.com/'
+theme_base_url = u'https://ewc-docs.extremenetworks.com/'
