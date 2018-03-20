@@ -36,7 +36,7 @@ add_singlehomed_endpoint
                                      - ve
                                      - loopback
 
-                                     **Default**: tengigabitethernet
+                                     **Default**: ethernet
    **intf_name**                     A single port. Examples for VDX, SLX are  24/0/1 or 1/13.
 
                                      Type: ``string``
@@ -69,19 +69,19 @@ add_singlehomed_endpoint
    *vlan_desc*                       The VLAN description, where space is not allowed, use '_' instead.  Same VLAN description is configured on all the VLANs when the range is provided.
 
                                      Type: ``string``
-   *c_tag*                           A single or range of VLAN IDs <NUMBER:1-4090>. Valid only if switchport_mode is trunk.
+   *c_tag*                           A single or range of VLAN IDs <NUMBER:1-4090>. Valid only if switchport_mode is trunk. This is mandatory args in Virtual Fabric/Bridge-Domain context. In Bridge-Domain context, if `vlan_type=untagged`, configuring untagged vlans on the logical interfaces is not supported.In such cases, need not pass this args.
 
                                      Type: ``string``
    *mac_group_id*                    The MAC group ID <NUMBER:1,500>. Only applicable if switchport_mode is access and on VDX platforms.
 
                                      Type: ``array``
-   *auto_pick_lif_id*                The auto generates physical port lifs or port channel lifs.
+   *auto_pick_lif_id*                The auto generates physical port lifs or port channel lifs. Valid only on SLXOS devices.
 
                                      Type: ``boolean``
-   *lif_id*                          A single or comma seperated list of logical interface ids. Format for  the logical interfaces is <physical/port-channel number>.<number>. If `auto_pick_lif_id=True and auto_pick_port_channel_id=True`, `lif_id` need not be specified.
+   *lif_id*                          A single or comma seperated list of logical interface ids. Format for  the logical interfaces is <physical/port-channel number>.<number>. If `auto_pick_lif_id=True and auto_pick_port_channel_id=True`, `lif_id` need not be specified. Valid only on SLXOS devices.
 
                                      Type: ``string``
-   *vlan_type*                       In bridge-domain context, the VLAN tag type to be configured under logical interfaces. If vlan_type is untagged, enable `trunk_no_default_native` args.
+   *vlan_type*                       In bridge-domain context, the VLAN tag type to be configured under logical interfaces. If vlan_type is untagged, enable `trunk_no_default_native` args. If vlan_type is untagged, need not pass `c_tag` args. Valid only on SLXOS devices.
 
                                      Choose from:
 

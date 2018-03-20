@@ -42,7 +42,7 @@ create_l2_port_channel
                                      - 25000
                                      - 40000
                                      - 100000
-   **port_channel_id**               Port channel interface number.<NUMBER:1-6144>. For MLX range is <1-256>
+   **port_channel_id**               Port channel interface number.<NUMBER:1-6144>. For MLX range is <1-256>. For CER/CES range is <1-64>
 
                                      Type: ``string``
    *mode*                            The port channel type. SLX and MLX supports standard type only.

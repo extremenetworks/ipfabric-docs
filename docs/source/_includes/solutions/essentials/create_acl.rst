@@ -28,7 +28,7 @@ create_acl
                                      - mac
 
                                      **Default**: ip
-   *acl_type*                        The ACL type, extended or standard. required-by:- [SLX, NOS] accepted-by:- [SLX, NOS, MLX]
+   *acl_type*                        The ACL type, extended or standard. acl_type is required by MLX for ip/ipv6 acl. required-by:- [SLX, NOS] accepted-by:- [SLX, NOS, MLX]
 
                                      Choose from:
 

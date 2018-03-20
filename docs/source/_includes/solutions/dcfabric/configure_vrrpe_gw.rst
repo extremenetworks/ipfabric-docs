@@ -26,7 +26,7 @@ configure_vrrpe_gw
    *rbridge_id*                      This is a single Rbridge or a list of Rbridges separated by comma that needs VE/VRRPe creation.
 
                                      Type: ``array``
-   **vlan_id**                       VLAN ID
+   **vlan_id**                       A single VLAN ID. VDX range is from 1 through 8191 and 1 through 4090 for SLX.
 
                                      Type: ``string``
    *vlan_desc*                       The VLAN description without any space.
@@ -35,7 +35,7 @@ configure_vrrpe_gw
    *ve_ip*                           A single or a list of IPv4/IPv6 addresses to be configured on the VE. IPv4/subnet-length or IPv6/prefix-length, for example 10.0.0.10/22, 30.0.0.10/22.
 
                                      Type: ``array``
-   *vrid*                            The virtual group ID.
+   *vrid*                            The virtual group ID. Range for VDX & SLX is from 1 through 255.
 
                                      Type: ``string``
    **virtual_ip**                    The VRRPe virtual IP address without the netmask.
@@ -52,15 +52,14 @@ configure_vrrpe_gw
                                      - ipv6
 
                                      **Default**: ipv4
-   **intf_type**                     The interface type, VDX/SLX supports only ve and MLX supports both ve and ethernet.
+   *intf_type*                       The interface type, VDX & SLX supports only `ve`.
 
                                      Choose from:
 
-                                     - ethernet
                                      - ve
 
                                      **Default**: ve
-   **intf_name**                     The name of the interface, for ethernet slot/port, for ve, ve-id like 10,20.
+   *intf_name*                       The VE ID. This is mandatory args for SLX. VE range for SLX is from 1 through 4096 and 1 through 8191 for VDX. `intf_name` will be infered as `vlan_id` if not passed.
 
                                      Type: ``string``
    *display_show_results*            This enable/disable output display of show commands executed on the devices.

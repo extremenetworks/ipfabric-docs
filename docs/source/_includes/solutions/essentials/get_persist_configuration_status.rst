@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-delete_l2_port_channel
-~~~~~~~~~~~~~~~~~~~~~~
+get_persist_configuration_status
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: This deletes the port channel interface and deletes the port chanel configuration from all the member ports. 
+**Description**: This action fetches the status of persist configuration operation on the SLX devices. 
 
 .. table::
 
@@ -16,11 +16,15 @@ delete_l2_port_channel
    *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
+
+                                     **Default**: admin
    *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **port_channel_id**               The Port-channel interface number <NUMBER:1-6144>. For MLX, the range is <1-256>.For CER/CES range is <1-64>
 
-                                     Type: ``integer``
+                                     **Default**: password
+   *session_id*                      Session id of the persist operation.
+
+                                     Type: ``string``
    ================================  ======================================================================
 

@@ -1,26 +1,33 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-delete_l2_port_channel
-~~~~~~~~~~~~~~~~~~~~~~
+persist_fabric_configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: This deletes the port channel interface and deletes the port chanel configuration from all the member ports. 
+**Description**: This action saves the running/default configurations to startup configurations on the SLX devices. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       The management IP address of the target device.
+   *fabric*                          The name of the IP fabric.
 
                                      Type: ``string``
+
+                                     **Default**: default
    *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
    *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **port_channel_id**               The Port-channel interface number <NUMBER:1-6144>. For MLX, the range is <1-256>.For CER/CES range is <1-64>
+   *source_name*                     Save the running/default configurations to startup configurations. Applicable to SLX9840, SLX9850, SLX9140, SLX9240.
 
-                                     Type: ``integer``
+                                     Choose from:
+
+                                     - running-config
+                                     - default-config
+
+                                     **Default**: running-config
    ================================  ======================================================================
 

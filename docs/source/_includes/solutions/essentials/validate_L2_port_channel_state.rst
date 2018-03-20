@@ -19,7 +19,7 @@ validate_L2_port_channel_state
    *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **port_channel_id**               The Port channel interface number. <NUMBER:1-6144>. For MLX range is <1-256>.
+   **port_channel_id**               The Port channel interface number. <NUMBER:1-6144>. For MLX range is <1-256>.For CER/CES range is <1-64>
 
                                      Type: ``integer``
    ================================  ======================================================================

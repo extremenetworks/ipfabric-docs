@@ -31,7 +31,7 @@ delete_vrrpe
    *rbridge_id*                      The RBridge IDs of the VDX switches, for example 51 or 51,52. This parameter is only applicable for VDX switches.
 
                                      Type: ``array``
-   *vrrpe_group*                     The virtual extender group ID
+   **vrrpe_group**                   The virtual extender group ID
 
                                      Type: ``string``
    *ip_version*                      The IPv4 or IPv6 group.

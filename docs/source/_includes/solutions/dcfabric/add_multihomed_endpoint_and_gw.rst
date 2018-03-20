@@ -39,7 +39,7 @@ add_multihomed_endpoint_and_gw
                                      - VE
                                      - loopback
 
-                                     **Default**: tengigabitethernet
+                                     **Default**: ethernet
    **intf_name**                     a single or a list of ports that are members of the port channel. Examples for VDX, SLX are  24/0/1, 24/0/2 or 24/1, 24/2.
 
                                      Type: ``array``
@@ -86,13 +86,13 @@ add_multihomed_endpoint_and_gw
                                      - modeon
 
                                      **Default**: active
-   *auto_pick_network_id*            For service or transport of VFs in a Virtual Fabrics context, if selected, workflow will pick the lowest available Single/Range of VF IDs available on the switch, valid range is from 4096 through 8191. For Virtual Fabric/Bridge-Domain and ctag classification , use auto_pick_network_id or network_id. Valid only on VDX platform.
+   *auto_pick_network_id*            For service or transport of VFs in a Virtual Fabrics context, if selected, workflow will pick the lowest available VF ID available on the switch, valid range is from 4096 through 8191. For Virtual Fabric and ctag classification , use auto_pick_network_id or network_id. Valid only on VDX platform.
 
                                      Type: ``boolean``
-   *network_id*                      If auto_pick_network_id=False, Single or range of VLANs to be configured on the interface. For service or transport VFs in a Virtual Fabrics context, valid range is from 4096 through 8191. Valid only on VDX platform.
+   *network_id*                      For service or transport of VFs in a Virtual Fabrics context, provide single Network ID. Valid range is from 4096 through 8191. Valid only on VDX platform.
 
                                      Type: ``string``
-   *vlan_id*                         Single or range of VLANs to be configured on the interface. For 802.1Q VLANs ID must be below 4096. Valid for vlan_id only use cases. For Virtual Fabric and ctag classification , use auto_pick_network_id or network_id.
+   *vlan_id*                         Single VLAN ID . For 802.1Q VLANs ID must be below 4096. Valid for vlan_id only use cases. For Virtual Fabric and ctag classification , use auto_pick_network_id or network_id.
 
                                      Type: ``string``
    *vlan_desc*                       The VLAN description, space is not allowed, use '_' instead.
@@ -104,13 +104,16 @@ add_multihomed_endpoint_and_gw
    *mac_group_id*                    The MAC group ID <NUMBER:1,500>. Only applicable if switchport_mode is access.
 
                                      Type: ``array``
-   *ve_ip*                           This is a single or list of IPv4/IPv6 addresses to be configured on the VE. IPv4/subnet-length or IPv6/prefix-length, for example 10.0.0.10/22, 30.0.0.10/22.
-
-                                     Type: ``array``
-   *vrid*                            The virtual group ID.
+   *ve_id*                           The VE ID. Valid value for SLX is from 1 through 4096 and 1 through 8191 for VDX. This is mandatory args for SLXOS devices. If ve_id is not passed for VDX devices , `vlan_id/network_id` will be assumed as `ve_id`. If ve_id is passed for VDX devices, ve_id must be same as `vlan_id/network_id`.
 
                                      Type: ``string``
-   *virtual_ip*                      The VRRPe virtual IP address without the netmask.
+   **ve_ip**                         This is a single or list of IPv4/IPv6 addresses to be configured on the VE. IPv4/subnet-length or IPv6/prefix-length, for example 10.0.0.10/22, 30.0.0.10/22.
+
+                                     Type: ``array``
+   **vrid**                          The virtual group ID. Range for VDX & SLX is from 1 through 255.
+
+                                     Type: ``string``
+   **virtual_ip**                    The VRRPe virtual IP address without the netmask.
 
                                      Type: ``string``
    *vrf_name*                        The VRF name. For example vrf32 or 32.

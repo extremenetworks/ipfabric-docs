@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-create_vlan
-~~~~~~~~~~~
+delete_vni_mapping
+~~~~~~~~~~~~~~~~~~
 
-**Description**: This creates a single or range of VLANs on a switch. 
+**Description**: This action will delete the VLAN/Bridge-Domain to VNI and auto mapping under an overlay gateway. 
 
 .. table::
 
@@ -16,13 +16,20 @@ create_vlan
    *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
+
+                                     **Default**: admin
    *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **vlan_id**                       A single VLAN ID or a range of VLAN IDs. For example, 21 or 21-26 or 10, 13-14, 89-91. For NI platform a maximum of 512 VLAN's are allowed at a time for e.g. 1-512 or 9, 10-520.
+
+                                     **Default**: password
+   *auto*                            If set to True, this will delete VLAN to VNI auto mapping under the overlay gateway.
+
+                                     Type: ``boolean``
+   *vlan_id*                         A single or a range of VLAN IDs, e.g. 10 or 10-15 or 10,12,13-15. For 802.1Q VLANs ID must be below 4096, for service or transport VFs in a Virtual Fabrics context, and valid range is from 4096 through 8191.
 
                                      Type: ``string``
-   *vlan_desc*                       The VLAN description. The same description is used when creating multiple VLANs.
+   *bridge_domain_id*                A single or range of Bridge-Domain IDs, e.g. 10 or 10-15 or 10,12,13-15. Valid values are from 1 through 4096 on SLX9140,SLX9850,SLX9540 and from 1 through 3566 on SLX9240.
 
                                      Type: ``string``
    ================================  ======================================================================

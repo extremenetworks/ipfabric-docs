@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-delete_l2_port_channel
-~~~~~~~~~~~~~~~~~~~~~~
+get_acl_rules
+~~~~~~~~~~~~~
 
-**Description**: This deletes the port channel interface and deletes the port chanel configuration from all the member ports. 
+**Description**: This gets rules configured for the access-list. 
 
 .. table::
 
@@ -19,8 +19,13 @@ delete_l2_port_channel
    *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **port_channel_id**               The Port-channel interface number <NUMBER:1-6144>. For MLX, the range is <1-256>.For CER/CES range is <1-64>
+   **acl_name**                      The rules configured for this ACL.
 
-                                     Type: ``integer``
+                                     Type: ``string``
+   *seq_id*                          The sequence numbers of rules to be deleted { seq id | all | comman and hyphen separated seq ids } Example:- { 10 | all | 1,2,3-10,20,35-  } Note:- "-" separated values will look for seq_ids inthe range including the values and 35- is equal to starting from 35 delete all configured sequence ids, including 35.
+
+                                     Type: ``string``
+
+                                     **Default**: all
    ================================  ======================================================================
 
