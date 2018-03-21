@@ -374,6 +374,9 @@ Utility Actions
 
 .. include:: /_includes/solutions/essentials/get_switch_details.rst
 
+.. include:: /_includes/solutions/essentials/persist_configuration.rst
+
+.. include:: /_includes/solutions/essentials/get_persist_configuration_status.rst
 
 VCS Specific Actions
 --------------------
