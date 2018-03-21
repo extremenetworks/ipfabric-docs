@@ -44,6 +44,7 @@ Actions in this section enable the user to register switches into the inventory 
 
 .. include:: /_includes/solutions/dcfabric/configure_fabric_infra.rst
 
+.. include:: /_includes/solutions/dcfabric/persist_fabric_configuration.rst
 
 Manage EVPN Tenants and Edge Ports
 ----------------------------------
@@ -346,6 +347,8 @@ NOTE: If a switch has been deployed using DC Fabric Automation Suite (version < 
 .. include:: /_includes/solutions/dcfabric/configure_vlan_vni_mapping.rst
 
 .. include:: /_includes/solutions/dcfabric/delete_vlan_vni_mapping.rst
+
+.. include:: /_includes/solutions/dcfabric/delete_vni_mapping.rst
 
 Actions
 -------
