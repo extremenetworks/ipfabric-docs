@@ -14,6 +14,14 @@ Most of the actions below can be used to automate SLX or VDX switches, however, 
 actions that are only valid for VDX switches as outlined below. If an action is only valid for VDX,
 it will be documented in the action details, otherwise, the action is supported for both VDX and SLX switches.  
 
+Prerequisites for Automation
+----------------------------
+For automation actions to work properly, following requirements must be met:
+* Device firmware is supported by the automation suite
+* Device user credentials have Admin privileges
+* SSH enabled on the device
+* Ports 22 (SSH) and 443 (HTTPS) or 80 (HTTP) not blocked between EWC & the device 
+
 Device Registration
 -------------------
 Starting with Network Essentials (NE) Automation Suite v1.2, the device credentials registration feature enables users
