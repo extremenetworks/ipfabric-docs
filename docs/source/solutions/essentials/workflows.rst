@@ -1,8 +1,8 @@
 Network Essentials Actions
 ==========================
 
-This is a reference documentation for Network Essentials Automation Suite actions and workflows to automate VDX and
-SLX switches. These actions can be used as independent actions, or as part of a more complex
+This is a reference documentation for Network Essentials Automation Suite actions and workflows to automate SLX, VDX and
+MLXe switches. These actions can be used as independent actions, or as part of a more complex
 workflow. :doc:`Actions</actions>` can be manually triggered, or they can be tied to
 :doc:`sensors </sensors>` using rules.
 
@@ -10,31 +10,52 @@ workflow. :doc:`Actions</actions>` can be manually triggered, or they can be tie
    :local:
    :depth: 1
 
-Most of the actions below can be used to automate SLX or VDX switches, however, there are some
-actions that are only valid for VDX switches as outlined below. If an action is only valid for VDX,
-it will be documented in the action details, otherwise, the action is supported for both VDX and SLX switches.  
+Most of the actions below can be used to automate SLX, VDX and MLXe platforms, however, if an action is only valid for a particular platform, 
+it will be documented in the action details, otherwise, the action is supported for all platforms.  
+
+Pre-requisites for Automation
+-----------------------------
+For automation actions to work properly, following requirements must be met:
+
+* Device firmware is supported by the automation suite
+* SSH enabled on the device
+* Ports 22 (SSH) and 443 (HTTPS) or 80 (HTTP) not blocked between automation & the device 
+* Devices must be configured with appropriate credentials prior to registering in NE
+* SSH user credentials must have Admin privileges on the device
+* For MLXe devices, SNMP server must be enabled and SNMPv2 or SNMPv3 credentials must have read/write access to all OIDs/MIBs
+
+Pre-requisites for HTTPS
+~~~~~~~~~~~~~~~~~~~~~~~~
+If HTTPS is enabled on the device, REST APIs will use HTTPS.  Following set up must be done on the automation server prior to interacting with a device over HTTPS:
+
+1. Enable HTTPS on SLX and/or VDX devices.
+
+* SLX-R Security Guide: https://documentation.extremenetworks.com/slxos/SW/17rx/17.2.01/slxr-17.2.01-securityguide.pdf
+* SLX-S Security Guide: https://documentation.extremenetworks.com/slxos/SW/17sx/53-1005318-01_SecuritySlxOS_17s.1.02_CG_Sep2017.pdf
+* VDX Security Guide: https://documentation.extremenetworks.com/networkos/SW/73x/nos-730-securityguide.pdf
+
+  - Ensure SLX and/or VDX device clocks are synchronized with the Certificate Authority's clock (date/time). 
+  - Use the mgmt_ip address of the device when enrolling the common name for the Certificate Signing Request.
+
+
+  .. code-block:: bash
+
+    device# crypto ca enroll t1 country US state CA locality SJ organization Extreme orgunit SFI common <mgmt_ip of device> protocol SCP host 10.70.12.102 user fvt directory /users/home/crypto
+    Password: ********** 
+
+2. Copy trusted certificate authority's certificate to /etc/pyswitchlib/cacert.pem location on automation server.  If multiple certificate authorities are used, then concatenate the certificates to the same location on automation server.
 
 Device Registration
 -------------------
-Starting with Network Essentials (NE) Automation Suite v1.2, the device credentials registration feature enables users
-to register a device and its associated credentials once, eliminating the need to provide device credentials
-for each action invocation. This is supported for SLX, VDX and MLXe device families. Based on device
-type and user options, users need to provide a different set of device credentials.
+Starting with Network Essentials (NE) Automation Suite v1.2, the device credentials registration feature enables users to register a device and its associated credentials once, eliminating the need to provide device credentials for each action invocation. One time device registration is required for all device types, however, based on device type and user options, users may need to provide a different set of device credentials.
 
 NE Automation Suite actions use primarily REST and SSH protocols to interact with SLX and VDX devices. The username and
-password are sufficient for these protocols.
-
-However, for MLXe, NE Automation Suite actions use SSH and SNMP protocols that requires the following additional credentials:
+password are sufficient for these protocols.  For MLXe, in addition to SSH, actions use SNMP protocols that require the following additional credentials:
 
 * Username and password for SSH
 * SNMP version, and the relevant SNMP credentials - Community string for SNMPv2, Username, auth-priv
   protocols and the corresponding passphrases for SNMP v3.
 * Enable password for NetIron devices where privileged exec mode is password protected.
-
-For this release, Network Essentials Automation Suite has the following changes:
-
-- One time device registration is required for all devices including SLX, NOS and NetIron based devices. 
-- Devices must be configured with appropriate credentials prior to registering in NE. 
 
 NE Automation Suite includes new actions to register device credentials to register a device.
 
@@ -52,39 +73,31 @@ For SLX and NOS devices SNMP credentials are not applicable and can be ignored.
 
 .. include:: /_includes/solutions/essentials/register_device_credentials.rst
 
-Default Credentials: In many environments, customers use common device credentials for most
-devices. Users can register these common credentials as default credentials, rather than
-registering each device separately. This example shows how to set default credentials
-for a mix of platforms:
+Prior to using NE actions, all devices must be registered with appropriate credentials, see examples below:
 
-  .. code-block:: bash
-
-    st2 run network_essentials.register_device_credentials username=admin password=password snmp_version=v2 snmp_v2c=public enable_password=password
-
-    or
-
-    st2 run network_essentials.register_device_credentials mgmt_ip=USER.DEFAULT username=admin password=password snmp_version=v2 snmp_v2c=public enable_password=password
-
-Device-Specific Credentials: In environments where devices have unique credentials, they must be
-explicitly registered for each device. For example:
-
-- Device specific registration with SNMPv2 credential and enable password for NetIron:
+- Registering SNMPv2 credentials and enable password for NetIron device:
 
   .. code-block:: bash
 
     st2 run network_essentials.register_device_credentials mgmt_ip=10.24.85.107 username=admin password=admin snmp_version=v2 snmp_v2c=public enable_password=password
 
-- Device specific registration with SNMPv3 credential and enable password for NetIron:
+- Registering SNMPv3 credentials and enable password for NetIron device:
 
   .. code-block:: bash
 
     st2 run network_essentials.register_device_credentials mgmt_ip=10.24.85.107 username=admin password=password snmp_version=v3 snmpv3_user=v3user4 snmpv3_auth=md5 snmpv3_priv=aes auth_pass="md5 user" priv_pass="test aes user"
 
-- Device specific registration for SLX and NOS:
+- Registering for SLX or NOS device:
 
   .. code-block:: bash
 
-    st2 run network_essentials.register_device_credentials mgmt_ip=10.24.86.96  username=admin password=admin
+    st2 run network_essentials.register_device_credentials mgmt_ip=10.24.85.107 username=admin password=admin
+
+- If HTTPS is enabled on SLX or NOS device:
+
+  .. code-block:: bash
+
+    st2 run network_essentials.register_device_credentials mgmt_ip=10.24.81.125 username=admin password=password rest_protocol=https
 
 Update Device registration: The ``register_device_credentials`` action can also be used to
 overwrite existing device credentials. Since this action overwrites all the existing credentials,
@@ -113,26 +126,18 @@ Both default and device-specific credentials can be removed:
 
   .. code-block:: bash
 
-    st2 run network_essentials.delete_device_credentials mgmt_ip=USER.DEFAULT (or)
     st2 run network_essentials.delete_device_credentials mgmt_ip=1.1.1.1
 
-Device credential lookup: SSH credentials may be provided as parameters to actions. This is maintained
-for backwards compatibility. Other credentials must be registered per device or group default. The NE Automation Suite actions
-to fetch device credentials uses the following sequence:
+Device credential lookup: SSH credentials can still come as parameters from actions (which is maintained for backward compatibility).  Other credentials are expected to be registered per device.  The NE Automation Suite actions fetch device credentials using the following sequence:
 
 For SSH credentials:
 
 - Check if username and password parameter comes from action (or)
-- Lookup st2 store for device specific username and password (or)
-- Lookup st2 store for group default username and password (or)
-- Code default value (admin/password)
+- Lookup st2 store for device specific username and password
 
 For SNMP credentials:
 
-- Check if version is v2 or v3 then lookup credentials in the following order:
-- Lookup st2 store for device specific SNMP credentials (or)
-- Lookup st2 store for group default SNMP credentials (or)
-- Code default value [SNMPV2 community string “public”]
+- Check if version is v2 or v3 then lookup credentials in the st2 store for device specific SNMP credentials
 
 Edge Ports Configuration
 ------------------------
