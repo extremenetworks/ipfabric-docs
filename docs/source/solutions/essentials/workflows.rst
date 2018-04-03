@@ -59,16 +59,6 @@ password are sufficient for these protocols.  For MLXe, in addition to SSH, acti
 
 NE Automation Suite includes new actions to register device credentials to register a device.
 
-Factory Default Credentials - if registration is not performed, the NE Automation Suite actions will use the following factory default
-credentials:
-
-  .. code-block:: bash
-
-    SSH username: ‘admin’
-    SSH password: ‘password’
-    SNMP version:  ‘v2’
-    SNMPv2_community: ‘public’
-
 For SLX and NOS devices SNMP credentials are not applicable and can be ignored.
 
 .. include:: /_includes/solutions/essentials/register_device_credentials.rst
