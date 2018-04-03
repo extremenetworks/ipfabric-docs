@@ -30,9 +30,9 @@ If HTTPS is enabled on the device, REST APIs will use HTTPS.  Following set up m
 
 1. Enable HTTPS on SLX and/or VDX devices.
 
-  * SLX-R Security Guide: https://documentation.extremenetworks.com/slxos/SW/17rx/17.2.01/slxr-17.2.01-securityguide.pdf
-  * SLX-S Security Guide: https://documentation.extremenetworks.com/slxos/SW/17sx/53-1005318-01_SecuritySlxOS_17s.1.02_CG_Sep2017.pdf
-  * VDX Security Guide: https://documentation.extremenetworks.com/networkos/SW/73x/nos-730-securityguide.pdf
+* SLX-R Security Guide: https://documentation.extremenetworks.com/slxos/SW/17rx/17.2.01/slxr-17.2.01-securityguide.pdf
+* SLX-S Security Guide: https://documentation.extremenetworks.com/slxos/SW/17sx/53-1005318-01_SecuritySlxOS_17s.1.02_CG_Sep2017.pdf
+* VDX Security Guide: https://documentation.extremenetworks.com/networkos/SW/73x/nos-730-securityguide.pdf
 
   - Ensure SLX and/or VDX device clocks are insync with the Certificate Authority's datetime. 
   - Use the mgmt_ip address of the device when enrolling the common name of the Certificate Signing Request.
@@ -42,7 +42,7 @@ If HTTPS is enabled on the device, REST APIs will use HTTPS.  Following set up m
     device# crypto ca enroll t1 country US state CA locality SJ organization Extreme orgunit SFI common <mgmt_ip of device> protocol SCP host 10.70.12.102 user fvt directory /users/home/crypto
     Password: ********** 
 
-2.2. Copy trusted certificate authority's certificate to /etc/pyswitchlib/cacert.pem location on automation server.  If multiple certificate authorities are used, then concatenate the certificates to the same location on automation server.
+2. Copy trusted certificate authority's certificate to /etc/pyswitchlib/cacert.pem location on automation server.  If multiple certificate authorities are used, then concatenate the certificates to the same location on automation server.
 
 Device Registration
 -------------------
