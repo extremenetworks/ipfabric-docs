@@ -27,7 +27,7 @@ Pre-requisites for HTTPS
 ~~~~~~~~~~~~~~~~~~~~~~~~
 If HTTPS is enabled on the device, REST APIs will use HTTPS.  Following set up must be done on the automation server prior to interacting with a device over HTTPS:
 
-* Copy device certificate Chain to /etc/pyswitchlib/cacert.pem location on automation server.
+* Copy the trusted certificate authority's certificate to /etc/pyswitchlib/cacert.pem location on automation server.  If multiple certificate authorities are used, then concatenate the certificates to the same location on the automation server.
 
 Device Registration
 -------------------
