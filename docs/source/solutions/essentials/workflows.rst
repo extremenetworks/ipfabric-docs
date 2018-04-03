@@ -57,13 +57,14 @@ password are sufficient for these protocols.  For MLXe, in addition to SSH, acti
   protocols and the corresponding passphrases for SNMP v3.
 * Enable password for NetIron devices where privileged exec mode is password protected.
 
-NE Automation Suite includes new actions to register device credentials to register a device.
 
 For SLX and NOS devices SNMP credentials are not applicable and can be ignored.
 
 .. include:: /_includes/solutions/essentials/register_device_credentials.rst
 
 Prior to using NE actions, all devices must be registered with appropriate credentials, see examples below:
+
+NE Automation Suite includes new actions to register device credentials to register a device.
 
 - Registering SNMPv2 credentials and enable password for NetIron device:
 
