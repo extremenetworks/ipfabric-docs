@@ -34,8 +34,9 @@ If HTTPS is enabled on the device, REST APIs will use HTTPS.  Following set up m
 * SLX-S Security Guide: https://documentation.extremenetworks.com/slxos/SW/17sx/53-1005318-01_SecuritySlxOS_17s.1.02_CG_Sep2017.pdf
 * VDX Security Guide: https://documentation.extremenetworks.com/networkos/SW/73x/nos-730-securityguide.pdf
 
-  - Ensure SLX and/or VDX device clocks are insync with the Certificate Authority's datetime. 
-  - Use the mgmt_ip address of the device when enrolling the common name of the Certificate Signing Request.
+  - Ensure SLX and/or VDX device clocks are synchronized with the Certificate Authority's clock (date/time). 
+  - Use the mgmt_ip address of the device when enrolling the common name for the Certificate Signing Request.
+
 
   .. code-block:: bash
 
