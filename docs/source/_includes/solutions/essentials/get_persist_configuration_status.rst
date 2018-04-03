@@ -23,7 +23,7 @@ get_persist_configuration_status
                                      Type: ``string``
 
                                      **Default**: password
-   *session_id*                      Session id of the persist operation.
+   **session_id**                    Session id of the persist operation.
 
                                      Type: ``string``
    ================================  ======================================================================
