@@ -33,7 +33,7 @@ add_multihomed_endpoint
                                      - fortygigabitethernet
                                      - hundredgigabitethernet
 
-                                     **Default**: tengigabitethernet
+                                     **Default**: ethernet
    **ports**                         A single or a list of ports that are members of the port channel. Examples for VDX, SLX are  24/0/1, 24/0/2 or 1/13, 1/14.
 
                                      Type: ``array``
@@ -100,16 +100,16 @@ add_multihomed_endpoint
    *vlan_desc*                       The VLAN description, space is not allowed, use '_' instead. Same VLAN description is configured on all the VLANs when the range is provided.
 
                                      Type: ``string``
-   *c_tag*                           A single or range of VLAN IDs <NUMBER:1-4090>. Valid only if switchport_mode is trunk and mandatory in Virtual Fabric/Bridge-Domain context.
+   *c_tag*                           A single or range of VLAN IDs <NUMBER:1-4090>. Valid only if switchport_mode is trunk. This is mandatory args in Virtual Fabric/Bridge-Domain context. In Bridge-Domain context, if `vlan_type=untagged`, configuring untagged vlans on the logical interfaces is not supported.In such cases, need not pass this args.
 
                                      Type: ``string``
-   *auto_pick_lif_id*                This auto generates physical/port-channel logical interfaces.
+   *auto_pick_lif_id*                This auto generates physical/port-channel logical interfaces. Valid only on SLXOS devices.
 
                                      Type: ``boolean``
-   *lif_id*                          A single or comma seperated list of logical interface ids. Format for the logical interfaces is <physical/port-channel number>.<number>. If `auto_pick_lif_id=True and auto_pick_port_channel_id=True`, `lif_id` need not be specified.
+   *lif_id*                          A single or comma seperated list of logical interface ids. Format for the logical interfaces is <physical/port-channel number>.<number>. If `auto_pick_lif_id=True and auto_pick_port_channel_id=True`, `lif_id` need not be specified. Valid only on SLXOS devices.
 
                                      Type: ``string``
-   *vlan_type*                       In bridge-domain context, the VLAN tag type to be configured under logical interfaces. If vlan_type is untagged, enable `trunk_no_default_native` args.
+   *vlan_type*                       In bridge-domain context, the VLAN tag type to be configured under logical interfaces. If vlan_type is untagged, enable `trunk_no_default_native` args. If vlan_type is untagged, need not pass `c_tag` args. Valid only on SLXOS devices.
 
                                      Choose from:
 
@@ -120,10 +120,10 @@ add_multihomed_endpoint
    *vni*                             This specify a single or a range of VNI <NUMBER:1-16777215> mappings for VLANs, for example 10 or 10-15 or 10,12,13-15. When using ranges, the number of values in a VLAN ID range must correspond to the number of values in a VNI range.
 
                                      Type: ``string``
-   *mct_client_name*                 Specify Cluster Client name for Node Specific configuration. Both `mct_client_name` and `mct_client_id` are mandatory args for mct client creation.
+   *mct_client_name*                 Specify Cluster Client name for Node Specific configuration. Both `mct_client_name` and `mct_client_id` are mandatory args for mct client creation. Valid only on SLXOS devices.
 
                                      Type: ``string``
-   *mct_client_id*                   The ID for the Cluster Client. Valid IDs are 1 - 512. Both `mct_client_name` and `mct_client_id` are mandatory args for mct client creation.
+   *mct_client_id*                   The ID for the Cluster Client. Valid IDs are 1 - 512. Both `mct_client_name` and `mct_client_id` are mandatory args for mct client creation. Valid only on SLXOS devices.
 
                                      Type: ``integer``
    *display_show_results*            This enable or disable execution of show commands on the device to display the output.

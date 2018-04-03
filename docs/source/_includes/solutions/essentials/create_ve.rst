@@ -28,7 +28,7 @@ create_ve
    *ve_id*                           The VE interface ID. For NOS range is 1-4090, MLX range is 1-255, SLX range is 1-4096. For MLX, this is a mandatory field.
 
                                      Type: ``string``
-   *ip_address*                      A single or list of IPv4/IPv6 addresses to be configured on the VE. IPv4/subnet-length or IPv6/prefix-length, for example 10.0.0.10/22, 30.0.0.10/22.
+   *ip_address*                      A single or list of IPv4/IPv6 addresses to be configured on the VE. IPv4/subnet-length or IPv6/prefix-length, for example 10.0.0.10/22, 30.0.0.10/22. List of IP addresses is valid only in VDX Cluster Nodes.
 
                                      Type: ``array``
    *vrf_name*                        VRF name. For example vrf32 or 32

@@ -34,7 +34,7 @@ add_multihomed_endpoint_and_gw_evpn
                                      - hundredgigabitethernet
                                      - port_channel
 
-                                     **Default**: tengigabitethernet
+                                     **Default**: ethernet
    *port_speed*                      The configurable port speed. Valid if switchport is `trunk` or `trunk_no_default_active`.
 
                                      Choose from:
@@ -101,10 +101,13 @@ add_multihomed_endpoint_and_gw_evpn
    *vlan_id*                         This is a single or a range of VLANs to be configured on the interface. For 802.1Q VLANs ID must be below 4096. Valid for vlan_id only use cases. For Virtual Fabric/Bridge-Domain and ctag classification, use auto_pick_network_id or network_id.
 
                                      Type: ``string``
+   *ve_id*                           This is a single or a range of VE IDs. Valid values for SLXOS is from 1 through 4096 and 1 through 8191 for VDX. This is mandatory args for SLXOS devices. If ve_id is not passed for VDX devices , `vlan_id/network_id` will be assumed as `ve_id`. If ve_id is passed for VDX devices, ve_id must be same as `vlan_id/network_id`.
+
+                                     Type: ``string``
    *vlan_desc*                       The VLAN description, space is not allowed, use '_' instead.
 
                                      Type: ``string``
-   *vlan_type*                       In bridge-domain context, the VLAN tag type to be configured under logical interfaces. If vlan_type is untagged, enable `trunk_no_default_native` args.
+   *vlan_type*                       In bridge-domain context, the VLAN tag type to be configured under logical interfaces. If vlan_type is untagged, enable `trunk_no_default_native` args. If vlan_type is untagged, need not pass `c_tag` args. Valid only on SLXOS devices.
 
                                      Choose from:
 
@@ -112,16 +115,16 @@ add_multihomed_endpoint_and_gw_evpn
                                      - tagged
 
                                      **Default**: tagged
-   *c_tag*                           A single or a range of VLAN IDs <NUMBER:1-4090>. Valid only if switchport_mode is trunk.
+   *c_tag*                           A single or a range of VLAN IDs <NUMBER:1-4090>. Valid only if switchport_mode is trunk. This is mandatory args in Virtual Fabric/Bridge-Domain context. In Bridge-Domain context, if `vlan_type=untagged`, configuring untagged vlans on the logical interfaces is not supported.In such cases, need not pass this args.
 
                                      Type: ``string``
-   *auto_pick_lif_id*                This auto generates physical port lifs or port channel lifs.
+   *auto_pick_lif_id*                This auto generates physical port lifs or port channel lifs. Valid only on SLXOS devices.
 
                                      Type: ``boolean``
-   *lif_id*                          A single or comma seperated list of logical interface ids. Format for the logical interfaces is <physical/port-channel number>.<number>. If `auto_pick_lif_id=True and auto_pick_port_channel_id=True`, `lif_id` need not be specified.
+   *lif_id*                          A single or comma seperated list of logical interface ids. Format for the logical interfaces is <physical/port-channel number>.<number>. If `auto_pick_lif_id=True and auto_pick_port_channel_id=True`, `lif_id` need not be specified. Valid only on SLXOS devices.
 
                                      Type: ``string``
-   *vni*                             This specifies the VNI mapping for the VLAN. <NUMBER:1-16777215>.
+   *vni*                             This specify a single or a range of VNI <NUMBER:1-16777215> mappings for VLANs, for example 10 or 10-15 or 10,12,13-15. When using ranges, the number of values in a VLAN ID/c_tag range must correspond to the number of values in a VNI range.
 
                                      Type: ``string``
    *mac_group_id*                    The MAC group ID <NUMBER:1,500>. Only applicable if switchport_mode is access and on VDX platforms.
@@ -130,7 +133,10 @@ add_multihomed_endpoint_and_gw_evpn
    **vrf_name**                      VRF name
 
                                      Type: ``string``
-   **anycast_address**               This is a single or list of IPv4 or IPv6 address with subnet/prefix length separated by comma. e.g. 10.10.9.10/22 or 10.10.9.10/22,11.11.10.9/22.
+   *ipv4_anycast_address*            This is a single or list of IPv4 with subnet/prefix length separated by comma. e.g. 10.10.9.10/22 or 10.10.9.10/22,11.11.10.9/22.
+
+                                     Type: ``string``
+   *ipv6_anycast_address*            This is a single or list of IPv6 with subnet/prefix length separated by comma. e.g. fdf8:10:0:65::254/96 or fdf8:10:0:65::254/96,fde8:10:0:65::251/96 Valid only on SLX9140.
 
                                      Type: ``string``
    **arp_aging_type**                The aging type.
@@ -154,10 +160,10 @@ add_multihomed_endpoint_and_gw_evpn
    *mtu*                             L2 MTU size in bytes <Number:1522-9216>
 
                                      Type: ``integer``
-   *mct_client_name*                 This specify the Cluster Client name for Node Specific configuration. Both `mct_client_name` and `mct_client_id` are mandatory args for mct client creation.
+   *mct_client_name*                 This specify the Cluster Client name for Node Specific configuration. Both `mct_client_name` and `mct_client_id` are mandatory args for mct client creation. Valid only on SLXOS devices.
 
                                      Type: ``string``
-   *mct_client_id*                   The ID for the Cluster Client. Valid IDs are 1 - 512. Both `mct_client_name` and `mct_client_id` are mandatory args for mct client creation.
+   *mct_client_id*                   The ID for the Cluster Client. Valid IDs are 1 - 512. Both `mct_client_name` and `mct_client_id` are mandatory args for mct client creation. Valid only on SLXOS devices.
 
                                      Type: ``integer``
    *display_show_results*            This enable or disable execution of show commands on the device to display the output.

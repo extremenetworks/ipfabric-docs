@@ -52,11 +52,5 @@ remove_acl
                                      - out
 
                                      **Default**: in
-   *traffic_type*                    The traffic type for the ACL being removed. required-by:- [None] accepted-by:- [SLX, NOS]
-
-                                     Choose from:
-
-                                     - switched
-                                     - routed
    ================================  ======================================================================
 

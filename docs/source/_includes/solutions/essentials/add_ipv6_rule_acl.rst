@@ -96,10 +96,10 @@ add_ipv6_rule_acl
    *icmp_filter*                     This specify the ICMP type and ICMP code or ICMP message. Format is [ [ icmp-type <vlaue> ] [ icmp-code <value> ] ] | [ icmp-message <value> ] icmp-type and icmp-code values are between 0-255. icmp-message value can be one of these beyond-scope, destination-unreachable, dscp, echo-reply, echo-request, flow-label, fragments, header, hop-limit, mld-query, mld-reduction, mld-report, nd-na, nd-ns, next-header, no-admin, no-route, packet-too-big, parameter-option, parameter-problem, port-unreachable, reassembly-timeout, renum-command, renum-result, renum-seq-number, router-advertisement, router-renumbering, router-solicitation, routing, sequence, time-exceeded, unreachable required-by:- [None] accepted-by:- [MLX]
 
                                      Type: ``string``
-   *tcp_operator*                    This specify a comparison operator for the TCP port. This parameter applies only when you specify tcp as the protocol.  Allowed values are [established, syn]. required-by:- [None] accepted-by:- [MLX]
+   *tcp_operator*                    This specify a comparison operator for the TCP port. This parameter applies only when you specify tcp as the protocol. Allowed values are ['established', 'syn', 'established syn']. required-by:- [None] accepted-by:- [MLX]
 
                                      Type: ``string``
-   *acl_rules*                       The bulk operation that is supported to create more than one ACL rule in one action execution. The parameters are passed to create multiple rules that will follow the constraints similar to a single rule creation. NOTE- if rules are specified in the acl_rules, the rule specified outside of the array will be ignored and only rules in the acl_array will be processed.
+   *acl_rules*                       The bulk operation that is supported to create more than one ACL rule in one action execution. The parameters are passed to create multiple rules that will follow the constraints similar to a single rule creation. NOTE- if rules are specified in the acl_rules, the rule specified outside of the array will be ignored and only rules in the acl_array will be processed. NOTE- On MLX platform, maximum 64 rules can be configured using this parameter. User need to execute this action more than once to configure more than 64 rules.
 
                                      Type: ``array``
    ================================  ======================================================================

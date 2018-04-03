@@ -34,15 +34,15 @@ add_ipv4_rule_acl
                                      - hard-drop
 
                                      **Default**: permit
-   *protocol_type*                   The type of IP packets to be filtered based on the protocol. Valid values are <0-255> or key words tcp, udp, icmp or ip. For MLX - Valid values are <0-255> or supported protocol keywords. required-by:- [None] accepted-by:- [SLX, NOS, MLX]
+   *protocol_type*                   The type of IP packets to be filtered based on the protocol. Valid values are <0-255> or key words tcp, udp, icmp or ip. This parameter is required for extended ACL. For MLX - Valid values are <0-255> or supported protocol keywords. required-by:- [None] accepted-by:- [SLX, NOS, MLX]
 
                                      Type: ``string``
-   **source**                        The source IP address filters { any | S_IPaddress/mask(0.0.0.255) | host,S_IPaddress } [ source-operator [ S_port-numbers ] ] required-by:- [All] accepted-by:- [SLX, NOS, MLX]
+   **source**                        The source IP address filters { any | S_IPaddress/mask(0.0.0.255) | S_IPaddress/Prefix | host,S_IPaddress } [ source-operator [ S_port-numbers ] ] required-by:- [All] accepted-by:- [SLX, NOS, MLX]
 
                                      Type: ``string``
 
                                      **Default**: any
-   *destination*                     The destination IP address filters { any | S_IPaddress/mask(0.0.0.255) | host,S_IPaddress } [ source-operator [ S_port-numbers ] ] required-by:- [None] accepted-by:- [SLX, NOS, MLX]
+   *destination*                     The destination IP address filters { any | S_IPaddress/mask(0.0.0.255) | S_IPaddress/Prefix | host,S_IPaddress } [ source-operator [ S_port-numbers ] ] required-by:- [None] accepted-by:- [SLX, NOS, MLX]
 
                                      Type: ``string``
    *dscp*                            This matches the specified value against the DSCP value of the packet to filter.  Allowed values are 0 through 63. For SLX - dscp value between 0 and 63. Format {<dscp>[,<dscp-force>]}. For NOS - dscp value between 0 and 63. Format {<dscp>]}. For MLX - this field will be used for dscp-mapping. required-by:- [None] accepted-by:- [SLX, NOS, MLX]
@@ -108,12 +108,12 @@ add_ipv4_rule_acl
    *priority_mapping*                This will map incoming packet priority. Allowed value is <0-7>. required-by:- [None] accepted-by:- [MLX]
 
                                      Type: ``integer``
-   *tos*                             This will match packets with given TOS value. Allowed value in decimal <0-15>. required-by:- [None] accepted-by:- [MLX]
+   *tos*                             This will match packets with given TOS value. Allowed values are { <0-15> | 'max-reliability' | 'max-throughput' | 'min-delay' | 'normal' } required-by:- [None] accepted-by:- [MLX]
 
-                                     Type: ``integer``
-   *established*                     This policy applies only to TCP packets that have the ACK or RST bits set on. required-by:- [None] accepted-by:- [MLX]
+                                     Type: ``string``
+   *tcp_operator*                    This specify a comparison operator for the TCP port. This parameter applies only when you specify tcp as the protocol. Allowed values are ["established", "syn", "established syn"]. required-by:- [None] accepted-by:- [MLX]
 
-                                     Type: ``boolean``
+                                     Type: ``string``
    *icmp_filter*                     This is the ICMP message type to be filtered. required-by:- [None] accepted-by:- [MLX]
 
                                      Choose from:
@@ -160,7 +160,7 @@ add_ipv4_rule_acl
    *drop_precedence*                 This matches the drop_precedence value of the packet. Allowed values are 0 through 2. For MLX - Allowed values are 0 through 3. required-by:- [None] accepted-by:- [MLX]
 
                                      Type: ``string``
-   *acl_rules*                       This bulk operation is supported to create more than one ACL rule in one action execution. The parameters are passed to create multiple rules that will follow the constraints similar to a single rule creation. NOTE- if rules are specified in acl_rules, the rule specified outside of the array will be ignored and only the rules in the acl_array will be processed
+   *acl_rules*                       This bulk operation is supported to create more than one ACL rule in one action execution. The parameters are passed to create multiple rules that will follow the constraints similar to a single rule creation. NOTE- if rules are specified in acl_rules, the rule specified outside of the array will be ignored and only the rules in the acl_array will be processed NOTE- On MLX platform, maximum 64 rules can be configured using this parameter. User need to execute this action more than once to configure more than 64 rules.
 
                                      Type: ``array``
    ================================  ======================================================================

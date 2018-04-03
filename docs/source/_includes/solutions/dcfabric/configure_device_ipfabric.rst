@@ -32,6 +32,9 @@ configure_device_ipfabric
    *anycast_mac*                     The Anycast MAC address.
 
                                      Type: ``string``
+   *ipv6_anycast_mac*                The IPV6 Anycast MAC address.
+
+                                     Type: ``string``
    *bfd_multiplier*                  The BFD multiplier.
 
                                      Type: ``string``
@@ -45,6 +48,9 @@ configure_device_ipfabric
 
                                      Type: ``string``
    *ip_mtu*                          The IP MTU size.
+
+                                     Type: ``string``
+   *ipv6_mtu*                        The IP MTU size.
 
                                      Type: ``string``
    *bgp_local_asn*                   The BGP local ASN.

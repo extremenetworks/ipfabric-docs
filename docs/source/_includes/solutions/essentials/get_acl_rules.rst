@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-validate_L2_port_channel_state
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+get_acl_rules
+~~~~~~~~~~~~~
 
-**Description**: This validates the port channel state by verifying the sync state of all member. ports is 1. 
+**Description**: This gets rules configured for the access-list. 
 
 .. table::
 
@@ -19,8 +19,13 @@ validate_L2_port_channel_state
    *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **port_channel_id**               Port channel interface number.For VDX range is <NUMBER:1-6144>. For MLX range is <1-256>, CER/CES range is <1-64>, Avalanche range is <1-64>, Fusion range is <1-512> Cedar/Freedom range is <1-1024>
+   **acl_name**                      The rules configured for this ACL.
 
-                                     Type: ``integer``
+                                     Type: ``string``
+   *seq_id*                          The sequence numbers of rules to be deleted { seq id | all | comman and hyphen separated seq ids } Example:- { 10 | all | 1,2,3-10,20,35-  } Note:- "-" separated values will look for seq_ids inthe range including the values and 35- is equal to starting from 35 delete all configured sequence ids, including 35.
+
+                                     Type: ``string``
+
+                                     **Default**: all
    ================================  ======================================================================
 

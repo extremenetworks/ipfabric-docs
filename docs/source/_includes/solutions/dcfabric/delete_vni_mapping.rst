@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-provision_mct_cluster
-~~~~~~~~~~~~~~~~~~~~~
+delete_vni_mapping
+~~~~~~~~~~~~~~~~~~
 
-**Description**: This will provision MCT cluster and peers. 
+**Description**: This action will delete the VLAN/Bridge-Domain to VNI and auto mapping under an overlay gateway. 
 
 .. table::
 
@@ -23,32 +23,14 @@ provision_mct_cluster
                                      Type: ``string``
 
                                      **Default**: password
-   *control_vlan*                    A single control VLAN to be configured for MCT links.
+   *auto*                            If set to True, this will delete VLAN to VNI auto mapping under the overlay gateway.
+
+                                     Type: ``boolean``
+   *vlan_id*                         A single or a range of VLAN IDs, e.g. 10 or 10-15 or 10,12,13-15. For 802.1Q VLANs ID must be below 4096, for service or transport VFs in a Virtual Fabrics context, and valid range is from 4096 through 8191.
 
                                      Type: ``string``
-
-                                     **Default**: 4090
-   *port_channel_id*                 The port channel interface number <NUMBER:1-6144>.
+   *bridge_domain_id*                A single or range of Bridge-Domain IDs, e.g. 10 or 10-15 or 10,12,13-15. Valid values are from 1 through 4096 on SLX9140,SLX9850,SLX9540 and from 1 through 3566 on SLX9240.
 
                                      Type: ``string``
-
-                                     **Default**: 1024
-   *mct_interfaces*                  The list of ports that are members of the port channel. 1/13, 1/14.
-
-                                     Type: ``array``
-   **interfaces**                    The interfaces to use
-
-                                     Type: ``array``
-   *cluster_name*                    The name of the Cluster.
-
-                                     Type: ``string``
-   *cluster_peer_ip*                 The Cluster peer IP address in a.b.c.d format.
-
-                                     Type: ``string``
-   *node_id*                         The ID of the node values <1-128>.
-
-                                     Type: ``integer``
-
-                                     **Default**: 1
    ================================  ======================================================================
 
