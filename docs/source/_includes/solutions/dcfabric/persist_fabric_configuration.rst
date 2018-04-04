@@ -1,26 +1,33 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-validate_L2_port_channel_state
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+persist_fabric_configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: This validates the port channel state by verifying the sync state of all member. ports is 1. 
+**Description**: This action saves the running/default configurations to startup configurations on the SLX devices. 
 
 .. table::
 
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       The management IP address of the target device.
+   *fabric*                          The name of the IP fabric.
 
                                      Type: ``string``
+
+                                     **Default**: default
    *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
    *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **port_channel_id**               Port channel interface number.For VDX range is <NUMBER:1-6144>. For MLX range is <1-256>, CER/CES range is <1-64>, Avalanche range is <1-64>, Fusion range is <1-512> Cedar/Freedom range is <1-1024>
+   *source_name*                     Save the running/default configurations to startup configurations. Applicable to SLX9840, SLX9850, SLX9140, SLX9240.
 
-                                     Type: ``integer``
+                                     Choose from:
+
+                                     - running-config
+                                     - default-config
+
+                                     **Default**: running-config
    ================================  ======================================================================
 

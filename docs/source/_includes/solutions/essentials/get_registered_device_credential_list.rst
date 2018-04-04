@@ -10,7 +10,7 @@ get_registered_device_credential_list
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   *mgmt_ip*                         The management IP address of the target device. 'USER.DEFAULT' is a special value which has common defaults provided by the user. If this parameter is not given, it will list all registered devices.
+   *mgmt_ip*                         The management IP address of the target device. If this parameter is not given, it will list all registered devices.
 
                                      Type: ``string``
    ================================  ======================================================================

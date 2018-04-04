@@ -1,9 +1,9 @@
 .. NOTE: This file has been generated automatically, don't manually edit it
 
-delete_ipv4_rule_acl
-~~~~~~~~~~~~~~~~~~~~
+delete_vni_mapping
+~~~~~~~~~~~~~~~~~~
 
-**Description**: This deletes the IPv4 ACL rule from an existing IPv4 ACL. 
+**Description**: This action will delete the VLAN/Bridge-Domain to VNI and auto mapping under an overlay gateway. 
 
 .. table::
 
@@ -16,13 +16,20 @@ delete_ipv4_rule_acl
    *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
+
+                                     **Default**: admin
    *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **acl_name**                      The name of the ACL (standard or extended) to delete the rule from.
+
+                                     **Default**: password
+   *auto*                            If set to True, this will delete VLAN to VNI auto mapping under the overlay gateway.
+
+                                     Type: ``boolean``
+   *vlan_id*                         A single or a range of VLAN IDs, e.g. 10 or 10-15 or 10,12,13-15. For 802.1Q VLANs ID must be below 4096, for service or transport VFs in a Virtual Fabrics context, and valid range is from 4096 through 8191.
 
                                      Type: ``string``
-   **seq_id**                        The sequence numbers of rules to be deleted. { seq id | all | comman and hyphen separated seq ids } Example:- { 10 | all | 1,2,3-10,20,35-  } Note:- "-" separated values will look for seq_ids inthe range including the values and 35- is equal to starting from 35 delete all configured sequence ids, including 35.
+   *bridge_domain_id*                A single or range of Bridge-Domain IDs, e.g. 10 or 10-15 or 10,12,13-15. Valid values are from 1 through 4096 on SLX9140,SLX9850,SLX9540 and from 1 through 3566 on SLX9240.
 
                                      Type: ``string``
    ================================  ======================================================================

@@ -3,7 +3,7 @@
 add_multihomed_endpoint
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-**Description**: This create VLAN, port channel and configure port channel as Access or Trunk, validate port channel state. Configure VLAN to VNI mapping under the overlay gateway. 
+**Description**: This workflow creates VLANs, port channel and configures port channel as a Trunk. In Bridge-domain context, workflow will create bridge-domains, logical interfaces and associate the logical interfaces to the bridge-domains. Configures VLAN/Bridge-domain to VNI mapping under the overlay gateway. The workflow also creates the MCT client and its interfaces. For service or transport VFs in a Virtual Fabrics context, workflow will create g-vlans and map c-tags under the switchport. 
 
 .. table::
 
@@ -13,7 +13,7 @@ add_multihomed_endpoint
    **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
-   *username*                        THe login user name to connect to the device.
+   *username*                        The login user name to connect to the device.
 
                                      Type: ``string``
 
@@ -33,7 +33,7 @@ add_multihomed_endpoint
                                      - fortygigabitethernet
                                      - hundredgigabitethernet
 
-                                     **Default**: tengigabitethernet
+                                     **Default**: ethernet
    **ports**                         A single or a list of ports that are members of the port channel. Examples for VDX, SLX are  24/0/1, 24/0/2 or 1/13, 1/14.
 
                                      Type: ``array``
@@ -57,7 +57,7 @@ add_multihomed_endpoint
    *trunk_no_default_native*         Configure the switchport mode as trunk-no-default-native.
 
                                      Type: ``boolean``
-   *port_channel_id*                 The Portchannel interface number. VDX <1-6144>, SLX-9850 <1-512>, SLX-9540 <1-64>, SLX-9140/9240 <1-1024>, if auto pick option is selected and switchport_mode is access no need to specify the VLAN ID.
+   *port_channel_id*                 The Portchannel interface number. VDX <1-6144>, SLX-9850 <1-512>, SLX-9540 <1-64>, SLX-9140/9240 <1-1024>, if auto pick option is selected, no need to specify `port_channel_id`.
 
                                      Type: ``string``
    *port_channel_desc*               The port channel description without any space.
@@ -88,28 +88,28 @@ add_multihomed_endpoint
                                      Type: ``boolean``
 
                                      **Default**: True
-   *auto_pick_network_id*            For service or transport VFs in a Virtual Fabrics context, if selected, workflow will pick the lowest available Single/Range of VF IDs available on the switch, valid range is from 4096 through 8191. In Bridge-domain context, if selected, workflow will pick the lowest available Single/Range of BRIDGE-DOMAIN IDs available on the switch, valid range is from 1 through 4096. For Virtual Fabric/Bridge-Domain and ctag classification, use auto_pick_network_id or network_id.
+   *auto_pick_network_id*            In Bridge-domain context, if selected, workflow will pick the lowest available Single/Range of BRIDGE-DOMAIN IDs available on the switch, valid range is from 1 through 4096. For service or transport VFs in a Virtual Fabrics context, if selected, workflow will pick the lowest available Single/Range of VF IDs available on the switch, valid range is from 4096 through 8191. For Virtual Fabric/Bridge-Domain and ctag classification, use auto_pick_network_id or network_id.
 
                                      Type: ``boolean``
-   *network_id*                      This is a single or range of VLANs to be configured on the interface. For service or transport VFs in a Virtual Fabrics context, valid range is from 4096 through 8191. Single or range of Bridge-domain ID in SLXOS platforms, valid range is from 1 through 4096. If `auto_pick_network_id=True`, network_id need not be specified.
+   *network_id*                      For SLXOS, single or range of Bridge Domain IDs, valid range is 1-4096. For VDX, when using Virtual Fabrics, single or range of VF IDs, valid range is 4096-8191. If `auto_pick_network_id=True`, network_id need not be specified.
 
                                      Type: ``string``
-   *vlan_id*                         A single or range of VLANs to be configured on the interface. For 802.1Q VLANs ID must be below 4096. Valid for vlan_id only use cases. For Virtual Fabric/Bridge-Domain and ctag classification , use auto_pick_network_id or network_id.
+   *vlan_id*                         A single or range of VLANs to be configured on the interface. For 802.1Q VLANs ID must be below 4096. Valid for vlan_id only use cases. For Virtual Fabric/Bridge-Domain and ctag classification, use auto_pick_network_id or network_id.
 
                                      Type: ``string``
    *vlan_desc*                       The VLAN description, space is not allowed, use '_' instead. Same VLAN description is configured on all the VLANs when the range is provided.
 
                                      Type: ``string``
-   *c_tag*                           A single or range of VLAN IDs <NUMBER:1-4090>. Valid only if switchport_mode is trunk and mandatory in Virtual Fabric/Bridge-Domain context.
+   *c_tag*                           A single or range of VLAN IDs <NUMBER:1-4090>. Valid only if switchport_mode is trunk. This is mandatory parameter in Virtual Fabric/Bridge-Domain context. Not applicable, if `vlan_type=untagged`.
 
                                      Type: ``string``
-   *auto_pick_lif_id*                This auto generates physical/port-channel logical interfaces.
+   *auto_pick_lif_id*                This auto generates physical/port-channel logical interfaces. Valid only on SLXOS devices.
 
                                      Type: ``boolean``
-   *lif_id*                          A single or comma seperated list of logical interface ids. Format for the logical interfaces is <physical/port-channel number>.<number>. If `auto_pick_lif_id=True and auto_pick_port_channel_id=True`, `lif_id` need not be specified.
+   *lif_id*                          A single or comma seperated list of logical interface IDs. Format for the logical interfaces is <physical/port-channel number>.<number>. This can be ignored, if `auto_pick_lif_id=True and auto_pick_port_channel_id=True`. Valid only on SLXOS devices.
 
                                      Type: ``string``
-   *vlan_type*                       In bridge-domain context, the VLAN tag type to be configured under logical interfaces. If vlan_type is untagged, enable `trunk_no_default_native` args.
+   *vlan_type*                       In bridge-domain context, the VLAN tag type to be configured under logical interfaces. If vlan_type is untagged, enable `trunk_no_default_native` parameter. Valid only on SLXOS devices.
 
                                      Choose from:
 
@@ -117,13 +117,13 @@ add_multihomed_endpoint
                                      - tagged
 
                                      **Default**: tagged
-   *vni*                             This specify a single or a range of VNI <NUMBER:1-16777215> mappings for VLANs, for example 10 or 10-15 or 10,12,13-15. When using ranges, the number of values in a VLAN ID range must correspond to the number of values in a VNI range.
+   *vni*                             Single or a range of VNI <NUMBER:1-16777215> mappings for VLANs or NETWORK IDs, for example 10 or 10-15 or 10,12,13-15. When using ranges, the number of values in a VLAN ID or c_tag range must correspond to the number of values in a VNI range.
 
                                      Type: ``string``
-   *mct_client_name*                 Specify Cluster Client name for Node Specific configuration. Both `mct_client_name` and `mct_client_id` are mandatory args for mct client creation.
+   *mct_client_name*                 Cluster Client name for Node Specific configuration, both `mct_client_name` and `mct_client_id` are required for MCT client creation. Valid on SLXOS devices.
 
                                      Type: ``string``
-   *mct_client_id*                   The ID for the Cluster Client. Valid IDs are 1 - 512. Both `mct_client_name` and `mct_client_id` are mandatory args for mct client creation.
+   *mct_client_id*                   The ID for the Cluster Client. Valid IDs are 1 - 512. Both `mct_client_name` and `mct_client_id` are required for MCT client creation. Valid on SLXOS devices.
 
                                      Type: ``integer``
    *display_show_results*            This enable or disable execution of show commands on the device to display the output.

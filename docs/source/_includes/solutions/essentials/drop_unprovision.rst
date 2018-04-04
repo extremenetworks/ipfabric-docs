@@ -52,6 +52,6 @@ drop_unprovision
                                      Type: ``boolean``
    *seq_id*                          Sequence number of the rule, if not specified, the rule is added at the end of the list. Valid range is 0 to 4294967290
 
-                                     Type: ``integer``
+                                     Type: ``string``
    ================================  ======================================================================
 

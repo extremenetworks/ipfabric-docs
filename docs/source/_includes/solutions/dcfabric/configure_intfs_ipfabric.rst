@@ -41,5 +41,8 @@ configure_intfs_ipfabric
    *ip_mtu*                          The IP MTU size.
 
                                      Type: ``string``
+   *ipv6_mtu*                        The IP MTU size.
+
+                                     Type: ``string``
    ================================  ======================================================================
 
