@@ -29,7 +29,7 @@ create_vrf_evpn
    *l3vni*                           THe VNI for the VRF. Valid Values for VDX. '<NUMBER:1-16777215>', Valid Values for SLX. '<NUMBER:1-4096>'.
 
                                      Type: ``integer``
-   *route_distinguisher*             The VPN route Distinguisher. '<ASN:nn or IP-address:nn>'.
+   **route_distinguisher**           The VPN route Distinguisher. '<ASN:nn or IP-address:nn>'.
 
                                      Type: ``array``
    *ipv4_route_target_import_evpn*   The IPv4 import target VPN community. 'ASN:nn'.

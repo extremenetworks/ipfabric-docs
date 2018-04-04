@@ -33,5 +33,13 @@ validate_vrrpe_state
    **vrrpe_group**                   The virtual extender group ID. <NUMBER:1-255>
 
                                      Type: ``string``
+   *afi*                             The VRRPE type.
+
+                                     Choose from:
+
+                                     - ipv4
+                                     - ipv6
+
+                                     **Default**: ipv4
    ================================  ======================================================================
 

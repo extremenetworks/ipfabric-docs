@@ -19,7 +19,7 @@ remove_acl
    *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   **intf_type**                     The interface type. required-by:- [All] accepted-by:- [SLX, NOS, MLX]
+   **intf_type**                     The interface type.
 
                                      Choose from:
 
@@ -35,16 +35,16 @@ remove_acl
                                      - vlan
 
                                      **Default**: tengigabitethernet
-   **intf_name**                     The interface names, can be comma separated physical ports, port channel numbers or VEs. Examples are 224/0/1, 224/0/2 or 7, 8, 9. required-by:- [All] accepted-by:- [SLX, NOS, MLX]
+   **intf_name**                     The interface names, can be comma separated physical ports, port channel numbers or VEs. Examples are 224/0/1, 224/0/2 or 7, 8, 9.
 
                                      Type: ``array``
-   *rbridge_id*                      The RBridge ID of the VDX switch under which VE will be configured, only needed for VDX device. required-by:- [None] accepted-by:- [NOS]
+   *rbridge_id*                      The RBridge ID of the VDX switch under which VE will be configured, only needed for VDX device.  Only applicable to NOS devices.
 
                                      Type: ``string``
-   **acl_name**                      The ACL name. required-by:- [All] accepted-by:- [SLX, NOS, MLX]
+   **acl_name**                      The ACL name.
 
                                      Type: ``string``
-   **acl_direction**                 The ACL direction. required-by:- [All] accepted-by:- [SLX, NOS, MLX]
+   **acl_direction**                 The ACL direction.
 
                                      Choose from:
 
@@ -52,11 +52,5 @@ remove_acl
                                      - out
 
                                      **Default**: in
-   *traffic_type*                    The traffic type for the ACL being removed. required-by:- [None] accepted-by:- [SLX, NOS]
-
-                                     Choose from:
-
-                                     - switched
-                                     - routed
    ================================  ======================================================================
 

@@ -29,7 +29,7 @@ configure_vni_mapping
    *vlan_vni*                        A single or a range of VNI <NUMBER:1-16777215> mappings for VLANs, for example 10 or 10-15 or 10,12,13-15. When using ranges, the number of values in a VLAN ID range must correspond to the number of values in a VNI range.
 
                                      Type: ``string``
-   *bridge_domain_id*                A single or range of Bridge-Domain IDs, e.g. 10 or 10-15 or 10,12,13-15. Valid range is from 1 through 4096. Supported only on SLXOS platforms.
+   *bridge_domain_id*                A single or range of Bridge-Domain IDs, e.g. 10 or 10-15 or 10,12,13-15. Valid values are from 1 through 4096 on SLX9140,SLX9850,SLX9540 and from 1 through 3566 on SLX9240 .Supported only on SLXOS platforms.
 
                                      Type: ``string``
    *bridge_domain_vni*               A single or range of VNI <NUMBER:1-16777215> mappings for BDs, for example 10 or 10-15 or 10,12,13-15. When using ranges, the number of values in a Bridge-Domain ID range must correspond to the number of values in a VNI range.

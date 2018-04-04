@@ -19,7 +19,7 @@ create_acl
    *password*                        The login password to connect to the device.
 
                                      Type: ``string``
-   *address_type*                    The ACL address type, ip or ipv6 or mac. required-by:- [SLX, NOS, MLX] accepted-by:- [SLX, NOS, MLX]
+   *address_type*                    The ACL address type, IP or IPv6 or MAC.
 
                                      Choose from:
 
@@ -28,13 +28,13 @@ create_acl
                                      - mac
 
                                      **Default**: ip
-   *acl_type*                        The ACL type, extended or standard. required-by:- [SLX, NOS] accepted-by:- [SLX, NOS, MLX]
+   *acl_type*                        The ACL type, extended or standard. This is required for SLX and NOS. The acl_type is required by MLX for IP/IPv6 ACL.
 
                                      Choose from:
 
                                      - standard
                                      - extended
-   **acl_name**                      The unique name for the ACL which must begin with a-z, A-Z. Keywords "all" and "test" can not be used as acl_name. accepted-by:- [SLX, NOS, MLX]
+   **acl_name**                      The unique name for the ACL which must begin with a-z, A-Z. Keywords "all" and "test" can not be used as acl_name.
 
                                      Type: ``string``
    ================================  ======================================================================

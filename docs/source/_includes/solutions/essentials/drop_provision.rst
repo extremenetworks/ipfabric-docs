@@ -62,7 +62,7 @@ drop_provision
                                      Type: ``string``
    *vlan_id*                         The VLAN interface to which the ACL is bound.
 
-                                     Type: ``integer``
+                                     Type: ``string``
    *ethertype*                       The EtherType, can be 'arp', 'fcoe', 'ipv4' or custom value between 1536 and 65535.
 
                                      Type: ``string``
@@ -83,7 +83,7 @@ drop_provision
                                      Type: ``boolean``
    *seq_id*                          The sequence number of the rule, if not specified, the rule is added at the end of the list. Valid range is 0 to 4294967290.
 
-                                     Type: ``integer``
+                                     Type: ``string``
    **rule_action**                   Action performed by ACL rule
 
                                      Type: ``string``

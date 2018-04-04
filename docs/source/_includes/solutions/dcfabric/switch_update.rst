@@ -28,5 +28,13 @@ switch_update
 
                                      - Provisioned
                                      - Failed
+   *protocol*                        The protocol used for REST requests. This applies to REST platforms such as SLX and VDX.
+
+                                     Choose from:
+
+                                     - http
+                                     - https
+
+                                     **Default**: http
    ================================  ======================================================================
 

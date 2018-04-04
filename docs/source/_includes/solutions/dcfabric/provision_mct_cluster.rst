@@ -36,7 +36,7 @@ provision_mct_cluster
    *mct_interfaces*                  The list of ports that are members of the port channel. 1/13, 1/14.
 
                                      Type: ``array``
-   **interfaces**                    Interfaces
+   **interfaces**                    The list of ports, port channels, VE interfaces.
 
                                      Type: ``array``
    *cluster_name*                    The name of the Cluster.

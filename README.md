@@ -116,4 +116,12 @@ make docs
 sphinx-autobuild -H 0.0.0.0 -b html ./docs/source/ ./docs/build/html
 ```
 
+To Generate Docs for Automation Suites run the following: 
+* scripts/clone-essentials.sh
+* scripts/clone-dcfabric.sh
+* python scripts/generate-essentials-documentation.py
+* python scripts/generate-dcfabric-documentation.py
+* python scripts/generate-inventorydocumentation.py
+
+This should update all the documentation after cloning the repos. You will have to change the branch of the repos you want to point to.
 Edit, enjoy live updates.

@@ -10,7 +10,7 @@ delete_device_credentials
    ================================  ======================================================================
    Parameter                         Description
    ================================  ======================================================================
-   **mgmt_ip**                       The management IP address of the target device. If the value is USER.DEFAULT it will remove the common defaults provided by the user.
+   **mgmt_ip**                       The management IP address of the target device.
 
                                      Type: ``string``
    ================================  ======================================================================
