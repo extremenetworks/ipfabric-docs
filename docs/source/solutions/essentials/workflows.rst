@@ -26,7 +26,7 @@ For automation actions to work properly, following requirements must be met:
 
 Pre-requisites for HTTPS
 ~~~~~~~~~~~~~~~~~~~~~~~~
-If HTTPS is enabled on the device, REST APIs will use HTTPS.  Following set up must be done on the automation server prior to interacting with a device over HTTPS:
+The following set up must be done on the devices and automation server in order for REST APIs to use HTTPS:
 
 1. Enable HTTPS on SLX and/or VDX devices.
 
