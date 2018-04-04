@@ -2,7 +2,7 @@ Installation
 ============
 
 .. warning::
-    If you had previously installed the DC Fabric Automation Suite TP release, please do not install this pack, wait for the new release of the DC Fabric Automation Suite. When you install the DC Fabric Automation Suite, it will also install the compatible version of Network Essentials pack automatically.
+    If you had previously installed the DC Fabric Automation Suite, please do not install this pack, wait for the new release of the DC Fabric Automation Suite. When you install the DC Fabric Automation Suite, it will also install the compatible version of Network Essentials pack automatically.
 
 Installing Pre-requisites
 -------------------------
