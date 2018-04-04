@@ -2,7 +2,7 @@ Network Essentials Actions
 ==========================
 
 This is a reference documentation for Network Essentials Automation Suite actions and workflows to automate SLX, VDX and
-MLXe switches. These actions can be used as independent actions, or as part of a more complex
+NetIron(NI) switches. These actions can be used as independent actions, or as part of a more complex
 workflow. :doc:`Actions</actions>` can be manually triggered, or they can be tied to
 :doc:`sensors </sensors>` using rules.
 
@@ -10,7 +10,7 @@ workflow. :doc:`Actions</actions>` can be manually triggered, or they can be tie
    :local:
    :depth: 1
 
-Most of the actions below can be used to automate SLX, VDX and MLXe platforms, however, if an action is only valid for a particular platform, 
+Most of the actions below can be used to automate SLX, VDX and NI platforms, however, if an action is only valid for a particular platform, 
 it will be documented in the action details, otherwise, the action is supported for all platforms.  
 
 Pre-requisites for Automation
@@ -22,7 +22,7 @@ For automation actions to work properly, following requirements must be met:
 * Ports 22 (SSH) and 443 (HTTPS) or 80 (HTTP) not blocked between automation & the device 
 * Devices must be configured with appropriate credentials prior to registering in NE
 * SSH user credentials must have Admin privileges on the device
-* For MLXe devices, SNMP server must be enabled and SNMPv2 or SNMPv3 credentials must have read/write access to all OIDs/MIBs
+* For NI devices, SNMP server must be enabled and SNMPv2 or SNMPv3 credentials must have read/write access to all OIDs/MIBs
 
 Pre-requisites for HTTPS
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -50,7 +50,7 @@ Device Registration
 Starting with Network Essentials (NE) Automation Suite v1.2, the device credentials registration feature enables users to register a device and its associated credentials once, eliminating the need to provide device credentials for each action invocation. One time device registration is required for all device types, however, based on device type and user options, users may need to provide a different set of device credentials.
 
 NE Automation Suite actions use primarily REST and SSH protocols to interact with SLX and VDX devices. The username and
-password are sufficient for these protocols.  For MLXe, in addition to SSH, actions use SNMP protocols that require the following additional credentials:
+password are sufficient for these protocols.  For NetIron(NI), in addition to SSH, actions use SNMP protocols that require the following additional credentials:
 
 * Username and password for SSH
 * SNMP version, and the relevant SNMP credentials - Community string for SNMPv2, Username, auth-priv
@@ -231,7 +231,7 @@ create_vlan or delete_vlan actions.
 ACL Management
 ---------------
 
-With the addition of the MLX platform support in NE Automation Suite v1.2, ACL Management actions support SLX, VDX and MLX platforms. ACL actions provide abstraction covering common features across all these platforms. However, ACL actions also support platform specific features as optoinal attributes. Platform specific attributes are documented as part of the field description. If the field description does not specify any platform restrictions, those fields are applicable to all platforms.
+With the addition of the NI platform support in NE Automation Suite v1.2, ACL Management actions support SLX, VDX and NI platforms. ACL actions provide abstraction covering common features across all these platforms. However, ACL actions also support platform specific features as optoinal attributes. Platform specific attributes are documented as part of the field description. If the field description does not specify any platform restrictions, those fields are applicable to all platforms.
 
 .. include:: /_includes/solutions/essentials/create_acl.rst
 
