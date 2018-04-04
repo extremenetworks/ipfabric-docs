@@ -26,7 +26,7 @@ For automation actions to work properly, following requirements must be met:
 
 Pre-requisites for HTTPS
 ~~~~~~~~~~~~~~~~~~~~~~~~
-If HTTPS is enabled on the device, REST APIs will use HTTPS.  Following set up must be done on the automation server prior to interacting with a device over HTTPS:
+The following set up must be done on the devices and automation server in order for REST APIs to use HTTPS:
 
 1. Enable HTTPS on SLX and/or VDX devices.
 
@@ -57,23 +57,14 @@ password are sufficient for these protocols.  For MLXe, in addition to SSH, acti
   protocols and the corresponding passphrases for SNMP v3.
 * Enable password for NetIron devices where privileged exec mode is password protected.
 
-NE Automation Suite includes new actions to register device credentials to register a device.
-
-Factory Default Credentials - if registration is not performed, the NE Automation Suite actions will use the following factory default
-credentials:
-
-  .. code-block:: bash
-
-    SSH username: ‘admin’
-    SSH password: ‘password’
-    SNMP version:  ‘v2’
-    SNMPv2_community: ‘public’
 
 For SLX and NOS devices SNMP credentials are not applicable and can be ignored.
 
 .. include:: /_includes/solutions/essentials/register_device_credentials.rst
 
 Prior to using NE actions, all devices must be registered with appropriate credentials, see examples below:
+
+NE Automation Suite includes new actions to register device credentials to register a device.
 
 - Registering SNMPv2 credentials and enable password for NetIron device:
 
