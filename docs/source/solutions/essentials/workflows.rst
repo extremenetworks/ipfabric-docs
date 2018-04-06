@@ -245,6 +245,8 @@ With the addition of the NI platform support in NE Automation Suite v1.2, ACL Ma
 
 .. include:: /_includes/solutions/essentials/delete_ipv4_rule_acl.rst
 
+.. include:: /_includes/solutions/essentials/delete_ipv6_rule_acl.rst
+
 .. include:: /_includes/solutions/essentials/apply_acl.rst
 
 .. include:: /_includes/solutions/essentials/remove_acl.rst
