@@ -15,11 +15,11 @@ Network Essentials
 ~~~~~~~~~~~~~~~~~~
 
 Network Essentials is a foundational set of workflows for operating Extreme network devices. It
-includes actions such as port provisioning, SNMP, NTP & AAA configuration. These are basic building
+includes actions such as edge port provisioning, ACL management etc. These are basic building
 blocks that are used by other suites. Customers can also use these blocks to create their own
 customised workflows.
 
-It currently supports Extreme VDX and SLX devices. See more details :doc:`here<essentials/overview>`.
+Starting with v1.2 supports Extreme SLX, VDX and MLXe device families. See more details :doc:`here<essentials/overview>`.
 
 DC Fabric
 ~~~~~~~~~~
@@ -28,24 +28,15 @@ The DC Fabric Automation Suite is an add-on package for |bwc| that provides serv
 automations for managing Data Center Fabrics - both VCS Fabric and IP Fabric architectures. It
 includes workflows such as:
 
-* Provision and validate IP Fabrics and BGP-EVPN
-* Perform Layer-2 path traces across VCS Fabrics
-* Find and provision edge ports
+* Manage Fabric Templates
+* Build IP Fabric Infrastructure
+* Manage EVPN Tenants and Edge Ports
+* IP Fabric Validation and Troubleshooting
+* Manage VCS Fabric Tenants and Edge Ports
 
-It works with all current VDX switches, and SLX-9850 switches when used as a super-spine. It is currently
-available as a Technology Preview.
+Starting with v1.2, DC Fabric automation supports all VDX device models, and SLX 9240/9140 switches. 
 
 See more details :doc:`here<dcfabric/overview>`.
-
-Internet Exchange
-~~~~~~~~~~~~~~~~~
-
-The Internet Exchange suite provides workflows that target common use-cases seen by Internet Exchanges.
-Workflows include customer port provisioning, move systems to quarantine, MAC ACL updates, and route
-server validation.
-
-It will work with SLX-9850 and 9540 switches. Future updates will include MLXe support.
-Technology Preview versions of this automation suite will begin shipping soon.
 
 .. rubric:: What's Next?
 
