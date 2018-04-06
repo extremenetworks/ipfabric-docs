@@ -46,10 +46,11 @@ Supported Devices
 
 The Network Essentials Automation Suite supports VDX, SLX and MLXe device families. However, this Tech Preview release has been explicitly tested with the following device & OS combinations only:
 
-* SLX 9850 running 17r.1.01ad
-*	SLX 9240 running 17s.1.02
-*	SLX 9140 running 17s.1.02
-* MLXe running NI 5.8f
+* SLX SLX 9140, 9240 with SLX OS 17s.1.02 
+* SLX 9540, 9850 with SLX OS 17r.1.01ad, 17r.2.01  
+* VDX NOS 7.1.0a, 7.2.0a 
+* NetIron NI 5.8.0f, 6.0.0d
+
 
 .. rubric:: What's Next?
 
