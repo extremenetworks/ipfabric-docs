@@ -120,17 +120,17 @@ Supported Devices
 
 The DC Fabric Automation Suite supports the following devices:
 
-**DC Fabric Automation Suite v1.0**
+**DC Fabric Automation Suite v1.2**
 
-* VCS Fabric - VDX 6740, 6940, 8770 running Network OS 6.0.2c 
-* IP Fabric & EVPN - VDX 6740, 6940, 8770 running Network OS 7.0.1b and 7.1 
+* SLX 9140, 9240 running SLX OS 17s.1.02
+* All VDX devices running NOS 7.1.0a, 7.2.0a
 
 **DC Fabric Automation Suite v1.1**
 
-In addition to above device, 1.1 includes support for the following SLX devices:
-
 * IP Fabric (no EVPN) - SLX 9850 running SLX-OS SLX-OS_16r.1.1, SLX-OS_17r.1.00 and later
 * IP Fabric (no EVPN) - SLX 9540 running OS SLX-OS_17r.1.00 and later
+* VCS Fabric - VDX 6740, 6940, 8770 running Network OS 6.0.2c 
+* IP Fabric & EVPN - VDX 6740, 6940, 8770 running Network OS 7.0.1b and 7.1 
 
 What's Next?
 -------------------------------
