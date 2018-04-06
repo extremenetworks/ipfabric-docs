@@ -581,8 +581,8 @@ command as explained in next section:
 | ip_mtu                 | IP MTU size, min: 1300; max: 9018.                                |
 |                        | These values may change based on the switch operating system.     |
 +------------------------+-------------------------------------------------------------------+
-| vni_auto_map           | Yes or No. Default is Yes. If 'Yes', configures VLAN to VNI       |
-|                        | mapping as auto under overlay gateway.                            |
+| vni_auto_map           | Yes or No. Default is Yes. If 'Yes', configures VLAN or           |
+|                        | bridge-domain to VNI mapping as auto under overlay gateway.       |
 +------------------------+-------------------------------------------------------------------+
 | enable_vf              | Yes or No. Default is No. If 'Yes', configures VCS Virtual Fabric |
 |                        | on VDX devices.                                                   |
