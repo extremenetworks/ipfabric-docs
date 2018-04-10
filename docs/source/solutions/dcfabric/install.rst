@@ -10,7 +10,7 @@ The virtual appliance has all components pre-installed and pre-configured. This 
 
 Deploying the Virtual Appliance
 ===============================
-The virtual appliance can be downloaded from the _`Extreme Portal <https://extremeportal.force.com/ExtrProductLanding?pf=Automation>`. It is a single OVA file. It is compatible with VirtualBox 5.2 and ESXi (6.0/6.5) hypervisors.
+The virtual appliance can be downloaded from the `Extreme Portal <https://extremeportal.force.com/ExtrProductLanding?pf=Automation>`_
 
 To deploy the OVA using VirtualBox, follow the steps below:
 
@@ -23,7 +23,7 @@ To deploy the OVA using VirtualBox, follow the steps below:
     7.	Select Network tab in the Settings window
     8.	Change Adapter setting from “NAT” to “Bridged Adapter”
     9.	Power Off and restart the VM
-    10.	To access the Workflow Composer GUI, type https://<IP address of the VM>
+    10.	To access the Workflow Composer GUI, type "https://<IP address of the VM>"
     11.	ST2 CLI can be accessed using ssh <IP Address of the VM>
 
 To find the IP Address of the VM:
@@ -42,7 +42,7 @@ Default credentials:
 
 License Activation
 ------------------
-Before using the software appliance, users must activate the appliance.  To obtain an evaluation license key, go to `Extreme Product Page <https://www.extremenetworks.com/product/workflow-composer/>`_. Your license key will be emailed to you. Use the commands below to activate the license:
+Before using the software appliance, users must activate the appliance.  To obtain an evaluation license key, go to `Extreme Products Page <https://www.extremenetworks.com/product/workflow-composer/>`_. Your license key will be emailed to you. Use the commands below to activate the license:
    
     1.	Access the VM’s console
     2.	Login using default SSH credentials
