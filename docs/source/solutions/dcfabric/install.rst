@@ -1,17 +1,18 @@
+Installation
+============
 
 Data Center Fabrics Automation Suite supports two different models for installation:
- * Software appliance or
- * Traditional installation mechanism.
 
-Sofware appliance (OVA) comes pre-installed and pre-configured with all the required components such as EWC platform. Deploying the automation suite using software appliance is the easiest and highly recommended. 
+ * Virtual appliance or
+ * RPM or Deb package-based installation
 
-Deploying Software Appliance
-============================
-Software Appliance can be downloaded from Extreme Portal, appliance is a single file in OVA format and compatible with VirtualBox (v5.2) and ESXi (v6.0 and v6.5) hypervisors.
+The virtual appliance has all components pre-installed and pre-configured. This is the fastest way to stand up a new system. Some users may still need to do a package-based installation due to their specific needs.
+
+Deploying the Virtual Appliance
+===============================
+The virtual appliance can be downloaded from the _`Extreme Portal <https://extremeportal.force.com/ExtrProductLanding?pf=Automation>`. It is a single OVA file. It is compatible with VirtualBox 5.2 and ESXi (6.0/6.5) hypervisors.
 
 To deploy the OVA using VirtualBox, follow the steps below:
-
-.. code-block:: bash
 
     1.	Download dcf-1.2.0_ewc-2.6.0.ova file from Extreme Portal download page
     2.	Start Oracle VirtualBox
@@ -25,33 +26,30 @@ To deploy the OVA using VirtualBox, follow the steps below:
     10.	To access the Workflow Composer GUI, type https://<IP address of the VM>
     11.	ST2 CLI can be accessed using ssh <IP Address of the VM>
 
-License Activation of Software Appliance: Before using the software appliance, users must activate the appliance using automation suites license key.  License key is sent in an email, when users purchase the product or sign up for evaluation license.  Using the license key received, use the commands below to activate the license:
-
-.. code-block:: bash
-    
-    1.	Access the VM’s console
-    2.	Login using default SSH credentials
-    3.  st2-activate-license <license-key>  
-
 To find the IP Address of the VM:
-
-.. code-block:: bash
 
     1.	Access the VM’s console
     2.	Login using default SSH credentials
     3.	Type ifconfig to find out the IP Address of the virtual machine.
 
-*NOTE:* If you are not using DHCP, IPv4 address will not be assigned automatically to the VM, please configure static IP Address to the VM, refer to the Ubuntu documentation on how to configure static IP address.
+.. note::
+  By default, the VM uses DHCP to obtain an IP address. If your network does not have DHCP, you will need to
+  statically configure an IP address, using `these instructions <https://help.ubuntu.com/lts/serverguide/network-configuration.html#ip-addressing>`_
 
 Default credentials:
-
-.. code-block:: bash
-
     •	SSH Credentials: ubuntu/ubuntu
     •	GUI credentials: st2admin/Ch@ngeMe
+
+License Activation
+------------------
+Before using the software appliance, users must activate the appliance.  To obtain an evaluation license key, go to `Extreme Product Page <https://www.extremenetworks.com/product/workflow-composer/>`_. Your license key will be emailed to you. Use the commands below to activate the license:
+   
+    1.	Access the VM’s console
+    2.	Login using default SSH credentials
+    3.  "st2-activate-license <license-key>"
     
-Traditional Installation
-========================
+RPM or Deb Package-based Installation
+=====================================
 
 .. warning::
     If you had previously installed the EWC 2.0 IP Fabric Automation Suite,
@@ -103,7 +101,7 @@ To quickly install |bwc| with DC Fabric Automation Suite, obtain a license key f
 purchasing. These commands will install |bwc|, Network Essentials, DC Fabric Automation Suite,
 and then configure all components to work together on a single host:
 
-First, install |bwc| v2.6 required for DC Fabric Automation Suite v1.2:
+First, install |bwc| v2.6. This version is required for DC Fabric Automation Suite v1.2
 
 .. code-block:: bash
 
