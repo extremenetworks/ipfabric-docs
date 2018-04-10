@@ -1,5 +1,41 @@
-Installation
-============
+Data Center Fabrics Automation Suite supports two different models for installation:
+ * Software appliance or
+ * Traditional installation mechanism.
+
+Sofware appliance (OVA) comes pre-installed and pre-configured with all the required components such as EWC platform. Deploying the automation suite using software appliance is the easiest and highly recommended. 
+
+Deploying Software Appliance
+============================
+Software Appliance can be downloaded from Extreme Portal, appliance is a single file in OVA format and compatible with VirtualBox (v5.2) and ESXi (v6.0 and v6.5) hypervisors.
+
+To deploying OVA using VirtualBox, follow the steps below:
+
+.. code-block:: bash
+
+    1.	Download the dcf-1.2.0_ewc-2.6.0.ova file
+    2.	Start Oracle VirtualBox
+    3.	File -> Import Appliance  (or) Ctrl+I
+    4.	Select the downloaded .ova file and Open
+    5.	Select the imported VM and click Start
+    6.	After the VM starts, right click on the VM and select “Settings”
+    7.	Select Network tab in the Settings window
+    8.	Change Adapter setting from “NAT” to “Bridged Adapter”
+    9.	Power Off and restart the VM
+    10.	To access the Workflow Composer GUI, type https://<IP address of the VM>
+    11.	ST2 CLI can be accessed using ssh <IP Address of the VM>
+
+    To find the IP Address of the VM:
+    1.	Access the VM’s console
+    2.	Login using default credentials: ubuntu/ubuntu
+    3.	Type ifconfig to find out the IP Address of the virtual machine.
+    *NOTE:* If the IPv4 address is not assigned to the VM, there may not be DHCP server in your environment.  If DHCP is not available, please configure static IP Address to the VM, refer to Ubuntu documentation on how to configure static IP address.
+
+    Default credentials:
+    •	SSH Credentials: ubuntu/ubuntu
+    •	GUI credentials: st2admin/Ch@ngeMe
+    
+Traditional Installation
+========================
 
 .. warning::
     If you had previously installed the EWC 2.0 IP Fabric Automation Suite,
