@@ -9,11 +9,11 @@ Deploying Software Appliance
 ============================
 Software Appliance can be downloaded from Extreme Portal, appliance is a single file in OVA format and compatible with VirtualBox (v5.2) and ESXi (v6.0 and v6.5) hypervisors.
 
-To deploying OVA using VirtualBox, follow the steps below:
+To deploy the OVA using VirtualBox, follow the steps below:
 
 .. code-block:: bash
 
-    1.	Download the dcf-1.2.0_ewc-2.6.0.ova file
+    1.	Download dcf-1.2.0_ewc-2.6.0.ova file from Extreme Portal download page
     2.	Start Oracle VirtualBox
     3.	File -> Import Appliance  (or) Ctrl+I
     4.	Select the downloaded .ova file and Open
