@@ -89,6 +89,7 @@ purchasing. These commands will install |bwc|, Network Essentials, DC Fabric Aut
 and then configure all components to work together on a single host:
 
 First, install |bwc| v2.6 required for DC Fabric Automation Suite v1.2:
+
 .. code-block:: bash
 
   curl -SsL -O https://stackstorm.com/bwc/install.sh && chmod +x install.sh
