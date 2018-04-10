@@ -1,3 +1,4 @@
+
 Data Center Fabrics Automation Suite supports two different models for installation:
  * Software appliance or
  * Traditional installation mechanism.
@@ -87,12 +88,13 @@ To quickly install |bwc| with DC Fabric Automation Suite, obtain a license key f
 purchasing. These commands will install |bwc|, Network Essentials, DC Fabric Automation Suite,
 and then configure all components to work together on a single host:
 
+First, install |bwc| v2.6 required for DC Fabric Automation Suite v1.2:
 .. code-block:: bash
 
   curl -SsL -O https://stackstorm.com/bwc/install.sh && chmod +x install.sh
-  ./install.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${EWC_LICENSE_KEY}
+  ./install.sh --user=st2admin --password=Ch@ngeMe --version=2.6.0 --license=${EWC_LICENSE_KEY}
 
-If you already have |bwc| installed, and need to add DC Fabric Automation Suite on top of an existing |bwc| installation,
+After |bwc| is installed, to add DC Fabric Automation Suite,
 run the following commands, replacing ``${EWC_LICENSE_KEY}`` with the key you received when 
 registering for evaluation or when purchasing:
 
@@ -103,7 +105,7 @@ registering for evaluation or when purchasing:
 
 .. note::
 
-  If you are adding DC Fabric Automation Suite to an existing |bwc| system, ensure it is running >= v2.5. If you are using an
+  If you are adding DC Fabric Automation Suite to an existing |bwc| system, ensure it is running = v2.6. If you are using an
   older version of |bwc|, :doc:`upgrade the system </install/upgrades>` before installing DC Fabric Automation Suite.
 
 If you have a more complex environment, or you just want to see exactly what the scripts are doing, read on.
@@ -205,7 +207,7 @@ Run some ``bwc dcf`` CLI commands to see that everything is installed.
   
 Upgrade from previous version
 ------------------------------
-If you have previously installed DC Fabric Automation Suite and want to upgrade to next version, please follow the instructions below:
+If you have previously installed DC Fabric Automation Suite v1.1 and want to upgrade to next version, please follow the instructions below:
 
 **On Ubuntu/Debian or RHEL/CentOS 6.x:**
 
@@ -215,20 +217,13 @@ If you have previously installed DC Fabric Automation Suite and want to upgrade 
   sudo apt-get update
   sudo apt-get install bwc-topology bwc-cli dcfabric-packs dcfabric-suite
  
-  # For Database migration from DCF 1.0 to DCF 1.1
-  sudo -u postgres psql -d bwc_topology -a -f /usr/share/doc/bwc-topology/etc/migration.sql
-
-  sudo -u postgres psql -d bwc_topology -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO bwc;"
-
-  sudo -u postgres psql -d bwc_topology -c "GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO bwc;"
- 
   # Update Network Essentials Pack
   st2 pack install network_essentials
 
   # Restart Topology Service
   sudo service bwc-topology restart
 
-  # For verification, run the following command to check the version number for network_essentials, network_inventory and dcfabric packs 
+  # For verification, run the following command to check the version number for network_essentials, network_inventory and dcfabric packs is v1.2.0 
   st2 pack list
 
 **On RHEL/CentOS 7.x:**
@@ -238,20 +233,13 @@ If you have previously installed DC Fabric Automation Suite and want to upgrade 
   # Upgrade bwc/dcfabric packages
   sudo yum update bwc-cli bwc-topology dcfabric-packs dcfabric-suite 
  
-  # For Database migration from DCF 1.0 to DCF 1.1
-  sudo -u postgres psql -d bwc_topology -a -f /usr/share/doc/bwc-topology/etc/migration.sql
-
-  sudo -u postgres psql -d bwc_topology -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO bwc;"
-
-  sudo -u postgres psql -d bwc_topology -c "GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO bwc;"
- 
   # Update Network Essentials Pack
   st2 pack install network_essentials
 
   # Restart Topology Service
   sudo service bwc-topology restart
 
-  # For verification, run the following command to check the version number for network_essentials, network_inventory and dcfabric packs 
+  # For verification, run the following command to check the version number for network_essentials, network_inventory and dcfabric packs is v1.2.0 
   st2 pack list
 
 .. rubric:: What's Next?
