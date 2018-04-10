@@ -25,13 +25,28 @@ To deploying OVA using VirtualBox, follow the steps below:
     10.	To access the Workflow Composer GUI, type https://<IP address of the VM>
     11.	ST2 CLI can be accessed using ssh <IP Address of the VM>
 
-    To find the IP Address of the VM:
-    1.	Access the VM’s console
-    2.	Login using default credentials: ubuntu/ubuntu
-    3.	Type ifconfig to find out the IP Address of the virtual machine.
-    *NOTE:* If the IPv4 address is not assigned to the VM, there may not be DHCP server in your environment.  If DHCP is not available, please configure static IP Address to the VM, refer to Ubuntu documentation on how to configure static IP address.
+License Activation of Software Appliance: Before using the software appliance, users must activate the appliance using automation suites license key.  License key is sent in an email, when users purchase the product or sign up for evaluation license.  Using the license key received, use the commands below to activate the license:
 
-    Default credentials:
+.. code-block:: bash
+    
+    1.	Access the VM’s console
+    2.	Login using default SSH credentials
+    3.  st2-activate-license <license-key>  
+
+To find the IP Address of the VM:
+
+.. code-block:: bash
+
+    1.	Access the VM’s console
+    2.	Login using default SSH credentials
+    3.	Type ifconfig to find out the IP Address of the virtual machine.
+
+*NOTE:* If you are not using DHCP, IPv4 address will not be assigned automatically to the VM, please configure static IP Address to the VM, refer to the Ubuntu documentation on how to configure static IP address.
+
+Default credentials:
+
+.. code-block:: bash
+
     •	SSH Credentials: ubuntu/ubuntu
     •	GUI credentials: st2admin/Ch@ngeMe
     
