@@ -1,6 +1,56 @@
 Installation
 ============
 
+Data Center Fabrics Automation Suite supports two different models for installation:
+
+ * Virtual appliance or
+ * RPM or Deb package-based installation
+
+The virtual appliance has all components pre-installed and pre-configured. This is the fastest way to stand up a new system. Some users may still need to do a package-based installation due to their specific needs.
+
+Deploying the Virtual Appliance
+===============================
+The virtual appliance can be downloaded from the `Extreme Portal <https://extremeportal.force.com/ExtrProductLanding?pf=Automation>`_
+
+To deploy the OVA using VirtualBox, follow the steps below:
+
+    1.	Download dcf-1.2.0_ewc-2.6.0.ova file from Extreme Portal download page
+    2.	Start Oracle VirtualBox
+    3.	File -> Import Appliance  (or) Ctrl+I
+    4.	Select the downloaded .ova file and Open
+    5.	Select the imported VM and click Start
+    6.	After the VM starts, right click on the VM and select “Settings”
+    7.	Select Network tab in the Settings window
+    8.	Change Adapter setting from “NAT” to “Bridged Adapter”
+    9.	Power Off and restart the VM
+    10.	To access the Workflow Composer GUI, type ``https://<IP address of the VM>``
+    11.	ST2 CLI can be accessed using ssh ``<IP Address of the VM>``
+
+To find the IP Address of the VM:
+
+    1.	Access the VM’s console
+    2.	Login using default SSH credentials
+    3.	Type ifconfig to find out the IP Address of the virtual machine.
+
+.. note::
+  By default, the VM uses DHCP to obtain an IP address. If your network does not have DHCP, you will need to
+  statically configure an IP address, using `these instructions <https://help.ubuntu.com/lts/serverguide/network-configuration.html#ip-addressing>`_
+
+Default credentials:
+    •	SSH Credentials: ``ubuntu/ubuntu``
+    •	GUI credentials: ``st2admin/Ch@ngeMe``
+
+License Activation
+------------------
+Before using the software appliance, users must activate the appliance.  To obtain an evaluation license key, go to `Extreme Products Page <https://www.extremenetworks.com/product/workflow-composer/>`_. Your license key will be emailed to you. Use the commands below to activate the license:
+   
+    1.	Access the VM’s console
+    2.	Login using default SSH credentials
+    3.  ``st2-activate-license <license-key>``
+    
+RPM or Deb Package-based Installation
+=====================================
+
 .. warning::
     If you had previously installed the EWC 2.0 IP Fabric Automation Suite,
     we recommend installing the DC Fabric Automation Suite on a new Virtual Machine.
@@ -51,12 +101,14 @@ To quickly install |bwc| with DC Fabric Automation Suite, obtain a license key f
 purchasing. These commands will install |bwc|, Network Essentials, DC Fabric Automation Suite,
 and then configure all components to work together on a single host:
 
+First, install |bwc| v2.6. This version is required for DC Fabric Automation Suite v1.2
+
 .. code-block:: bash
 
   curl -SsL -O https://stackstorm.com/bwc/install.sh && chmod +x install.sh
-  ./install.sh --user=st2admin --password=Ch@ngeMe --suite=dcfabric-suite --license=${EWC_LICENSE_KEY}
+  ./install.sh --user=st2admin --password=Ch@ngeMe --version=2.6.0 --license=${EWC_LICENSE_KEY}
 
-If you already have |bwc| installed, and need to add DC Fabric Automation Suite on top of an existing |bwc| installation,
+After |bwc| is installed, to add DC Fabric Automation Suite,
 run the following commands, replacing ``${EWC_LICENSE_KEY}`` with the key you received when 
 registering for evaluation or when purchasing:
 
@@ -67,7 +119,7 @@ registering for evaluation or when purchasing:
 
 .. note::
 
-  If you are adding DC Fabric Automation Suite to an existing |bwc| system, ensure it is running >= v2.5. If you are using an
+  If you are adding DC Fabric Automation Suite to an existing |bwc| system, ensure it is running = v2.6. If you are using an
   older version of |bwc|, :doc:`upgrade the system </install/upgrades>` before installing DC Fabric Automation Suite.
 
 If you have a more complex environment, or you just want to see exactly what the scripts are doing, read on.
@@ -169,7 +221,7 @@ Run some ``bwc dcf`` CLI commands to see that everything is installed.
   
 Upgrade from previous version
 ------------------------------
-If you have previously installed DC Fabric Automation Suite and want to upgrade to next version, please follow the instructions below:
+If you have previously installed DC Fabric Automation Suite v1.1 and want to upgrade to next version, please follow the instructions below:
 
 **On Ubuntu/Debian or RHEL/CentOS 6.x:**
 
@@ -179,20 +231,13 @@ If you have previously installed DC Fabric Automation Suite and want to upgrade 
   sudo apt-get update
   sudo apt-get install bwc-topology bwc-cli dcfabric-packs dcfabric-suite
  
-  # For Database migration from DCF 1.0 to DCF 1.1
-  sudo -u postgres psql -d bwc_topology -a -f /usr/share/doc/bwc-topology/etc/migration.sql
-
-  sudo -u postgres psql -d bwc_topology -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO bwc;"
-
-  sudo -u postgres psql -d bwc_topology -c "GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO bwc;"
- 
   # Update Network Essentials Pack
   st2 pack install network_essentials
 
   # Restart Topology Service
   sudo service bwc-topology restart
 
-  # For verification, run the following command to check the version number for network_essentials, network_inventory and dcfabric packs 
+  # For verification, run the following command to check the version number for network_essentials, network_inventory and dcfabric packs is v1.2.0 
   st2 pack list
 
 **On RHEL/CentOS 7.x:**
@@ -202,20 +247,13 @@ If you have previously installed DC Fabric Automation Suite and want to upgrade 
   # Upgrade bwc/dcfabric packages
   sudo yum update bwc-cli bwc-topology dcfabric-packs dcfabric-suite 
  
-  # For Database migration from DCF 1.0 to DCF 1.1
-  sudo -u postgres psql -d bwc_topology -a -f /usr/share/doc/bwc-topology/etc/migration.sql
-
-  sudo -u postgres psql -d bwc_topology -c "GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO bwc;"
-
-  sudo -u postgres psql -d bwc_topology -c "GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO bwc;"
- 
   # Update Network Essentials Pack
   st2 pack install network_essentials
 
   # Restart Topology Service
   sudo service bwc-topology restart
 
-  # For verification, run the following command to check the version number for network_essentials, network_inventory and dcfabric packs 
+  # For verification, run the following command to check the version number for network_essentials, network_inventory and dcfabric packs is v1.2.0 
   st2 pack list
 
 .. rubric:: What's Next?
