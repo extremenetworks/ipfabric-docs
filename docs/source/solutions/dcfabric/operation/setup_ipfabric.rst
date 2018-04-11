@@ -516,7 +516,10 @@ showing only one version.
       | bfd_rx               | 300             | 300             | 300             |
       | mtu                  | 9216            | 9216            | 9216            |
       | ip_mtu               | 9018            | 9018            | 9018            |
-      | vlan_vni_auto_map    | Not Supported   | Not Supported   | Yes             |
+      | vni_auto_map         | Not Supported   | Not Supported   | Yes             |
+      | enable_vf            | Not Supported   | Not Supported   | No              |
+      | control_VLAN         | Not Supported   | Not Supported   | 4090            |
+      | mct_link_ip_range    | Not Supported   | Not Supported   | 10.10.12.0/23   |
       +----------------------+-----------------+-----------------+-----------------+
 
 .. note::
@@ -578,8 +581,17 @@ command as explained in next section:
 | ip_mtu                 | IP MTU size, min: 1300; max: 9018.                                |
 |                        | These values may change based on the switch operating system.     |
 +------------------------+-------------------------------------------------------------------+
-| vlan_vni_auto_map      | Yes or No. Default is Yes. If 'Yes', configures VLAN to VNI       |
-|                        | mapping as auto under overlay gateway.                            |
+| vni_auto_map           | Yes or No. Default is Yes. If 'Yes', configures VLAN or           |
+|                        | bridge-domain to VNI mapping as auto under overlay gateway.       |
++------------------------+-------------------------------------------------------------------+
+| enable_vf              | Yes or No. Default is No. If 'Yes', configures VCS Virtual Fabric |
+|                        | on VDX devices.                                                   |
++------------------------+-------------------------------------------------------------------+
+| mct_link_ip_range      | A valid Ip-network, for example,10.10.12.0/24                     |
+|                        | on SLX devices.                                                   |
++------------------------+-------------------------------------------------------------------+
+| control_VLAN           | A VLAN ID for MCT Control Traffic on SLX devices.                 |
+|                        | Default is 4090.                                                  |
 +------------------------+-------------------------------------------------------------------+
 
 The required parameters must be added to the user-defined/custom configuration. The other

@@ -2,7 +2,7 @@ Network Essentials Actions
 ==========================
 
 This is a reference documentation for Network Essentials Automation Suite actions and workflows to automate SLX, VDX and
-NetIron(NI) switches. These actions can be used as independent actions, or as part of a more complex
+NetIron(NI) devices. These actions can be used as independent actions, or as part of a more complex
 workflow. :doc:`Actions</actions>` can be manually triggered, or they can be tied to
 :doc:`sensors </sensors>` using rules.
 
@@ -384,17 +384,12 @@ Known Issues
 ------------
 This section includes the known issues in Network Essentials Automation Suite 1.0.0 release. Common issues are listed in the beginning of the section and the issues specific to a particular network device platform are organized under the corresponding platform sub-section.
 
-1. ID:277 remove_acl fails with an unknown error on port_channel interfaces
-2. ID:312 set_l3_mtu returns success when setting the MTU size back to default value but the switch is not configured with the default MTU size.
-3. ID:300 set_l2_mtu returns success when setting the MTU size back to default value but the switch is not configured with the default MTU size.
 
 SLX:
 ~~~~
-4. ID:314 set_l3_mtu not supported on VE interface.
-5. ID:309 validate_interface_state not supported on VE interface.
-6. ID:308 create_ve times out on SLX.
-7. ID:311 ping_vrf_targets is not supported on SLX.
+400 - Time taken for IPV6 ACL is higher due to bulking not supported on IPv6 SLX
 
-VDX:
+NI:
 ~~~~
-8. ID:303 validate_interface_vlan doesn’t validate GVLANs i.e. VLANs with ID over 4K.
+333 - add_or_remove_l2_acl_rule : In negative scenarios the error string is missing last few characters
+323 - create_ve action does not configure IPv4/v6 addresses for dual stack scenarios
