@@ -8,8 +8,8 @@ Data Center Fabrics Automation Suite supports two different models for installat
 
 The virtual appliance has all components pre-installed and pre-configured. This is the fastest way to stand up a new system. Some users may still need to do a package-based installation due to their specific needs.
 
-Deploying the Virtual Appliance
-===============================
+Deploying Virtual Appliance
+===========================
 The virtual appliance can be downloaded from the `Extreme Portal <https://extremeportal.force.com/ExtrProductLanding?pf=Automation>`_
 
 To deploy the OVA using VirtualBox, follow the steps below:
