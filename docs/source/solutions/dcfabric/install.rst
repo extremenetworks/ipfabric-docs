@@ -23,8 +23,8 @@ To deploy the OVA using VirtualBox, follow the steps below:
     7.	Select Network tab in the Settings window
     8.	Change Adapter setting from “NAT” to “Bridged Adapter”
     9.	Power Off and restart the VM
-    10.	To access the Workflow Composer GUI, type "https://<IP address of the VM>"
-    11.	ST2 CLI can be accessed using ssh <IP Address of the VM>
+    10.	To access the Workflow Composer GUI, type ``https://<IP address of the VM>``
+    11.	ST2 CLI can be accessed using ssh ``<IP Address of the VM>``
 
 To find the IP Address of the VM:
 
@@ -37,8 +37,8 @@ To find the IP Address of the VM:
   statically configure an IP address, using `these instructions <https://help.ubuntu.com/lts/serverguide/network-configuration.html#ip-addressing>`_
 
 Default credentials:
-    •	SSH Credentials: ubuntu/ubuntu
-    •	GUI credentials: st2admin/Ch@ngeMe
+    •	SSH Credentials: ``ubuntu/ubuntu``
+    •	GUI credentials: ``st2admin/Ch@ngeMe``
 
 License Activation
 ------------------
@@ -46,7 +46,7 @@ Before using the software appliance, users must activate the appliance.  To obta
    
     1.	Access the VM’s console
     2.	Login using default SSH credentials
-    3.  "st2-activate-license <license-key>"
+    3.  ``st2-activate-license <license-key>``
     
 RPM or Deb Package-based Installation
 =====================================
