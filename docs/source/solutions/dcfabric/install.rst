@@ -246,6 +246,9 @@ If you have previously installed DC Fabric Automation Suite v1.1 and want to upg
 
   # Upgrade bwc/dcfabric packages
   sudo yum update bwc-cli bwc-topology dcfabric-packs dcfabric-suite 
+
+  # Fix pybind python module dependency for bwc-topology service
+  sudo rm -rf /opt/brocade/bwc-topology/lib/python2.7/site-packages/pybind* && sudo /opt/brocade/bwc-topology/bin/pip install pybind && sudo chown -R bwc:root /opt/brocade/bwc-topology/lib/python2.7/site-packages/pybind*
  
   # Update Network Essentials Pack
   st2 pack install network_essentials
