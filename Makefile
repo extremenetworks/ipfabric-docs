@@ -58,7 +58,7 @@ distclean:
 .PHONY: requirements
 requirements: virtualenv
 	@echo
-	@echo "==================== ipfaric-docs requirements ===================="
+	@echo "==================== ewc-docs requirements ===================="
 	@echo
 
 	# Make sure we use latest version of pip
@@ -75,7 +75,7 @@ requirements: virtualenv
 virtualenv: $(VIRTUALENV_DIR)/bin/activate
 $(VIRTUALENV_DIR)/bin/activate:
 	@echo
-	@echo "==================== ipfaric-docs virtualenv ===================="
+	@echo "==================== ewc-docs virtualenv ===================="
 	@echo
 	test -d $(VIRTUALENV_DIR) || virtualenv --no-site-packages $(VIRTUALENV_DIR)
 	
