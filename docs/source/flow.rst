@@ -44,7 +44,7 @@ You can also edit existing workflows
   used to edit :doc:`actionchain` workflows.
 
 Using the |bwc| Web UI, go the Actions tab, and navigate to a mistral-v2 workflow. Select the workflow
-and click "Edit" at the bottom of the workflow details pane:
+and click "Edit" at the right of the workflow details pane:
 
 .. figure:: /_static/images/flow/existing_workflow.png
     :align: center
