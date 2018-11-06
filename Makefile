@@ -11,6 +11,7 @@ DOC_BUILD_DIR := docs/build
 BINARIES := bin
 
 PYTHON_TARGET := 2.7
+PYTHON_VERSION := 2.7
 
 REQUIREMENTS := requirements.txt
 
