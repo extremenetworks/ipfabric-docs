@@ -18,8 +18,7 @@ On Redhat/CentOS:
 
 .. code-block:: bash
 
-  sudo yum install libxml2-dev libxslt1-dev
-  sudo yum install gcc
+  sudo yum install gcc libxml2-devel libxslt-devel
 
 Installing Network Essentials
 -----------------------------
