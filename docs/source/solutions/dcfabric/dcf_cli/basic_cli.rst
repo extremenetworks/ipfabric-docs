@@ -6,7 +6,7 @@ DC Fabric CLI
   a shell command prompt. Do not enter another dollar sign. All commands should be entered
   at the shell prompt.
 
-|bwc|'s DC Fabric CLI provides a simple way to interrogate and configure your IP Fabric.
+|ewc|'s DC Fabric CLI provides a simple way to interrogate and configure your IP Fabric.
 
 ------------
 

@@ -1,4 +1,4 @@
-Using ZTP with |bwc|
+Using ZTP with |ewc|
 ====================
 
 Zero Touch Provisioning (ZTP) can be used to bring up a switch with new firmware and a
@@ -11,7 +11,7 @@ For more information, refer to the `Using DHCP Automatic Deployment <http://www.
 section of the `Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-E7A18ADA-3D26-475A-BE56-13088EC74EFF-homepage.html>`_.
 
 As part of the ZTP process, the switch can execute a local script. This stage is used to
-register the switch with |bwc| and run the BGP workflow.
+register the switch with |ewc| and run the BGP workflow.
 
 Use Case 1: Simple IP Fabric
 ----------------------------
@@ -382,7 +382,7 @@ The following is a sample DAD configuration file for a two-node VCS cluster:
 Registration script
 -------------------
 
-The registration script is shipped with the DC Fabric Automation Suite. If you installed |bwc| on a server,
+The registration script is shipped with the DC Fabric Automation Suite. If you installed |ewc| on a server,
 the registration script is usually available in
 ``/usr/share/doc/bwc-topology/etc/bwc-automation.py``. If you are using an FTP server in combination
 with DHCP server as described in :ref:`ztp_setup_process`, the script should be deployed to the FTP server
@@ -406,8 +406,8 @@ Please make sure the execute bit is set for the script. To test the script manua
 
   /var/config/vcs/scripts/bwc-automation.py
 
-The registration script first registers the switch to |bwc|. The script then triggers the BGP
-workflow on the switch by sending another HTTP request to the deployed |bwc| server.
+The registration script first registers the switch to |ewc|. The script then triggers the BGP
+workflow on the switch by sending another HTTP request to the deployed |ewc| server.
 
 The script also generates a registration log at the same location. It indicates if the
 registration script ran successfully.
@@ -449,7 +449,7 @@ To verify whether the ZTP and DAD process ran correctly, complete the following 
    section of the `Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-E7A18ADA-3D26-475A-BE56-13088EC74EFF-homepage.html>`_
    for more information about additional DAD codes.
 
-3. Check the |bwc| server to see if the switch is registered and the BGP workflow completed
+3. Check the |ewc| server to see if the switch is registered and the BGP workflow completed
    successfully on it.
 
 4. To verify that the registration script executed successfully, check the log file on the switch

@@ -6,7 +6,7 @@ specific networking use-cases, e.g. Data Center Fabric architectures, or Interne
 They deliver turnkey workflows for provisioning, validation, troubleshooting and remediation
 workflows.
 
-These are installed on top of |bwc|. Users can install one or more suites. Suites may have
+These are installed on top of |ewc|. Users can install one or more suites. Suites may have
 dependencies - e.g. the Network Essentials suite is foundational for other suites.
 
 Users may modify these workflows to customise them to their needs.
@@ -24,7 +24,7 @@ Starting with v1.2 supports Extreme SLX, VDX and MLXe device families. See more 
 DC Fabric
 ~~~~~~~~~~
 
-The DC Fabric Automation Suite is an add-on package for |bwc| that provides services and pre-built
+The DC Fabric Automation Suite is an add-on package for |ewc| that provides services and pre-built
 automations for managing Data Center Fabrics - both VCS Fabric and IP Fabric architectures. It
 includes workflows such as:
 
@@ -40,7 +40,7 @@ See more details :doc:`here<dcfabric/overview>`.
 
 .. rubric:: What's Next?
 
-* :doc:`Install EWC<../install/bwc>` if you haven't already!
+* :doc:`Install EWC<../install/ewc>` if you haven't already!
 * Choose which suites you need, and install them. Follow these instructions:
 
   + :doc:`Network Essentials<essentials/install>`

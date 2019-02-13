@@ -54,5 +54,5 @@ The Network Essentials Automation Suite supports VDX, SLX and MLXe device famili
 
 .. rubric:: What's Next?
 
-* Install and run |bwc| and Network Essentials - follow the :doc:`install` guide.
+* Install and run |ewc| and Network Essentials - follow the :doc:`install` guide.
 * Learn more about the available actions - read the :doc:`workflows` guide.
