@@ -134,4 +134,4 @@ The DC Fabric Automation Suite supports the following devices:
 
 What's Next?
 -------------------------------
-* Install and run |bwc| and DC Fabric Automation Suite - follow the :doc:`install` guide.
+* Install and run |ewc| and DC Fabric Automation Suite - follow the :doc:`install` guide.

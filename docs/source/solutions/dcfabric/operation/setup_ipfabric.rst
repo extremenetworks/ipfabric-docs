@@ -7,7 +7,7 @@ Suite can automatically configure interfaces, BGP peering and related settings. 
 consistent configuration across the IP Fabric, with minimal effort.
 
 .. note::
-    This document covers the operation of the |bwc| DC Fabric Automation Suite. For more information
+    This document covers the operation of the |ewc| DC Fabric Automation Suite. For more information
     about IP Fabrics in general, refer to the `Network OS IP Fabric
     Configuration Guide <http://www.brocade.com/content/html/en/configuration-guide/nos-701-ipfabrics/index.html>`_
     and the `IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ 
@@ -24,7 +24,7 @@ as ASN range, and IP address ranges which can be used to create an IP Fabric. Th
 
     **Components of Extreme Workflow Composer**
 
-The illustration shows the components of the |bwc| and the switch spines and leaves connectivity. This will be
+The illustration shows the components of the |ewc| and the switch spines and leaves connectivity. This will be
 the example setup for showing how to initially provision an IP Fabric using EWC.
 
 Once your IP Fabric is provisioned, check out the :doc:`Using IP Fabric<using_ipfabric>` documentation
@@ -46,7 +46,7 @@ if the switch has ZTP enabled and if no management IP address has been assigned 
 
 Zero Touch Provisioning (ZTP) can be used to bring up a switch with new firmware and a preset configuration automatically. The switch does not need to be configured via the console. ZTP uses a DHCP-based process known as DHCP Automatic Deployment (DAD) to handle basic configuration such as assigning a VCS ID, VCS mode, an RBridge ID, and downloading firmware.
 
-As part of the ZTP process, the switch can execute a local script. This stage is used to register the switch with |bwc| and run the BGP workflow if desired.
+As part of the ZTP process, the switch can execute a local script. This stage is used to register the switch with |ewc| and run the BGP workflow if desired.
 
 .. note::
     For detailed information about ZTP, refer to the :doc:`ZTP reference <../ztp_reference>`
@@ -59,7 +59,7 @@ As part of the ZTP process, the switch can execute a local script. This stage is
 If the switch has ZTP enabled, complete the following steps:
 
     1.  Ensure that DHCP and FTP servers to be used in the fabric have been installed.
-    2.  Ensure that |bwc| and DC Fabric automation suite have been installed.
+    2.  Ensure that |ewc| and DC Fabric automation suite have been installed.
     3.  After the process has finished executing, enter the ``bwc dcf show config bgp`` command
 
 .. note::
@@ -152,11 +152,11 @@ Configuring an IP Fabric manually or without ZTP enabled
 If the VDX switch does not have ZTP enabled, or if you want to configure an IP Fabric
 manually, complete the following steps:
 
-    1.  Register the switch in the |bwc| database.  
+    1.  Register the switch in the |ewc| database.  
     2.  Verify that the switch is registered.    
     3.  Repeat Steps 1 and 2 for each switch that will be added to the IP Fabric. 
     4.  Execute the BGP workflow.
-    5.  Review and verify the IP Fabric configuration using the the bwc dcf show config bgp command. 
+    5.  Review and verify the IP Fabric configuration using the the ``bwc dcf show config bgp`` command. 
 
 .. note::
     To use the DC Fabric Automation Suite to configure an IP Fabric without ZTP enabled, your environment must meet
@@ -169,13 +169,13 @@ manually, complete the following steps:
 
 .. warning::
     The first switch that is added to the server must always be a **spine** switch. If it is not,
-    delete the leaf switch from the |bwc| server and add a spine switch first. After the first spine
+    delete the leaf switch from the |ewc| server and add a spine switch first. After the first spine
     has been added, the order of adding more switches will not matter as they will be automatically identified as Spine or Leaf      
     switches using LLDP.
 
 Use the DC Fabric Automation Suite CLI to configure an IP Fabric by completing the following steps:
 
-1. Register the switches in the |bwc| database by entering the ``bwc dcf inventory
+1. Register the switches in the |ewc| database by entering the ``bwc dcf inventory
    register`` command:
 
    ``$ bwc dcf inventory register host=<switch IP address> fabric=<fabric_name> user=<user_name> passwd=<password>``
@@ -422,7 +422,7 @@ Updating switch credentials and information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A switch is registered to the server using the switch credentials. If the credentials are
-changed on the switch, the change must be updated in the |bwc| server
+changed on the switch, the change must be updated in the |ewc| server
 using the ``bwc dcf inventory update --host=<ip_address>`` command.
 
 .. code:: shell
@@ -464,7 +464,7 @@ Refer the :doc:`dcf CLI <../dcf_cli/basic_cli>` page for options available for t
 Confirming IP Fabric details
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To check the details of the registered switches in the |bwc| server and compare it with the current
+To check the details of the registered switches in the |ewc| server and compare it with the current
 switch configuration, use following commands:
 
 
@@ -590,7 +590,7 @@ command as explained in next section:
 +------------------------+-------------------------------------------------------------------+
 
 The required parameters must be added to the user-defined/custom configuration. The other
-parameters are not optional. If you do not add optional parameters, |bwc|
+parameters are not optional. If you do not add optional parameters, |ewc|
 will use the values from the default configuration.
 
 .. note::

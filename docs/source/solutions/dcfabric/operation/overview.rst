@@ -10,7 +10,7 @@ interfaces, BGP peerings and related settings. This ensures consistent configura
 across the fabric, with minimal effort.
 
 .. note::
-    This document covers the operation of the |bwc| DC Fabric Automation Suite. For more information
+    This document covers the operation of the |ewc| DC Fabric Automation Suite. For more information
     about IP Fabrics in general, see the `Network OS IP Fabric
     Configuration Guide <http://www.brocade.com/content/html/en/configuration-guide/nos-701-ipfabrics/index.html>`_
     and the `IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ 
