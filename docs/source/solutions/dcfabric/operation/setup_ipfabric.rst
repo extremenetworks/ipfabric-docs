@@ -9,8 +9,8 @@ consistent configuration across the IP Fabric, with minimal effort.
 .. note::
     This document covers the operation of the |ewc| DC Fabric Automation Suite. For more information
     about IP Fabrics in general, refer to the `Network OS IP Fabric
-    Configuration Guide <http://www.brocade.com/content/html/en/configuration-guide/nos-701-ipfabrics/index.html>`_
-    and the `IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_ 
+    Configuration Guide <https://documentation.extremenetworks.com/networkos/SW/73x/nos-730-ipfabrics.pdf>`_
+    and the `IP Fabric Validated Design <https://www.extremenetworks.com/resources/extreme-validated-design/extreme-ip-fabric-architecture/>`_ 
 
 The EWC DC Fabric Automation Suite supports easy integration with Zero-Touch Provisioning (ZTP). It can also be used 
 without ZTP, however, initial switch setup and registration will be a manual process.
@@ -50,7 +50,7 @@ As part of the ZTP process, the switch can execute a local script. This stage is
 
 .. note::
     For detailed information about ZTP, refer to the :doc:`ZTP reference <../ztp_reference>`
-    and the `Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-B70DA4FE-6819-45A9-9E07-65785D7DB402.html>`_.
+    and the `Network OS Management Configuration Guide <https://documentation.extremenetworks.com/networkos/SW/73x/nos-730-management.pdf>`_.
 
 .. warning::
     The first switch that is powered on and executes the ZTP process must be a spine switch.
@@ -484,7 +484,7 @@ IP Fabric configuration parameters
 This DC IP Fabric Automation Suite has a default set of configuration parameters defined for an
 IP Fabric. The default set of configuration parameter values are fixed and cannot be changed by
 users. Some of the parameters have been changed in v1.1 of the automation suite based on
-`IP Fabric Validated Design <http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_
+`IP Fabric Validated Design <https://www.extremenetworks.com/resources/extreme-validated-design/extreme-ip-fabric-architecture/>`_
 recommendations. In addition some new parameters have also been added in v1.1. You can display the
 values of the parameters using the ``bwc dcf fabric config show`` CLI command.  The table below
 shows the comparison for both DC IP Fabric Automation Suite v1.0 and v1.1 values with the display
