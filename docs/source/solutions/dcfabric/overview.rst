@@ -19,7 +19,7 @@ VCS Fabric Technology can be used to deploy a data center fabric in different to
 This section summarizes the most common deployment models for VCS Fabric. For more details
 on the design considerations for each of the deployment models, refer to the `Data Center
 Architecture Solution Design Guide
-<http://www.brocade.com/content/html/en/solution-design-guide/brocade-dc-fabric-architectures-sdg/index.html>`_
+<https://www.extremenetworks.com/resources/extreme-validated-design/extreme-vcs-fabric-with-ip-storage/>`_
 
 The diagram below shows a data center site built using a leaf-spine topology deployed using
 VCS Fabric technology. In this topology, the spines are connected to the data center core/WAN edge
@@ -72,9 +72,9 @@ IP Fabric provides a Layer 3 Clos deployment architecture for data center sites.
 IP Fabric, all links in the Clos topology are Layer 3 links. A data center PoD built with IP fabrics
 supports dual-homing of network endpoints using multiswitch port channel interfaces formed between a
 pair of VDX switches participating in a vLAG. This pair of leaf switches is called a vLAG
-pair. For more details on the design considerations for IP fabric, refer to the
-`Data Center Architecture Solution Design Guide 
-<http://www.brocade.com/content/html/en/solution-design-guide/brocade-dc-fabric-architectures-sdg/index.html>`_
+pair. For more details on the design considerations for IP Fabric, refer to the
+`IP Fabric Design Guide 
+<https://www.extremenetworks.com/resources/extreme-validated-design/extreme-ip-fabric-architecture/>`_
 
 .. figure:: ../../_static/images/solutions/dcfabric/ip_fabric_dual_home.png
       :align: center
@@ -94,9 +94,9 @@ With BGP-EVPN deployed in a data center site, the leaf switches participate in t
 data-plane operations. These are shown as BGP-EVPN Instance (EVI) below. The spine switches
 participate only in the BGP-EVPN control plane. For more details on the design considerations for
 IP fabric, refer to the `Data Center Architectures for Network Virtualization Solution Design Guide
-<http://www.brocade.com/content/html/en/solution-design-guide/brocade-dc-network-virtualization-sdg/index.html>`_
+<https://www.extremenetworks.com/resources/extreme-validated-design/extreme-ip-fabric-architecture/>`_
 and `Network Virtualization in IP Fabric with BGP EVPN Validated Design
-<http://www.brocade.com/content/html/en/brocade-validated-design/brocade-ip-fabric-bvd/GUID-35138986-3BBA-4BD0-94B4-AFABB2E01D77-homepage.html>`_
+<https://www.extremenetworks.com/resources/extreme-validated-design/network-virtualization-with-ip-fabric-2-0-on-slx-platforms/>`_
 
 .. figure:: ../../_static/images/solutions/dcfabric/ip_fabric_bgp_evpn.png
       :align: center
@@ -134,4 +134,4 @@ The DC Fabric Automation Suite supports the following devices:
 
 What's Next?
 -------------------------------
-* Install and run |bwc| and DC Fabric Automation Suite - follow the :doc:`install` guide.
+* Install and run |ewc| and DC Fabric Automation Suite - follow the :doc:`install` guide.

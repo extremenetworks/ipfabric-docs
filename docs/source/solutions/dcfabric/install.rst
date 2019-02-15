@@ -62,7 +62,7 @@ RPM or Deb Package-based Installation
 System requirements
 -------------------
 
-The system requirements for |bwc| with DC Fabric Automation Suite are the same as the core platform requirements,
+The system requirements for |ewc| with DC Fabric Automation Suite are the same as the core platform requirements,
 except the memory requirements outlined below will overwrite the system requirements in the platform page.
 See the :doc:`system requirements documentation</install/system_requirements>` for more details.
 
@@ -95,20 +95,20 @@ On Redhat/CentOS:
 Simple Installation
 -------------------
 
-To quickly install |bwc| with DC Fabric Automation Suite, obtain a license key from
+To quickly install |ewc| with DC Fabric Automation Suite, obtain a license key from
 `www.extremenetworks.com/product/workflow-composer/ <https://www.extremenetworks.com/product/workflow-composer/>`_, and run the commands below, replacing
 ``${EWC_LICENSE_KEY}`` with the key you received when registering for evaluation or when
-purchasing. These commands will install |bwc|, Network Essentials, DC Fabric Automation Suite,
+purchasing. These commands will install |ewc|, Network Essentials, DC Fabric Automation Suite,
 and then configure all components to work together on a single host:
 
-First, install |bwc| v2.6. This version is required for DC Fabric Automation Suite v1.2
+First, install |ewc| v2.6. This version is required for DC Fabric Automation Suite v1.2
 
 .. code-block:: bash
 
   curl -SsL -O https://stackstorm.com/bwc/install.sh && chmod +x install.sh
   ./install.sh --user=st2admin --password=Ch@ngeMe --version=2.6.0 --license=${EWC_LICENSE_KEY}
 
-After |bwc| is installed, to add DC Fabric Automation Suite,
+After |ewc| is installed, to add DC Fabric Automation Suite,
 run the following commands, replacing ``${EWC_LICENSE_KEY}`` with the key you received when 
 registering for evaluation or when purchasing:
 
@@ -119,8 +119,8 @@ registering for evaluation or when purchasing:
 
 .. note::
 
-  If you are adding DC Fabric Automation Suite to an existing |bwc| system, ensure it is running = v2.6. If you are using an
-  older version of |bwc|, :doc:`upgrade the system </install/upgrades>` before installing DC Fabric Automation Suite.
+  If you are adding DC Fabric Automation Suite to an existing |ewc| system, ensure it is running = v2.6. If you are using an
+  older version of |ewc|, :doc:`upgrade the system </install/upgrades>` before installing DC Fabric Automation Suite.
 
 If you have a more complex environment, or you just want to see exactly what the scripts are doing, read on.
 The rest of this document will explain how to manually install and configure the individual components.
@@ -131,19 +131,19 @@ Custom Installation
 Components
 ~~~~~~~~~~
 
-The DC Fabric Automation Suite installs on top of |bwc|. It adds an inventory & topology service, and
+The DC Fabric Automation Suite installs on top of |ewc|. It adds an inventory & topology service, and
 DC Fabric automation packs containing actions and workflows to simplify Data Center Fabric management.
 It also includes the ``bwc dcf`` CLI, and Zero Touch Provisioning scripts for integration with :doc:`ZTP <ztp_reference>`.
 This suite uses components of the :doc:`../essentials/overview` suite. If the Network Essentials Automation Suite is not
 currently installed, it will automatically be installed during DC Fabric Automation Suite installation.
 
-1. Install |bwc|
+1. Install |ewc|
 ~~~~~~~~~~~~~~~~
 
-To install |bwc|, follow the detailed installation instructions for your Linux flavor.
+To install |ewc|, follow the detailed installation instructions for your Linux flavor.
 It will walk you through installing and configuring StackStorm first, and upgrade it
-to |bwc| with the license key you received when registering for evaluation or when 
-purchasing. This last step will also set up the |bwc| repository on your box.
+to |ewc| with the license key you received when registering for evaluation or when 
+purchasing. This last step will also set up the |ewc| repository on your box.
 
 * :doc:`/install/deb`
 * :doc:`/install/rhel7`
@@ -153,7 +153,7 @@ purchasing. This last step will also set up the |bwc| repository on your box.
 2. Install DC Fabric Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Make sure that |bwc| repository is set up on the box.
+Make sure that |ewc| repository is set up on the box.
 
 Install the DC Fabric suite:
 
@@ -261,6 +261,6 @@ If you have previously installed DC Fabric Automation Suite v1.1 and want to upg
 
 .. rubric:: What's Next?
 
-* New to |bwc|? Go to fundamentals - start with :doc:`/start`.
+* New to |ewc|? Go to fundamentals - start with :doc:`/start`.
 * Understand the DC Fabric operations - go over :doc:`./operation/overview`.
 * Understand the DC Fabric CLI - read the :doc:`./dcf_cli/basic_cli`.

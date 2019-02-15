@@ -10,12 +10,12 @@ This section is about accessing DC Fabric suite with the original |st2| CLI inst
 You will need to familiarise yourself with |st2| components like actions, workflows, packs, 
 execution list etc.
 
-See the |bwc| :doc:`CLI reference documentation </reference/cli>` for more details.
+See the |ewc| :doc:`CLI reference documentation </reference/cli>` for more details.
 
 
 ----------
 
-|bwc| consists of two packs for DC Fabric services and workflows: **network_inventory** and **dcfabric** pack. 
+|ewc| consists of two packs for DC Fabric services and workflows: **network_inventory** and **dcfabric** pack. 
 These packs are automatically installed with the DC Fabric suite.
 
 * **network_inventory**: Inventory-related actions such as show topology, configure BGP, etc. Includes lightweight topology 
@@ -51,17 +51,17 @@ The actions in each pack include a short description:
       |                                               |          | VRF including RD, RT, L3VNI, Create Ve, configure    |
       |                                               |          | redistributed connected bgp                          |
       | dcfabric.configure_bgp_ipfabric               | dcfabric | Configure bgp on switch                              |
-      | dcfabric.configure_bgp_neighbor               | dcfabric | Configure BGP neighbor on Brocade VDX Switches       |
-      | dcfabric.configure_bgp_parameters_ipfabric    | dcfabric | Configure BGP on Brocade VDX Switches                |
+      | dcfabric.configure_bgp_neighbor               | dcfabric | Configure BGP neighbor on Extreme VDX Switches       |
+      | dcfabric.configure_bgp_parameters_ipfabric    | dcfabric | Configure BGP on Extreme VDX Switches                |
       | dcfabric.configure_bgp_redistribute_connected | dcfabric | Configure BGP route redistribution on VDX switches   |
       | dcfabric.configure_device_ipfabric            | dcfabric | Configure switch                                     |
       | dcfabric.configure_fabric_infra               | dcfabric | Configure IP fabric infrastructure                   |
-      | dcfabric.configure_interface_ipfabric         | dcfabric | Configure IPs on Brocade VDX Switches                |
+      | dcfabric.configure_interface_ipfabric         | dcfabric | Configure IPs on Extreme VDX Switches                |
       | dcfabric.configure_intfs_ipfabric             | dcfabric | Configure switch interfaces                          |
-      | dcfabric.debugscript_ipfabric                 | dcfabric | Script to debug ip fabric flows on Brocade VDX       |
+      | dcfabric.debugscript_ipfabric                 | dcfabric | Script to debug ip fabric flows on Extreme VDX       |
       |                                               |          | Switches                                             |
       | dcfabric.debugscript_ipfabric_egress          | dcfabric | Script to run a debug ipfabric flows on egress node  |
-      | dcfabric.debugscript_ipfabric_spine           | dcfabric | Script to debug ip fabric flows on Brocade VDX       |
+      | dcfabric.debugscript_ipfabric_spine           | dcfabric | Script to debug ip fabric flows on Extreme VDX       |
       |                                               |          | Switches                                             |
       | dcfabric.get-flow-trace-ip-fabric             | dcfabric | Runs the 3 ipfabric debug scripts on ingress, spine  |
       |                                               |          | and egress nodes                                     |
@@ -223,8 +223,8 @@ Fabric List
 -----------
 
 The concept of fabric, *default* or user defined and switch roles i.e *spine* or *leaf* is
-|bwc|-specific. By default, a VDX switch doesn't have any information about its role. In order for
-|bwc| to be able to determine the switch role, the first switch added to the fabric must be a **Spine**.
+|ewc|-specific. By default, a VDX switch doesn't have any information about its role. In order for
+|ewc| to be able to determine the switch role, the first switch added to the fabric must be a **Spine**.
 
 Let us start with ``network_inventory.fabric_list`` to get the details about the *default* fabric.
 This is the set of parameters such as ASN range, IP address range etc. required to build an IP fabric:
