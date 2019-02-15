@@ -72,8 +72,8 @@ IP Fabric provides a Layer 3 Clos deployment architecture for data center sites.
 IP Fabric, all links in the Clos topology are Layer 3 links. A data center PoD built with IP fabrics
 supports dual-homing of network endpoints using multiswitch port channel interfaces formed between a
 pair of VDX switches participating in a vLAG. This pair of leaf switches is called a vLAG
-pair. For more details on the design considerations for IP fabric, refer to the
-`Data Center Architecture Solution Design Guide 
+pair. For more details on the design considerations for IP Fabric, refer to the
+`IP Fabric Design Guide 
 <https://www.extremenetworks.com/resources/extreme-validated-design/extreme-ip-fabric-architecture/>`_
 
 .. figure:: ../../_static/images/solutions/dcfabric/ip_fabric_dual_home.png
