@@ -30,5 +30,5 @@ After installing the above pre-requisites, you can now install the Network Essen
 
 To install the DC Fabric Suite, follow the installation instructions for the :doc:`DC Fabric Automation Suite <../dcfabric/install>`
 
-* New to |bwc|? Go to fundamentals - start with :doc:`/start`.
+* New to |ewc|? Go to fundamentals - start with :doc:`/start`.
 * Understand the Network Essentials :doc:`Actions and Workflows<workflows>`.

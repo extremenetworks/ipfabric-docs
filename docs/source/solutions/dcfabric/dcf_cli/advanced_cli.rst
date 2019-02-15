@@ -10,12 +10,12 @@ This section is about accessing DC Fabric suite with the original |st2| CLI inst
 You will need to familiarise yourself with |st2| components like actions, workflows, packs, 
 execution list etc.
 
-See the |bwc| :doc:`CLI reference documentation </reference/cli>` for more details.
+See the |ewc| :doc:`CLI reference documentation </reference/cli>` for more details.
 
 
 ----------
 
-|bwc| consists of two packs for DC Fabric services and workflows: **network_inventory** and **dcfabric** pack. 
+|ewc| consists of two packs for DC Fabric services and workflows: **network_inventory** and **dcfabric** pack. 
 These packs are automatically installed with the DC Fabric suite.
 
 * **network_inventory**: Inventory-related actions such as show topology, configure BGP, etc. Includes lightweight topology 
@@ -223,8 +223,8 @@ Fabric List
 -----------
 
 The concept of fabric, *default* or user defined and switch roles i.e *spine* or *leaf* is
-|bwc|-specific. By default, a VDX switch doesn't have any information about its role. In order for
-|bwc| to be able to determine the switch role, the first switch added to the fabric must be a **Spine**.
+|ewc|-specific. By default, a VDX switch doesn't have any information about its role. In order for
+|ewc| to be able to determine the switch role, the first switch added to the fabric must be a **Spine**.
 
 Let us start with ``network_inventory.fabric_list`` to get the details about the *default* fabric.
 This is the set of parameters such as ASN range, IP address range etc. required to build an IP fabric:

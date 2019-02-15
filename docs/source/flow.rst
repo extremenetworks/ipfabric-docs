@@ -11,7 +11,7 @@ workflow are immediately reflected in the code, and vice-versa.
 .. figure:: /_static/images/flow/workflow_designer.png
     :align: center
 
-Workflow Designer is launched from the main |bwc| Web UI. First login to https://YOUR_HOST_IP/.
+Workflow Designer is launched from the main |ewc| Web UI. First login to https://YOUR_HOST_IP/.
 You can launch Designer in two different ways - either by creating a new workflow, or by editing an
 existing workflow:
 
@@ -43,7 +43,7 @@ You can also edit existing workflows
   Note that Workflow Designer can only be used to edit :doc:`mistral` workflows. It can not be
   used to edit :doc:`actionchain` workflows.
 
-Using the |bwc| Web UI, go the Actions tab, and navigate to a mistral-v2 workflow. Select the workflow
+Using the |ewc| Web UI, go the Actions tab, and navigate to a mistral-v2 workflow. Select the workflow
 and click "Edit" at the right of the workflow details pane:
 
 .. figure:: /_static/images/flow/existing_workflow.png

@@ -10,7 +10,7 @@ interfaces, BGP peerings and related settings. This ensures consistent configura
 across the fabric, with minimal effort.
 
 .. note::
-    This document covers the operation of the |bwc| DC Fabric Automation Suite. For more information
+    This document covers the operation of the |ewc| DC Fabric Automation Suite. For more information
     about IP Fabrics in general, see the `Network OS IP Fabric
     Configuration Guide <https://documentation.extremenetworks.com/networkos/SW/73x/nos-730-ipfabrics.pdf>`_
     and the `IP Fabric Validated Design <https://www.extremenetworks.com/resources/extreme-validated-design/extreme-ip-fabric-architecture/>`_ 
