@@ -45,7 +45,7 @@ jobs:
               s3://${EWCDOCS_BUCKET}/latest
             else
               aws s3 sync generated-site/ewcdocs/ \
-              s3://${ST2DOCS_BUCKET}/${CIRCLE_BRANCH}
+              s3://${EWCDOCS_BUCKET}/${CIRCLE_BRANCH}
             fi
       - run:
           # Check the install scripts to see if this is the current GA version
