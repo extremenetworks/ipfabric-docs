@@ -52,7 +52,7 @@ jobs:
           name: Check if current GA branch, in which case also deploy to main site
           command: |
             GA_VER=$(curl -sSL https://stackstorm.com/packages/install.sh|grep ^BRANCH=|sed 's/[^0-9.]*//g')
-            if [ "${CIRCLE_BRANCH}" = "${GA_VER}" ]; then
+            if [ "${CIRCLE_BRANCH}" = "v${GA_VER}" ]; then
               aws s3 sync generated-site/ewcdocs/ \
               s3://${EWCDOCS_BUCKET}/
             else
