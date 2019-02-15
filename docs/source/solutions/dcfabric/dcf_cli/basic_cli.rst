@@ -25,7 +25,7 @@ Syntax
      usage: bwc [--version] [-v | -q] [--log-file LOG_FILE] [-h] [--debug]
             [--config-file CONFIG_FILE] [--print-config] [--skip-config]
 
-     Brocade Workflow composer CLI
+     Extreme Workflow composer CLI
      
      optional arguments:
        --version             show program's version number and exit

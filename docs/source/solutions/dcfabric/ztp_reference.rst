@@ -7,8 +7,7 @@ console. ZTP uses a DHCP-based process known as DHCP Automatic Deployment (DAD) 
 handle basic configuration such as assigning a VCS ID, VCS mode, an RBridge ID, and 
 downloading firmware. 
 
-For more information, refer to the `Using DHCP Automatic Deployment <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-B70DA4FE-6819-45A9-9E07-65785D7DB402.html>`_
-section of the `Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-E7A18ADA-3D26-475A-BE56-13088EC74EFF-homepage.html>`_.
+For more information, refer to the "Using DHCP Automatic Deployment" section of the `Network OS Management Configuration Guide <https://documentation.extremenetworks.com/networkos/SW/73x/nos-730-management.pdf>`_.
 
 As part of the ZTP process, the switch can execute a local script. This stage is used to
 register the switch with |bwc| and run the BGP workflow.
@@ -444,9 +443,8 @@ To verify whether the ZTP and DAD process ran correctly, complete the following 
    an RBridge ID, VCS mode, and a management IP address assigned.
 
 2. Run the ``show dad status`` command to make sure the DAD and ZTP process ran. Look for the
-   ``DAD 1314`` code. If there any other error codes, refer to the `Using DHCP Automatic Deployment
-   <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-B70DA4FE-6819-45A9-9E07-65785D7DB402.html>`_
-   section of the `Network OS Administration Guide <http://www.brocade.com/content/html/en/administration-guide/nos-701-adminguide/GUID-E7A18ADA-3D26-475A-BE56-13088EC74EFF-homepage.html>`_
+   ``DAD 1314`` code. If there any other error codes, refer to the "Using DHCP Automatic Deployment" 
+   section of the `Network OS Management Configuration Guide <https://documentation.extremenetworks.com/networkos/SW/73x/nos-730-management.pdf>`_
    for more information about additional DAD codes.
 
 3. Check the |bwc| server to see if the switch is registered and the BGP workflow completed
