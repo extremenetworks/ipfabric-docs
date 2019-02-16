@@ -9,7 +9,11 @@ jobs:
       - run:
           name: Clone st2docs and ST2
           command: |
-            git clone https://github.com/StackStorm/st2docs.git .
+            if [[ "${CIRCLE_BRANCH}" =~ v[0-9]+(\.[0-9]+)$ ]]; then
+              git clone --depth 1 --branch ${CIRCLE_BRANCH} https://github.com/StackStorm/st2docs.git .
+            else
+              git clone --depth 1 https://github.com/StackStorm/st2docs.git .
+            fi
             make .clone-st2
       - restore_cache:
           key: v1-dependency-cache-{{ checksum "st2/requirements.txt" }}
