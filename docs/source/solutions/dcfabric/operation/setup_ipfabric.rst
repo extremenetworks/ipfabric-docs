@@ -67,7 +67,7 @@ If the switch has ZTP enabled, complete the following steps:
     DC Fabric Automation Suite assigns management IP addresses to the switches, registers the switches in its 
     database, and creates an IP Fabric.
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf show config bgp
       Show BGP Configuration
@@ -183,7 +183,7 @@ Use the DC Fabric Automation Suite CLI to configure an IP Fabric by completing t
   For example, to register the switch with IP 10.24.39.224 (NB The default username is *admin* 
   and default password is *password* for all VDX switches):
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf inventory register host=10.24.39.224 fabric=default user=admin passwd=password
 
@@ -197,7 +197,7 @@ Use the DC Fabric Automation Suite CLI to configure an IP Fabric by completing t
 2. Verify that the switches are registered by entering the ``bwc dcf inventory list fabric=<fabric_name>``
    command:
 
-.. code:: shell
+.. code-block:: shell
 
      $ bwc dcf inventory list --fabric=default
 
@@ -211,7 +211,7 @@ Use the DC Fabric Automation Suite CLI to configure an IP Fabric by completing t
 3. Repeat steps 1 and 2 above to register the remaining switches to be added. If some configuration parameter value changes
    on the switch, the IP Fabric can be updated:
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf inventory update --fabric=default
 
@@ -230,7 +230,7 @@ Use the DC Fabric Automation Suite CLI to configure an IP Fabric by completing t
 
 4. Execute the BGP workflow by entering the command ``bwc dcf workflow bgp`` command:
 
-.. code:: shell
+.. code-block:: shell
 
      $ bwc dcf workflow bgp fabric=default
 
@@ -314,7 +314,7 @@ Use the DC Fabric Automation Suite CLI to configure an IP Fabric by completing t
 5. After the command executes, enter the ``bwc dcf show config bgp`` command and review
    the information displayed:
 
-.. code:: shell
+.. code-block:: shell
 
      $ bwc dcf show config bgp --fabric=default
 
@@ -399,7 +399,7 @@ To add a switch to the existing fabric, register the switch to the fabric and th
 dcf workflow bgp fabric=<fabric_name>``. To remove a switch from the fabric
 run ``bwc dcf inventory delete host=<ip_address>``
 
-.. code:: shell
+.. code-block:: shell
 
      $ bwc dcf inventory delete host=10.24.39.224
 
@@ -425,7 +425,7 @@ A switch is registered to the server using the switch credentials. If the creden
 changed on the switch, the change must be updated in the |ewc| server
 using the ``bwc dcf inventory update --host=<ip_address>`` command.
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf inventory update --host=10.24.39.225  --user=lab123 --passwd=123lab
 
@@ -447,7 +447,7 @@ You can display the fabric topology of an IP Fabric.
 Refer the :doc:`dcf CLI <../dcf_cli/basic_cli>` page for options available for the
 ``bwc dcf show topology`` command.
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf show topology fabric=default --format=pdf --render_dir=/tmp
 
@@ -468,7 +468,7 @@ To check the details of the registered switches in the |ewc| server and compare 
 switch configuration, use following commands:
 
 
-.. code:: shell
+.. code-block:: shell
 
     bwc dcf show config bgp fabric=<fabric_name>
     bwc dcf show topology fabric=<fabric_name> [ --format=<format> ] [--render_dir=<file location>]
@@ -490,7 +490,7 @@ values of the parameters using the ``bwc dcf fabric config show`` CLI command.  
 shows the comparison for both DC IP Fabric Automation Suite v1.0 and v1.1 values with the display
 showing only one version.
 
-.. code:: shell
+.. code-block:: shell
     
     $ bwc dcf fabric config show fabric=default
 
@@ -604,7 +604,7 @@ Creating a new IP Fabric with user-defined configuration parameters
    configuration. For example, the following command creates a new user-defined IP Fabric
    called **user_fab**.
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf fabric add fabric=user_fab
       Fabric user_fab added successfully
@@ -647,7 +647,7 @@ Setting allowas_in with value 7 added to fabric user_fab
 4. Use the ``bwc dcf fabric config show fabric=<fabric_name>`` command to display the fabric
    details added in step 2.
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf fabric config show fabric=user_fab
 
