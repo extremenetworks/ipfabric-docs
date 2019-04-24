@@ -10,8 +10,8 @@ DOC_BUILD_DIR := docs/build
 
 BINARIES := bin
 
-PYTHON_TARGET := 2.7
-PYTHON_VERSION := 2.7
+PYTHON_TARGET := 3.6
+PYTHON_VERSION := 3.6
 
 REQUIREMENTS := requirements.txt
 

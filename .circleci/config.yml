@@ -4,7 +4,7 @@ version: 2
 jobs:
   ewcdocs:
     docker:
-    - image: circleci/python:2.7
+    - image: circleci/python:3.6
     steps:
       - run:
           name: Clone st2docs and ST2
