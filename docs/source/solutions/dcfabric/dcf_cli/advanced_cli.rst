@@ -184,7 +184,7 @@ be accessed using ``st2 action get <pack-name>.<action-name>`` or
     (switch IP) are required, but are mutually exclusive.
 
 
-.. code:: shell
+.. code:: guess
 
     $ st2 run network_inventory.switch_list -h
     List all the devices in the inventory for the specified fabric or
@@ -229,7 +229,7 @@ The concept of fabric, *default* or user defined and switch roles i.e *spine* or
 Let us start with ``network_inventory.fabric_list`` to get the details about the *default* fabric.
 This is the set of parameters such as ASN range, IP address range etc. required to build an IP fabric:
 
-.. code:: shell
+.. code:: guess
 
     $ st2 run network_inventory.fabric_list
       
@@ -310,7 +310,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
 
 1. First create a user-defined custom fabric:
 
-.. code:: shell
+.. code:: guess
     
    $ st2 run network_inventory.fabric_add fabric=new_fabric
      .
@@ -337,7 +337,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
    **loopback_port_number**, **p2p_link_range** and cannot be edited. Please double check before
    entering these parameters.
 
-.. code-block:: shell
+.. code-block:: guess
    :emphasize-lines: 1,21,41,61,81
    
    $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=p2p_link_range value="unnumbered"
@@ -447,7 +447,7 @@ DC Fabric suite supports user-defined fabric with custom parameters.
 3. (Optional) Add optional parameters to the *custom-fabric*, otherwise values from
    **default** fabric are used:
 
-.. code-block:: shell
+.. code-block:: guess
     :emphasize-lines: 1,21,41,61,81,101,121
 
     $ st2 run network_inventory.fabric_config_set fabric=new_fabric key=anycast_mac value=ccff.aadd.eeff
@@ -609,7 +609,7 @@ Register, delete and update switch
 
 After creating a *custom fabric* we can register/update/delete switches to the fabric:
 
-.. code-block:: shell
+.. code-block:: guess
     :emphasize-lines: 1,40,80
 
     $ st2 run network_inventory.switch_add fabric=default host=10.24.39.224 user=admin passwd=password
@@ -732,7 +732,7 @@ The same commands can be used for the *default* fabric.
 All the switches in a fabric can also be updated by providing fabric name: ``fabric=<fabric name>``
 to ``st2 run network_inventory.switch_update`` command instead of a switch IP address:
 
-.. code:: shell
+.. code:: guess
 
    $ st2 run network_inventory.switch_update fabric=default
      ...
@@ -815,7 +815,7 @@ BGP Workflow
 After you have registered all switches, use the following command to execute the BGP
 workflow:
 
-.. code:: shell
+.. code:: guess
 
    $ st2 run dcfabric.configure_fabric fabric=default
      ............................................................
@@ -881,7 +881,7 @@ Detail of each action execution in the workflow can be found using the execution
 Use ``st2 execution get <execution id>`` command to get the details. Last execution ID
 shows bgp configuration on switches, after successful execution:
 
-.. code:: shell
+.. code:: guess
 
    $ st2 execution get 57b4bf4c18971232c98e6f78
      id: 57b4bf4c18971232c98e6f78
@@ -999,7 +999,7 @@ Show BGP configuration on the switches
 
 After BGP workflow execution:
 
-.. code:: shell
+.. code:: guess
    
    $ st2 run network_inventory.show_config_bgp fabric=default
      ...........................
@@ -1110,7 +1110,7 @@ Show LLDP links among the neighbors
 
 After discovering the switches:
 
-.. code:: shell
+.. code:: guess
 
    $ st2 run network_inventory.show_lldp_links fabric=default
      .
@@ -1244,7 +1244,7 @@ Show VCS links between switches
 If the fabric consists of VDX switches in VCS mode, this command will show the status of 
 links between principle and secondary nodes:
 
-.. code:: shell
+.. code:: guess
 
    $ st2 run network_inventory.show_vcs_links fabric=default
      .
@@ -1279,7 +1279,7 @@ Generate Topology
 To generate a topology (default format: pdf) for switches discovered in the fabric
 use the following command:
 
-.. code:: shell
+.. code:: guess
 
    $ st2 run network_inventory.topology_generate fabric=default
      .
