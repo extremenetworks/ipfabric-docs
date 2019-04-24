@@ -336,7 +336,7 @@ Sample DAD configuration file for a two-node VCS cluster
 
 The following is a sample DAD configuration file for a two-node VCS cluster:
 
-.. code:: shell
+.. code-block:: ini
 
     version=3
     date=09/01/2015
@@ -390,7 +390,7 @@ DHCP IP negotiation process. Please make sure the script has the following confi
 variables set by editing the ``bwc-automation.py`` file.
 
 
-.. code:: python
+.. code-block:: python
 
     remote_server = 'dcip.bwc.local:443' ## IP address or DNS name of the server with port #
     token = 'Z3FJeENYb1BobURrUk9hWEZwd204U3BKRzJsN0g0eXU=' ## token

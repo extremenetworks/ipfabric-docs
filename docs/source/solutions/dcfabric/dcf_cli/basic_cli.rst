@@ -268,7 +268,7 @@ Registers, shows, deletes, or updates a list of switches.
 
 Syntax
 ~~~~~~
-.. code:: shell
+.. code-block:: shell
 
     bwc dcf inventory register host=<ip_address> fabric=<fabric_name> user=<switch_user> passwd=<switch_password>
     bwc dcf inventory delete host=<ip_address>
@@ -311,7 +311,7 @@ Examples
 
 Use the ``bwc dcf inventory register`` command to register a switch to the default fabric.
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf inventory register host=10.24.39.225 fabric=default user=admin passwd=password
 
@@ -324,7 +324,7 @@ Use the ``bwc dcf inventory register`` command to register a switch to the defau
 
 Use the ``bwc dcf inventory delete`` command to delete a switch from the server.
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf inventory delete host=10.24.39.225
 
@@ -338,7 +338,7 @@ Use the ``bwc dcf inventory delete`` command to delete a switch from the server.
 Use the ``bwc dcf inventory update`` command to update a switch on the server. (This provides a way
 to change the username and password.)
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf inventory update --host=10.24.39.225
 
@@ -351,7 +351,7 @@ to change the username and password.)
 
 Use the ``bwc dcf inventory list`` command to list all registered switches.
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf inventory list --fabric=default
 
@@ -371,7 +371,7 @@ Use the ``bwc dcf inventory list`` command to list all registered switches.
 Use the ``bwc dcf inventory update --fabric=default`` command to update all switches in the
 *"default"* fabric.
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf inventory update --fabric=default
 
@@ -391,7 +391,7 @@ Use the ``bwc dcf inventory update --fabric=default`` command to update all swit
 Use the ``bwc dcf inventory show vcs links`` command to show VCS link status for a two-node VCS
 cluster.
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf inventory show vcs links fabric=default
 
@@ -404,7 +404,7 @@ cluster.
 
 Use the ``bwc dcf inventory show lldp`` command to show LLDP neighbors.
 
-.. code:: shell
+.. code-block:: shell
 
     $ bwc dcf inventory show lldp fabric=default
 
@@ -467,7 +467,7 @@ Executes a BGP workflow on a selected fabric.
 Syntax
 ~~~~~~
 
-.. code:: shell
+.. code-block:: shell
 
     bwc dcf workflow bgp fabric=<fabric_name>
 
