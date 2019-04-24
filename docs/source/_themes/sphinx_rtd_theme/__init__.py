@@ -18,7 +18,7 @@ __version_full__ = __version__
 
 
 def setup(app):
-    print 'in setup'
+    print("in setup")
     """Setup connects events to the sitemap builder"""
     app.connect('html-page-context', add_html_link)
     app.connect('build-finished', create_sitemap)
@@ -39,7 +39,7 @@ def create_sitemap(app, exception):
         return
 
     filename = app.outdir + "/sitemap.xml"
-    print "Generating sitemap.xml in %s" % filename
+    print("Generating sitemap.xml in %s" % filename)
 
     root = ET.Element("urlset")
     root.set("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
