@@ -145,7 +145,7 @@ It will walk you through installing and configuring StackStorm first, and upgrad
 to |ewc| with the license key you received when registering for evaluation or when 
 purchasing. This last step will also set up the |ewc| repository on your box.
 
-* :doc:`/install/deb`
+* :doc:`/install/u16`
 * :doc:`/install/rhel7`
 * :doc:`/install/rhel6`
 
