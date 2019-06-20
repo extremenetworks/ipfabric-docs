@@ -75,7 +75,7 @@ Setting up IP Fabric with EVPN
 
 4. To verify, review the action logs on the workflow or use the following commands directly on the switch:
 
-   .. code-block:: guess
+   .. code-block:: none
    
      show ip bgp summary rb all
      show bgp evpn summary rbridge-id all
@@ -114,7 +114,7 @@ Here are the steps to configure L2 tenant on a dual ToR pair:
    The workflow runs the following show commands on the switch and logs the results. You can review
    this in the action results. Or you can directly run the following commands on the switch to verify:
    
-   .. code-block:: guess
+   .. code-block:: none
 
      show port-channel 400 
      show running-config interface ethernet 0/22
@@ -129,7 +129,7 @@ Here are the steps to configure L2 tenant on a dual ToR pair:
    The workflow runs the following show commands on the switch and logs the results. You can review
    this in the action results. Or you can directly run the following commands on the switch to verify:
    
-   .. code-block:: guess
+   .. code-block:: none
 
      show port-channel 400 
      show running-config interface TenGigabitEthernet 37/0/11
@@ -206,7 +206,7 @@ Here are the steps to configure an L2 tenant on a single ToR (non vLAG):
    
    To verify, review the action logs on the workflow or use the following commands directly on the switch:
    
-   .. code-block:: guess
+   .. code-block:: none
 
      show running-config rbridge-id evpn-instance
      show vlan 201
@@ -230,7 +230,7 @@ Here are the steps to configure an L3 tenant on a vLAG pair:
    
    To verify, review the action logs on the workflow or use the following commands directly on the switch:
    
-   .. code-block:: guess
+   .. code-block:: none
 
      show running-config rbridge-id vrf vrf2 
      show running-config rbridge-id interface ve 500 
@@ -249,7 +249,7 @@ Here are the steps to configure an L3 tenant on a vLAG pair:
    
    To verify, review the action logs on the workflow or use the following commands directly on the switch:
    
-   .. code-block:: guess
+   .. code-block:: none
 
      show port-channel <use the number, autopicked by the workflow>
      show running-config interface TenGigabitEthernet 37/0/11
@@ -285,7 +285,7 @@ Here are the steps to configure L3 tenant on a vLAG pair:
    
    To verify, review the action logs on the workflow or use the following commands directly on the switch:
    
-   .. code-block:: guess
+   .. code-block:: none
 
      show vlan 500
 
