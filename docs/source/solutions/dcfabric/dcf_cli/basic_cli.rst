@@ -69,7 +69,7 @@ Examples
 Use the ``bwc --help`` command to display Extreme Workflow Composer commands and their functions.
 
 
-.. code-block:: guess
+.. code-block:: none
    :emphasize-lines: 1,10
 
    $ bwc dcf fabric list -h
@@ -141,7 +141,7 @@ Syntax
 Parameters
 ~~~~~~~~~~
 
-.. code-block:: guess
+.. code-block:: none
    :emphasize-lines: 1,4,7,10,13,16
     
    config bgp
@@ -279,7 +279,7 @@ Syntax
 
 Parameters
 ~~~~~~~~~~
-.. code-block:: guess
+.. code-block:: none
     :emphasize-lines: 1,4,7,10,13,16,19,22
 
     register
@@ -474,7 +474,7 @@ Syntax
 Parameters
 ~~~~~~~~~~
 
-.. code-block:: guess
+.. code-block:: none
     :emphasize-lines: 1
 
     fabric=<fabric_name>
@@ -594,7 +594,7 @@ Syntax
 Parameters
 ~~~~~~~~~~
 
-.. code-block:: guess
+.. code-block:: none
    :emphasize-lines: 1,4,7
 
    fabric=<fabric_name>
