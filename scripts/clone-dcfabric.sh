@@ -27,5 +27,5 @@ fi
 REQUIRED_BRANCH="v1.2.0"
 
 echo "Cloning branch $REQUIRED_BRANCH of DC Fabric Suite"
-git clone -b $REQUIRED_BRANCH --depth 1 https://github.com/StackStorm/sandbox-actions $DCF_DIRECTORY
+git clone -b $REQUIRED_BRANCH --depth 1 https://github.com/extremenetworks/sandbox-actions $DCF_DIRECTORY
 rm -f $DCF_DIRECTORY/packs/dcfabric/actions/debugscript*.yaml

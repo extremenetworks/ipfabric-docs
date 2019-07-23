@@ -10,7 +10,7 @@ Product documentation for IPfabric is maintained in this repository. These docs 
 Follows these steps to build the docs locally:
 
 ```bash
-git clone https://github.com/StackStorm/ipfabric-docs.git
+git clone https://github.com/extremenetworks/ipfabric-docs.git
 cd ipfabric-docs
 make docs
 ```
