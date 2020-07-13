@@ -147,7 +147,6 @@ purchasing. This last step will also set up the |ewc| repository on your box.
 
 * :doc:`/install/u16`
 * :doc:`/install/rhel7`
-* :doc:`/install/rhel6`
 
 
 2. Install DC Fabric Suite
@@ -196,12 +195,6 @@ Install the DC Fabric suite:
 
 * Start the ``bwc-topology`` service:
 
-  * On Ubuntu/Debian or RHEL/CentOS 6.x: ::
-
-      sudo service bwc-topology start
-      # Check that it is running indeed
-      service bwc-topology status
-
   * On RHEL/CentOS 7.x: ::
 
       sudo systemctl bwc-topology start
@@ -222,23 +215,6 @@ Run some ``bwc dcf`` CLI commands to see that everything is installed.
 Upgrade from previous version
 ------------------------------
 If you have previously installed DC Fabric Automation Suite v1.1 and want to upgrade to next version, please follow the instructions below:
-
-**On Ubuntu/Debian or RHEL/CentOS 6.x:**
-
-.. code-block:: bash
-
-  # Upgrade bwc/dcfabric packages
-  sudo apt-get update
-  sudo apt-get install bwc-topology bwc-cli dcfabric-packs dcfabric-suite
- 
-  # Update Network Essentials Pack
-  st2 pack install network_essentials
-
-  # Restart Topology Service
-  sudo service bwc-topology restart
-
-  # For verification, run the following command to check the version number for network_essentials, network_inventory and dcfabric packs is v1.2.0 
-  st2 pack list
 
 **On RHEL/CentOS 7.x:**
 
