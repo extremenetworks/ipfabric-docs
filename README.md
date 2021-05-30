@@ -1,11 +1,10 @@
-**IP fabric docs**
+# IP fabric docs
 
-# Writing the Docs
+## Writing the Docs
 
-Product documentation for IPfabric is maintained in this repository. These docs are built using
-[Sphinx](http://www.sphinx-doc.org/en/stable/).
+Product documentation for IPfabric is maintained in this repository. These docs are built using [Sphinx](http://www.sphinx-doc.org/en/stable/).
 
-## Build and Run the Docs.
+## Build and Run the Docs
 
 Follows these steps to build the docs locally:
 
@@ -15,51 +14,63 @@ cd ipfabric-docs
 make docs
 ```
 
-Keep in mind that the initial ``make docs`` run will take a while because it needs to install
-all the Python dependencies which are needed to build the docs.
+Keep in mind that the initial ``make docs`` run will take a while because it needs to install all the Python dependencies which are needed to build the docs.
 
-`make livedocs` builds the docs and runs the doc site live at [http://localhost:8000](http://localhost:8000) to
-validate changes locally prior to committing any code.
+`make livedocs` builds the docs and runs the doc site live at [http://localhost:8000](http://localhost:8000) to validate changes locally prior to committing any code.
 
 ## Sphinx Tricks
 
 * If the whole section belongs in the Enterprise Edition, put the following note:
-    ```
+
+    ```text
     .. note::
 
        Role Based Access Control (RBAC) is only available in StackStorm Enterprise Edition. For
        information about enterprise edition and differences between community and enterprise edition,
        please see `stackstorm.com/product <https://stackstorm.com/product/#enterprise>`_.
     ```
+
     Refer to Enterprise edition in passing with
 
-        `see Enterprise Edition <https://stackstorm.com/product/#enterprise>`_
+    ```text
+    `see Enterprise Edition <https://stackstorm.com/product/#enterprise>`_
+    ```
 
 * TODO (Use [http://localhost:8000/todo.html](http://localhost:8000/todo.html) for full TODO list (must be empty when we ship)
 :
 
+    ```text
     .. todo:: Here is a TODO
+    ```
 
 * Code fragment:
 
+    ```text
     .. code-block: bash
 
       # List all available triggers
         st2 trigger list
+    ```
 
 * Reference the document
 
+    ```text
     :doc:`/start`
     :doc:`in the Rules doc </rules>`
+    ```
 
 * Referencing an arbitrary section: for instance, there's examples section in sensors.rst. Define a reference on `examples` section in sensors.rst:
 
-         .. _sensors-examples:
+    ```text
+    .. _sensors-examples:
+    ```
 
     and point to it as from this, or from other documents as:
 
-           :ref:`sensors-examples`
-           :ref:`My examples <sensors-examples>`
+    ```text
+    :ref:`sensors-examples`
+    :ref:`My examples <sensors-examples>`
+    ```
 
     Note that the leading `_` underscore is gone, and the reference is quoted.
 
@@ -67,40 +78,53 @@ validate changes locally prior to committing any code.
 
 * External links:
 
+    ```text
     `External link <http://webchat.freenode.net/?channels=stackstorm>`_
+    ```
 
 * Inlcude a document, full body:
 
+    ```text
     .. include:: /engage.rst
+    ```
 
 * Link to GitHub st2 repo
 
+    ```text
     :github_st2:`st2/st2common/st2common/operators.py </st2common/st2common/operators.py>`
+    ```
 
 * Link  to Github st2contrib repo:
 
+    ```text
     :github_contrib:`Link to docker README on st2contrib<packs/docker/README.md>`
+    ```
 
 * Link to st2contrib and st2incubator repos on Github (using a global we set up in source/conf.py)
 
+    ```text
     `st2contrib`_
     `st2incubator`_
+    ```
 
 * The pattern to include an example from `/st2/contrib/examples`: make example file name a reference on github. May say that it is deployed to `/usr/share/doc/st2/examples/`, and auto-include the file:
 
+    ```text
     Sample rule: :github_st2:`sample-rule-with-webhook.yaml
     </contrib/examples/rules/sample-rule-with-webhook.yaml>` :
 
     .. literalinclude:: /../../st2/contrib/examples/rules/sample_rule_with_webhook.yaml
         :language: json
-
+    ```
 
 ## Pandoc - convert md <-> rst and more
 
 pandoc - a super-tool to convert between formats. Sample for markdown conversion:
 
-  sudo apt-get install pandoc
-  pandoc --from=markdown --to=rst --output=README.rst README.md
+```bash
+sudo apt-get install pandoc
+pandoc --from=markdown --to=rst --output=README.rst README.md
+```
 
 ## Running docs only
 
@@ -116,7 +140,8 @@ make docs
 sphinx-autobuild -H 0.0.0.0 -b html ./docs/source/ ./docs/build/html
 ```
 
-To Generate Docs for Automation Suites run the following: 
+To Generate Docs for Automation Suites run the following:
+
 * scripts/clone-essentials.sh
 * scripts/clone-dcfabric.sh
 * python scripts/generate-essentials-documentation.py
